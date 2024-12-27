@@ -1,0 +1,10 @@
+.close__icon{
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    color: #ccc;
+    &:hover{
+        color: #222;
+        border: 0px;
+    }
+}

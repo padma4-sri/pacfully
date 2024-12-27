@@ -1,0 +1,30 @@
+.blogText {
+    a{
+        justify-content: start !important;
+        min-height: 25px;
+        max-height: 115px;
+        overflow: hidden;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        white-space: normal;
+        width: 100%;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+    }
+    .lightcolor {
+        color: #666666;
+      
+    }
+
+    .text__ellipse {
+        max-height: 115px;
+        -webkit-line-clamp: 4;
+    }
+
+    .blogContent {
+        a {
+            text-decoration: underline;
+        }
+    }
+}

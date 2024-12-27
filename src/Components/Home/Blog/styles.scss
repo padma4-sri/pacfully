@@ -1,0 +1,40 @@
+.blogs__container {
+  .keen-slider__slide {
+    min-width: 373px;
+    max-width: 373px;
+
+    .blogCard {
+      .image__block {
+        width: 100%;
+        height: 228px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .blogs__container {
+    .keen-slider__slide {
+      .blogCard {
+        .image__block {
+          width: 100%;
+          height: 250px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .blogs__container {
+    .keen-slider__slide {
+      min-width: 100%;
+      max-width: 100%;
+
+      .blogCard {
+        min-width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+}

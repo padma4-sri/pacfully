@@ -1,0 +1,44 @@
+.staticBanner {
+    .content {
+        background-color: #b8e0c7;
+        color: #FFFFFF;
+
+        &:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            top: 0;
+            left: 0;
+            background: rgb(255 255 255 / 4%)
+        }
+
+        .background {
+            background-repeat: no-repeat;
+            background-size: auto 100%;
+            background-position: bottom right;
+        }
+
+        p {
+            font-size: 25px;
+            font-weight: 400;
+        }
+
+        h3 {
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        a {
+            font-size: 15px;
+            min-height: 24px;
+            padding: 12px 24px;
+            margin: 0px auto;
+            position: relative;
+            &:hover{
+                background-color: var(--themeColor) !important;
+            }
+        }
+    }
+}

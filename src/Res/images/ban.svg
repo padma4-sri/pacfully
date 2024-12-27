@@ -1,0 +1,37 @@
+<svg id="Group_771" data-name="Group 771" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="30" viewBox="0 0 40 30">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_944" data-name="Rectangle 944" width="40" height="30" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Path_371" data-name="Path 371" d="M4,12v6.25h6.25c4.52,0,6.49-3.236,8.75-6.25Z" transform="translate(-4 -12)" fill="none"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="-0.27" y1="1.584" x2="-0.193" y2="1.584" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#005ab9"/>
+      <stop offset="1" stop-color="#1e3764"/>
+    </linearGradient>
+    <clipPath id="clip-path-3">
+      <path id="Path_372" data-name="Path 372" d="M24.75,7c-4.521,0-6.49,3.236-8.75,6.25H31V7Z" transform="translate(-16 -7)" fill="none"/>
+    </clipPath>
+    <linearGradient id="linear-gradient-2" x1="-1.196" y1="2.173" x2="-1.119" y2="2.173" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fba900"/>
+      <stop offset="1" stop-color="#ffd800"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_766" data-name="Group 766">
+    <g id="Group_765" data-name="Group 765" clip-path="url(#clip-path)">
+      <path id="Path_369" data-name="Path 369" d="M5,.5h29.76a4.516,4.516,0,0,1,4.5,4.536V24.714a4.516,4.516,0,0,1-4.5,4.536H5A4.516,4.516,0,0,1,.5,24.714V5.036A4.516,4.516,0,0,1,5,.5" transform="translate(0.125 0.125)" fill="#fff"/>
+      <path id="Path_370" data-name="Path 370" d="M5,.5h29.76a4.516,4.516,0,0,1,4.5,4.536V24.714a4.516,4.516,0,0,1-4.5,4.536H5A4.516,4.516,0,0,1,.5,24.714V5.036A4.516,4.516,0,0,1,5,.5Z" transform="translate(0.125 0.125)" fill="none" stroke="#e6e6e6" stroke-width="1"/>
+    </g>
+  </g>
+  <g id="Group_768" data-name="Group 768" transform="translate(5 15)">
+    <g id="Group_767" data-name="Group 767" clip-path="url(#clip-path-2)">
+      <rect id="Rectangle_945" data-name="Rectangle 945" width="16.238" height="11.082" transform="translate(-2.04 0.758) rotate(-20.377)" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+  <g id="Group_770" data-name="Group 770" transform="translate(20 8.75)">
+    <g id="Group_769" data-name="Group 769" clip-path="url(#clip-path-3)">
+      <rect id="Rectangle_946" data-name="Rectangle 946" width="16.215" height="10.759" transform="translate(-1.91 0.652) rotate(-18.838)" fill="url(#linear-gradient-2)"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,84 @@
+.copy__url__sidebar{
+    .sidebar__copyurl{
+        background-color: #fff;
+        width: 100%;
+        max-width: 100%;
+    }
+    .copyurl__wrapper__container{
+        .sidebar__body{
+            .input__block{
+                input{
+                    height: 44px;
+                    border-radius: 22px;
+                    background-color: #fff;
+                    border: 1px solid #CCCCCC;
+                    padding-right: 8.5em;
+                }
+                button{
+                    width: 108.50px;
+                    color: #666666;
+                    background-color: #EEEEEE;
+                    &:hover{
+                        background-color: var(--themeColor);
+                        color: #fff;
+                    }
+                }
+            }
+            .social__actions{
+                flex-direction: column;
+                gap: 12px;
+                button,a{
+                    width: 100%;
+                    font-size: 14px !important;
+                    font-weight: 500 !important;
+                    padding: 12.4px 15px !important;
+                    height: 48px !important;
+                    border-radius: 1.5rem;
+                    svg{
+                        margin-right: 8px;
+                        path{
+                            fill: #fff;
+                        }
+                    }
+                }
+                button{
+                    svg{
+                        width: 22.96px !important;
+                        height: 23.07px !important;
+                    }
+                    color: #fff !important;
+                    background-color: #67CC23 !important;
+                    &:hover{
+                        background-color: #89D853 !important;
+                    }
+                }
+                .email{
+                    svg{
+                        width: 24.58px;
+                        height: 19.71px;
+                    }
+                    &:hover{
+                        background-color: #4D4D4D;
+                    }
+                }
+            }
+        }
+    }
+}
+ 
+ /** small screen **/
+ @media screen and (min-width:550px) {
+     .copy__url__sidebar{
+        .copyurl__wrapper__container{
+            .sidebar__body{
+                .social__actions{
+                    flex-direction: row;
+                    gap: 28px;
+                    button,a{
+                        width: 50%;
+                    }
+                }
+            }
+        }
+    }
+ }

@@ -1,0 +1,43 @@
+.review__listing{
+    .view__more{
+        p, svg{
+            color: #222222;
+        }
+    }
+    .review__rating{
+        height: 40px;
+        width: 135px;
+        top: -20px;
+        background-color: #FBFBFB;
+        border: 1px solid #ccc;
+        border-radius: 11px;
+        .MuiRating-root{
+            font-size: 20px;
+        }
+    }
+    .date{
+        color: #999999;
+    }
+
+    .badge{
+        background-color: #FFC400;
+        height: 40px;
+        min-width: 40px;
+    }
+   
+    .review__card{
+        background-color: #FFFFFF;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+    }
+}
+@media screen and (min-width: 768px) {
+    .review__listing{
+    .review__cards{
+        column-gap:2%;
+    }
+    .review__card{
+        width:32%;
+    }
+}
+  }

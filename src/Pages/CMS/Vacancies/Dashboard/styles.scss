@@ -1,0 +1,115 @@
+.vacancies__dashboard {
+    background-color: #F5F5F5;
+
+    .breadcrumbs__container .breadcrumbs__wrapper .breadcrumbs__block .item:last-child a {
+        color: #666666;
+        font-weight: 500;
+    }
+
+    .page__container {
+        .filter {
+            background-color: #fff;
+            width: 100%;
+            height: max-content;
+        }
+
+        .openings {
+            .search {
+                position: relative;
+                width: 100%;
+
+                .searchbox {
+                    width: 100%;
+                    background: #FFF;
+                    min-height: 48px;
+                    border: 1px solid rgba(0, 0, 0, 0.04);
+                    border-radius: 24px;
+                    font-size: 15px;
+
+                    &::placeholder {
+                        font-style: italic;
+                        color: #B3B3B3;
+                    }
+                }
+
+                .MuiButtonBase-root {
+                    position: absolute;
+                    right: 0;
+                    width: 48px;
+                    height: 48px;
+
+                    .icons {
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+
+                &.focused {
+                    .searchbox {
+                        border: 1px solid rgba(0, 0, 0, 0.04);
+                    }
+                }
+            }
+
+            .vancies__list {
+                column-gap: 2%;
+                row-gap: 16px;
+
+                .list {
+                    color: #fff;
+                    width: 100%;
+
+                    .icon {
+                        img {
+                            width: 45px;
+                            height: 45px;
+                        }
+                    }
+
+                    a {
+                        background-color: unset !important;
+                        justify-content: flex-start;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(min-width: 550px) {
+    .vacancies__dashboard {
+        .page__container {
+            .openings {
+                .vancies__list {
+                    .list {
+                        width: 48%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(min-width: 1025px) {
+    .vacancies__dashboard {
+        .page__container {
+            .filter {
+                width: 250px;
+            }
+        }
+    }
+}
+
+@media(min-width: 1250px) {
+    .vacancies__dashboard {
+        .page__container {
+            .openings {
+                .vancies__list {
+                    .list {
+                        width: 32%;
+                    }
+                }
+            }
+        }
+    }
+}

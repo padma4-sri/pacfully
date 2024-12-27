@@ -1,0 +1,69 @@
+.copy__url__sidebar {
+    .sidebar__color {
+        background-color: #fff;
+        width: 100%;
+        max-width: 100%;
+        .color__codes{
+            .color__block{
+                display: block;
+                .text__ellipse{
+                    -webkit-line-clamp: 2;
+                }
+            }
+        }
+    }
+
+    .color__wrapper__container {
+        .sidebar__body {
+            .hightlight {
+                background-color: #F5EDE7;
+            }
+
+            .input__block {
+                .input__control {
+                    input {
+                        height: 44px;
+                        border-radius: 22px;
+                        background-color: #fff;
+                        border: 1px solid #CCCCCC;
+                        padding-right: 8.5em;
+                        font-weight: 500;
+
+                        ::placeholder {
+                            font-style: italic;
+                            color: #B3B3B3;
+                        }
+                    }
+                }
+
+                button {
+                    position: absolute;
+                    height: 44px;
+                    width: 44px;
+                }
+            }
+
+            .filter__colors {
+                .colorbox {
+                    input {
+                        border-radius: 5px;
+                        padding: 0px;
+                        appearance: none;
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        width: 23px;
+                        height: 23px;
+                        border-width: 2px;
+                        border-style: solid;
+                        outline: none;
+                        cursor: pointer;
+                        transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+                    }
+                    input[type="checkbox"]:checked {
+                        background-color: #16BCDC;
+                    }
+                }
+            }
+        }
+    }
+}

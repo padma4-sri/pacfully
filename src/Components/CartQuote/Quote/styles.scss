@@ -1,0 +1,75 @@
+.cartpage{
+    .coupon__quotepage {
+        .coupon__section__parent{
+            width: 100%;
+            max-width: 100%;
+        }
+        .priceDetails {
+          .green {
+            color: #9bc87d;
+          }
+        }
+        .button__info {
+    
+          .mondu__img {
+            width: 83px;
+          }
+          button {
+            height: 62px;
+            background-color: #ffcc00;
+            color: #222222;
+          }
+          .payment__img {
+            width: 284px;
+          }
+        }
+        table tr {
+          line-height: 1.8rem;
+          font-size: 15px;
+          td:nth-child(2) {
+            text-align: right;
+          }
+        }
+     
+      }
+      .sidebar__quotepage{
+        .form{
+            border-top: 1px solid #ccc;
+          
+            input[type="text"], input[type="password"], input[type="email"] {
+              border: 1px solid #DFDFDF;
+                background-color: #FFFFFF;
+                font-size: 15px;
+          }
+        }
+      }
+}
+@media screen and (min-width: 1250px) {
+  .cartpage {
+      .coupon__quotepage {
+          .coupon__section__parent{
+              width: 100%;
+              max-width: 40%;
+          }
+       
+        }
+        
+  }
+}
+@media screen and (min-width: 1025px) {
+    .cartpage {
+        .coupon__quotepage {
+            .coupon__section__parent{
+                width: 100%;
+                max-width: 50%;
+            }
+         
+         
+          }
+          .sidebar__quotepage{
+            .form{
+                border-top: 0;
+            }
+          }
+    }
+  }

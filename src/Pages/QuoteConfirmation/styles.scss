@@ -1,0 +1,25 @@
+.quote__confirmation{
+    button{
+        height: 46px;
+        text-align: center;
+    }
+    .tick__img{
+
+    width: 70px;
+    height: 70px;
+    display: block;
+    margin: 0px auto;
+    }
+}
+@media screen and (min-width: 1025px) {
+   .quote__confirmation{
+    padding: 5rem 0rem;
+    display: block;
+    margin: 0px auto;
+    width: 50%;
+    button{
+        width: 60%;
+    }
+   }
+   
+  }

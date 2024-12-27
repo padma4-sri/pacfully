@@ -1,0 +1,46 @@
+.edit__address__section{
+    .action.underline button {
+        min-height: inherit;
+        min-width: inherit;
+        background-color: unset !important;
+        color: #000000;
+    }
+    .edit__address__block{
+       .company__name{
+        max-width: 85%;
+       }
+    min-height: 100%;
+    }
+    .selected{
+        border: 2px solid #9BC87D;
+        background-color: #9BC87D1A;
+    }
+    .unselected{
+        border: 1px solid #DFDFDF;
+
+    }
+    .save__button{
+        width: 200px;
+        height: 50px;
+    }
+    .select__text{
+        color:#9BC87D;
+        background-color: transparent;
+
+    }
+
+}
+
+.address__box{
+
+    width: calc(100% - 10%);
+}
+@media screen and (min-width: 768px) {
+    .edit__address__section{
+        
+        .relative{
+            width: 100%;
+            max-width:365px ;
+        }
+    }
+  }

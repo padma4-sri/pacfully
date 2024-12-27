@@ -1,0 +1,13 @@
+.newsletter__page {
+    .footer__info{
+        color: #666666;
+    }
+}
+
+@media(min-width:1025px){
+    .newsletter__page {
+        p{
+            width: 85%;
+        }
+    } 
+}

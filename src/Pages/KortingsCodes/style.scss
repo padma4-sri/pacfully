@@ -1,0 +1,153 @@
+.kortingscode {
+  th,
+  td {
+    color: #222222 !important;
+  }
+
+  .MuiTable-root {
+    font-family: "poppins";
+
+    width: calc(100% - 16px);
+  }
+
+  .MuiTable-root .tablecell {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    font-family: "poppins";
+  }
+
+  .MuiTable-root .tabledata {
+    text-align: left;
+    font-family: "poppins";
+    font-size: 15px;
+    line-height: 1.75rem;
+    font-weight: 300;
+  }
+
+  .active_true {
+    background-color: #43a700;
+    color: white;
+    padding: 5px 15px;
+    font-size: 15px;
+    font-family: "poppins";
+  }
+
+  .active_false {
+    background-color: #ce3030;
+    color: white;
+    padding: 5px 15px;
+    font-size: 15px;
+    font-family: "poppins";
+  }
+
+  @media screen and (max-width: 460px) {
+    .iconParent {
+      left: 110px;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    .tableContainer {
+      overflow-x: hidden !important;
+    }
+
+    .tableResKorting,
+    .tableResCode {
+      width: 50% !important;
+    }
+  }
+
+  .popup_heading {
+    letter-spacing: 0.56px;
+    color: #222222;
+  }
+
+  .popup_content {
+    letter-spacing: 0.42px;
+    color: #222222;
+  }
+  @media (max-width: 640px) {
+    .tableContainer {
+      .MuiTable-root {
+        width: calc(100%);
+        .MuiTableCell-root {
+          &:nth-last-child(1) {
+            padding-right: 0 !important;
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 320px) and (max-width: 360px) {
+    .MuiTable-root .tabledata {
+      font-size: 12px;
+    }
+
+    .MuiTable-root .tabledata:nth-child(2) {
+      width: 55%;
+    }
+
+    .MuiTable-root .tablecell {
+      font-size: 16px;
+    }
+
+    .MuiTable-root .InfoOutlinedIcon,
+    .MuiTable-root .ContentCopyIcon {
+      font-size: 14px;
+      height: 16px;
+      width: 16px;
+    }
+
+    .iconParent {
+      left: 100px;
+    }
+  }
+
+  @media (min-width: 361px) and (max-width: 430px) {
+    .MuiTable-root .tabledata {
+      font-size: 13px;
+    }
+
+    .MuiTable-root .tabledata:nth-child(2) {
+      width: 55%;
+    }
+
+    .MuiTable-root .tablecell {
+      font-size: 18px;
+    }
+
+    .MuiTable-root .InfoOutlinedIcon,
+    .MuiTable-root .ContentCopyIcon {
+      font-size: 18px;
+      height: 18px;
+      width: 18px;
+    }
+
+    .iconParent {
+      left: 100px;
+    }
+  }
+  .BootstrapDialog {
+    .active_true {
+      background-color: #43a700;
+      color: white;
+      padding: 5px;
+    }
+
+    .active_false {
+      background-color: #ce3030;
+      color: white;
+      padding: 5px;
+    }
+
+    .MuiDialog-container .MuiPaper-root.MuiPaper-elevation {
+      border-radius: 20px !important;
+      .MuiButtonBase-root {
+        padding: 1px;
+        border: 1px solid;
+      }
+    }
+  }
+}

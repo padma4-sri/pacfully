@@ -1,0 +1,105 @@
+.modelBox {
+    display: block;
+    transform: translateX(0) translateY(0);
+    &.hide{
+        &.top {
+                transform: translateX(0) translateY(-100%);
+        }
+        &.left {
+                left: 0;
+                transform: translateX(-100%) translateY(0);
+        }
+        &.right {
+                right: 0;
+                transform: translateX(100%) translateY(0);
+        }
+    }
+    &.true, &.closing{
+        display: block;
+    }
+    &.open{
+        display: block;
+    }
+    &.opening{
+        display: block;
+    }
+    .body {
+        -webkit-transition: all 0.20s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        transition: all 0.20s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    }
+    &.top {
+        .body {
+            transform: translateX(0) translateY(-100%);
+        }
+    }
+    &.left {
+        .body {
+            left: 0;
+            transform: translateX(-100%) translateY(0);
+        }
+    }
+    &.right {
+        .body {
+            right: 0;
+            transform: translateX(100%) translateY(0);
+        }
+    }
+    &.shadow {
+        .body {
+            box-shadow: 0px 0px 20px #00000033;
+        }
+    }
+    & {
+        .body {
+            transform: translateX(0) translateY(0);
+        }
+    }
+    &.open{
+        .body {
+            transform: translateX(0) translateY(0);
+        }
+    }
+    &.opening{
+        .body {
+            transform: translateX(0) translateY(0);
+        }
+    }
+    .backdrop {
+        background-color: rgba(0,0,0,0.3);
+        animation: bgAnimI 0.3s ease-in-out forwards;
+        backdrop-filter: blur(2px);
+    }
+    &.open, &.opening {
+        .backdrop {
+            animation: bgAnim 0.3s ease-in-out forwards;
+            backdrop-filter: blur(2px);
+        }
+    }
+    &.hideAction {
+        &.shadow {
+            .body {
+                box-shadow: none;
+            }
+        }
+        .backdrop {
+            display: none;
+        }
+    }
+}
+
+@keyframes bgAnim {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes bgAnimI {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300;1,400;1,500;1,600;1,700;1,900&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300;1,400;1,500;1,600;1,700;1,900&display=swap">
+    </noscript>
+    <title>Maintenance Page</title>
+    <style>
+        body {
+            font-family: "poppins", Helvetica, Arial, sans-serif;
+            font-display: swap;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #ffffff;
+            color: #ffffff;
+            text-align: center;
+            padding: 18px 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .sub-header {
+            background-color: #009ade;
+            color: #fff;
+            padding: 6px 24px;
+            text-align: left;
+            font-size: 14px;
+            display: flex;
+            gap: 15px;
+            font-weight: 500;
+        }
+
+        .maintenance-container {
+            max-width: 1024px;
+            margin: 16px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        p a {
+            color: #009ade;
+        }
+
+        .sub-content {
+            background-color: #ffffff;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .sub-content p {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #444;
+        }
+
+        .menu__block ul {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            padding: 0;
+        }
+
+        .socialImg {
+            position: relative;
+        }
+
+        .defaultImage {
+            display: block;
+        }
+
+        .hoverImage {
+            display: none;
+        }
+
+        .socialImg:hover .defaultImage {
+            display: none;
+        }
+
+        .socialImg:hover .hoverImage {
+            display: block;
+        }
+
+        .call-us {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+
+        }
+
+        .call-us a , .emailclass a{
+         color: #080cf2;
+        }
+
+        #signature a{
+            color: #080cf2;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 40px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .notify-button {
+                font-size: 14px;
+                padding: 12px 25px;
+            }
+
+            .sub-content p {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sub-header">
+        <span> Nederlands</span> | <span>Inclusief BTW</span>
+    </div>
+    <header>
+        <svg xmlns="http://www.w3.org/2000/svg" width="165" height="41.145" viewBox="0 0 165 41.145">
+            <g id="Group_164" data-name="Group 164" transform="translate(-9.89 -17.442)">
+                <path id="Path_1" data-name="Path 1"
+                    d="M114.753,48.805a2.527,2.527,0,1,1-5.053,0V36.558a4.14,4.14,0,0,0-1.251-3.007,4.246,4.246,0,0,0-7.242,3.007V48.805a2.527,2.527,0,1,1-5.054,0V36.558a9.29,9.29,0,0,1,15.881-6.568c.072.072.12.144.193.217l.217-.217a9.311,9.311,0,0,1,15.88,6.568V48.805a2.526,2.526,0,1,1-5.052,0V36.558a4.259,4.259,0,0,0-8.518,0Z"
+                    transform="translate(-19.786 -2.249)" fill="#161615" />
+                <path id="Path_2" data-name="Path 2"
+                    d="M153.467,27.246a12.036,12.036,0,1,1-8.518,3.537,12,12,0,0,1,8.518-3.537Zm4.957,7.1a6.982,6.982,0,0,0-4.957-2.044,6.99,6.99,0,0,0,0,13.979,6.993,6.993,0,0,0,4.957-11.935Z"
+                    transform="translate(-30.173 -2.249)" fill="#161615" />
+                <path id="Path_3" data-name="Path 3"
+                    d="M73.665,27.246a12.036,12.036,0,1,1-8.518,3.537,12,12,0,0,1,8.518-3.537Zm4.957,7.1A6.983,6.983,0,0,0,73.665,32.3a6.99,6.99,0,0,0,0,13.979,6.993,6.993,0,0,0,4.957-11.935Z"
+                    transform="translate(-11.868 -2.249)" fill="#161615" />
+                <path id="Path_4" data-name="Path 4"
+                    d="M9.89,50.534V63.675a2.526,2.526,0,0,0,5.052,0V56.1a13.559,13.559,0,0,1-2.531-1.947A13.39,13.39,0,0,1,9.89,50.534Z"
+                    transform="translate(0 -7.59)" fill="#16bcdc" />
+                <path id="Path_5" data-name="Path 5"
+                    d="M13.434,30.783A11.97,11.97,0,0,0,15.1,49.168a12.217,12.217,0,0,0,2.8,1.41c.233.085.472.152.711.221a11.889,11.889,0,0,0,3.345.532h0a12.043,12.043,0,1,0-8.518-20.549ZM28.955,39.3a6.984,6.984,0,0,1-7,6.979h0a6.99,6.99,0,1,1,0-13.98h0a6.984,6.984,0,0,1,7,7Z"
+                    transform="translate(-0.007 -2.249)" fill="#161615" />
+                <path id="Path_6" data-name="Path 6"
+                    d="M55,27.246A2.527,2.527,0,0,1,55,32.3a5.873,5.873,0,0,0-5.847,5.846V48.805a2.527,2.527,0,1,1-5.053,0V38.146A10.924,10.924,0,0,1,55,27.246Z"
+                    transform="translate(-7.847 -2.249)" fill="#161615" />
+                <path id="Path_7" data-name="Path 7"
+                    d="M218.194,44.03a2.527,2.527,0,0,1,0,5.053,7.878,7.878,0,0,1-6.4-2.767,10.711,10.711,0,0,1-2.093-7V19.968a2.515,2.515,0,1,1,5.029,0V25h3.465a2.527,2.527,0,0,1,0,5.054h-3.465v9.263a5.939,5.939,0,0,0,.962,3.778,3.045,3.045,0,0,0,2.5.939Z"
+                    transform="translate(-45.83 0)" fill="#161615" />
+                <path id="Path_8" data-name="Path 8"
+                    d="M186.707,22.47a2.514,2.514,0,1,0,0-5.028h-2.118a7.623,7.623,0,0,0-6.015,2.767,10.71,10.71,0,0,0-2.118,7V46.556a2.526,2.526,0,1,0,5.053,0V30.051h3.464a2.527,2.527,0,0,0,0-5.054H181.51c0-1.588,1.732-2.407,3.128-2.5.12-.025,1.949-.025,2.069-.025Z"
+                    transform="translate(-38.205 0)" fill="#161615" />
+                <g id="Group_163" data-name="Group 163" transform="translate(153.22 17.442)">
+                    <path id="Path_9" data-name="Path 9"
+                        d="M198.791,17.442a2.911,2.911,0,1,1-2.911,2.911,2.906,2.906,0,0,1,2.911-2.911Z"
+                        transform="translate(-195.88 -17.442)" fill="#16bcdc" fill-rule="evenodd" />
+                    <path id="Path_10" data-name="Path 10"
+                        d="M201.433,48.805a2.527,2.527,0,1,1-5.054,0V29.773a2.527,2.527,0,1,1,5.054,0Z"
+                        transform="translate(-195.994 -19.691)" fill="#161615" fill-rule="evenodd" />
+                </g>
+            </g>
+        </svg>
+    </header>
+
+    <div class="maintenance-container">
+        <div class="main-content">
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+                <g clip-path="url(#clip0_363_42161)">
+                    <circle cx="40" cy="40" r="40" fill="#E30248" />
+                    <g clip-path="url(#clip1_363_42161)">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M58.3015 23.3396L53.9634 29.3287L51.8259 29.6718C51.692 29.6909 51.5686 29.7551 51.476 29.8537L36.2253 45.0984L35.125 44.0039L37.1566 41.9723V41.9664L41.8941 37.2348L50.3825 28.7524C50.4798 28.6564 50.5433 28.5315 50.5635 28.3964L50.9075 26.2659L56.8887 21.9219L58.3025 23.3406L58.3015 23.3396Z"
+                            fill="white" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M32.2686 42.9595L31.6557 43.5724L32.0313 44.2595C32.0971 44.3818 32.1217 44.522 32.1014 44.6593C32.0811 44.7967 32.017 44.9238 31.9187 45.0218L30.8183 46.1221C30.7344 46.2066 30.6286 46.2659 30.5128 46.2935C30.397 46.3211 30.2758 46.3159 30.1629 46.2783L29.3878 46.0223L20.9992 54.4098C20.3597 55.0499 20.0005 55.9177 20.0005 56.8226C20.0005 57.7274 20.3597 58.5952 20.9992 59.2353C21.3149 59.5515 21.6901 59.8022 22.1031 59.9727C22.5161 60.1432 22.9587 60.2303 23.4055 60.2289C24.3181 60.2289 25.1752 59.873 25.8178 59.2353L34.2063 50.8418L33.9493 50.0658C33.9129 49.9521 33.909 49.8306 33.9378 49.7149C33.9666 49.5991 34.0271 49.4937 34.1124 49.4103L35.2068 48.31C35.307 48.2131 35.4349 48.1502 35.5728 48.1299C35.7106 48.1097 35.8513 48.1333 35.975 48.1972L36.6631 48.5729L37.2691 47.9659L32.2686 42.9595ZM22.8747 56.31C22.7534 56.4301 22.5896 56.4976 22.4189 56.4978C22.335 56.4984 22.2518 56.4821 22.1743 56.4498C22.0969 56.4176 22.0267 56.37 21.9681 56.31C21.8477 56.1872 21.7803 56.0222 21.7803 55.8502C21.7803 55.6783 21.8477 55.5132 21.9681 55.3905L29.6309 47.7286C29.7524 47.6084 29.9163 47.541 30.0872 47.541C30.2581 47.541 30.4221 47.6084 30.5435 47.7286C30.8005 47.9788 30.8005 48.3851 30.5435 48.6411L22.8747 56.31ZM32.5069 50.5907L24.8312 58.2664C24.7721 58.326 24.7019 58.3732 24.6246 58.4055C24.5472 58.4377 24.4642 58.4543 24.3804 58.4543C24.2956 58.4553 24.2116 58.4393 24.1333 58.407C24.0549 58.3747 23.984 58.3269 23.9246 58.2664C23.8042 58.1437 23.7368 57.9787 23.7368 57.8067C23.7368 57.6348 23.8042 57.4698 23.9246 57.347L31.5934 49.6792C31.7161 49.5588 31.8812 49.4914 32.0531 49.4914C32.225 49.4914 32.3901 49.5588 32.5128 49.6792C32.756 49.9353 32.756 50.3416 32.5059 50.5917L32.5069 50.5907Z"
+                            fill="white" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M59.8573 54.6291L57.1197 51.8906C57.0549 51.8252 56.9767 51.7745 56.8906 51.7421C56.8044 51.7097 56.7123 51.6963 56.6204 51.7027L52.5078 51.9726C52.3517 51.9822 52.2046 52.0485 52.0941 52.159C51.9835 52.2696 51.9173 52.4167 51.9077 52.5727L51.6328 56.6854C51.6278 56.7776 51.6424 56.8699 51.6758 56.9559C51.7092 57.042 51.7606 57.12 51.8266 57.1847L54.5572 59.9232C53.4293 60.1651 52.2588 60.1213 51.1521 59.7959C50.0453 59.4704 49.0374 58.8736 48.22 58.0596C47.5756 57.4196 47.0647 56.658 46.7169 55.8189C46.3692 54.9798 46.1916 54.0801 46.1944 53.1718C46.1924 52.2643 46.3698 51.3653 46.7162 50.5266C47.0626 49.6878 47.5714 48.9257 48.2131 48.284C48.8532 47.6398 49.6149 47.129 50.454 46.7814C51.293 46.4339 52.1927 46.2564 53.1009 46.2593C54.0263 46.2593 54.92 46.4402 55.7455 46.7843C56.5866 47.1318 57.3496 47.6441 57.9897 48.2909C58.8058 49.107 59.4044 50.1146 59.7308 51.2216C60.0572 52.3286 60.1011 53.4998 59.8582 54.6281L59.8573 54.6291Z"
+                            fill="white" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M33.9748 27.1343C33.9782 28.042 33.8016 28.9414 33.455 29.7804C33.1085 30.6194 32.599 31.3813 31.956 32.0221C31.3168 32.6675 30.5553 33.179 29.716 33.5267C28.8768 33.8743 27.9767 34.0512 27.0683 34.0468C26.1604 34.0477 25.2613 33.8692 24.4225 33.5218C23.5837 33.1743 22.8218 32.6647 22.1805 32.0221C21.3669 31.2042 20.7704 30.1962 20.4452 29.0893C20.1199 27.9825 20.0761 26.812 20.3179 25.684L23.0495 28.4156C23.1869 28.553 23.3619 28.6153 23.5556 28.6034L27.6625 28.3335C27.8188 28.325 27.9666 28.259 28.0773 28.1483C28.188 28.0375 28.254 27.8898 28.2625 27.7334L28.5373 23.6207C28.5435 23.5289 28.5299 23.4368 28.4975 23.3507C28.4651 23.2646 28.4146 23.1865 28.3495 23.1215L25.612 20.3829C26.7399 20.141 27.9105 20.1848 29.0172 20.5103C30.1239 20.8357 31.1317 21.4325 31.9492 22.2465C32.594 22.8863 33.1052 23.6479 33.4531 24.487C33.801 25.3261 33.9787 26.226 33.9758 27.1343H33.9748Z"
+                            fill="white" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M40.5316 36.7778L36.7125 40.5969L30.6245 34.5159C31.4543 34.1182 32.2109 33.5835 32.8627 32.934C33.5121 32.2815 34.0484 31.5254 34.4495 30.6968L40.5316 36.7778Z"
+                            fill="white" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M49.5453 45.7852C48.7267 46.1787 47.9635 46.7106 47.308 47.3671C46.6595 48.0192 46.1248 48.7754 45.7262 49.6043L39.6323 43.5164L43.4514 39.6973L49.5453 45.7852Z"
+                            fill="white" />
+                    </g>
+                </g>
+                <defs>
+                    <clipPath id="clip0_363_42161">
+                        <rect width="80" height="80" fill="white" />
+                    </clipPath>
+                    <clipPath id="clip1_363_42161">
+                        <rect width="40.0109" height="40" fill="white" transform="translate(20 20.23)" />
+                    </clipPath>
+                </defs>
+            </svg>
+            <article class="emailclass">
+                <h1>De site is tijdelijk niet beschikbaar.</h1>
+                <p>Er wordt momenteel gepland onderhoud uitgevoerd. We verwachten weer online te zijn in de loop van de ochtend.</p>
+                <p>Onze excuses voor het ongemak.</p>
+                <p>Voor vragen en offerteaanvragen kunt u een e-mail sturen naar <a href="mailto:sales@promofit.nl">sales@promofit.nl</a>
+                </p>
+                <!-- <p class="call-us">
+                    <span> Call us on </span>
+                    <a href={`tel:+31(0)76-501 82 25`}>
+                        <span> NL: +31(0)76-501 82 25 </span>
+                    </a>
+                    <a href={`tel:+32(0)3-808 22 08`}>
+                        <span> BE: +32(0)3-808 22 08 </span>
+                    </a>
+                </p> -->
+                <p id="signature">&mdash; <a href="mailto:sales@promofit.nl">Het Promofit Team</a></p>
+            </article>
+        </div>
+
+        <div class="sub-content">
+            <div class="menu__block follow__us">
+                <h3 class="pb-6">Volg ons</h3>
+                <p>
+                    en blijf op de hoogte van aanbiedingen en kortingscodes.
+                </p>
+                <ul class="flex gap-3 wrap">
+                    <a href="https://www.facebook.com/promofit" class="relative socialImg" target="__blank"><img
+                            src="https://promofit.creative-promotions.nl/media/facebook_image/default/social_facebook_1_1_1_1_1.svg"
+                            class="defaultImage" alt="Social share"><img
+                            src="https://promofit.creative-promotions.nl/media/facebook_image_hover/stores/1/social_facebook_1_1_1.svg"
+                            class="hoverImage" alt="Social share"></a>
+                    <a href="https://www.instagram.com/promofit.nl/" class="relative socialImg" target="__blank"><img
+                            src="https://promofit.creative-promotions.nl/media/instagram_image/default/social_insta_1_1_1_3_1.svg"
+                            class="defaultImage" alt="Social share"><img
+                            src="https://promofit.creative-promotions.nl/media/instagram_image_hover/stores/1/social_insta_1_1_1.svg"
+                            class="hoverImage" alt="Social share"></a>
+                    <a href="https://www.youtube.com/channel/UCH_Nu6o9B_h0pEvz9Xodp9Q" class="relative socialImg"
+                        target="__blank"><img
+                            src="https://promofit.creative-promotions.nl/media/youtube_image/stores/1/social_youtube_1_1_1_1_1.svg"
+                            class="defaultImage" alt="Social share"><img
+                            src="https://promofit.creative-promotions.nl/media/youtube_image_hover/stores/1/social_youtube_1_1_1.svg"
+                            class="hoverImage" alt="Social share"></a>
+                    <a href="https://twitter.com/Promofit_NL" class="relative socialImg" target="__blank"><img
+                            src="https://promofit.creative-promotions.nl/media/twitter_image/stores/1/icn_twtr_ornge_2_1.svg"
+                            class="defaultImage" alt="Social share"><img
+                            src="https://promofit.creative-promotions.nl/media/twitter_image_hover/stores/1/icn_twtr_ornge_1_1_1_1_1_.svg"
+                            class="hoverImage" alt="Social share"></a>
+                    <a href="https://www.pinterest.com/promofit/" class="relative socialImg" target="__blank"><img
+                            src="https://promofit.creative-promotions.nl/media/pinterest_image/default/OUTLINE_copy_2_1_1_1_1_1_1_1.svg"
+                            class="defaultImage" alt="Social share"><img
+                            src="https://promofit.creative-promotions.nl/media/pinterest_image_hover/stores/1/OUTLINE_copy_2_1_1_1_1_1.svg"
+                            class="hoverImage" alt="Social share"></a>
+                    <a href=" https://www.linkedin.com/company/promofit/" class="relative socialImg"
+                        target="__blank"><img
+                            src="https://promofit.creative-promotions.nl/media/linkedin_image/stores/1/linkedIn_1_2_1.svg"
+                            class="defaultImage" alt="Social share"><img
+                            src="https://promofit.creative-promotions.nl/media/linkedin_image_hover/stores/1/linkedIn_1_2_1_1.svg"
+                            class="hoverImage" alt="Social share"></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+ .header__review__sidebar {
+    .body{
+        width: 100%;
+    }
+     .sidebar__review {
+         background-color: #fff;
+         width: 100%;
+         max-width: 100%;
+
+         form {
+             border-bottom: 1px solid #DFDFDF;
+             .MuiRating-root{
+                .MuiRating-icon {
+                    svg{
+                        width: 45px;
+                        height: 45px;
+                    }
+                }
+             }
+             textarea{
+                height: 110px;
+                resize: none;
+            }
+         }
+
+         .action__block {
+             svg {
+                 width: 20px;
+             }
+             button{
+                height: 40px;
+                width: 157px;
+                &:hover{
+                    background-color: #4D4D4D !important;
+                }
+             }
+         }
+     }
+ }

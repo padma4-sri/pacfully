@@ -1,0 +1,68 @@
+.contact__page{
+    button {
+        height: 50px;
+        width: 232px;
+        svg{
+            width: 25px;
+            path{
+                font-weight: 700;
+            }
+        }
+    }
+    .required{
+        color: #CCCCCC;
+    }
+    .icon.telephone{
+        img{
+            width: 13px;
+            height: 13px;
+            border-radius: 5px;
+        }
+        svg{
+            width: 14.79px;
+            height: 14.82px;
+            margin-right: 12px;
+        }
+    }
+    .icon.whatsaap{
+        svg{
+            width: 17.11px;
+            height: 17.2px;
+            margin-right: 12px;
+        }
+    }
+    .icon.email{
+        svg{
+            width: 17.87px;
+            height: 14.33px;
+            margin-right: 12px;
+        }
+    }
+    .timings{
+        .flex{
+            p:first-child{
+                width: 90px;
+            }
+        }
+    }
+    .holidays{
+        .flex{
+            p:first-child{
+                min-width: 159px;
+                width: 159px;
+            }
+        }
+    }
+    .form__block{
+        max-width: 532px;
+    }
+    textarea{
+        height: 180px;
+        resize: none;
+    }
+    .input__control {
+        .validation__icon{
+            right: 25px;
+        }
+    }
+}

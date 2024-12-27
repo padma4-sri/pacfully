@@ -1,0 +1,11 @@
+<svg id="Component_32_3" data-name="Component 32 – 3" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+  <g id="Group_183" data-name="Group 183">
+    <g id="Group_8" data-name="Group 8" transform="translate(0)">
+      <path id="Ellipse_2" data-name="Ellipse 2" d="M14,0A14,14,0,1,1,0,14,14,14,0,0,1,14,0Z" fill="#16bcdc"/>
+    </g>
+    <g id="Group_91" data-name="Group 91" transform="translate(12.904 10.5)">
+      <line id="Line_14" data-name="Line 14" x2="3.294" y2="3.294" transform="translate(0 0)" fill="none" stroke="#fff" stroke-linecap="square" stroke-width="2"/>
+      <line id="Line_15" data-name="Line 15" y1="3.294" x2="3.294" transform="translate(0 3.294)" fill="none" stroke="#fff" stroke-linecap="square" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

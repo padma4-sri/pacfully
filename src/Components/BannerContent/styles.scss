@@ -1,0 +1,30 @@
+.banner {
+  cursor: pointer;
+  h1 {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 3rem;
+    max-height: 96px;
+    overflow: hidden;
+  }
+  p{
+    font-size: 15px;
+    line-height: 1.8rem;
+    max-height: 88px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .btn_link{
+    padding: 0.75rem 1.6875rem;
+  }
+  .banner-info{
+    height: 196px;
+    overflow: hidden;
+  }
+  .content-banner {
+    height: 280px;
+    overflow: hidden;
+  }
+}

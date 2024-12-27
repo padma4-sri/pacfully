@@ -1,0 +1,99 @@
+.cartpage {
+  .sidebar__cartpage {
+    .priceDetails {
+      .green {
+        color: #9bc87d;
+      }
+    }
+    .cart__button{
+      &:hover{
+        background-color: #F2C200 !important;
+      }
+    }
+    .button__info {
+      a {
+        display: block;
+      }
+      .mondu__img {
+        width: 83px;
+      }
+      .tooltip__container {
+        display: none;
+        position: absolute; /* or any other positioning you need */
+        /* Add additional styles for positioning if necessary */
+      }
+      .tooltip__img {
+        height: 16px;
+        width: 16px;
+        &:hover{
+          .tooltip-container {
+            display: block; /* Show the tooltip content on hover */
+          }
+        }
+      }
+      button {
+        height: 62px;
+        background-color: #ffcc00;
+        color: #222222;
+      }
+      .payment__img {
+        width: 284px;
+      }
+    }
+    table tr {
+      line-height: 1.8rem;
+      font-size: 15px;
+      td:nth-child(2) {
+        text-align: right;
+      }
+    }
+  }
+}
+
+.cartpage{
+  .responsive-cart{
+    min-height: 69vh;
+  }
+}
+
+.responsive-cart {
+  min-height: 69vh;
+}
+
+.sidebar__cartpage {
+  position: relative; 
+}
+
+.sticky-kort {
+  position: sticky;
+  top: 112px;
+  min-height: 62vh;
+  background: white;
+  padding-bottom: 3rem;
+}
+
+@media screen and (min-width: 1025px) {
+  .cartpage {
+    .cartpage__container {
+      .cart__details {
+        .details__block {
+          .hide__mobile {
+            display: block;
+          }
+        }
+       
+      }
+      .sidebar__cartpage {
+        min-width: 340px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .sticky-kort {
+    position: unset;
+    top: 0;
+  }
+  
+}

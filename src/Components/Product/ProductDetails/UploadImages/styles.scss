@@ -1,0 +1,11 @@
+.mui-pro-gress {
+  margin-top: 2rem;
+  .MuiLinearProgress-root {
+    height: 8px;
+    border-radius: 30px;
+    background-color: rgb(167, 202, 237, 0.3);
+  }
+}
+.input_text::placeholder{
+font-style: italic;
+}

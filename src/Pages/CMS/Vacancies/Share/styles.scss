@@ -1,0 +1,46 @@
+.vacancies__sidebar {
+    .sidebar__vacancies {
+        background-color: #fff;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .copyurl__wrapper__container {
+        .sidebar__body {
+            .social__actions {
+
+                button,
+                a {
+                    width: 100%;
+                    font-size: 14px !important;
+                    font-weight: 500 !important;
+                    padding: 12.4px 15px !important;
+                    height: 48px !important;
+                    border-radius: 1.5rem;
+
+                    svg {
+                        margin-right: 8px;
+
+                        path {
+                            fill: #fff;
+                        }
+                    }
+                }
+
+                button {
+                    svg {
+                        width: 22.96px !important;
+                        height: 23.07px !important;
+                    }
+
+                    color: #fff !important;
+                    background-color: #222222 !important;
+
+                    &:hover {
+                        background-color: #4D4D4D !important;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,53 @@
+.slick__arrow__btn__wrapper {
+    top: 50%;
+    z-index: 1;
+
+    .slick__arrow__block {
+        transform: translateY(50%);
+        z-index: 1;
+
+        button.slick__arrow {
+            position: absolute;
+            top: 50%;
+            display: block;
+            width: 76px;
+            height: 76px;
+            padding: 0px;
+            z-index: 1;
+            top: -30px;
+
+            &.left__arrow {
+                left: -35px;
+            }
+
+            &.right__arrow {
+                right: -35px
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    .slick__arrow__btn__wrapper {
+        .slick__arrow__block {
+            button.slick__arrow {
+                width: 50px;
+                height: 50px;
+
+                &.left__arrow {
+                    left: 12px;
+                }
+
+                &.right__arrow {
+                    right: 12px
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .slick__arrow__btn__wrapper {
+        display: none;
+    }
+}

@@ -1,0 +1,97 @@
+.sidebar__details {
+  background-color: #fff;
+  width: 100%;
+  max-width: 100%;
+  .capital::first-letter{
+    text-transform: capitalize;
+  }
+  .closeButton {
+    top: -4px
+  }
+  h1 {
+    font-size: 20px;
+  }
+  h3 {
+    font-size: 15px;
+    line-height: 30px;
+  }
+
+  .sidebar__heading {
+    h1 {
+      font-size: 20px;
+    }
+    .mondu__img {
+      width: 109px;
+      height: 28px;
+      margin-top: -10px;
+    }
+  }
+
+  .sidebar__content {
+    p {
+      font-size: 15px;
+      line-height: 28px;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+    ol,
+        ul {
+            list-style-type: disc;
+            margin-left: 18px;
+            li {
+                line-height: 28px;
+                font-size: 15px;
+            }
+        }
+        a{
+          text-decoration: underline;
+        }
+        iframe{
+          width: 100%;
+          
+        }
+  }
+
+  .sidebar__accordion__section {
+    p {
+      font-size: 14px;
+      line-height: 28px;
+    }
+    .answers{
+      line-height: 28px;
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+      ol,
+          ul {
+              list-style-type: disc;
+              margin-left: 18px;
+              li {
+                  line-height: 28px;
+                  font-size: 14px;
+              }
+          }
+    }
+
+    .toggle__arrow {
+      width: 15px;
+      height: 20px;
+      padding-right: 4px;
+      cursor: pointer;
+    }
+  }
+  .close__icon{
+    margin-bottom: 10px;
+  }
+}
+
+.mondu__payment__sidebar{
+  .body{
+    width: 100%;
+  }
+}

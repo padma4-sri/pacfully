@@ -1,0 +1,144 @@
+.team__container {
+    .wrapper {
+        background-color: #F5F5F5;
+        h1.title {
+            font-size: 22px;
+        }
+        .navigation-wrapper {
+            position: relative;
+            .arrow {
+                z-index: 1;
+                position: absolute;
+                display: none;
+                width: 72px;
+                height: 72px;
+                top: -260px;
+                &.left__arrow {
+                    left: 24px;
+                }
+                &.right__arrow {
+                    right: 24px;
+                }
+                &.arrow--disabled {
+                    opacity: 0;
+                    cursor: default;
+                    display: none;
+                }
+            }
+        }
+        .keen-slider__slide {
+            min-width: 366px;
+            min-height: 433px;
+            max-width: 366px;
+            max-height: 433px;
+            margin: 0 !important;
+            .product__grid {
+                min-width: 350px;
+                min-height: 433px;
+                width: 350px;
+                max-width: 350px;
+                max-height: 433px;
+                height: 433px;
+                margin: 0 0 0 16px;
+                position: relative;
+                .block {
+                    position: absolute;
+                    max-width: 340px;
+                    width: 340px;
+                    min-width: 340px;
+                    height: 433px;
+                    overflow: hidden;
+                    border-radius: 20px;
+                }
+                .block {
+                    width: 100%;
+                    img {
+                        min-width: 100%;
+                        height: auto;
+                    }
+                    button {
+                        background-color: #222222;
+                        color: #FFFFFF;
+                        font-size: 20px;
+                        margin: auto;
+                        left: 0px;
+                        right: 0px;
+                        width: max-content;
+                        cursor: default;
+
+                        &:hover {
+                            background-color: var(--themeColor);
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+@media screen and (min-width: 360px) {
+.team__container {
+    .wrapper {
+        h1.title {
+            font-size: 30px;
+        }
+    }
+}
+}
+@media screen and (max-width: 360px) {
+    .team__container {
+        .wrapper {
+            h1.title {
+                font-size: 22px;
+            }
+        }
+    }
+    }
+@media screen and (min-width: 1024px) {
+    .team__container .wrapper {
+        .navigation-wrapper {
+            .arrow {
+                display: block;
+            }
+        }
+        .keen-slider__slide {
+            min-width: 366px;
+            min-height: 433px;
+            max-width: 366px;
+            max-height: 433px;
+            .product__grid {
+                margin: 0 0 0 16px;
+                .block {
+                    min-height: 433px;
+                    max-width: 350px;
+                    max-height: 433px;
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width: 1250px) {
+    .team__container .wrapper {
+        .keen-slider__slide .product__grid {
+            margin: 0 0 0 16px;
+        }
+    }
+}
+@media screen and (min-width: 1380px) {
+    .team__container .wrapper {
+        .navigation-wrapper {
+            position: relative;
+            .arrow {
+                position: absolute;
+                &.left__arrow {
+                    left: -24px;
+                    z-index: 1;
+                }
+                &.right__arrow {
+                    right: -44px;
+                    z-index: 1;
+                }
+            }
+        }
+    }
+}

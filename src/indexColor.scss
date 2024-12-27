@@ -1,0 +1,38 @@
+:root {
+    --primary: #222222;
+    --primaryText: #FFFFFF;
+    --primaryHover: #16BCDC;
+    --primaryHoverText: #FFFFFF;
+    --secondary: #ffcc00;
+    --secondaryText: #222222;
+    --secondaryHover: #16BCDC;
+    --secondaryHoverText: #FFFFFF;
+    --default: #16BCDC;
+    --defaultText: #FFFFFF;
+    --defaultHover: #16BCDC;
+    --defaultHoverText: #FFFFFF;
+    --error: #222222;
+    --errorText: #FFFFFF;
+    --success: #222222;
+    --successText: #FFFFFF;
+    --themeColor: inherit;
+    --themeColorHover: inherit;
+}
+html.promofit:root {
+    --themeColor: #16BCDC;
+    --checkboxColor: #EB5FAC;
+    --themeColorHover: #FFFFFF;
+    --primaryHover: #16BCDC;
+    --primaryHoverText: #FFFFFF;
+    --default: #16BCDC;
+    --lightColor: #16bcdc;
+}
+html.expofit:root {
+    --themeColor: #ff5100;
+    --checkboxColor: #ff5100;
+    --themeColorHover: #FFFFFF;
+    --primaryHover: #ff5100;
+    --primaryHoverText: #FFFFFF;
+    --default: #ff5100;
+    --lightColor: #ff5100;
+}

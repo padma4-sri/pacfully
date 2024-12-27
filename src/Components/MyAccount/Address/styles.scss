@@ -1,0 +1,117 @@
+.address__page{
+    min-height: 550px;
+    .icon{
+        min-width: 20px;
+    }
+    .address-title{
+        flex-direction: row;
+        gap: 1.3rem;
+        align-items: center;
+        .customer-warning{
+            color: #e4121a;
+            background-color: #fde3d7;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 1rem;
+            padding: 16px 26px 16px 24px;
+            font-weight: 600;
+            font-size: 13px;
+            img{
+                width: 27px;
+                height: 27px;
+            }
+        }
+    }
+    .standardaddress{
+        p{
+            svg{
+                margin-top: 4px;
+                height: auto;
+            }
+        }
+        .homeIcon{
+            svg{
+                margin-top: 4px;
+                width: 15px;
+                height: auto;
+            }
+        }
+        .addBox{
+            border: 1px solid #DFDFDF;
+            border-radius: 10px;
+            padding: 21px;
+            &:hover,&.active{
+                border: 1px solid #9BC87D;
+                background-color: #9BC87D1A;
+            }
+            .standard{
+                color: #9BC87D;
+            }
+            .action{
+                button{
+                    width: 20px;
+                    height: 20px;
+                    svg{
+                        width: 100%;
+                        height: 100%;
+                        transform: rotate(0deg);
+                    }
+                }
+            }
+        }
+        .page__actions{
+            button{
+                min-width: auto;
+                &.outlined {
+                    border: 1px solid #fff !important;
+                    &:hover{
+                        border: 1px solid #000000 !important;
+                        color: #000000 !important;
+                        background-color: unset !important;
+                    }
+                }
+            }
+        }
+    }
+    .addres__block{
+        .addBox{
+            width: 100%;
+        }
+    }
+}
+
+@media(min-width: 768px){
+    .address__page{
+        .standardaddress{
+            .page__actions{
+                button{
+                    max-width: 200px;
+                }
+            }
+        }
+    }
+}
+
+@media(min-width: 1025px){
+    .address__page{
+        .addres__block{
+            column-gap: 3.5%;
+            row-gap: 30px;
+            .addBox{
+                width: 48.25%;
+            }
+        }
+    }
+}
+
+@media(max-width: 1249px){
+    .address__page .address-title{
+        flex-direction: column;
+        gap: unset;
+        align-items: flex-start;
+        margin-bottom: 1rem;    
+    }
+}

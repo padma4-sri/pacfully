@@ -1,0 +1,113 @@
+.product__slider__container{
+    .container{
+        .title__section{
+            h1{
+                font-size: 30px;
+            }
+            a{
+                font-size: 24px;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+        .slider__wrapper > div > .navigation-wrapper {
+            position: relative;
+            &>.arrow {
+                position: absolute;
+                display: none;
+                width: 72px;
+                height: 72px;
+                top: 128px;
+                opacity: 1;
+                transition: opacity 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+                &.left__arrow {
+                    left: 24px;
+                }
+                &.right__arrow {
+                    right: 24px;
+                }
+                &.arrow--disabled {
+                    opacity: 0;
+                }
+            }
+        }
+        .keen-slider__slide {
+            min-width: 308px;
+            min-height: 453px;
+            max-width: 308px;
+            max-height: 453px;
+            .product__grid {
+                margin: 0 0 0 16px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 1024px) {
+    .product__slider__container{
+        .container{
+            .title__section{
+               
+                a{
+                    display: none;
+                }
+            }
+        }
+    } 
+}
+@media screen and (min-width: 1025px) {
+    .product__slider__container{
+        .container{
+            .slider__wrapper > div > .navigation-wrapper {
+                &>.arrow {
+                    display: block;
+                }
+            }
+            .keen-slider__slide {
+                min-width: 322px;
+                min-height: 453px;
+                max-width: 322px;
+                max-height: 453px;
+                .product__grid {
+                    width: 288px;
+                    min-width: 288px;
+                    max-width: 288px;
+                    height: 453px;
+                    max-height: 453px;
+                    min-height: 453px;
+                    .product__block {
+                        width: 288px;
+                        .image__block {
+                            a {
+                                width: 288px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width: 1250px) {
+    .product__slider__container .container {
+        .keen-slider__slide .product__grid {
+            margin: 0 0 0 16px;
+        }
+    }
+}
+@media screen and (min-width: 1380px) {
+    .product__slider__container .container {
+         .slider__wrapper > div > .navigation-wrapper {
+            position: relative;
+            &>.arrow {
+                position: absolute;
+                &.left__arrow {
+                    left: -24px;
+                }
+                &.right__arrow {
+                    right: -30px;
+                }
+            }
+        }
+    }
+}

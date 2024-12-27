@@ -1,0 +1,257 @@
+.checkout__container {
+  .description {
+
+    background: #FFCC00 0% 0% no-repeat padding-box;
+    border-radius: 20px;
+
+    p {
+      padding: 10px 32px 20px 20px;
+    }
+  }
+
+  .description-mobile {
+    background: #FFCC00 0% 0% no-repeat padding-box;
+    border-radius: 20px;
+
+    p {
+      padding: 10px 32px 20px 20px;
+    }
+  }
+
+  input[type="checkbox"] {
+    padding: 0px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    min-width: 25px;
+    height: 25px;
+    border: 1px solid #F5F5F5;
+    outline: none;
+    cursor: pointer;
+    background-color: #F5F5F5;
+    transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+
+  input[type="radio"] {
+    padding: 0px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 25px;
+    height: 25px;
+    border: 1px solid #F5F5F5;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    background-color: #F5F5F5;
+    transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+
+  input[type="checkbox"] input[type="radio"] {
+    border-radius: 5px;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    border: 3px solid #DFDFDF;
+  }
+
+  input[type="radio"]:checked {
+    border: 4px solid #F5F5F5;
+    background-color: var(--themeColor);
+  }
+
+  .errors {
+    color: #ce3030;
+    font-style: italic;
+  }
+
+  .order__sumary {
+    .static__content {
+      display: none;
+    }
+  }
+
+  .billing__address {
+    border-bottom: 1px solid #ccc;
+  }
+
+  .shipping__method {
+    border-bottom: 1px solid #ccc;
+  }
+
+  .payment__method {
+
+    .info_img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .text {
+      display: none;
+    }
+
+    border-bottom: 1px solid #ccc;
+
+    .payment__img {
+      min-width: 40px;
+      height: 30px;
+      max-width: 40px;
+    }
+
+    .address__section {
+      .static__content {
+        display: block;
+      }
+    }
+
+    .payment__item{
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .button__info {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .complete__order {
+    border-bottom: 1px solid #ccc;
+
+    .order__button {
+      background-color: #ffcc00;
+      border-radius: 35px;
+      color: #222;
+      height: 60px;
+
+      &:hover {
+        background-color: #f2c200;
+        color: #222;
+      }
+    }
+  }
+
+  @media screen and (max-width: 420px) {
+    .checkout__container {
+      .bankSelection {
+        width: 155px !important;
+        font-size: 14px;
+      }
+
+      .bankSelection option {
+        width: 155px !important;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .mobile-wrap{
+    flex-wrap: wrap;
+  }
+}
+
+
+@media screen and (min-width: 320px) {
+  .checkout__container {
+    .payment__method {
+      a {
+        color: var(--themeColor);
+        text-decoration: underline;
+      }
+
+      select {
+        background-image: url('https://www.cascaderack.com/static/version1698920517/frontend/Nits/child/en_US/images/select-bg-img.svg');
+        background-position:
+          calc(100% - 16px) calc(13px + 2px),
+          calc(100% - 15px) calc(1em + 2px),
+          calc(100% - .5em) .5em;
+        background-size: 12px 12px;
+        background-repeat: no-repeat;
+        height: 40px;
+        width: 215px;
+        border: 1px solid #dfdfdf;
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1249px) {
+  .checkout__container {
+    .summary__section {
+      min-width: 390px;
+      border-radius: 20px;
+    }
+  }
+}
+
+@media screen and (min-width: 1250px) {
+  .checkout__container {
+    .summary__section {
+      min-width: 456px;
+      width: 456px;
+      max-width: 456px;
+      border-radius: 20px;
+    }
+
+    .description {
+      min-width: 456px;
+      width: 456px;
+      max-width: 456px;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .checkout__container {
+    .static__content {
+      padding-top: 2rem;
+    }
+
+    .description {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .checkout__container {
+    .complete__order {
+      border-bottom: 0 !important;
+    }
+
+    .description-mobile {
+      display: none;
+    }
+
+    .order__sumary {
+      order: 2;
+
+      .static__content {
+        display: block !important;
+      }
+    }
+
+    .payment__method {
+      .info_img {
+        display: none;
+      }
+
+      .text {
+        display: block !important;
+        color: #ccc;
+      }
+    }
+
+    .address__section {
+      .static__content {
+        display: none;
+      }
+
+      order: 1;
+    }
+  }
+}

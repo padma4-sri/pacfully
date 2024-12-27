@@ -1,0 +1,39 @@
+.address__section {
+  .login__button{
+    height: 50px;
+    width: 90%;
+  }
+  .login{
+    height: 50px;
+    width: 170px;
+  }
+  .billing__address{
+    .label {
+      font-weight: 700;
+    }
+  }
+   .shipping__checkbox {
+      .label {
+        font-weight: 300;
+      }
+    }
+    .button__info__shipping{
+      button {
+        height: 50px;
+      }
+    }
+    .button__info {
+      button {
+        height: 50px;
+        width: 250px;
+
+      }
+    }
+    .shipping_note {
+      background: #F5EDE7 0% 0% no-repeat padding-box;
+      border-radius: 20px;
+      padding: 20px;
+      text-align: left;
+      line-height: normal;
+    }
+  }

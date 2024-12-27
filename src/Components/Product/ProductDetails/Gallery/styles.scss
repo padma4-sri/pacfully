@@ -1,0 +1,345 @@
+.GallerySliderPDP {
+  
+  
+  & .dots {
+    & button.active {
+      background: rgba(0,0,0,0.8) !important;
+    }
+  }
+  & .navigation-wrapper {
+    z-index: 3;
+    height: 100%;
+  }
+  & img {
+    mix-blend-mode: darken;
+  }
+  & .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: multiply;
+    z-index: 1;
+  }
+  
+  & .MuiIconButton-root {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background-color: rgb(0,0,0,0.12);
+    z-index: 4;
+    transform: scale3d(1, 1, 1);
+    transition: all 0.12s cubic-bezier(0.4, 0, 0.6, 1);
+    &:active svg {
+      transform: scale3d(0.85, 0.85, 0.85);
+    }
+  }
+
+  .dots-wrap{
+    flex-wrap: wrap;
+  }
+
+  
+}
+
+.galleryVariant {
+  
+  max-width: 602px;
+  width: 100%;
+  margin: 0 auto;
+  .imgContainer {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+  }
+  .video-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+    margin-top: 50%;
+  }
+  
+  .video-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f5f5f5;
+    mix-blend-mode: multiply;
+    z-index: 1;
+    &.white {
+      background-color: #FFFFFF;
+    }
+  }
+  .tag__name {
+    p {
+      padding: 6px 12px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+  .img__thumbnailContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    .thumb__img {
+      flex-basis: calc(20% - 10px);
+      margin: 0.5rem 5px;
+      position: relative;
+      touch-action: none;
+      user-select:none;appearance:none;
+     
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 64px;
+  background: url('https://www.promofit.nl/static/version1712712226/frontend/Webfant/promofit/nl_NL/media/img/icon/play-btn.svg') no-repeat center center;
+  background-size: contain;
+  z-index: 10;
+  display: block;
+}
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+      .image__wrapper {
+        touch-action: none;
+        mix-blend-mode: multiply;
+        position: relative;
+        border-radius: 10px;
+        cursor: pointer;
+        background: #f5f5f5;
+        user-select:none;appearance:none;
+        -webkit-tap-highlight-color:transparent;
+        transform: scale3d(1, 1, 1);
+        transition: all 0.12s cubic-bezier(0.4, 0, 0.6, 1);
+        overflow: hidden;
+        border: 1px solid #FFFFFF;
+        &:active {
+          transform: scale3d(0.95, 0.95, 0.95);
+        }
+        p {
+          position: absolute;
+          background-color: #f5f5f5;
+          font-weight: 700;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 10px;
+          top:0; left:0;
+          overflow: hidden;
+          z-index: 1;
+        }
+        &::after{
+          content: "";
+          position: absolute;
+          display: block;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border: 1px solid transparent;
+          z-index: 1;
+          border-radius: 10px;
+          overflow: hidden;
+          background: transparent;
+        }
+        &.hover{
+          &::after{
+            border: 1px solid #666666;
+          }
+          &:hover {
+            &::after{
+              border: 1px solid #666666;
+            }
+          }
+        }
+        &:hover {
+          &::after{
+            border: 1px solid #cccccc;
+          }
+        }
+      }
+      .image__wrapper img {
+        mix-blend-mode: darken;
+      }
+    }
+  }
+  .popupGallery {
+    .MuiIconButton-root {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background-color: rgb(0,0,0,0.12);
+      z-index: 2;
+      transform: scale3d(1, 1, 1);
+      transition: all 0.12s cubic-bezier(0.4, 0, 0.6, 1);
+      &:active svg {
+        transform: scale3d(0.85, 0.85, 0.85);
+      }
+    }
+    .fullImage {
+      transition: all 0.8s ease-in;
+      overflow: hidden;
+      cursor: zoom-in;
+    
+      .images {
+        position: relative;
+        z-index: 2;
+        mix-blend-mode: multiply;
+      }
+      &.true {
+        overflow: auto;
+        cursor: zoom-out;
+        & .images {
+          transform: scale3d(1.2, 1.2, 1.2);
+          margin-top: 20%;
+          margin-top: 20%;
+        }
+        & .overlay {
+          position: fixed;
+        }
+      }
+    }
+    .sidebar {
+      transition: all 0.24s ease-in;
+      overflow: hidden;
+      width: 168px;
+      height: 100%;
+      padding-top: 16px;
+      padding-bottom: 16px;
+      overflow: hidden;
+      overflow-y: auto;
+      &.true {
+        margin-left: -168px;
+      }
+      .sidebarContainer {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        .sidebarContent {
+          position: absolute;
+          width: 120px;
+          height: 100%;
+          left: 0;
+          top: 0;
+          .play-button{
+           &::before {
+             content: url("https://www.promofit.nl/static/version1712712226/frontend/Webfant/promofit/nl_NL/media/img/icon/play-btn.svg");
+              color: #fff;
+              position: absolute;
+              left: 0;
+              top: -25%;
+              width: 100%;
+              text-align: center;
+              line-height: 12.3rem; /* Adjust this value as needed */
+            }
+          }
+        
+        }
+      }
+      .content {
+        width: 120px;
+        margin: auto 0;
+        &.keen-slider, &.keen-scroller {
+          .keen-slider__slide {
+            width: 120px;
+            height: 144px;
+            min-width: 120px;
+            min-height: 144px;
+            padding: 12px 0;
+            button {
+              width: 120px;
+              height: 120px;
+              background-color: #ffffff;
+              &::after{
+                content: "";
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 1px solid transparent;
+                z-index: 1;
+                border-radius: 6px;
+                overflow: hidden;
+                border: 1px solid #ebebeb;
+              }
+              & * {
+                border-radius: 6px;
+                overflow: hidden;
+              }
+              &.true {
+                border-radius: 6px;
+                overflow: hidden;
+                &:hover {
+                  &::after{
+                    border: 1px solid #666666;
+                  }
+                }
+                &::after{
+                  border: 1px solid #666666;
+                }
+              }
+              &:hover {
+                &::after{
+                  border: 1px solid #cccccc;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/** medium screen **/
+@media screen and (min-width:640px) {
+  .galleryVariant .img__thumbnailContainer .thumb__img .image__wrapper {
+    border-radius: 20px;
+    height: 100%;
+    &::after{
+      border-radius: 20px;
+    }
+  }
+}
+
+@media  screen and (max-width: 640px) {
+  .img__thumbnailContainer .image__wrapper {
+    min-height: 100%;
+  }
+}
+
+@media  screen and (max-width: 768px) {
+.youtube-iframe {
+ position: absolute !important;
+ width: 100% !important;
+ height: 70% !important;
+ top: 90px !important;
+ left: 0 !important;
+ z-index: 1 !important;
+}
+
+.prev-button , .next-button {
+  display: block !important;
+}
+}

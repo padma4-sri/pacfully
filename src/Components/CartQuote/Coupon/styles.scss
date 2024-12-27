@@ -1,0 +1,57 @@
+.coupon__section {
+  .top-10 {
+    top: 1rem;
+}
+  .input__control .field__error{
+
+    margin-top: -9px;
+    min-height: 20px;
+    margin-bottom: 0.5rem ;
+  }
+  border-bottom: 1px solid #cccccc;
+  .success {
+    input {
+      border: 1px solid #43a700 !important;
+      color: #43a700 !important ;
+    }
+    p {
+      color: #43a700 !important;
+    }
+  }
+  .fail {
+    input {
+      border: 1px solid #ce3030 !important;
+      color: #ce3030 !important;
+    }
+    p {
+      color: #ce3030 !important;
+    }
+  }
+  .input {
+    input {
+      border: 1px solid #cccccc !important;
+      color: #222 !important;
+    }
+    p {
+      color: #222 !important;
+    }
+  }
+  .input__control {
+    .field__block {
+      padding-bottom: 0.5rem !important;
+    }
+    input {
+      border: 1px solid #cccccc;
+      background-color: #fff;
+      color: #222222 ;
+      font-size: 16px;
+    }
+  }
+  .coupon__button {
+    height: 50px;
+
+    &:hover {
+      background-color: #666666 !important;
+    }
+  }
+}

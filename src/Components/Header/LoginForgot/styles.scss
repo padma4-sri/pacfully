@@ -1,0 +1,16 @@
+.sidebar__login{
+    background-color: #fff;
+     form{
+        border-bottom: 1px solid #DFDFDF;
+     }
+     .account__block{
+        svg{
+            width: 20px;
+        }
+        .action{
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+     }
+ }

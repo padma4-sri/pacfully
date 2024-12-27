@@ -1,0 +1,273 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?7knu89');
+  src:  url('fonts/icomoon.eot?7knu89#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?7knu89') format('truetype'),
+    url('fonts/icomoon.woff?7knu89') format('woff'),
+    url('fonts/icomoon.svg?7knu89#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-promofit-pay:before {
+  content: "\e94a";
+}
+.icon-promofit-shipping:before {
+  content: "\e94b";
+}
+.icon-promofit-image:before {
+  content: "\e94c";
+}
+.icon-promofit-cartbag:before {
+  content: "\e94d";
+}
+.icon-promofit-cart:before {
+  content: "\e94e";
+}
+.icon-promofit-gift:before {
+  content: "\e94f";
+}
+.icon-promofit-person:before {
+  content: "\e950";
+}
+.icon-promofit-thumb:before {
+  content: "\e951";
+}
+.icon-expofit-acties:before {
+  content: "\e904";
+}
+.icon-expofit-beurs-presentatie:before {
+  content: "\e906";
+}
+.icon-expofit-binnenreclame:before {
+  content: "\e908";
+}
+.icon-expofit-buitenreclame:before {
+  content: "\e90a";
+}
+.icon-expofit-giveaways:before {
+  content: "\e90c";
+}
+.icon-expofit-kantoor-interieur:before {
+  content: "\e90e";
+}
+.icon-expofit-outlet:before {
+  content: "\e910";
+}
+.icon-expofit-printwerk-stickers:before {
+  content: "\e912";
+}
+.icon-expofit-veiligheid:before {
+  content: "\e914";
+}
+.icon-expofit-vlaggen:before {
+  content: "\e916";
+}
+.icon-promofit-buitenreclame:before {
+  content: "\e93a";
+}
+.icon-promofit-beursmaterialen:before {
+  content: "\e93b";
+}
+.icon-promofit-drinkwaren:before {
+  content: "\e93c";
+}
+.icon-promofit-duurzaam-eco:before {
+  content: "\e93d";
+}
+.icon-promofit-gezondheid-wellness:before {
+  content: "\e93e";
+}
+.icon-promofit-evenementen:before {
+  content: "\e93f";
+}
+.icon-promofit-giveaways:before {
+  content: "\e940";
+}
+.icon-promofit-horeca:before {
+  content: "\e941";
+}
+.icon-promofit-kantoor:before {
+  content: "\e942";
+}
+.icon-promofit-kleding-caps:before {
+  content: "\e943";
+}
+.icon-promofit-outdoor:before {
+  content: "\e944";
+}
+.icon-promofit-pennen:before {
+  content: "\e945";
+}
+.icon-promofit-relatiegeschenken:before {
+  content: "\e946";
+}
+.icon-promofit-tassen:before {
+  content: "\e947";
+}
+.icon-promofit-technologie:before {
+  content: "\e948";
+}
+.icon-promofit-vrije-tijd:before {
+  content: "\e949";
+}
+.icon-promofit-heart:before {
+  content: "\e900";
+}
+.icon-promofit-cloud:before {
+  content: "\e901";
+}
+.icon-promofit-star:before {
+  content: "\e902";
+}
+.icon-promofit-tv:before {
+  content: "\e903";
+}
+.icon-promofit-sound:before {
+  content: "\e905";
+}
+.icon-promofit-video:before {
+  content: "\e907";
+}
+.icon-promofit-trash:before {
+  content: "\e909";
+}
+.icon-promofit-user:before {
+  content: "\e90b";
+}
+.icon-promofit-key:before {
+  content: "\e90d";
+}
+.icon-promofit-search:before {
+  content: "\e90f";
+}
+.icon-promofit-settings:before {
+  content: "\e911";
+}
+.icon-promofit-camera:before {
+  content: "\e913";
+}
+.icon-promofit-tag:before {
+  content: "\e915";
+}
+.icon-promofit-lock:before {
+  content: "\e917";
+}
+.icon-promofit-bulb:before {
+  content: "\e918";
+}
+.icon-promofit-pen:before {
+  content: "\e919";
+}
+.icon-promofit-diamond:before {
+  content: "\e91a";
+}
+.icon-promofit-display:before {
+  content: "\e91b";
+}
+.icon-promofit-location:before {
+  content: "\e91c";
+}
+.icon-promofit-eye:before {
+  content: "\e91d";
+}
+.icon-promofit-bubble:before {
+  content: "\e91e";
+}
+.icon-promofit-stack:before {
+  content: "\e926";
+}
+.icon-promofit-cup:before {
+  content: "\e930";
+}
+.icon-promofit-phone:before {
+  content: "\e931";
+}
+.icon-promofit-news:before {
+  content: "\e932";
+}
+.icon-promofit-mail:before {
+  content: "\e933";
+}
+.icon-promofit-like:before {
+  content: "\e934";
+}
+.icon-promofit-photo:before {
+  content: "\e935";
+}
+.icon-promofit-note:before {
+  content: "\e936";
+}
+.icon-promofit-clock:before {
+  content: "\e91f";
+}
+.icon-promofit-paperplane:before {
+  content: "\e920";
+}
+.icon-promofit-params:before {
+  content: "\e921";
+}
+.icon-promofit-banknote:before {
+  content: "\e922";
+}
+.icon-promofit-data:before {
+  content: "\e923";
+}
+.icon-promofit-music:before {
+  content: "\e924";
+}
+.icon-promofit-megaphone:before {
+  content: "\e925";
+}
+.icon-promofit-study:before {
+  content: "\e937";
+}
+.icon-promofit-lab:before {
+  content: "\e938";
+}
+.icon-promofit-food:before {
+  content: "\e939";
+}
+.icon-promofit-t-shirt:before {
+  content: "\e927";
+}
+.icon-promofit-fire:before {
+  content: "\e928";
+}
+.icon-promofit-clip:before {
+  content: "\e929";
+}
+.icon-promofit-shop:before {
+  content: "\e92a";
+}
+.icon-promofit-calendar:before {
+  content: "\e92b";
+}
+.icon-promofit-wallet:before {
+  content: "\e92c";
+}
+.icon-promofit-vynil:before {
+  content: "\e92d";
+}
+.icon-promofit-truck:before {
+  content: "\e92e";
+}
+.icon-promofit-world:before {
+  content: "\e92f";
+}

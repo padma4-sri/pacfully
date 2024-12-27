@@ -1,0 +1,152 @@
+.accordion__sidebar {
+    .body {
+        width: 100%;
+    }
+
+    .wrapper {
+        background-color: #fff;
+        width: 100%;
+        max-width: 100%;
+        ol,
+        ul {
+            list-style-type: disc;
+            margin-left: 18px;
+            li {
+                line-height: 28px;
+                font-size: 14px;
+            }
+        }
+
+        a{
+            cursor: pointer;
+            text-decoration: underline;
+          }
+          
+        .closeButton {
+            top: -4px;
+
+            .close__icon {
+                margin-bottom: 10px;
+            }
+        }
+
+        .sidebar__heading {
+            border-bottom: 1px solid #dfdfdf;
+        }
+
+        .description {
+            img {
+                // width: 100%;
+                // height: auto;
+                object-fit: contain;
+                max-width: 500px;
+                max-height: 500px ;                
+            }
+        }
+
+        .title__img {
+            min-width: 109px;
+            width: 109px;
+            height: 28px;
+            margin-top: -10px;
+        }
+
+        .MuiPaper-root {
+            border-radius: 0px;
+            box-shadow: unset;
+
+            &::before {
+                content: unset;
+            }
+
+            padding-bottom: 15px;
+
+            &.Mui-expanded {
+                margin: 0px;
+            }
+
+            .MuiButtonBase-root {
+                min-height: auto;
+                padding: 0px 0px 0px 0px;
+                flex-direction: row-reverse;
+                align-items: baseline;
+
+                &.Mui-expanded {
+                    .MuiAccordionSummary-expandIconWrapper {
+                        display: flex;
+                        transform: rotate(0deg);
+                    }
+                }
+
+                .MuiAccordionSummary-expandIconWrapper {
+                    margin-top: 2px;
+                    margin-right: 17px;
+                    justify-content: flex-end;
+                    display: block;
+                    transform: rotate(-180deg);
+
+                    svg {
+                        width: 12px;
+                        height: 12px;
+                        color: #222222;
+                    }
+                }
+
+                .MuiAccordionSummary-content {
+                    margin: 0px;
+                    font-size: 15px;
+                    line-height: 28px;
+                    font-weight: 700;
+
+                    &.Mui-expanded {
+                        margin-bottom: 5px;
+                    }
+                }
+            }
+
+            .MuiCollapse-root {
+                .MuiAccordionDetails-root {
+                    padding: 0px 0px 0px 32px;
+                    font-size: 15px;
+                    line-height: 28px;
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                        object-fit: contain;
+                    }
+                }
+            }
+        }
+
+        .sidebar__accordion__section {
+            p {
+                font-size: 14px;
+                line-height: 20px;
+            }
+
+            .answers {
+                line-height: 23px;
+            }
+
+            .toggle__arrow {
+                width: 15px;
+                height: 20px;
+                padding-right: 4px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .description {
+           img {
+               width: 100%;
+               // height: auto;
+               object-fit: contain;
+               max-width: 500px !important;
+               max-height: 500px !important;                
+           }
+       }
+}

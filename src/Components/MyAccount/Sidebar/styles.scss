@@ -1,0 +1,101 @@
+.user__sidebar{
+    min-width: 100%;
+    width: 100%;
+    .title{
+        font-size: 22px;
+    }
+    ul{
+        gap: 13px;
+        li{
+            &:first-child{
+                padding-left: 20px;
+            }
+            &:last-child{
+                padding-right: 20px;
+            }
+            a{
+                line-height: 21px;
+                &.active{
+                    color: var(--themeColor);
+                    cursor: default;
+                    pointer-events: none;
+                }
+            }
+            button{
+                line-height: 21px;
+                background-color: unset !important;
+                color: #222222 !important;
+                font-weight: 300;
+                &:hover{
+                    background-color: unset !important; 
+                    color: var(--themeColor) !important;
+                }
+            }
+        }
+    }
+    .toggle__icon{
+        background-color: unset !important;
+        color: #000000 !important;
+        &.hover{
+            background-color: unset !important;
+            color: #000000 !important;
+        }
+        svg {
+            font-size: 15px;
+            transform: rotate(180deg);
+
+            line {
+                stroke-width: 2px;
+            }
+        }
+        &.open{
+            transform: rotate(-180deg);
+        }
+    }
+
+    .slick-list {
+        margin: 0 0px;
+        padding-left: 0px !important;
+      
+        .slick-track {
+          .slick-slide {
+            >div {
+              margin: 0 00px;
+            }
+          }
+        }
+      }
+}
+
+// large device
+@media (min-width: 768px){
+    .user__sidebar{
+        min-width: 250px;
+        width: 250px;
+        ul{
+            li{
+                &:first-child{
+                    padding-left: 0px;
+                }
+                &:last-child{
+                    padding-right: 0px;
+                }
+            }
+        }
+    }
+}
+
+// desktop device
+@media (min-width: 768px){
+    .user__sidebar{
+        ul{
+            li{
+                a{
+                    &:hover{
+                        color: var(--themeColor);
+                    }
+                }
+            }
+        }
+    }
+}

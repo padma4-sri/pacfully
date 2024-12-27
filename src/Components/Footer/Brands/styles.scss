@@ -1,0 +1,27 @@
+.brands__container {
+    .wrapper {
+        min-height: 76px;
+        .keen-slider{
+            .keen-slider__slide{
+                gap: 0 0.2rem;
+                display: flex;
+                min-width: 240px !important;
+                max-width: 240px !important;
+                justify-content: center;
+                min-height: 28px;
+                .image__block {
+                    display: flex;
+                    min-width: 240px;
+                    justify-content: center;
+                    align-items: center;
+                    span {
+                        img {
+                            object-fit: contain;
+                            width: 120px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

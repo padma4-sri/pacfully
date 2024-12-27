@@ -1,0 +1,80 @@
+.input__control {
+    textarea{
+        height: 10rem;
+    }
+    input::-ms-reveal,
+      input::-ms-clear {
+        display: none;
+      }
+    input {
+        &::placeholder {
+            color: #CCCCCC;
+        }
+
+        border-radius: 5px;
+        border: 1px solid #F5F5F5;
+
+        &:hover {
+            border: 1px solid #222222;
+        }
+
+        &.error__border {
+            border: 1px solid #e44061;
+
+            &:hover {
+                border: 1px solid #e44061;
+            }
+        }
+    }
+
+    .field__error {
+        margin-top: -20px;
+        min-height: 20px;
+        text-wrap: wrap;
+        text-align: left;
+    }
+
+    input[type="checkbox"] {
+        padding: 0px;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        max-width: 25px;
+        min-width: 25px;
+        height: 25px;
+        border: 1px solid #DFDFDF;
+        outline: none;
+        cursor: pointer;
+        transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    }
+
+    input[type="radio"] {
+        padding: 0px;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #DFDFDF;
+        border-radius: 50%;
+        outline: none;
+        cursor: pointer;
+        transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    }
+
+    input[type="radio"]:checked,
+    input[type="checkbox"]:checked {
+        border: 1px solid var(--themeColor);
+        background-color: var(--themeColor);
+    }
+
+    input[type="checkbox"]:checked {
+        border: 3px solid #DFDFDF;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        padding-right: 34px;
+    }
+}

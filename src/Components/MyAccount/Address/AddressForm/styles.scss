@@ -1,0 +1,39 @@
+.account__address__sidebar {
+
+    .add__address {
+        width: 100%;
+        background-color: #FFF;
+
+        .save__button {
+            height: 50px;
+            width: 200px;
+        }
+
+        .add__address__form {
+            button {
+                &:last-child {
+                    border: 1px solid #ffffff !important;
+
+                    &:hover {
+                        border: 1px solid #000000 !important;
+                        background-color: unset !important;
+                        color: #000000;
+                    }
+                }
+            }
+        }
+
+        .country__select {
+            select {
+                background-image: url('https://www.cascaderack.com/static/version1698920517/frontend/Nits/child/en_US/images/select-bg-img.svg');
+                background-position:
+                    calc(100% - 16px) calc(18px + 2px),
+                    calc(100% - 15px) calc(1em + 2px),
+                    calc(100% - .5em) .5em;
+                background-size: 12px 12px;
+                background-repeat: no-repeat;
+            }
+        }
+
+    }
+}

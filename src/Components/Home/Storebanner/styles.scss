@@ -1,0 +1,52 @@
+.storebanner {
+  background: #f9fafa;
+  .wrapper {
+    .store_content {
+      width: 100%;
+      margin: auto;
+    }
+
+    img {
+      object-fit: cover;
+
+    mix-blend-mode: multiply;
+    }
+
+    h3 {
+      color: #222222;
+      font-size: 34px;
+    }
+
+    span {
+      color: var(--themeColor);
+    }
+  }
+}
+// small screen
+@media screen and (min-width: 420px) {
+  .storebanner {
+    .wrapper {
+      .store_content {
+        width: 350px;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1025px) {
+  .storebanner {
+    .wrapper {
+      .store_content {
+        width: 350px;
+
+        h3 {
+          width: 350px;
+          letter-spacing: 0.94px;
+        }
+      }
+
+      .image__block {
+        width: 720px;
+      }
+    }
+  }
+}

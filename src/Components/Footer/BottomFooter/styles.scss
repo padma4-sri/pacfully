@@ -1,0 +1,32 @@
+.bottomfooter{
+    svg {width:100%; height:32px;}
+    img {max-height:32px;}
+    a {font-size: 14px;
+        &:hover {
+           text-decoration: underline;
+          }}
+   
+    p {font-size: 14px;}
+    .right-content.checkoutImages{
+        display: none;
+    }
+    .right-content{
+        .psi__image{
+            width: 65px;
+        }
+        .ppp__image{
+            width: 80px;
+        }
+    }
+    .payments__logos{
+        max-width: 280px;
+    }
+}
+
+@media (min-width: 640px){
+    .bottomfooter{
+        .right-content.checkoutImages{
+            display: flex;
+        }
+    }
+}

@@ -1,0 +1,86 @@
+.heading {
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font: normal normal bold 32px/50px Poppins !important;
+}
+
+.content {
+  font-size: 15px;
+  margin-top: 26px;
+  margin-bottom: 26px;
+  font: normal normal 300 15px/26px Poppins !important;
+}
+
+.tablecell {
+  font-weight: bold !important;
+  text-align: left !important;
+  font: normal normal bold 20px/50px Poppins !important;
+  width: 25%;
+}
+
+.tabledata {
+  text-align: left !important;
+  letter-spacing: 0.42px !important;
+  font: normal normal 300 15px/30px Poppins;
+}
+
+.active_true {
+  background-color: #43a700;
+  color: white;
+  padding: 5px;
+  font-size: 15px;
+}
+
+.active_false {
+  background-color: #ce3030;
+  color: white;
+  padding: 5px;
+  font-size: 15px;
+}
+
+.iconParent {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-right: 25%;
+}
+
+.iconParent {
+  justify-content: unset;
+  gap: 20px;
+  position: absolute;
+  left: 130px;
+}
+
+@media (max-width: 640px) {
+  .iconParent {
+    justify-content: unset;
+    gap: 8px;
+    position: absolute;
+    left: 110px;
+  }
+  .tableResKorting,
+  .tableResCode {
+    width: 50% !important;
+  }
+}
+
+@media (min-width: 640px) {
+  .iconParent {
+    left: 140px;
+  }
+}
+
+.popup_heading {
+  font: normal normal bold 20px/50px Poppins;
+  letter-spacing: 0.56px;
+  color: #222222;
+}
+
+.popup_content {
+  font: normal normal 300 15px/25px Poppins;
+  letter-spacing: 0.42px;
+  color: #222222;
+}

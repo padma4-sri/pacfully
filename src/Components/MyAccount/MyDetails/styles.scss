@@ -1,0 +1,50 @@
+.mydetails__page{
+    table{
+        tr{
+            td{
+                font-size: 15px;
+                padding-bottom: 4px;
+                word-break: break-all;
+                vertical-align: baseline;
+                &:first-child{
+                    width: 110px;
+                    padding-right: 10px;
+                }
+                &:last-child{
+                    padding-bottom: 0px;
+                    text-wrap: wrap;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 420px){
+    .mydetails__page{
+        table{
+            tr{
+                td{
+                    &:first-child{
+                        width: auto;
+                        padding-right: 0px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px){
+    .mydetails__page{
+        table{
+            tr{
+                td{
+                    &:first-child{
+                        padding-right: 25px;
+                        width: 188px;
+                    }
+                }
+            }
+        }
+    }
+}

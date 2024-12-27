@@ -1,0 +1,41 @@
+.productlisting__container {
+  .productlisting__sidebar {
+    min-width: 240px;
+    position: absolute;
+  }
+  &>.flex-1{
+    width: 100%;
+  }
+}
+.plp__addtional__data{
+  table{
+    td {
+      img{
+        word-break: break-all;
+      }
+    }
+  }
+}
+// search no data
+.search__nodata{
+  h4 {
+    background-color: #f5f5f5;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    line-height: 1.65;
+}
+}
+
+/** large screen **/
+@media screen and (min-width: 1025px) {
+  .productlisting__container {
+    .productlisting__sidebar {
+      position: relative;
+      min-width: 240px;
+    }
+    &>.flex-1{
+      width: auto;
+    }
+  }
+}

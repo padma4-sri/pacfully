@@ -1,0 +1,72 @@
+.sidebar__social{
+   background-color: #fff;
+    .sidebar__heading{
+        border-bottom: 1px solid #DFDFDF;
+        h1{
+            font-size: 20px;
+        }
+        p{
+            font-size: 14px;
+        }
+        
+    }
+    .socialicon__img {
+        width: 27px;
+        height: 27px;
+        img{
+            object-fit: contain;
+        }
+        svg{
+            width: 100%;
+            height: 100%;
+        }
+        .status{
+            width: 12px;
+            height: 12px;
+            border: 2px solid #FFFFFF;
+            bottom: 0px;
+            right: -3px;
+        }
+    }.social__details{
+       >div{
+            border-bottom: 1px solid #DFDFDF;
+            .mail__text{
+                text-decoration: underline;
+            }
+        }
+        &>div:nth-child(4){
+            border-bottom: 0;
+        }
+        .social__detail{
+            h3{
+                font-size: 16px;
+            }
+            p{
+                font-size: 14px;
+                font-size: 14px;
+                display: inline-flex;
+                align-items: center;
+            }
+
+            img{
+                width: 13px;
+                height: 13px;
+                border-radius: 5px;
+            }
+        }
+    }
+  
+}
+
+/** large screen **/
+@media screen and (min-width:768px) {
+	.sidebar__social{
+         .social__details{
+            >div{
+                    &.chat__live{
+                        display: flex;
+                    }
+                }
+            }
+        }
+}

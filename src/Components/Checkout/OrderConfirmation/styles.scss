@@ -1,0 +1,29 @@
+.quote__confirmation {
+  button {
+    height: 46px;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 465px) {
+    .order_confirmationBtn {
+      font-size: 14px !important;
+      width: 100% !important;
+    }
+  }
+
+  @media (min-width: 465px) and (max-width: 1250px) {
+    .order_confirmationBtn {
+      width: 70%;
+    }
+  }
+  .line_height{
+    line-height: 3rem;
+}
+}
+@media screen and (min-width: 1025px) {
+  .quote__confirmation {
+    padding: 5rem 0rem;
+    display: block;
+    margin: 0px auto;
+  }
+}

@@ -1,0 +1,124 @@
+.search__container{
+    &.lg-hide{
+        .openedmobile__suggestion{
+            padding-bottom: 20px;
+        }
+        .header__search {
+            button{
+                right: 17px;
+            }
+        }
+    }
+    background:#fff;
+    .header__search {
+        position:relative;
+        width:100%;
+        .searchbox {
+            width:100%;
+            background:#EFEFEF;
+            min-height:48px;
+            border:1px solid #EFEFEF;
+            border-radius:24px;
+            font-size:15px;
+            &::placeholder {
+                font-style:italic;
+                color: #B3B3B3;
+            }
+            &:focus, &:hover {
+            border:1px solid rgba(0,0,0,0.04);
+            background:#FFF;
+    
+            }
+        }
+    
+        .MuiButtonBase-root {
+            position:absolute;
+            right:0;
+            width:48px;
+            height:48px;
+            .icons {
+                width:20px;
+                height:20px;
+            }
+        }
+        &.focused{
+            .searchbox{
+                border: 1px solid rgba(0,0,0,0.04);
+            }
+        }
+    }
+    .lg-hide.header__suggestion{
+        .search__suggestion__container{
+            .open__search{
+                top: 88px;
+            }
+        }
+    }
+}
+@media screen and (min-width:768px){
+    .header__search {
+        .searchbox {
+            background: #F5F5F5;
+        }
+    }
+}
+
+@media screen and (min-width:421px) and (max-width:647px) {
+    .search__container .lg-hide.header__suggestion {
+        .search__suggestion__container {
+            .open__search {
+                top: 110px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width:648px) and (max-width:767px) {
+    .search__container .lg-hide.header__suggestion {
+        .search__suggestion__container {
+            .open__search {
+                top: 155px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:767px) {
+    html.fixedHeader {
+        .header {
+            position: fixed;
+            z-index: 11;
+        }
+
+        .search__container {
+            position: fixed;
+            width: 100%;
+            top: 87px;
+            z-index: 10;
+            .openedmobile__suggestion{
+                padding-top: 1px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:420px) {
+    html.fixedHeader {
+        .search__container {
+            top: 77px;
+            .openedmobile__suggestion{
+                padding-top: 1px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:360px) and (max-width:420px) {
+    .search__container .lg-hide.header__suggestion {
+        .search__suggestion__container {
+            .open__search {
+                top: 88px;
+            }
+        }
+    }
+}

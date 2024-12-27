@@ -1,0 +1,137 @@
+.subHeader {
+  .kiyh__img {
+    img {
+      height: 80%;
+      width: 90%;
+    }
+  }
+
+  &.subHeaderCheckout {
+    .logo {
+      max-width: 100px;
+      max-height: 48px;
+      min-width: 100px;
+    }
+  }
+
+  background-color: #ffffff;
+
+  .autoscroll-checklist {
+    height: 28px;
+  }
+
+  .checklist {
+    cursor: pointer;
+    min-height: 27px;
+
+    & p {
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    & h3 {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    & svg {
+      transform: rotate3d(0, 1, 0, 0deg);
+    }
+  }
+
+  .end {
+    background-color: #ffffff;
+
+    & p {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.1;
+      margin-top: 9px;
+      height: 21px;
+    }
+
+    & h3 {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    & .rating {
+      font-family: "poppins";
+    }
+  }
+
+  .sliders__block {
+    .keen-slider {
+      .keen-slider__slide {
+        min-width: max-content !important;
+        max-width: max-content !important;
+      }
+    }
+  }
+}
+
+// small screen
+@media (min-width: 320px) and (max-width: 370px) {
+  .subHeader {
+    .end {
+      gap: 4px;
+
+      .relative {
+        width: 75px !important;
+      }
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 360px) {
+  .subHeader {
+    &.subHeaderCheckout {
+      .logo{
+        width: 90px;
+        min-width: 90px;
+      }
+      .end{
+        gap: 7px;
+        .kiyo{
+          h3,p{
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width:480px) {
+  .subHeader {
+    &.subHeaderCheckout {
+      .logo {
+        max-width: 150px;
+        width: 150px;
+        max-height: 90px;
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .end {
+    & p {
+
+      margin-top: 4px !important;
+
+    }
+  }
+}
+
+.subHeaderNew {
+  .checklist svg {
+    transform: none;
+    width: 18.53px;
+    min-width: 18.53px;
+    min-height: 15px;
+    height: 15px;
+  }
+}
