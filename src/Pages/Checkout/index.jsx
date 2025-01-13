@@ -29,8 +29,6 @@ import axios from "axios";
 import GuestShippingAddress from "Components/Checkout/GuestShippingAddress";
 import CartPage from "Pages/CartPage";
 import { SkeletonLine } from "Components/Skeletion";
-import Seo from "Components/Seo/Seo";
-import TagManager from 'react-gtm-module';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import { useEffectOnce } from 'Components/Hooks/useEffectOnce';
 import InfoIcon from '@mui/icons-material/Info';
@@ -126,35 +124,7 @@ const totalDiscounts = parseFloat(summaryData?.tax_details?.discount_amount?.rep
 const discountPercentage = ((subtotal - subtotalWithDiscount) / subtotal) * 100;
 const roundedDiscountPercentage = Math.round(discountPercentage);
 const roundedshippingPriceCents = Math.round(shippingPriceCents);
-  const checkoutOption__gtm = () => {
-    let checkoutOptionData = {
-      dataLayer: {
-        event: 'checkoutOption',
-        ecommerce: {
-          value: summaryData?.tax_details?.grandTotal,
-          currency: 'EUR',
-          purchase: {
-            actionField: {
-              tax: summaryData?.tax_details?.tax_amount,
-              shipping: 0,
-              coupon: summaryData?.totals_detail?.couponCode ? summaryData?.totals_detail?.couponCode : "",
-              affiliation: storeId === 1 ? "Promofit" : storeId === 2 ? "Expofit" : ""
-            },
-            products: summaryData?.totals_detail?.items?.map(product => ({
-              id: product.productId,
-              name: product.productName,
-              price: product.unitPrice,
-              quantity: product.qty,
-            }))
-
-          }
-        },
-      }
-    }
-    TagManager.dataLayer(checkoutOptionData);
-    console.log('GTM_EVENT checkoutOption', checkoutOptionData);
-
-  };
+ 
   const GuestMonduIntegration = (orderId) => {
     const mapItemsToLineItems = (items) => {
       return items.map((item) => {
@@ -375,45 +345,7 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
         console.error('Error while making the request:', error);
       });
   };
-  const purchaseEventDataGtm = () => {
-    const purchaseEventData = {
-      event: 'purchase',
-      ecommerce: {
-        currency: 'EUR',
-        purchase: {
-          actionField: {
-            tax: summaryData?.tax_details?.tax_amount,
-            shipping: 0,
-            coupon: summaryData?.totals_detail?.couponCode ? summaryData?.totals_detail?.couponCode : "",
-            affiliation: storeId === 1 ? "Promofit" : storeId === 2 ? "Expofit" : ""
-          },
-          products: summaryData?.totals_detail?.items?.map(product => ({
-            item_id: product.productId,
-            item_name: product.productName,
-            price: product.unitPrice,
-            quantity: product.qty,
-          }))
-
-        }
-      },
-      payment: { method: selectedPaymentMethod?.code },
-      shipping: { method: selectedShippingMethod?.shipping_method },
-      currentStore: storeId == 1 ? "Promofit" : storeId == 2 ? "Expofit" : "",
-      visitorLoginState: isLoggedUser ? "Logged in" : "Guest user",
-      visitorExistingCustomer: customerDetails?.email ? customerDetails?.email : guestBillingAddress?.addressList?.email,
-      visitorId: customerId,
-      privateData: {
-        visitor: { visitorId: customerId, visitorLoginState: isLoggedUser ? "Logged in" : "Guest user" },
-        firstName: customerDetails?.firstName || guestBillingAddress?.addressList?.firstName,
-        lastName: customerDetails?.lastName || guestBillingAddress?.addressList?.lastName,
-    
-      },
-    };
-
-    TagManager.dataLayer({ dataLayer: purchaseEventData });
-    console.log('GTM_EVENT purchaseEventData', purchaseEventData);
-
-  };
+ 
   const OrderSuccessGuest = (orderId) => {
     
     const quoteSubmit = {
@@ -927,7 +859,6 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
         );
       }
     }
-    checkoutOption__gtm()
     GetCountryList(dispatch, baseURL, storeId)
  
    
@@ -1850,13 +1781,7 @@ if(selectedShippingMethod!==null){
   
   return (
     <>
-      <Seo
-        metaTitle={
-          storeId === 1 ? "Afrekenen | Promofit.nl" : "Afrekenen | Expofit.nl"
-        }
-        metaDescription="Uitchecken"
-        metaKeywords="Uitchecken"
-      />
+     
       {summaryData?.totals_detail?.message ? (
         <CartPage />
       ) : summaryData?.totals_detail?.items?.length ? (
@@ -2636,7 +2561,6 @@ In het geval van bedrukte artikelen ontvangt u de factuur per e-mail na goedkeur
                               //   "Alleen bedrijven kunnen samples bestellen. Controleer of uw accountgegevens correct zijn ingesteld; momenteel staat het type als particulier geselecteerd."
                               // );
                               handleExpandNext("fast");
-                              // purchaseEventDataGtm();
                               if (isLoggedUser) {
                                 placeOrder();
                               } else if (!isLoggedUser) {
@@ -2654,7 +2578,6 @@ In het geval van bedrukte artikelen ontvangt u de factuur per e-mail na goedkeur
                               );
                             } else {
                               handleExpandNext("fast");
-                              // purchaseEventDataGtm();
                               if (isLoggedUser) {
                                 placeOrder();
                               } else if (!isLoggedUser) {

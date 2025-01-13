@@ -25,7 +25,6 @@ import Button from "Components/Common/Button";
 import { SkeletonImg, SkeletonLine } from "Components/Skeletion";
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import CircularProgress from '@mui/material/CircularProgress';
-import TagManager from 'react-gtm-module';
 import { WishOutlineIcon, WishFullIcon } from "Res/icons/index";
 import ProgressBar from "../../../Components/Product/ProductDetails/UploadImages/progressbar";
 
@@ -431,52 +430,10 @@ const ProductListing = ({ ind, item, navigate, dispatch,dropboxToken,dropboxAcce
     }
   }
 
-  const removeFromCart__gtm = (item) => {
-    const data = {
-      event: 'removeFromCart',
-      eventLabel: item?.productName,
-      ecommerce: {
-        remove: {
-          products: [
-            {
-              name: item?.productName,
-              id: item?.productId,
-              price: item?.unitPrice,
-              quantity: item?.qty
-            }
-          ]
-        }
-      },
-    };
 
-    TagManager.dataLayer({ dataLayer: data });
-    console.log('GTM_EVENT removeFromCart', data);
-  };
-
-  const addToWishlist__gtm = (item) => {
-    const data = {
-      event: 'addToWishlist',
-      eventLabel: item?.productName,
-      ecommerce: {
-        addwishlist: {
-          products: [
-            {
-              name: item?.productName,
-              id: item?.productSku,
-
-            }
-          ]
-        }
-      },
-    };
-
-    TagManager.dataLayer({ dataLayer: data });
-    console.log('GTM_EVENT addToWishlist', data);
-  };
 
   const deleteItem = async (item) => {
     setLoadingDelete(true)
-    removeFromCart__gtm(item)
     if (isLoggedUser) {
       axios
         .delete(defaultURL + `/carts/mine/items/${item?.itemId}`, {
@@ -1043,7 +1000,6 @@ const ProductListing = ({ ind, item, navigate, dispatch,dropboxToken,dropboxAcce
           dispatch(ACTION_GET__URLTYPE("cart"));
         } else if (!wishlistAddedData?.some(obj => obj?.sku === item?.parentSku)) {
           setwishIsLoading(true);
-          addToWishlist__gtm(item); 
           addWishList(
             defaultURL,
             dispatch,

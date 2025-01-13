@@ -32,16 +32,15 @@ const BannerItem = ({ loading, ...props }) => {
   return (
     <div
       className="banner w1/1 md-py-0"
-      style={{ background: `${backgroundColor}1a` }}
     >
       <div
-        className="container lg-px-4"
+        className="container lg-px-4 r-4"
         onClick={() => handleNavigate(link_url)}
       >
         <div className="w-1/1 flex col-i gap-2 lg-flex lg-row lg-gap-2 lg-fillY">
           <div className="flex-1">
             <div className="pt-8 pb-16 lg-py-8 px-4 lg-px-0">
-              <div className="content-banner flex-1 flex gap-6 col">
+              <div className="content-banner flex-1 flex gap-6 col p-8 r-4 m-8 ">
                 <div className="banner-info flex-1 flex gap-3 col">
                   {loading ? (
                     <>
@@ -59,7 +58,6 @@ const BannerItem = ({ loading, ...props }) => {
                   <SkeletonLine
                     height="45px"
                     width="50%"
-                    className="r-full"
                     animation="pulse"
                   />
                 ) : buttonText ? (
@@ -67,10 +65,10 @@ const BannerItem = ({ loading, ...props }) => {
                    <AdvancedLink className="fw-700" to={button_url}>
                     <Button
                       size=""
-                      className="r-full px-5 py-3"
+                      className=" px-5 py-3 r-2"
                       onClick={(event) => event.stopPropagation()}
                     >
-                        {buttonText}
+                       Shop Now
                     </Button>
                     </AdvancedLink>
 

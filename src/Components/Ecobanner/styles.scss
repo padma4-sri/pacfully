@@ -1,7 +1,9 @@
 .ecobanner {
     min-height: 337px;
     color: #FFFFFF;
-
+.banner-info{
+    color: #222;
+}
     .wrapper {
         .mainCol {
             width: 50%;
@@ -37,14 +39,7 @@
     //     border: #02D65D !important;
     // }
 
-     .promofit-button{
-        background-color: #52B80E !important;
-        border: #52B80E !important;
-     } 
-     .expofit-button{
-        background-color: #222 !important;
-        border: #222 !important;
-     }
+     
 
      .banner-image-button{
         background-color: none  !important;

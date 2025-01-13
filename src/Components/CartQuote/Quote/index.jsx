@@ -7,7 +7,6 @@ import PriceDetailSection from "../PriceDetails";
 import UpsContent from "../UpsContent";
 import QuoteForm from "../QuoteForm";
 import ProductSlider from "Components/ProductSlider";
-import Seo from "Components/Seo/Seo";
 import DomainContext from "Context/DomainContext";
 import useScrollToTop from "Components/Hooks/useScrollToTop";
 
@@ -25,14 +24,7 @@ function Quote() {
 
   return (
     <>
-      <Seo
-        metaTitle={storeId === 1 ? "Vrijblijvende offerte aanvraag | Promofit.nl" : "Vrijblijvende offerte aanvraag | Expofit.nl"}
-        metaDescription="Citaat"
-        metaKeywords="Citaat"
-        //commended for purpose
-        // metaDescription="Vrijblijvende offerte aanvraag"
-        // metaKeywords="Vrijblijvende offerte aanvraag"
-      />
+     
       <div className="cartpage">
         <div className="container px-4 py-8 xl-py-14">
 

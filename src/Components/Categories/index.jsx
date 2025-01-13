@@ -87,7 +87,7 @@ const Categories = ({ className = '', keyValue, loading = false, data = [], titl
 
   return (
     <div className={`home__topcategories ${className} w-1/1 overflow-hidden`} style={{minWidth: "100%",}} key={keyValue}>
-      <div className={`container pt-3 xl-pt-6 pb-6 xl-pb-9 xxl-px-4`} >
+      <div className={`container pt-6 xl-pt-6 pb-6 xl-pb-9 `} >
       {title && 
         <div className="title__section  pb-6 px-4 xxl-px-0">
           <h1 className="fw-700 line-9">{title}</h1>

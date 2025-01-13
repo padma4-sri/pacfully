@@ -19,17 +19,7 @@ const Img = ({
   const [loaded, setLoaded] = useState(false);
   const [srcUrl, setSrcUrl] = useState("");
 
-  useEffect(() => {
-    if (webp && src) {
-      if (src.includes("https://promofit-akeneo-backups.s3.e")) {
-        setSrcUrl(src.replace(/\.(jpg|png|jpeg)$/, ".webp"));
-      } else {
-        setSrcUrl(src);
-      }
-    } else {
-      setSrcUrl(src);
-    }
-  }, [src, webp]);
+  
 
   const handleLoad = () => setLoaded(true);
   const handleError = (e) => {

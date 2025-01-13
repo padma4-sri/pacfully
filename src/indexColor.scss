@@ -18,7 +18,7 @@
     --themeColor: inherit;
     --themeColorHover: inherit;
 }
-html.promofit:root {
+html.pacfully:root {
     --themeColor: #16BCDC;
     --checkboxColor: #EB5FAC;
     --themeColorHover: #FFFFFF;
@@ -27,12 +27,4 @@ html.promofit:root {
     --default: #16BCDC;
     --lightColor: #16bcdc;
 }
-html.expofit:root {
-    --themeColor: #ff5100;
-    --checkboxColor: #ff5100;
-    --themeColorHover: #FFFFFF;
-    --primaryHover: #ff5100;
-    --primaryHoverText: #FFFFFF;
-    --default: #ff5100;
-    --lightColor: #ff5100;
-}
+

@@ -22,10 +22,10 @@ const Ecobanner = ({
     const {storeId, defaultURL } = useContext(DomainContext);
 
     return (
-        <div className='ecobanner mobile-ecobanner container px-4 py-6 xl-py-9'  onClick={() => navigate(button_url)}>
+        <div className='ecobanner mobile-ecobanner container px-4 pb-6 xl-pb-9'  onClick={() => navigate(button_url)}>
         <div
             className="wrapper mobile_wrapper  r-5"
-            style={{ backgroundColor: backgroundColor }}
+            style={{ backgroundColor: "#FFDDD6" }}
         >
             <div className="w-1/1 flex col-i gap-2 lg-flex lg-row lg-gap-2 lg-fillY mobile-wrapper_inside">
                 <div className="mainCol image-mobile-responsive lg-pt-8 pb-8 lg-pb-10 pl-7 pr-7 lg-pr-0 lg-pl-12">
@@ -63,10 +63,10 @@ const Ecobanner = ({
                                 >
                                     <Button
                                         size="md"
-                                        className={`r-full mt-2 lg-mt-6 banner-button-responsive ${storeId === 1 ? 'promofit-button' : 'expofit-button'}`}
+                                        className={`r-2 mt-2 lg-mt-6 banner-button-responsive `}
                                         
                                     >
-                                        {buttonText}
+                                       Shop Now
                                     </Button>
                                 </AdvancedLink>
                         }

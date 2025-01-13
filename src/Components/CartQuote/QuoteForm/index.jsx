@@ -20,7 +20,6 @@ import {
 import { ValidSuccesArrow, ValidErrorArrow } from "Res/icons/index";
 import { ISLOGGEDUSER } from "Store/action-type";
 import CircularProgress from '@mui/material/CircularProgress';
-import TagManager from 'react-gtm-module';
 
 function QuoteForm() {
   const dispatch = useDispatch();

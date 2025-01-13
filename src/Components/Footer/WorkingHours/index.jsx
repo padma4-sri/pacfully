@@ -6,6 +6,12 @@ import { useSelector } from "react-redux";
 import Img from "Components/Img";
 import DomainContext from "Context/DomainContext";
 import { useNavigate } from "react-router-dom";
+import gmailImg from "Res/images/Container-1.svg";
+import locationImg from "Res/images/Container-2.svg";
+import telegramImg from "Res/images/Container-3.svg";
+import phoneImg from "Res/images/Container.svg";
+import whatsappImg from "Res/images/logos_whatsapp-icon.svg";
+import messageImg from "Res/images/_Group_ (1).svg";
 
 const WorkingHours = () => {
   const navigate = useNavigate();
@@ -135,8 +141,7 @@ const WorkingHours = () => {
             <SkeletonLoader height="30px" length={2} pclassName="flex middle col gap-2" />
           ) : (
             <h1 className="line-12">
-              {getFooterData?.workingText} <br />
-              {getFooterData?.workingHours}
+            We are here to design your package 24/7
             </h1>
           )}
         </div>

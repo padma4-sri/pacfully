@@ -34,7 +34,7 @@ const Search = ({
                         type="text"
                         aria-label="Search"
                         className="searchbox pr-14 pl-6"
-                        placeholder="Waar bent u naar op zoek?"
+                        placeholder="Search your box"
                         onFocus={() => {
                             setIsFocused(true);
                         }}

@@ -16,14 +16,12 @@ import TitleLoader from "./Title/loader";
 import GalleryLoader from "./Gallery/loader";
 import UrlGeneratorPdp from 'Components/Hooks/UrlGeneratorPdp';
 import ProductSlider from "Components/ProductSlider";
-import Seo from "Components/Seo/Seo";
 import { useDispatch, useSelector } from "react-redux";
 import {
   ACTION__PDP__STATIC__DATA,
   ACTION_GET__URLTYPE,
   ACTION__CMS__COLOR,
 } from "Store/action";
-import TagManager from 'react-gtm-module';
 
 import Img from "Components/Img";
 import { handleAddUser } from "db";
@@ -201,15 +199,7 @@ useEffect(() => {
       navigate(location.pathname + location.search, { replace: true });
     }
   }, [stateToken, state?.uploadData]);
-  const ProductDetailPageGtm = () => {
-    let ProductDetailPageGtmData = {
-      dataLayer: {
-        event: 'Product_Detail_Page',
-      }
-    }
-    TagManager.dataLayer(ProductDetailPageGtmData);
-    console.log('GTM_EVENT Product_Detail_Page', ProductDetailPageGtmData);
-  };
+ 
 
   useEffect(() => {
     console.log("PDP_data",pdpsharedState) // For UAT see the PDP page
@@ -218,7 +208,6 @@ useEffect(() => {
 
   useEffect(() => {
     setStateToken((v) => v + 1);
-    ProductDetailPageGtm();
   }, []);
 
   const handleBreadcrum = (response) => {
@@ -236,142 +225,10 @@ useEffect(() => {
       }
     });
   };
-  const ProductSchema = () => {
-    const ProductSchemaRef = useRef(null);
-
-    useEffect(() => {
-      if (ProductSchemaRef.current) {
-        ProductSchemaRef.current.remove();
-      }
-
-      const script = document.createElement('script');
-      script.type = 'application/ld+json';
-      script.innerHTML = JSON.stringify( {
-        "@context": "https://schema.org/",
-        "@type": "Product",
-        "name": pdpsharedState?.settings?.product_name,
-        "description": pdpsharedState?.settings?.metaDescription,
-        "review": {
-          "@type": "Review",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": Number(getReview?.header?.kiyoh?.rating[0]?.avg_rating)/2,
-            "bestRating":Number(getReview?.header?.kiyoh?.rating[0]?.avg_rating_year)/2
-          },
-          "author": {
-            "@type": "Organization",
-            "name": storeId === 1 ? "Promofit" : "Expofit"
-          }
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue":Number(getReview?.header?.kiyoh?.rating[0]?.avg_rating)/2,
-          "reviewCount":Number(getReview?.header?.kiyoh?.rating[0]?.total_reviews)
-        }
-      },
-    );
-      document.head.appendChild(script);
-
-      ProductSchemaRef.current = script;
-
-      return () => {
-        if (ProductSchemaRef.current) {
-          ProductSchemaRef.current.remove();
-        }
-      };
-    }, [pdpsharedState]);
-
-    return null;
-  };
-
-  const BreadcrumbSchema = ({ breadcrumbData }) => {
-    const scriptRef = useRef(null);
-
-    useEffect(() => {
-      if (scriptRef.current) {
-        scriptRef.current.remove();
-      }
-
-      const script = document.createElement('script');
-      script.type = 'application/ld+json';
-      script.innerHTML = JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": breadcrumbData?.map((item, index) => ({
-          "@type": "ListItem",
-          position: (index + 1).toString(),
-          item: {
-            id: item?.catId,
-            url: item?.urlKey,
-            name: item?.categoryName
-          }
-        })),
-      });
-
-      document.head.appendChild(script);
-
-      scriptRef.current = script;
-
-      return () => {
-        if (scriptRef.current) {
-          scriptRef.current.remove();
-        }
-      };
-    }, [breadcrumbData]);
-
-    return null;
-  };
-  const ShopReviewSchema = () => {
-    const shopReviewRef = useRef(null);
-  
-    useEffect(() => {
-      // Create the script element
-      const script = document.createElement('script');
-      script.type = 'application/ld+json';
-      script.id = 'shopReview';
-  
-      const scriptContent = {
-        "@context": "http://schema.org",
-        "@type": "Product",
-        "url": "",
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue":getFooterData?.reviews?.kiyohReviews[0]?.avg_rating,       
-          "reviewCount":getFooterData?.reviews?.kiyohReviews[0]?.total_reviews
-        },
-        "name": storeId==1?"Promofit":storeId==2?"Expofit":""
-      };
-  
-      script.textContent = JSON.stringify(scriptContent);
-  
-      document.head.appendChild(script);
-  
-      shopReviewRef.current = script;
-  
-      return () => {
-        if (shopReviewRef.current) {
-          document.head.removeChild(shopReviewRef.current);
-        }
-      };
-    }, []);
-  
-    return null;
-  };
+ 
   return (
     <React.Fragment>
-      <Seo
-        metaTitle={`${pdpsharedState?.settings?.stock_status===false?"[Uitverkocht]":""}  ${pdpsharedState?.seo?.metaTitle === undefined ? "": pdpsharedState?.seo?.metaTitle}`}
-        metaDescription={pdpsharedState?.seo?.metaDescription}
-        metaKeywords={pdpsharedState?.seo?.metaKeywords}
-        ogImage={pdpsharedState?.settings?.product_gallery_images?.[0]?.image}
-        ogWebSite="Product"
-        productPrice={pdpsharedState?.settings?.additional_info?.total_price?.substring(2)}
-        currency={pdpsharedState?.settings?.additional_info?.total_price?.slice(0, 1)}
-      />
-      {/* <ShopReviewSchema/> */}
-      <ProductSchema productsData={pdpsharedState} />
-      <BreadcrumbSchema breadcrumbData={pdpsharedState?.settings?.breadcrumbs} />
-   
+     
       {
         pdpsharedState?.settings?.stock_status === false && !loading ?
           <div className="outof__stock">

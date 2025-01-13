@@ -16,9 +16,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Img from "Components/Img";
 import useScrollToTop from "Components/Hooks/useScrollToTop";
-import Seo from "Components/Seo/Seo";
 import { SessionExpiredLogout, getCartItems } from "Utilities";
-import TagManager from 'react-gtm-module';
 import { useEffectOnce } from 'Components/Hooks/useEffectOnce';
 
 function QuoteConfirmation() {
@@ -135,42 +133,7 @@ function QuoteConfirmation() {
     };
     APIQueryGet(userDetailsOptions);
   };
-  const QuoteConfirmationGtm = (data1) => {
-    let QuoteConfirmationGtmData={
-      dataLayer: {
-        event: 'offers',
-         ecommerce: {
-          value: cartDetails?.tax_details?.grandTotal,
-          currency: 'EUR',
-          quote_id:data1?.quote_id,
-          purchase: {
-            actionField: {
-              tax: cartDetails?.tax_details?.tax_amount,
-              shipping: 0,
-              coupon: cartDetails?.totals_detail?.couponCode ? cartDetails?.totals_detail?.couponCode : "",
-              affiliation: storeId === 1 ? "Promofit" : storeId === 2 ? "Expofit" : ""
-            },
-            products: cartDetails?.totals_detail?.items?.map(product => ({
-              item_id: product.productId,
-              item_name: product.productName,
-              price: product.unitPrice,
-              quantity: product.qty,
-            }))
-  
-          }
-        },
-        user: {
-          email: customerDetails?.email,
-          firstName: customerDetails?.firstname,
-          lastName: customerDetails?.lastname,
-          phone:data1?.phone,
-          }
-      }
-    }
-    TagManager.dataLayer(QuoteConfirmationGtmData);
-    console.log('GTM_EVENT offers',QuoteConfirmationGtmData);
-
-  };
+ 
   const getQuoteStatus = (id) => {
     const options = {
       isLoader: true,
@@ -204,15 +167,7 @@ function QuoteConfirmation() {
       navigate("/")
     }
     else{
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'conversion', {
-          'send_to': process.env.REACT_APP_GOOGLE_ADS_PROMOFIT_QUOTE,
-          'value':data?.grandTotal,
-          'currency': 'EUR',
-        });
-      } else {
-        console.warn('gtag is not defined. Make sure Google Analytics is initialized.');
-      }
+     
       setData(location?.state[0]);
 
     if (!isLoggedUser) {
@@ -256,9 +211,7 @@ function QuoteConfirmation() {
     }
    
     }
-    setTimeout(()=>{
-      QuoteConfirmationGtm(location?.state[0]);
-    },300)
+   
    
   });
   // commented for purpose
@@ -288,11 +241,7 @@ function QuoteConfirmation() {
   // }, []);
   return (
     <React.Fragment>
-      <Seo
-        metaTitle={storeId === 1 ? "Offerte bevestigen | Promofit.nl" : "Offerte bevestigen Expofit.nl"}
-        metaDescription="Offerte bevestigen"
-        metaKeywords="Offerte bevestigen"
-      />
+    
       <div className="container px-4 py-6">
         <div className="quote__confirmation">
           <div className="tick__img relative">

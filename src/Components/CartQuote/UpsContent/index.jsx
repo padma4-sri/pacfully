@@ -25,7 +25,7 @@ function UpsContent() {
   return (
     <div  className={`static__content ${cartDetails?.totals_detail?.items?.length||!cartDetails?.ups_feature_content?.length?"pt-8":""}`}>
      <>
-      <h3 className="fw-700 fs-18">Daarom {storeId == 1?"Promofit":storeId==2?"Expofit":""}!</h3>
+      <h3 className="fw-700 fs-18">Daarom!</h3>
      <div className="ups__content flex col gap-3 pt-4">
      {cartDetails?.ups_feature_content?cartDetails?.ups_feature_content[0]?.map(
        (item, index) => (

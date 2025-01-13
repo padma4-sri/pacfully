@@ -23,7 +23,6 @@ import {
   ACTION_GET__URLTYPE,
 } from "Store/action";
 import Slider from "react-slick";
-import TagManager from "react-gtm-module";
 import AdvancedLink from "Components/AdvancedLink";
 import CircularProgress from "@mui/material/CircularProgress";
 
@@ -336,25 +335,7 @@ const ProductCard = ({
     }
   }, [wishlistResponse?.res?.data?.[0]?.message]);
 
-  const addToWishlist__gtm = (productName, productSku) => {
-    const data = {
-      event: "addToWishlist",
-      eventLabel: productName,
-      ecommerce: {
-        addwishlist: {
-          products: [
-            {
-              name: productName,
-              id: productSku,
-            },
-          ],
-        },
-      },
-    };
-
-    TagManager.dataLayer({ dataLayer: data });
-    console.log("GTM_EVENT addToWishlist", data);
-  };
+ 
 
  
   useEffect(() => {
@@ -508,7 +489,6 @@ const ProductCard = ({
                                 } else if (!wishItem?.length) {
                                   setLoadingStateForProduct(productSku, true);
                                   setcardHoverDelay(true);
-                                  addToWishlist__gtm(productName, productSku);
                                   addWishList(
                                     defaultURL,
                                     dispatch,
@@ -727,14 +707,15 @@ const ProductCard = ({
                 </h2>
                 <div className="price__action__block flex">
                   <div className="price__block flex-1 flex gap-x-2 bottom fw-700">
-                    <p className={`label ${false ? "special" : ""}`}>vanaf</p>
+                    {/* <p className={`label ${false ? "special" : ""}`}>₹</p> */}
                     <p className={`price ${false ? "special" : ""}`}>
-                      {data?.displayPrice}
+                    ₹{data?.displayPrice}
                     </p>
                     {false ? (
-                      <p className="price__strike text-strike ">2,34</p>
+                      <p className="price__strike text-strike "> ₹293</p>
                     ) : (
-                      ""
+                      <p className="price__strike text-strike "> ₹293</p>
+
                     )}
                   </div>
                   <div className="action__block flex-0">
@@ -759,7 +740,7 @@ const ProductCard = ({
                       }
                     >
                       <label className="fw-700 text-nowrap">
-                        bekijk <Toggleup />
+                        Buy Now 
                       </label>
                     </AdvancedLink>
                   </div>

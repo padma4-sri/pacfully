@@ -115,7 +115,7 @@ const TopCategories = () => {
           </h1>
         ) : (
           <h1 className="fw-700 pb-3 md-pb-9">
-            Ontdek alle producten bij  {storeId === 1 ? "Promofit" : "Expofit"}
+            Ontdek alle producten bij 
           </h1>
         )}
         <div className="category__block flex col md-flex md-gap-y-6 md-row md-wrap md-pb-8">

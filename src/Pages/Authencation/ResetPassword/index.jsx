@@ -9,7 +9,6 @@ import { APIQueryPost } from 'APIMethods/API';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import { ValidSuccesArrow, ValidErrorArrow } from "Res/icons/index";
 import { formOptions } from 'Utilities';
-import Seo from 'Components/Seo/Seo';
 
 const ResetPassword = () => {
   const { storeId ,baseURL } = useContext(DomainContext);
@@ -136,11 +135,7 @@ const ResetPassword = () => {
   </div>
   return (
     <>
-      <Seo
-        metaTitle={storeId === 1? "Wachtwoord opnieuw instellen | Promofit.nl": "Wachtwoord opnieuw instellen Expofit.nl"}
-        metaDescription="Wachtwoord opnieuw instellen"
-        metaKeywords="Wachtwoord opnieuw instellen"
-      />
+     
       <AuthencationLayout
         title='Stel je wachtwoord opnieuw in'
         data={dataBlock}

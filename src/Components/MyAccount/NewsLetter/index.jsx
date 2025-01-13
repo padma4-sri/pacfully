@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ACTION_CUSTOMER__DETAILS } from 'Store/action';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Seo from 'Components/Seo/Seo';
 
 const NewsLetter = () => {
   const location = useLocation();
@@ -99,11 +98,7 @@ const NewsLetter = () => {
   }, [location.pathname]);
   return (
     <>
-      <Seo
-        metaTitle={storeId === 1 ? "Nieuwsbrief | Promofit.nl" : "Nieuwsbrief Expofit.nl"}
-        metaDescription="Nieuwsbrief"
-        metaKeywords="Nieuwsbrief"
-      />
+     
       <div className='newsletter__page'>
         <div className='flex gap-6 col'>
           <div className="flex gap-y-6 gap-x-7 wrap news__account">

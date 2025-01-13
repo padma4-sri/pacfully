@@ -11,7 +11,6 @@ import { SessionExpiredLogout } from 'Utilities';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ACTION_CUSTOMER__DETAILS } from 'Store/action';
 import { SkeletonLoader } from 'Components/Skeletion';
-import Seo from 'Components/Seo/Seo';
 
 const MyDetails = () => {
   const dispatch = useDispatch();
@@ -61,11 +60,7 @@ const MyDetails = () => {
 
   return (
     <React.Fragment>
-      <Seo
-        metaTitle={storeId === 1 ? "Mijn gegevens | Promofit.nl" : "Mijn gegevens Expofit.nl"}
-        metaDescription="Mijn gegevens"
-        metaKeywords="Mijn gegevens"
-      />
+     
       <div className='mydetails__page'>
         <div className='flex gap-6 col'>
           <BackgroundBox>

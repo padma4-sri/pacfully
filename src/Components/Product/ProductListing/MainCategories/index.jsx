@@ -12,8 +12,6 @@ import Infoblock from "../PlpCommon/InfoBlock";
 import FeaturesSection from "../PlpCommon/FeaturesSection";
 import { APIQueryGet } from "APIMethods/API";
 import useScrollToTop from "Components/Hooks/useScrollToTop";
-import Seo from "Components/Seo/Seo";
-import TagManager from "react-gtm-module";
 import Ecobanner from "Components/Ecobanner/Ecobanner";
 import "./styles.scss";
 import RenderContext from "Context/RenderContext";
@@ -145,17 +143,9 @@ const PlpDescription = ({ locationChange, forceRerender }) => {
   };
 
   
-  const ProductListingPage1Gtm = () => {
-    let ProductListingPage1GtmData = {
-      dataLayer: {
-        event: "Product_Listing_Page_1",
-      },
-    };
-    TagManager.dataLayer(ProductListingPage1GtmData);
-  };
+
 
   useEffect(() => {
-    ProductListingPage1Gtm();
     setPage((prevPage) => (prevPage === 0 ? "0" : 0));
     setisBackdropLoading(true);
     setIsCalled(false);
@@ -202,12 +192,7 @@ const PlpDescription = ({ locationChange, forceRerender }) => {
 
   return (
     <React.Fragment key={`plp_page_${locationChange}-${forceRerender}`}>
-      <Seo
-        metaTitle={plponesharedState?.seo?.metaTitle}
-        metaDescription={plponesharedState?.seo?.metaDescription}
-        metaKeywords={plponesharedState?.seo?.metaKeywords}
-        ogWebSite="Category listing"
-      />
+    
       <div className="main__categories__container">
         <div className="main__categories__wrapper pb-4">
           <Breadcrumb

@@ -16,7 +16,6 @@ import React, { useEffect, useState, useContext, useRef, memo } from "react";
 import DomainContext from "Context/DomainContext";
 import { APIQueryPost } from "APIMethods/API";
 import { SkeletonLoader } from "Components/Skeletion";
-import Seo from "Components/Seo/Seo";
 
 const Overview = () => {
   const { baseURL, storeId } = useContext(DomainContext);
@@ -62,11 +61,7 @@ const Overview = () => {
   }, [location, customerId]);
   return (
     <>
-      <Seo
-        metaTitle={storeId === 1 ? "Mijn accountoverzicht | Promofit.nl" : "Mijn accountoverzicht Expofit.nl"}
-        metaDescription="Mijn accountoverzicht"
-        metaKeywords="Mijn accountoverzicht"
-      />
+     
       <div className="overview">
         <div className="flex gap-5 lg-gap-6 col">
           <BackgroundBox className="pt-6 pb-7 px-5 lg-pt-5 lg-px-8 lg-pb-8 userBox">

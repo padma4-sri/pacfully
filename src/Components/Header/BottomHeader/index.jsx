@@ -164,60 +164,7 @@ const BottomHeader = ({ data, isCheckout = false }) => {
                     </div>
                   </div>
               }
-              <div className="end flex-0 flex gap-5 middle absolute right-0 pl-4 sm-pl-12 zindex-1">
-                {getHeaderData?.kiyoh ? (
-                  <div
-                    className="flex middle gap-1 md-flex md-gap-0 mt-1 kiyo"
-                    onClick={() => openInNewTab(getHeaderData?.kiyoh?.kiyohUrl)}
-                    style={{ cursor: "pointer" }}
-                  >
-                    {getHeaderData?.kiyoh?.rating?.[0]?.avg_rating_year ? (
-                      <>
-                        <div
-                          style={{
-                            width: "60px",
-                            height: "100%",
-                          }}
-                          className="hide md-block relative kiyh__img"
-                        >
-                          <Img
-                            src={getHeaderData?.kiyoh?.image}
-                            className="w-1/1 h-1/1"
-                            style={{ objectFit: "contain" }}
-                            alt="kiyoh"
-                          />
-                        </div>
-                        <h3 className="md-hide">
-                          {getHeaderData?.kiyoh?.kiyohText}
-                        </h3>
-                        <p className="rating">{`${getHeaderData?.kiyoh?.rating?.[0]?.avg_rating_year}/10`}</p>
-                      </>
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                ) : (
-                  <></>
-                )}
-                {thuiswinkel ? (
-                  <div
-                    style={{ width: "94px", height: "37px", cursor: "pointer" }}
-                    className="relative thuiswinkel"
-                    onClick={() =>
-                      openInNewTab(getHeaderData?.thuiswinkel?.thuiswinkelUrl)
-                    }
-                  >
-                    <Img
-                      src={getHeaderData?.thuiswinkel?.image}
-                      className="w-1/1 h-1/1"
-                      style={{ objectFit: "contain" }}
-                      alt="thuiswinkel"
-                    />
-                  </div>
-                ) : (
-                  <></>
-                )}
-              </div>
+             
             </div>
           )}
         </div>

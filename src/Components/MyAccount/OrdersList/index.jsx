@@ -11,7 +11,6 @@ import { SessionExpiredLogout ,handleImage} from "Utilities";
 import { APIQueryPost } from "APIMethods/API";
 import { useDispatch, useSelector } from "react-redux";
 import AutorenewIcon from '@mui/icons-material/Autorenew';
-import Seo from "Components/Seo/Seo";
 import { SkeletonLine } from "Components/Skeletion";
 
 const OrdersList = ({ title, placeholder, orderTitle, url }) => {
@@ -229,24 +228,8 @@ const OrdersList = ({ title, placeholder, orderTitle, url }) => {
    
     return (
         <>
-            {
-                pathName === "mijn-offertes" ?
-                    <Seo
-                        metaTitle={storeId === 1 ? "Mijn offerteaanvragen | Promofit.nl" : "Mijn offerteaanvragen Expofit.nl"}
-                        metaDescription="Mijn offerteaanvragen"
-                        metaKeywords="Mijn offerteaanvragen"
-                    />
-                    : <></>
-            }
-            {
-                pathName === "mijn-bestellingen" ?
-                    <Seo
-                        metaTitle={storeId === 1 ? "Mijn bestellingen | Promofit.nl" : "Mijn bestellingen Expofit.nl"}
-                        metaDescription="Mijn bestellijst"
-                        metaKeywords="Mijn bestellijst"
-                    />
-                    : <></>
-            }
+            
+           
             <div className='orders__list__page'>
                 <div className='flex gap-6 col'>
                     <BackgroundBox className='flex col gap-y-5 gap-x-1 pt-6 pb-7 px-5 lg-pt-5 lg-px-8 lg-pb-8 xxl-flex xxl-row xxl-bottom'>

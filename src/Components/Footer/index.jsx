@@ -20,21 +20,9 @@ const Footer = () => {
           <BottomFooter isCheckout={true} />
           :
           <>
-            {
-              pathName !== "mijn-account" ?
-                <>
-                  {pathName === "orderconfirmation" || pathName === "quoteconfirmation" ?
-                    <></> :
-                    <Team />}
-
-                  <Brands />
-                  <TopCategories />
-                </>
-                : <></>
-            }
             <Newsletter />
             <WorkingHours />
-            <MainFooter />
+             <MainFooter/>
             <BottomFooter />
           </>
       }

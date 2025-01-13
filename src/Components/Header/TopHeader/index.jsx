@@ -13,6 +13,7 @@ import {
   XIcon,
   LoggedIcon
 } from "Res/icons";
+import logoImg from "Res/images/logo.svg";
 import SearchSuggestion from "Components/Header/SearchSuggestion";
 import ModelNew from "Components/Model/ModelNew";
 import AllCategories from "../AllCategories";
@@ -126,7 +127,7 @@ const TopHeader = ({
                 <IconButton
                   className="menu_icon_button"
                   aria-label="toggle"
-                  onClick={() => categoriesHandler()}
+                  // onClick={() => categoriesHandler()}
                 >
                   <MenuIcon />
                 </IconButton>
@@ -139,10 +140,9 @@ const TopHeader = ({
                   }}
                 >
                   <Img
-                    src={getHeaderData?.logo}
+                    src={logoImg}
                     className="w-1/1 h-1/1"
                     style={{ objectFit: "contain" }}
-                    alt={storeId === 1 ? 'Promofit logo' : 'Expofit logo'}
                   />
                 </Link>
               </div>
@@ -154,7 +154,7 @@ const TopHeader = ({
                     type="text"
                     aria-label="Search"
                     className="searchbox pr-14 pl-6"
-                    placeholder="Waar bent u naar op zoek?"
+                    placeholder="Search your box"
                     onFocus={() => {
                       setIsFocused(true);
                     }}
@@ -211,7 +211,7 @@ const TopHeader = ({
                     </IconButton>
                   </div>
                 ) : <></>}
-                <IconButton
+                {/* <IconButton
                   aria-label="telephone"
                   className="hide xs-flex"
                   onClick={() => {
@@ -220,7 +220,7 @@ const TopHeader = ({
                   }}
                 >
                   <TelephoneIcon />
-                </IconButton>
+                </IconButton> */}
                 <IconButton
                   aria-label="user"
                   onClick={() => {
@@ -244,15 +244,15 @@ const TopHeader = ({
                   }
                 </IconButton>
                 <IconButton
-                  onClick={() => {
-                    setShowSuggestion(false);
-                    if (isLoggedUser) {
-                      navigate("/mijn-account/mijn-favorieten");
-                    } else {
-                      setShowSuggestion(false);
-                      handleLogin(dispatch);
-                    }
-                  }}
+                  // onClick={() => {
+                  //   setShowSuggestion(false);
+                  //   if (isLoggedUser) {
+                  //     navigate("/mijn-account/mijn-favorieten");
+                  //   } else {
+                  //     setShowSuggestion(false);
+                  //     handleLogin(dispatch);
+                  //   }
+                  // }}
                   aria-label="wishlist"
                   className="hide wishlist__icon"
                 >

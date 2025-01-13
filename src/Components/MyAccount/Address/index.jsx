@@ -14,7 +14,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavigationType, useLocation, useNavigate, useNavigationType } from "react-router-dom";
 import axios from "axios";
 import { SkeletonLoader } from "Components/Skeletion";
-import Seo from "Components/Seo/Seo";
 
 const useBackButton = () => {
   const navType = useNavigationType();
@@ -157,11 +156,7 @@ const Address = () => {
 
   return (
     <React.Fragment>
-       <Seo
-        metaTitle={storeId === 1? "Mijn adressen | Promofit.nl": "Mijn adressen Expofit.nl"}
-        metaDescription="Mijn adressen"
-        metaKeywords="Mijn adressen"
-      />
+      
       <div className='address__page'>
         <div className='flex gap-6 col'>
           <div className="flex gap-y-6 gap-x-7 wrap">

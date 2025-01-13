@@ -1,5 +1,8 @@
 .banner {
   cursor: pointer;
+  .container{
+    background-color: #B7E1C9;
+  }
   h1 {
     font-size: 32px;
     font-weight: bold;
@@ -24,7 +27,8 @@
     overflow: hidden;
   }
   .content-banner {
-    height: 280px;
+    height: 330px;
     overflow: hidden;
+    background-color: #EFEFEF;
   }
 }

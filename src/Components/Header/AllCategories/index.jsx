@@ -6,7 +6,6 @@ import { SkeletonLine } from "Components/Skeletion";
 import { useWindowSize } from "Utilities";
 import { CloseIconX } from "Res/icons";
 import AdvancedLink from "Components/AdvancedLink";
-import "../../../Res/font-icons/style.css";
 import { CombinedContext } from "Context/CombinedContext";
 
 const ContentData = ({ listItem }) => {

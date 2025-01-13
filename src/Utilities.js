@@ -332,30 +332,6 @@ export const adminTokenHandler = (axios,baseURL,dispatch) => {
   });
 };
 
-//commended for purpose
-// export const handleImage = (image_url) => {
-//   if (!image_url) return null;
-//   let image_url_split;
-//   try {
-//     image_url_split = new URL(image_url);
-//   } catch (e) {
-//     return image_url;
-//   }
-//   if (image_url_split?.pathname) {
-//     const combine = process.env.REACT_APP_PRODUCT_CDN_URL
-//       ? image_url_split && image_url_split?.pathname ? `${process.env.REACT_APP_PRODUCT_CDN_URL}${image_url_split.pathname}`
-//         : image_url : image_url;
-
-//     const validExtensions = ['jpeg', 'jpg', 'png', 'gif', 'bmp', 'jp2'];
-//     const urlExtension = combine.split('.').pop().toLowerCase();
-
-//     return validExtensions.includes(urlExtension)
-//       ? combine.replace(/\.(jpg|jpeg|png)$/i, '.webp')
-//       : combine;
-//   } else {
-//     return image_url
-//   }
-// };
 
 export const handleImage = (image_url, placeholderImage) => {
   if (!image_url) return placeholderImage; // Return placeholder if image_url is not provided
@@ -364,49 +340,10 @@ export const handleImage = (image_url, placeholderImage) => {
   try {
     image_url_split = new URL(image_url);
   } catch (e) {
-    return image_url || placeholderImage; // Return placeholder if image_url is invalid
-  }
+    return image_url  }
 
-  if (image_url_split?.pathname) {
-    const combine = process.env.REACT_APP_PRODUCT_CDN_URL
-      ? image_url_split?.pathname 
-        ? `${process.env.REACT_APP_PRODUCT_CDN_URL}${image_url_split.pathname}`
-        : image_url
-      : image_url;
-
-    const validExtensions = ['jpeg', 'jpg', 'png', 'gif', 'bmp', 'jp2'];
-    const urlExtension = combine.split('.').pop().toLowerCase();
-
-    return validExtensions.includes(urlExtension)
-      ? combine.replace(/\.(jpg|jpeg|png)$/i, '.webp')
-      : combine;
-  } else {
-    return placeholderImage; // Return placeholder if pathname doesn't exist
-  }
+  
 };
-
-// export const handleAddToRecent = (recentProducts, product, dispatch, sku, baseURL, storeId) => {
-//   let recentProduct = recentProducts || [];
-//   const existsIndex = recentProduct.findIndex((p) => p.sku === product?.sku);
-//   const onPdp = recentProduct.some((p) => p.sku === sku);
-//   console.log(product,"product")
-//   if (existsIndex !== -1) {
-//     const [existingProduct] = recentProduct.splice(existsIndex, 1); 
-//     recentProduct = [existingProduct, ...recentProduct];
-//   } else if (product && Object.keys(product).length > 0) {
-//     recentProduct = [product, ...recentProduct];
-//   }
-
-//   if (recentProduct.length > 10) {
-//     recentProduct = recentProduct.slice(0, 10);
-//   }
-
-//   dispatch(ACTION_RECENT_VIEW(recentProduct));
-
-//   if (!onPdp && sku) {
-//     getRecentProducts(dispatch, sku, baseURL, storeId, recentProduct);
-//   }
-// };
 export const handleAddToRecent = (recentProducts, product, dispatch, sku, baseURL, storeId) => {
   let recentProduct = recentProducts || [];
   if (product?.temporary_out_of_stock == "1") {

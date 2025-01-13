@@ -13,7 +13,6 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { Telephone, Whatsaap, Email } from "Res/icons";
 import useScrollToTop from 'Components/Hooks/useScrollToTop';
 import { useEffectOnce } from 'Components/Hooks/useEffectOnce';
-import Seo from 'Components/Seo/Seo';
 import { flag1, flag2 } from 'Res/images';
 import Img from 'Components/Img';
 import { SkeletonLine, SkeletonLoader } from "Components/Skeletion";
@@ -117,11 +116,7 @@ const ContactUs = () => {
   });
   return (
     <React.Fragment>
-      <Seo
-        metaTitle={seoData?.metaTitle}
-        metaDescription={seoData?.metaDescription}
-        metaKeywords={seoData?.metaKeywords}
-      />
+     
       <div className='contact__page pt-4 pb-8 md-pb-14'>
         <Breadcrumb data={breadCrumbData} />
         <div className='page__container container px-4 pt-5'>

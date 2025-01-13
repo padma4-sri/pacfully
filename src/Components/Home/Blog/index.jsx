@@ -51,7 +51,7 @@ const Blog = () => {
     <div className="blogs__container">
       <div className="container pt-6 md-pt-6 xl-pt-8 pb-8 md-pb-10 xl-pb-12 px-4 xxl-px-4">
         <div className="title__section flex space-between pb-6">
-          <h1 className="fw-700 line-9 fs-30"><Link to="/blog"aria-label={"blog"} className="fw-700 line-9 fs-30">Blogartikelen</Link></h1>
+          <h1 className="fw-700 line-9 fs-30"><Link to="/blog"aria-label={"blog"} className="fw-700 line-9 fs-30">Blog</Link></h1>
         </div>
         <div className="slider__wrapper">
           {

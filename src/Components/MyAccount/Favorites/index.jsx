@@ -9,7 +9,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { SessionExpiredLogout } from "Utilities";
 import { APIQueryPost } from "APIMethods/API";
 import { ACTION_UPDATE__WISHLIST, ACTION_WISHLISTADDED__DATA, ACTION_WISHLIST_COUNT } from "Store/action";
-import Seo from "Components/Seo/Seo";
 
 const Favorites = () => {
   const { baseURL, storeId,expofitUrl } = useContext(DomainContext);
@@ -146,11 +145,7 @@ const Favorites = () => {
   }, [updateWishList])
   return (
     <>
-      <Seo
-        metaTitle={storeId === 1 ? "Favorieten | Promofit.nl" : "Favorieten Expofit.nl"}
-        metaDescription="Favorieten"
-        metaKeywords="Favorieten"
-      />
+     
       <div className='wishlist__page'>
         <div className='flex gap-6 col'>
           <div className="flex gap-y-6 gap-x-7 wrap">

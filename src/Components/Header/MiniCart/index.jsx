@@ -14,7 +14,6 @@ import { ACTION_OPENCART } from "Store/action";
 import { APIQueryPost } from "APIMethods/API";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import TagManager from 'react-gtm-module';
 import CircularProgress from '@mui/material/CircularProgress';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 
@@ -44,30 +43,9 @@ const ProductListing = ({ item, ind, cartDetails, dispatch, defaultURL, storeId,
   function handleItemClick(index) {
     setDetails((prevIndex) => (prevIndex === index ? null : index));
   }
-  const removeFromCart__gtm = (item) => {
-    const data = {
-      event: 'removeFromCart',
-      eventLabel: item?.productName,
-      ecommerce: {
-        remove: {
-          products: [
-            {
-              name: item?.productName,
-              id: item?.productId,
-              price: item?.unitPrice,
-              quantity: item?.qty
-            }
-          ]
-        }
-      },
-    };
-
-    TagManager.dataLayer({ dataLayer: data });
-    console.log('GTM_EVENT removeFromCart', data);
-  };
+  
   const deleteItem = async (item) => {
     setLoadingDelete(true)
-    removeFromCart__gtm(item)
     if (isLoggedUser) {
       axios
         .delete(defaultURL + `/carts/mine/items/${item?.itemId}`, {
@@ -640,7 +618,7 @@ const MiniCart = () => {
         <CloseButton onClickFunction={() => closeCartHandler()} />
       </div>
       <div className="sidebar__heading pb-3 px-2">
-        <h1 className="fw-700">Winkelwagen</h1>
+        <h1 className="fw-700">Shopping cart</h1>
       </div>
       <div className="flex-1 h-1/1 relative ">
         <div className="absolute w-1/1 h-1/1 overflow-hidden overflow-y-auto">
@@ -654,7 +632,7 @@ const MiniCart = () => {
               ))
             ) : (
               <>
-                <p className="fs-14 pb-4">Uw winkelwagen is leeg.</p>
+                <p className="fs-14 pb-4">Your shopping cart is empty.</p>
                 <p className="fs-14 pt-4 flex">
                   <Link
                     to="/"
@@ -665,11 +643,10 @@ const MiniCart = () => {
                       scrollToTop();
                     }}
                   >
-                    Klik hier
+                   Click here
                   </Link>
                   &nbsp;<span className="fs-15  line-6 middle">
-                    om naar de homepage te gaan
-                  </span>
+                  to go to the homepage                  </span>
                 </p>
 
               </>

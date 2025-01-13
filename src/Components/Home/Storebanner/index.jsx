@@ -29,7 +29,7 @@ const StoreBanner = ({ loading = false, getStoreBanner }) => {
                     className="primary__btn fw-700"
                     onClick={() => navigate("/over-ons")}
                     aria-label="button"
-                  >Lees meer</button>
+                  >Shop now</button>
                 </div>
               </div>
             </div>

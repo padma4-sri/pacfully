@@ -37,7 +37,7 @@ const SkeletonImg = ({
         style={{ width: "20%", height: "20%", opacity: 0.5 }}
       /> */}
       <img
-        src={placeholderImage}
+        src=""
         alt=""
         loading="lazy"
         style={{ objectFit: "cover", width: "100%", height: "100%" }}

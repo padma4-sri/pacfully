@@ -134,7 +134,7 @@ const Newsletter = () => {
                       value={fieldValue}
                       onChange={changeHandler}
                       type="email"
-                      placeholder={getFooterData?.placeholder_text}
+                      placeholder="E-Mail address"
                       className="r-9 w-1/1 px-4 sm-px-8 py-4 mb-4 xl-mb-0 fw-400"
                       aria-label="email"
                     />

@@ -19,7 +19,6 @@ import {
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { ValidSuccesArrow, ValidErrorArrow } from "Res/icons/index";
 import useScrollToTop from "Components/Hooks/useScrollToTop";
-import Seo from "Components/Seo/Seo";
 import { useEffectOnce } from "Components/Hooks/useEffectOnce";
 
 const ColumnWrapper = ({
@@ -481,11 +480,7 @@ const Registration = () => {
 
   return (
     <React.Fragment>
-      <Seo
-        metaTitle={storeId === 1 ? "Nieuw account aanmaken | Promofit.nl" : "Nieuw account aanmaken Expofit.nl"}
-        metaDescription="Registreer u nu om toegang te krijgen tot exclusieve inhoud, gepersonaliseerde aanbevelingen en kortingen die alleen voor leden gelden. Sluit u aan bij onze community en ontgrendel een wereld aan mogelijkheden. Schrijf je vandaag in!"
-        metaKeywords="Registratie"
-      />
+    
       <AuthencationLayout
         title="Maak een nieuw klantaccount aan"
         data={dataBlock}

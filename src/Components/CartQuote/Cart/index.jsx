@@ -14,7 +14,6 @@ import UpsContent from "../UpsContent";
 import { useNavigate } from "react-router-dom";
 import ProductSlider from "Components/ProductSlider";
 import { SkeletonLine } from "Components/Skeletion";
-import Seo from "Components/Seo/Seo";
 import DomainContext from "Context/DomainContext";
 
 function Cart() {
@@ -88,11 +87,7 @@ function Cart() {
   }, []);
   return (
     <>
-      <Seo
-        metaTitle={storeId === 1? "Winkelwagen | Promofit.nl": "Winkelwagen Expofit.nl"}
-        metaDescription="Winkelwagen"
-        metaKeywords="Winkelwagen"
-      />
+     
       <div className="cartpage ">
         <div className="container responsive-cart px-4 py-8 xl-py-14">
           <h1 className="fw-700 fs-32">{cartDetails?.totals_detail?.isSample == 1 ? "Sample bestellen" :"Winkelwagen"}</h1>

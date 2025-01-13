@@ -146,10 +146,16 @@ const InitialFunctions = (baseURL, storeId, defaultURL) => {
       dispatch(ACTION_FETCH__HEADERFOOTER({
         checkHeaderFooterData: true,
         data: resData?.data?.[0]
+        // data: headerData,
+        
       }))
     },
     axiosData: {
-      url: `${defaultURL}/home/headerfooter`,
+      url: `${baseURL}/home/headerfooter`,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*' 
+      }
 
     }
   }

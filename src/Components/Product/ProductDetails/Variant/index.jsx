@@ -19,7 +19,6 @@ import AccordionSidebar from "Components/AccordionSidebar/AccordionSidebar";
 import DomainContext from "Context/DomainContext";
 import { TickIcon, ValidSuccesArrow, WishIcon, CopyUrl, FullWishlist } from 'Res/icons';
 import Img from 'Components/Img';
-import TagManager from 'react-gtm-module';
 import { InfoPdpIcon } from 'Res/icons';
 import DeliveryInfo from '../DeliveryInfo';
 import ModelNew from "Components/Model/ModelNew";
@@ -2289,25 +2288,7 @@ function getPriceForQty(qty, tierprice) {
     });
     return colorPricker;
   };
-  const addToCart__gtm = (item) => {
-    const addtocartGtmData = {
-      event: 'addToCart',
-      eventLabel: data?.settings?.product_name,
-      ecommerce: {
-        add: {
-          products: [
-            {
-              name: data?.settings?.product_name,
-              id: additionalOption.is ? additionalOption.sku : data?.settings?.product_sku || "",
-              is_sample: isSample,
-            }
-          ]
-        }
-      },
-    };
 
-    TagManager.dataLayer({ dataLayer: addtocartGtmData });
-  };
   function generateTextileAttributeId(product, attribute) {
     const attributeId = product[attribute] ? product[attribute].id : null;
     return attributeId;
@@ -2334,7 +2315,6 @@ function getPriceForQty(qty, tierprice) {
     return result;
   }
   const guestAddToCart = (from) => {
-    addToCart__gtm();
     setErrorCart("");
     const { nextNo, length } = getNextData(true, selectedDataNow);
     const option = getApiCartOptions();
@@ -2518,7 +2498,6 @@ function getPriceForQty(qty, tierprice) {
   };
 
   const customerAddToCart = (from) => {
-    addToCart__gtm();
     setErrorCart("");
     const { nextNo, length } = getNextData(true, selectedDataNow);
     const option = getApiCartOptions();
@@ -3746,23 +3725,7 @@ function getPriceForQty(qty, tierprice) {
     if (singleToken === "") setSingleToken("loaded");
   }, [singleToken]);
 
-  const addToWishlist__gtm = (productName, productSku) => {
-    const data = {
-      event: 'addToWishlist',
-      eventLabel: productName,
-      ecommerce: {
-        addwishlist: {
-          products: [
-            {
-              name: productName,
-              id: productSku,
-            }
-          ]
-        }
-      },
-    };
-    TagManager.dataLayer({ dataLayer: data });
-  };
+ 
   const includesNameOrPmsKey = (dataArray) => {
     return dataArray.some(obj => {
       return Object.keys(obj).includes("name") || Object.keys(obj).includes("pms_key");
@@ -4761,7 +4724,6 @@ function getPriceForQty(qty, tierprice) {
                           } else {
 
                             if (!wishItem?.length) {
-                              addToWishlist__gtm(productSku, productName)
                               addWishList(defaultURL, dispatch, token, customerId, { id: productId, sku: productSku }, wishlistAddedData, storeId, navigate, isSessionExpired);
                             }
                           }

@@ -23,10 +23,8 @@ import {
 } from "Store/action";
 import { useDispatch, useSelector } from "react-redux";
 import Img from "Components/Img";
-import Seo from "Components/Seo/Seo";
 import { SkeletonLine } from "Components/Skeletion";
 import useScrollToTop from 'Components/Hooks/useScrollToTop';
-import TagManager from 'react-gtm-module';
 
 
 function OrderConfirmation() {
@@ -213,28 +211,7 @@ function OrderConfirmation() {
     };
     APIQueryPost(othersBought);
   };
-  const purchaseEventDataGtm = () => {
-    const purchaseEventData = {
-      event: 'purchase',
-      ecommerce: {
-        value: data?.grandTotal, 
-        currency: 'EUR',
-      },
-      user_data: {
-        email: data?.email,
-        phone:data?.phone,
-        transaction_id:data?.orderId,
-        address: {
-          firstname: data?.name,
-        },
-      },
-      privateData: {
-        firstName: data?.name,
-      },
-    };
-    TagManager.dataLayer({ dataLayer: purchaseEventData });
-    console.log('GTM_EVENT purchaseEventData', purchaseEventData);
-  };
+ 
   useEffect(() => {
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
@@ -248,20 +225,7 @@ function OrderConfirmation() {
   }, [location, navigate, orderIds]);
 
   useEffect(()=>{
-if(data){
-  purchaseEventDataGtm()
-  if (typeof window.gtag === 'function') {
-    window.gtag('event', 'conversion', {
-      'send_to': process.env.REACT_APP_GOOGLE_ADS_PROMOFIT_ORDER,
-      'value': data?.grandTotal,
-      'currency': 'EUR',
-      'transaction_id': ''
-    });
-  } else {
-    console.warn('gtag is not defined. Make sure Google Analytics is initialized.');
-  }
 
-}
   },[data])
   // commented for purpose
   // useEffect(() => {
@@ -293,11 +257,7 @@ if(data){
   // }, []);
   return (
     <>
-      <Seo
-        metaTitle={storeId === 1 ? "Bestelling bevestigen | Promofit.nl" : "Bestelling bevestigen Expofit.nl"}
-        metaDescription="Bestelling bevestigen"
-        metaKeywords="Bestelling bevestigen"
-      />
+     
       <div >
         <div className="container px-4 py-6">
           {data?
@@ -329,10 +289,9 @@ if(data){
               <>
                 <a
                   className="line-6 text-underline pb-1"
-                  href={`mailto:sales@promofit.nl`}
                   target="__blank"
                 >
-                  sales@promofit.nl
+                  sales@pacfully.nl
                 </a>
                 &nbsp;
                 <a className="line-6" href={`tel:+31(0) 76 50 182 25`}>

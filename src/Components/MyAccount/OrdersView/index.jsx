@@ -14,7 +14,6 @@ import { useDispatch, useSelector } from "react-redux";
 import DomainContext from "Context/DomainContext";
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import { ACTION_OPENCART,ACTION__MINICART__ITEMS } from "Store/action";
-import Seo from "Components/Seo/Seo";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 const OrdersView = ({ orderTitle = "", data, loading = true, customerData }) => {
@@ -106,68 +105,9 @@ const OrdersView = ({ orderTitle = "", data, loading = true, customerData }) => 
 
     return (
         <>
-            {/* {
-                orderTitle === "Ordernummer" ?
-                    <Seo
-                         //commented for purpose
-                        // metaTitle={storeId === 1 ? "Bestelweergave | Promofit.nl" : "Bestelweergave Expofit.nl"}
-                        metaTitle={`${orderTitle} #${data?.incrementId ? data?.incrementId : ""} | ${storeId === 1 ? "Promofit.nl" : "Expofit.nl"}`}
-                        metaDescription="Bestelweergave"
-                        metaKeywords="Bestelweergave"
-                    />
-                    : <></>
-            }
-            {
-                orderTitle === "Offertenummer" ?
-                    <Seo
-                        //commented for purpose
-                        // metaTitle={storeId === 1 ? "Citaatweergave | Promofit.nl" : "Citaatweergave Expofit.nl"}
-                        metaTitle={`${storeId === 1 ? `Offertenummer #${data?.quoteId ? data?.quoteId :""} | Promofit.nl` : "Citaatweergave Expofit.nl"}`}
-                        metaDescription="Citaatweergave"
-                        metaKeywords="Citaatweergave"
-                    />
-                    : <></>
-            } */}
 
-{(!loading && orderTitle === "Ordernummer") ? (
-  <Seo
-    metaTitle={`${orderTitle} #${data?.incrementId} | ${
-      storeId === 1 ? "Promofit.nl" : "Expofit.nl"
-    }`}
-    metaDescription="Bestelweergave"
-    metaKeywords="Bestelweergave"
-  />
-) : (
-  <Seo
-    metaTitle={`${
-      storeId === 1 ? "Ordernummer | Promofit.nl" : "Ordernummer | Expofit.nl"
-    }`}
-    metaDescription="Bestelweergave"
-    metaKeywords="Bestelweergave"
-  />
-)}
 
-{(!loading && orderTitle === "Offertenummer" && data) ? (
-  <Seo
-    metaTitle={`${
-      storeId === 1
-        ? `Offertenummer #${data?.quoteId} | Promofit.nl`
-        : "Citaatweergave Expofit.nl"
-    }`}
-    metaDescription="Citaatweergave"
-    metaKeywords="Citaatweergave"
-  />
-) : (
-  <Seo
-    metaTitle={`${
-      storeId === 1
-        ? `Offertenummer | Promofit.nl`
-        : "Citaatweergave Expofit.nl"
-    }`}
-    metaDescription="Citaatweergave"
-    metaKeywords="Citaatweergave"
-  />
-)}
+
 
 
 

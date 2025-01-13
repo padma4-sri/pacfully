@@ -54,6 +54,7 @@ const UserIcon = ({ color = "currentcolor" }) => {
         </svg>
     )
 }
+
 const WishOutlineIcon = ({ color = "currentcolor", onClick = () => { } }) => {
     return (
         <svg onClick={onClick} className="icons WishOutlineIcon" alt="WishOutlineIcon" focusable="false" aria-hidden="true" viewBox="0 0 24 24" aria-label="fontSize large"><path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z" fill={color}></path></svg>
@@ -208,10 +209,11 @@ const LeftArrow = ({ color = "currentcolor" }) => {
         </svg>
     )
 }
-const ValidSuccesArrow = ({ color = "#43a700" }) => {
+
+const ValidSuccesArrow = ({ color = "#CF2C91" }) => {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="18.526" height="15" viewBox="0 0 18.526 15">
-            <path d="M15.742,49,6.307,58.439,2.781,54.912,0,57.7,6.3,64l.815-.811h0L18.526,51.781Z" transform="translate(0 -49)" fill={color} />
+        <svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15.7369 0.00415039L6.30496 9.43785L2.7801 5.91283L0 8.69927L6.29796 14.9957L7.1127 14.1852L18.52 2.78359L15.7369 0.00415039Z" fill="#CF2C91"/>
         </svg>
     )
 }
