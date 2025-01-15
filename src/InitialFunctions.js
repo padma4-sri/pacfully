@@ -153,9 +153,10 @@ const InitialFunctions = (baseURL, storeId, defaultURL) => {
     axiosData: {
       url: `${baseURL}/home/headerfooter`,
       headers: {
+        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*' 
-      }
+        'Accept': 'application/json'
+    }
 
     }
   }

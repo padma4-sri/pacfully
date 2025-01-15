@@ -11,6 +11,7 @@ import QuoteConfirmation from "Pages/QuoteConfirmation";
 import Checkout from "Pages/Checkout";
 import OrderConfirmation from "Components/Checkout/OrderConfirmation";
 import NoRoute from "Components/NoRoute/NoRoute";
+import CommingSoon from "Pages/CommingSoon";
 export const StaticUrls = ["/maak-account-aan", "/wachtwoord-opnieuw-instellen/:token", "/winkelwagen", "/offerteaanvraag", "/meest-gestelde-vragen", "/meest-gestelde-vragen/*", "/offerteaanvraag/succes", "/order/succes", "/pagina-niet-gevonden", "/kiyoh", "/checkout", "/privacy", "/algemene-voorwaarden", "/showroom", "/vacatures", "/vacatures/:key", "/blog", "/blog/:key", "/contact", "/disclaimer", "/over-ons", "/druktechnieken", "/klantenservice", "/klantenservice/*", "/mijn-account/:key", "/mijn-account/:key/:key", "/kortingscodes" , "/sitemap"]
 const AppRoutes = () => {
   const routesData = {
@@ -28,7 +29,7 @@ const AppRoutes = () => {
 return (
   <React.Fragment>
     <Routes>
-      <Route path="/" element={<Home />} exact />
+      <Route path="/" element={<CommingSoon />} exact />
       {/* {StaticUrls.map((url)=> (
         <Route key={`route_${url}`} path={url} element={routesData[url]} exact />
       ))} */}

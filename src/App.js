@@ -79,10 +79,10 @@ const App = () => {
         {baseURL ? (
           <Router>
             <TypeCheckProvider>
-              <Header />
+              {/* <Header /> */}
               <AppRoutes />
               <VisibleWarp>
-                <Footer />
+                {/* <Footer /> */}
               </VisibleWarp>
             </TypeCheckProvider>
           </Router>

@@ -1,0 +1,19 @@
+.center-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    text-align: center;
+}
+
+.center-container img {
+    max-width: 100%; 
+    margin-bottom: 20px;
+}
+
+.center-container p {
+    font-size:100px;
+    font-weight: bold;
+    color: #333;
+}
