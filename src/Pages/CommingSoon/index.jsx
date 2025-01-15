@@ -7,7 +7,7 @@ export default function CommingSoon() {
   return (
     <div className="center-container ">
     <img src="/512.svg" alt="Logo" />
-    <p>Coming Soon</p>
+    <p>Comming Soon</p>
 </div>
 
   )
