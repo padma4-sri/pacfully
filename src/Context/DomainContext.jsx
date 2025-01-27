@@ -53,6 +53,7 @@ export const DomainProvider = ({ children }) => {
         if(tokenSingle === "") setTokenSingle("loaded");
         else {
             const hostName = window?.location?.host;
+            // const hostName="http://13.126.238.23/react-app/"
 
             if(hostName) {
                 if(hostName.includes(decode('bG9jYWw=')) && locServer) { // Check is dev
@@ -62,7 +63,7 @@ export const DomainProvider = ({ children }) => {
                         server.includes(decode('U1RBR0lORw==')) ? {baseUrl: stageUrl, defaultURL: stageUrl} :
                         {baseUrl: stageUrl, defaultURL: stageUrl});
                 }
-                else if(hostName.includes(decode('Y3JlYXRpdmVwcm9tb3Rpb25z'))) { 
+                else if(hostName.includes(decode('aHR0cDovLzEzLjEyNi4yMzguMjM='))) { 
                     setEnvObj({baseUrl: stageUrl, defaultURL: stageUrl});
 
              }     

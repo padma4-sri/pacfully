@@ -49,7 +49,7 @@ const App = () => {
   //   };
   //   clearCaches();
   // }, []);
-
+console.log(baseURL,"baseURL")
 
   return (
     <div className="App">
@@ -66,7 +66,8 @@ const App = () => {
           </Router>
         ) : <></>}
       </PersistGate>
-      {(loader || !baseURL) ? <LoaderProgress /> : (loadIfUser || loadPreRender) ? <Suspense fallback={null} > <AppScripts /> </Suspense> : null}
+      <Suspense fallback={null} > <AppScripts /> </Suspense>
+      {/* {(loader || !baseURL) ? <LoaderProgress /> : (loadIfUser || loadPreRender) ? <Suspense fallback={null} > <AppScripts /> </Suspense> : null} */}
       {isBackdropLoading ? <BackdropLoader /> : null}
     </div>
   );
