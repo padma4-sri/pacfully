@@ -15,7 +15,7 @@ export const DomainProvider = ({ children }) => {
     const decode = (t) => atob(t);
 
     const [tokenSingle, setTokenSingle] = useState("");
-    const [EnvObj, setEnvObj] = useState({baseUrl: "", defaultURL: ""});
+    const [EnvObj, setEnvObj] = useState({baseUrl: "http://13.126.238.23/rest", defaultURL: "http://13.126.238.23/rest"});
     const [baseURL, setBaseURL] = useState("");
     const [defaultURL, setDefaultURL] = useState("");
     useEffect(() => {
@@ -55,20 +55,20 @@ export const DomainProvider = ({ children }) => {
             const hostName = window?.location?.host;
             // const hostName="http://13.126.238.23/react-app/"
 
-            if(hostName) {
-                if(hostName.includes(decode('bG9jYWw=')) && locServer) { // Check is dev
-                    const server = `${locServer}`;
+            // if(hostName) {
+            //     if(hostName.includes(decode('bG9jYWw=')) && locServer) { // Check is dev
+            //         const server = `${locServer}`;
 
-                    setEnvObj(
-                        server.includes(decode('U1RBR0lORw==')) ? {baseUrl: stageUrl, defaultURL: stageUrl} :
-                        {baseUrl: stageUrl, defaultURL: stageUrl});
-                }
-                else if(hostName.includes(decode('aHR0cDovLzEzLjEyNi4yMzguMjM='))) { 
-                    setEnvObj({baseUrl: stageUrl, defaultURL: stageUrl});
+            //         setEnvObj(
+            //             server.includes(decode('U1RBR0lORw==')) ? {baseUrl: stageUrl, defaultURL: stageUrl} :
+            //             {baseUrl: stageUrl, defaultURL: stageUrl});
+            //     }
+            //     else if(hostName.includes(decode('aHR0cDovLzEzLjEyNi4yMzguMjM='))) { 
+            //         setEnvObj({baseUrl: stageUrl, defaultURL: stageUrl});
 
-             }     
+            //  }     
                 
-            }
+            // }
         }
     }, [tokenSingle])
 console.log(baseURL,"baseurl")
