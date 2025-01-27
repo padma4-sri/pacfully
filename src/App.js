@@ -66,8 +66,7 @@ console.log(baseURL,"baseURL")
           </Router>
         ) : <></>}
       </PersistGate>
-      <Suspense fallback={null} > <AppScripts /> </Suspense>
-      {/* {(loader || !baseURL) ? <LoaderProgress /> : (loadIfUser || loadPreRender) ? <Suspense fallback={null} > <AppScripts /> </Suspense> : null} */}
+      {(loader || !baseURL) ? <LoaderProgress /> : (loadIfUser || loadPreRender) ? <Suspense fallback={null} > <AppScripts /> </Suspense> : null}
       {isBackdropLoading ? <BackdropLoader /> : null}
     </div>
   );
