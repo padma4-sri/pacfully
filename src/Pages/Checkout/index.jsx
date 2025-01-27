@@ -10,8 +10,6 @@ import Button from "Components/Common/Button";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import ideal from "../../Res/images/ideal.svg";
 import ban from "../../Res/images/ban.svg";
-import bestpromofit from "../../Res/images/best.svg";
-import bestexpofit from "../../Res/images/best1.svg";
 import gp from "../../Res/images/gp.svg";
 import mastero from "../../Res/images/mastero.svg";
 import mondu from "../../Res/images/home/mondu.svg";
@@ -66,7 +64,7 @@ function Checkout() {
 
     };
   });
-  const { baseURL, defaultURL, storeId, expofitUrl } = useContext(DomainContext);
+  const { baseURL, defaultURL, storeId } = useContext(DomainContext);
   let domainUrl = window.location.origin;
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -173,7 +171,6 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
           last_name: guestBillingAddress?.addressList?.lastName,
           legal_form: "string",
           ...(guestBillingAddress?.addressList?.companyName && { company_name: guestBillingAddress?.addressList?.companyName }),
-          company_url: "https://www.promofit.nl/balpen-nash-witte-houder-full-colour",
           phone: guestBillingAddress?.addressList?.mobileNumber,
           external_reference_id: orderId,
           salutation: "salutation",
@@ -297,7 +294,6 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
           ...(customerBillingAddress?.defaultBilling?.company || customerBillingAddress?.defaultBillingAddress?.company
             ? { company_name: customerBillingAddress?.defaultBilling?.company ?? customerBillingAddress?.defaultBillingAddress?.company }
             : {}),
-          company_url: "https://www.promofit.nl/balpen-nash-witte-houder-full-colour",
           phone: customerBillingAddress?.defaultBilling?.mobile_number
             ? customerBillingAddress?.defaultBilling?.mobile_number
             : customerBillingAddress?.defaultBillingAddress?.mobile_number,
@@ -823,10 +819,7 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
   };
   useEffect(()=>{
     handlePaymentList(summaryData);
-    if (!adminToken) {
-      adminTokenHandler(axios,baseURL,dispatch);
-
-    }
+   
   },[summaryData])
   useEffectOnce(()=>{
     if (isLoggedUser) {
@@ -903,7 +896,7 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
 
       },
       axiosData: {
-        url: `${expofitUrl}/checkout/summary`,
+        url: `${baseURL}/checkout/summary`,
         paramsData: {
           customerId: customerId ? customerId : id ? id : "",
           quoteId: quote
@@ -931,7 +924,7 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
 
       },
       axiosData: {
-        url: `${expofitUrl}/checkout/summaryLogin`,
+        url: `${baseURL}/checkout/summaryLogin`,
         paramsData: {
           customerId: customerId ? customerId : id ? id : "",
           quoteId: quote
@@ -1092,8 +1085,6 @@ if(selectedShippingMethod!==null){
             event?.label === "Afhalen in Etten-Leur"?"22": guestBillingAddress?.addressList?.houseNumber,
             event?.label === "Afhalen in Etten-Leur"?"Pauvreweg": guestBillingAddress?.addressList?.address,
           ],
-          company: event?.label === "Afhalen in Etten-Leur" && storeId == "1" ?"Promofit":event?.label === "Afhalen in Etten-Leur" && storeId == "2"?"Expofit":guestBillingAddress?.addressList?.companyName,
-          telephone:event?.label === "Afhalen in Etten-Leur" && storeId == "1" ?"+31 (0)76-50 182 25":event?.label === "Afhalen in Etten-Leur" && storeId == "2"?"+31 (0)76-50 211 20":guestBillingAddress?.addressList?.mobileNumber,
           postcode: event?.label === "Afhalen in Etten-Leur"?"4879 NA":guestBillingAddress?.addressList?.postalCode,
           city:event?.label === "Afhalen in Etten-Leur"?"Etten-Leur": guestBillingAddress?.addressList?.city,
           firstname: guestBillingAddress?.addressList?.firstName,
@@ -1146,8 +1137,6 @@ if(selectedShippingMethod!==null){
             event?.label === "Afhalen in Etten-Leur"?"22": guestShippingAddress?.addressList?.houseNumbers,
             event?.label === "Afhalen in Etten-Leur"?"Pauvreweg": guestShippingAddress?.addressList?.Straatnaam,
           ],
-          company:event?.label === "Afhalen in Etten-Leur" && storeId == "1" ?"Promofit":event?.label === "Afhalen in Etten-Leur" && storeId == "2"?"Expofit": guestShippingAddress?.addressList?.companyname,
-          telephone:event?.label === "Afhalen in Etten-Leur" && storeId == "1" ?"+31 (0)76-50 182 25":event?.label === "Afhalen in Etten-Leur" && storeId == "2"?"+31 (0)76-50 211 20": guestShippingAddress?.addressList?.phoneNumber,
           postcode: event?.label === "Afhalen in Etten-Leur"?"4879 NA":guestShippingAddress?.addressList?.postcode,
           city:event?.label === "Afhalen in Etten-Leur"?"Etten-Leur": guestShippingAddress?.addressList?.Stad,
           firstname: guestShippingAddress?.addressList?.firstname,
@@ -1257,12 +1246,7 @@ if(selectedShippingMethod!==null){
               ? customerShippingAddress?.defaultBilling?.street2
               : customerShippingAddress?.defaultBillingAddress?.street2,
           ],
-          company:event?.label === "Afhalen in Etten-Leur" && storeId == "1" ?"Promofit":event?.label === "Afhalen in Etten-Leur" && storeId == "2"?"Expofit": customerShippingAddress?.defaultBilling?.firstname
-            &&  customerShippingAddress?.defaultBilling?.company?  customerShippingAddress?.defaultBilling?.company:customerShippingAddress?.defaultBillingAddress?.company,
-        telephone:event?.label === "Afhalen in Etten-Leur" && storeId == "1" ?"+31 (0)76-50 182 25":event?.label === "Afhalen in Etten-Leur" && storeId == "2"?"+31 (0)76-50 211 20": customerShippingAddress?.defaultBilling?.mobile_number
-            ? customerShippingAddress?.defaultBilling?.mobile_number
-            : customerShippingAddress?.defaultBillingAddress?.mobile_number,
-          postcode: event?.label === "Afhalen in Etten-Leur" ? "4879 NA": customerShippingAddress?.defaultBilling?.postcode
+           postcode: event?.label === "Afhalen in Etten-Leur" ? "4879 NA": customerShippingAddress?.defaultBilling?.postcode
             ? customerShippingAddress?.defaultBilling?.postcode
             : customerShippingAddress?.defaultBillingAddress?.postcode,
           city:event?.label === "Afhalen in Etten-Leur" ?"Etten-Leur" : customerShippingAddress?.defaultBilling?.city
@@ -1333,8 +1317,6 @@ if(selectedShippingMethod!==null){
             event?.label === "Afhalen in Etten-Leur" ? "22": guestBillingAddress?.addressList?.houseNumber,
             event?.label === "Afhalen in Etten-Leur" ? "Pauvreweg": guestBillingAddress?.addressList?.address,
           ],
-          company:event?.label === "Afhalen in Etten-Leur" && storeId == "1" ?"Promofit":event?.label === "Afhalen in Etten-Leur" && storeId == "2"?"Expofit": guestBillingAddress?.addressList?.companyName,
-          telephone:event?.label === "Afhalen in Etten-Leur" && storeId == "1" ?"+31 (0)76-50 182 25":event?.label === "Afhalen in Etten-Leur" && storeId == "2"?"+31 (0)76-50 211 20": guestBillingAddress?.addressList?.mobileNumber,
           postcode: event?.label === "Afhalen in Etten-Leur" ? "4879 NA": guestBillingAddress?.addressList?.postalCode,
           city: event?.label === "Afhalen in Etten-Leur" ? "Etten-Leur": guestBillingAddress?.addressList?.city,
           firstname: guestBillingAddress?.addressList?.firstName,
@@ -1387,8 +1369,6 @@ if(selectedShippingMethod!==null){
             event?.label === "Afhalen in Etten-Leur" ? "22": guestShippingAddress?.addressList?.houseNumbers,
             event?.label === "Afhalen in Etten-Leur" ? "Pauvreweg": guestShippingAddress?.addressList?.Straatnaam,
           ],
-          company: event?.label === "Afhalen in Etten-Leur" && storeId == "1" ?"Promofit":event?.label === "Afhalen in Etten-Leur" && storeId == "2"?"Expofit": guestShippingAddress?.addressList?.companyname,
-          telephone:event?.label === "Afhalen in Etten-Leur" && storeId == "1" ?"+31 (0)76-50 182 25":event?.label === "Afhalen in Etten-Leur" && storeId == "2"?"+31 (0)76-50 211 20": guestShippingAddress?.addressList?.phoneNumber,
           postcode:event?.label === "Afhalen in Etten-Leur" ? "4879 NA": guestShippingAddress?.addressList?.postcode,
           city:event?.label === "Afhalen in Etten-Leur" ? "Etten-Leur": guestShippingAddress?.addressList?.Stad,
           firstname: guestShippingAddress?.addressList?.firstname,
@@ -1655,8 +1635,6 @@ if(selectedShippingMethod!==null){
       multisafepay_sofort: sofort,
       multisafepay_visa: visa,
       multisafepay_maestro: mastero,
-      banktransfer: storeId==1? bestpromofit:bestexpofit,
-      free: storeId==1? bestpromofit:bestexpofit,
     };
     return imageSources[paymentMethodId];
   }
@@ -1803,7 +1781,6 @@ if(selectedShippingMethod!==null){
               <div className="static__content pt-8 px-4">
                 <h3 className="fw-700 fs-18">
                   Daarom{" "}
-                  {storeId == 1 ? "Promofit" : storeId == 2 ? "Expofit" : ""}!
                 </h3>
                 <div className="ups__content flex col gap-3 pt-4">
                   {summaryData?.ups_feature_content
@@ -2615,7 +2592,6 @@ In het geval van bedrukte artikelen ontvangt u de factuur per e-mail na goedkeur
               <div className="static__content pt-12 px-4">
                 <h3 className="fw-700 fs-18">
                   Daarom{" "}
-                  {storeId == 1 ? "Promofit" : storeId == 2 ? "Expofit" : ""}!
                 </h3>
                 <div className="ups__content flex col gap-3 pt-4">
                   {summaryData?.ups_feature_content

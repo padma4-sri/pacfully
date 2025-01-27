@@ -170,7 +170,7 @@ const Sidebar = () => {
   return (
     <div className='user__sidebar'>
       <BackgroundBox className='pt-6 pb-7 px-0 lg-pt-6 lg-px-8 lg-pb-8'>
-        <h2 className='title line-8 fw-700 pb-2 lg-pb-4 px-5 lg-px-0'>Mijn {storeId === 1 ? "Promofit" : "Expofit"}</h2>
+        <h2 className='title line-8 fw-700 pb-2 lg-pb-4 px-5 lg-px-0'>Mijn </h2>
         {width >= 768 && dataBlock}
         <div className="lg-hide">
           {dataBlockMobile}

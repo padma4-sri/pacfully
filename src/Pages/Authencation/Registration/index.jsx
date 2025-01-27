@@ -94,7 +94,7 @@ const Registration = () => {
       confirmPassword: "",
       showPassword: "",
     });
-    navigate("/mijn-account/mijn-overzicht");
+    navigate("/");
   };
   const getCustomerQuoteId = (token, id) => {
     const quoteIdOptions = {
@@ -228,7 +228,7 @@ const Registration = () => {
 
   useEffect(() => {
     if (isLoggedUser) {
-    navigate("/mijn-account/mijn-overzicht");
+    navigate("/");
     }
   }, [isLoggedUser])
   const getUserDetails = (token) => {
@@ -258,8 +258,8 @@ const Registration = () => {
     <React.Fragment>
       <Input
         name="firstName"
-        placeHolder="Voornaam"
-        lable="Voornaam *"
+        placeHolder="First name"
+        lable="First name *"
         iconClass="top-11"
         labelClassName="fs-15 fw-700 line-6"
         value={data?.firstName}
@@ -282,8 +282,8 @@ const Registration = () => {
         name="lastName"
         iconClass="top-11"
         labelClassName="fs-15 fw-700 line-6"
-        placeHolder="Achternaam"
-        lable="Achternaam *"
+        placeHolder="Surname"
+        lable="Surname *"
         value={data?.lastName}
         onChange={changeHandler}
         onKeyDown={keyDownHandler}
@@ -303,67 +303,22 @@ const Registration = () => {
       <Input
         type="checkbox"
         name="newsLetter"
-        lable="Aanmelden voor nieuwsbrief"
+        lable="Sign up for newsletter"
         fieldClassName="checkbox flex gap-3 row pb-5 row-i right middle"
         value="newsLetter"
         onChange={changeHandler}
         checked={data?.newsLetter === "newsLetter" ? true : false}
       />
-      <div className="choose__business flex row gap-x-10">
-        <Input
-          type="radio"
-          name="business"
-          lable="Particulier"
-          value="0"
-          fieldClassName="radio flex gap-3 row pb-5 row-i right middle"
-          labelClassName="fs-14 line-1"
-          onChange={changeHandler}
-          checked={data?.business === "0" ? true : false}
-        />
-        <Input
-          type="radio"
-          name="business"
-          lable="Zakelijk"
-          value="1"
-          fieldClassName="radio flex gap-3 row pb-5 row-i right middle"
-          labelClassName="fs-14 line-1"
-          onChange={changeHandler}
-          checked={data?.business === "1" ? true : false}
-        />
-      </div>
-      {data?.business === "1" ? (
-        <Input
-          name="companyName"
-          placeHolder="Bedrijfsnaam"
-          lable="Bedrijfsnaam *"
-          iconClass="top-11"
-          labelClassName="fs-15 fw-700 line-6"
-          value={data?.companyName}
-          onBlur={() => onBlur("companyName")}
-          onChange={changeHandler}
-          errorMessage={
-            errors?.companyName === data?.companyName ? "" : errors?.companyName
-          }
-          icon={
-            success?.companyName === "true" ? (
-              <ValidSuccesArrow />
-            ) : success?.companyName === "false" ? (
-              <ValidErrorArrow />
-            ) : null
-          }
-          showIcon={true}
-        />
-      ) : (
-        <></>
-      )}
+     
+    
     </React.Fragment>
   );
   const loginInformation = (
     <React.Fragment>
       <Input
         name="email"
-        placeHolder="E-mail adres"
-        lable="E-mail adres *"
+        placeHolder="Email address"
+        lable="Email address *"
         value={data?.email}
         onChange={changeHandler}
         errorMessage={errors?.email === data?.email ? "" : errors?.email}
@@ -383,8 +338,8 @@ const Registration = () => {
         <Input
           name="password"
           type={data?.showPassword === "true" ? "text" : "password"}
-          placeHolder="Wachtwoord"
-          lable="Wachtwoord *"
+          placeHolder="password"
+          lable="Password *"
           value={data?.password}
           onChange={changeHandler}
           iconClass="top-11"
@@ -407,8 +362,8 @@ const Registration = () => {
       <Input
         type={data?.showPassword === "true" ? "text" : "password"}
         name="confirmPassword"
-        lable="Bevestig wachtwoord *"
-        placeHolder="Bevestig wachtwoord"
+        lable="Confirm password*"
+        placeHolder="Confirm password"
         value={data?.confirmPassword}
         iconClass="top-11"
         labelClassName="fs-15 fw-700 line-6"
@@ -432,7 +387,7 @@ const Registration = () => {
       <Input
         type="checkbox"
         name="showPassword"
-        lable="Laat wachtwoord zien"
+        lable="Show password"
         fieldClassName="checkbox flex gap-3 row pb-0 row-i right middle"
         value={true}
         checked={data?.showPassword === "true" ? true : false}
@@ -444,7 +399,7 @@ const Registration = () => {
             disabled={isProcessign}
             className={`r-6 px-2 py-3 pointer fw-700 ${isProcessign ? 'rotateUpdate' : ''}`}
           >
-            {isProcessign ? <AutorenewIcon /> : "Account aanmaken"}
+            {isProcessign ? <AutorenewIcon /> : "Create account"}
             {!isProcessign && <span className='btn__icon'><ArrowForwardIosIcon /></span>}
           </Button>
       </div>
@@ -455,17 +410,17 @@ const Registration = () => {
       <div className="form__block xl-pb-10">
         <form onSubmit={submitHandler} noValidate>
           <div className="column__wrapper px-0 md-px-4 md-px-8 r-1">
-            <h2 className="fs-26 md-fs-32 fw-700 md-line-12 pb-2">Maak account aan</h2>
+            <h2 className="fs-26 md-fs-32 fw-700 md-line-12 pb-2">Create account</h2>
           </div>
           <div className="fields__wrapper mx-auto flex col gap-y-4 sm-flex sm-gap-y-0 xl-flex gap-y-3 xl-row gap-x-8">
             <ColumnWrapper
-              title="Persoonlijke informatie"
+              title="Personal information"
               data={personalInformation}
-              heading="creëer een nieuw account"
+              heading="create a new account"
               className="px-0 md-px-8 pt-0 sm-pt-0"
             />
             <ColumnWrapper
-              title="Login informatie"
+              title="Login information"
               data={loginInformation}
               className="px-0 md-px-8 pt-0 sm-pt-0"
             />

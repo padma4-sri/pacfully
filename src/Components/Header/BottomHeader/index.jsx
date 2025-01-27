@@ -55,7 +55,7 @@ const BottomHeader = ({ data, isCheckout = false }) => {
           onClick={() => uspHandler(item?.menu?.tag_url)}
           aria-label="button"
         >
-          <ValidSuccesArrow color="var(--themeColor)" />
+          <ValidSuccesArrow color={item?.menu?.color} />
           <p className="text-nowrap">{item?.menu?.title}</p>
         </button>
       ))
@@ -150,7 +150,7 @@ const BottomHeader = ({ data, isCheckout = false }) => {
                                       onClick={() => uspHandler(item?.menu?.tag_url)}
                                       aria-label="button"
                                     >
-                                      <ValidSuccesArrow color="var(--themeColor)" />
+                                      <ValidSuccesArrow color={item?.menu?.color} />
                                       <p className="text-nowrap">{item?.menu?.title}</p>
                                     </button>
                                   </div>

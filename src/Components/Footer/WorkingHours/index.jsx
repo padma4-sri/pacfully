@@ -25,18 +25,16 @@ const WorkingHours = () => {
     return (
       <>
         <div className="icon relative">
-          {item?.contactInfo?.image && <Img src={item?.contactInfo?.image} alt={storeId === 1 ? `Promofit ${item?.contactInfo?.headerText}` : `Expofit ${item?.contactInfo?.headerText}`} />}
-          {item?.contactInfo?.mail && <Img src={item?.contactInfo?.mail} alt={storeId === 1 ? 'Promofit email' : 'Expofit email'} />}
+          {item?.contactInfo?.image && <img src={item?.contactInfo?.image} alt=""/>}
+          {item?.contactInfo?.mail && <img src={item?.contactInfo?.mail} alt="" />}
         </div>
         <div className="details flex-1">
           <h2 className="pb-1">{item?.contactInfo?.headerText}</h2>
           <div className="info fw-300">
             {item?.contactInfo?.primaryNumber && (
-              <p><a className="line-6 m-0" href={`tel:${item?.contactInfo?.primaryNumber}`}>NL: {item?.contactInfo?.primaryNumber}</a></p>
+              <p><a className="line-6 m-0" href={`tel:${item?.contactInfo?.primaryNumber}`}>{item?.contactInfo?.primaryNumber}</a></p>
             )}
-            {item?.contactInfo?.additionalNumber && (
-              <p><a className="line-6 m-0" href={`tel:${item?.contactInfo?.additionalNumber}`}>BE: {item?.contactInfo?.additionalNumber}</a></p>
-            )}
+           
             {item?.contactInfo?.description && (
               <p><span className="line-6">{item?.contactInfo?.description}</span></p>
             )}
@@ -63,8 +61,9 @@ const WorkingHours = () => {
     height="35px"
     style={{ borderRadius: "30px" }}
   />
+  console.log(getFooterData,"getFooterData")
   const DataBlock = () => {
-    return homePageLoading && HeaderFooterDataLoading
+    return  HeaderFooterDataLoading
       ? ["", "", "", "", "", ""]?.map((item, index) => (
         <div
           key={`WorkingHours_${index}`}
@@ -107,7 +106,7 @@ const WorkingHours = () => {
           <a
             className="cards__block r-5 p-2 sm-p-6 xs-p-4 xs-p-8 flex gap-x-8 sm-flex sm-gap-x-7 lg-gap-x-4 middle w-1/3"
             key={`footer__contactInfo${index}`}
-            href={`https://wa.me/${item?.contactInfo?.whatsappLinkNumber.replace(/\s|-/g, "")}`}
+            // href={`https://wa.me/${item?.contactInfo?.whatsappLinkNumber.replace(/\s|-/g, "")}`}
             target="_blank"
             rel="noopener noreferrer"
           >

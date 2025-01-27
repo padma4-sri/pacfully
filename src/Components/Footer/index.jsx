@@ -15,17 +15,12 @@ const Footer = () => {
 
   return (
     <div className='footer w-1/1'>
-      {
-        pathName === "checkout" ?
-          <BottomFooter isCheckout={true} />
-          :
-          <>
+        <>
             <Newsletter />
             <WorkingHours />
              <MainFooter/>
             <BottomFooter />
           </>
-      }
     </div >
   )
 }

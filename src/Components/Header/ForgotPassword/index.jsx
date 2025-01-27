@@ -68,9 +68,9 @@ const ForgotPassword = ({ setResMessages }) => {
     return (
         <div className="forgot__wrapper__containe">
             <div className="sidebar__heading pb-5">
-                <h1 className="fw-700 mb-2 fs-20">Je wachtwoord vergeten?</h1>
+                <h1 className="fw-700 mb-2 fs-20">Forgot your password?</h1>
                 <p className="line-6 fs-14 fw-700">
-                Vul hieronder je e-mailadres in. Wij sturen je dan een link zodat je een nieuw wachtwoord kunt instellen. Dit kan even duren, check ook de spam folder.
+                Enter your email address below. We will then send you a link so that you can set a new password. This may take a while, also check the spam folder.
                 </p>
             </div>
             <div className="forgot__wrapper login__wrapper">
@@ -79,7 +79,7 @@ const ForgotPassword = ({ setResMessages }) => {
                         <Input
                             name="email"
                             value={data?.email}
-                            placeHolder="Vul uw e-mailadres in"
+                            placeHolder="Enter your email address"
                             lable="E-mail *"
                             iconClass="top-11"
                             labelClassName="fs-15 fw-700 line-6"
@@ -99,7 +99,7 @@ const ForgotPassword = ({ setResMessages }) => {
                             <Button
                                 fullWidth={true}
                                 className={`r-6 px-2 py-3 pointer fw-700 ${isProcessign ? 'rotateUpdate' : ''}`}
-                            >{isProcessign ? <AutorenewIcon /> : "Reset mijn wachtwoord"}</Button>
+                            >{isProcessign ? <AutorenewIcon /> : "Reset my password"}</Button>
                             <Button
                                 fullWidth={true}
                                 className="r-6 px-2 py-3 pointer fw-700"
@@ -113,7 +113,7 @@ const ForgotPassword = ({ setResMessages }) => {
                                     }
                                 }
                                 }
-                            >Terug</Button>
+                            >Back</Button>
                         </div>
                         {resMessage && <div className="res__message pt-3 error">{resMessage}</div>}
                     </form>

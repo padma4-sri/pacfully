@@ -73,25 +73,25 @@ const Form = ({ product_id, setResMessage, resMessage, openModel }) => {
             review: {
                 required: {
                     value: true,
-                    message: "dit veld is verplicht.",
+                    message: "This field is required.",
                 }
             },
             summary: {
                 required: {
                     value: true,
-                    message: "dit veld is verplicht.",
+                    message: "This field is required.",
                 }
             },
             nickname: {
                 required: {
                     value: true,
-                    message: "dit veld is verplicht.",
+                    message: "This field is required.",
                 }
             },
             rating: {
                 required: {
                     value: true,
-                    message: "dit veld is verplicht.",
+                    message: "This field is required.",
                 }
             }
         },

@@ -11,7 +11,7 @@ import { APIQueryPost } from "APIMethods/API";
 import { ACTION_UPDATE__WISHLIST, ACTION_WISHLISTADDED__DATA, ACTION_WISHLIST_COUNT } from "Store/action";
 
 const Favorites = () => {
-  const { baseURL, storeId,expofitUrl } = useContext(DomainContext);
+  const { baseURL, storeId } = useContext(DomainContext);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
@@ -115,7 +115,7 @@ const Favorites = () => {
       setWishCount(resData?.data?.[0]?.count);
     },
     axiosData: {
-      url: `${expofitUrl}/getwishlist`,
+      url: `${baseURL}/getwishlist`,
       headers: { Authorization: `Bearer ${token}` },
       paramsData: {
         customerId: customerDetails?.id ? customerDetails?.id : null,

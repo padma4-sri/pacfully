@@ -108,7 +108,7 @@ const BannerItem = ({ loading, ...props }) => {
                   }}
                 />
               ) : img ? (
-                <Img
+                <img
                   src={img}
                   alt={title}
                   type="img"

@@ -101,15 +101,15 @@ const MainFooter = () => {
         {
           <div className="menu__block visit__us">
             <h3 className="pb-6">
-              {getFooterData?.promofitContact?.contactText}
+              {getFooterData?.pacifyContact?.contactText}
             </h3>
             <div className="location__address flex gap-y-2 col">
               <p className="pb-1 fw-700">
-                {getFooterData?.promofitContact?.visitingHeader}
+                {getFooterData?.pacifyContact?.visitingHeader}
               </p>
-              <p>{getFooterData?.promofitContact?.address1}</p>
-              <p>{getFooterData?.promofitContact?.address2}</p>
-              <p>{getFooterData?.promofitContact?.country}</p>
+              <p>{getFooterData?.pacifyContact?.address1}</p>
+              <p>{getFooterData?.pacifyContact?.address2}</p>
+              <p>{getFooterData?.pacifyContact?.country}</p>
             </div>
           </div>
         }

@@ -116,7 +116,7 @@ const ProductListing = ({ ind, item, navigate, dispatch,dropboxToken,dropboxAcce
     };
   });
 
-  const { baseURL, storeId, defaultURL,expofitUrl } = useContext(DomainContext);
+  const { baseURL, storeId, defaultURL } = useContext(DomainContext);
   const closeIcon = "/res/img/closeIcon.svg";
   const [details, setDetails] = useState([]);
 
@@ -329,7 +329,7 @@ const ProductListing = ({ ind, item, navigate, dispatch,dropboxToken,dropboxAcce
           },
 
         };
-        axios.post(expofitUrl + `/cart/AdditionalOptions`, payload).then((res) => {
+        axios.post(baseURL + `/cart/AdditionalOptions`, payload).then((res) => {
           if (res.status == 200) {
             setLoading(false)
             if (isLoggedUser) {
@@ -415,7 +415,7 @@ const ProductListing = ({ ind, item, navigate, dispatch,dropboxToken,dropboxAcce
         SessionExpiredLogout(dispatch, res?.status, navigate, isSessionExpired);
       },
       axiosData: {
-        url: `${expofitUrl}/cart/AdditionalOptions`,
+        url: `${baseURL}/cart/AdditionalOptions`,
         paramsData: payload,
       },
     };

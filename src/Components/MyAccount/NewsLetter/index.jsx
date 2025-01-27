@@ -113,7 +113,7 @@ const NewsLetter = () => {
                   <Input
                     type="checkbox"
                     name="newsLetter"
-                    lable={storeId === 1 ? "Promofit nieuwsbrief" : "Expofit nieuwsbrief"}
+                    lable=""
                     fieldClassName="checkbox flex gap-3 row pb-3 row-i right middle fs-15 pl-1"
                     labelClassName="fs-15"
                     value={newsLetter}

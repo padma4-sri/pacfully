@@ -15,7 +15,7 @@ import {
   ACTION_FETCH__HOMEPAGE_FEATURE_PRODUCT
 } from "Store/action";
 import axios from "axios";
-import { SessionExpiredLogout, addWishList, getCartItems ,adminTokenHandler} from "Utilities";
+import { SessionExpiredLogout, addWishList, getCartItems } from "Utilities";
 import { APIQueryPost, APIQueryGet } from "APIMethods/API";
 import { useLocation, useNavigate } from 'react-router-dom';
 import RenderContext from 'Context/RenderContext';
@@ -152,11 +152,7 @@ const InitialFunctions = (baseURL, storeId, defaultURL) => {
     },
     axiosData: {
       url: `${baseURL}/home/headerfooter`,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-    }
+      
 
     }
   }
@@ -174,7 +170,7 @@ const InitialFunctions = (baseURL, storeId, defaultURL) => {
       }))
     },
     axiosData: {
-      url: `${defaultURL}/getHomePage`,
+      url: `${baseURL}/home/getHomePage`,
 
     }
   }
@@ -197,12 +193,10 @@ const InitialFunctions = (baseURL, storeId, defaultURL) => {
     // First API call
     await APIQueryGet(homeOptions);
     
-    // Second API call after the first one completes
-    APIQueryGet(featureProduct);
   };
   useEffect(() => {
    
-    if ((loadIfUser || loadPreRender) && location?.pathname === "/") {
+    if ((loadIfUser || loadPreRender) && location?.pathname === "/react-app") {
       // Feature product
       fetchHomePageData();
 
@@ -256,10 +250,10 @@ const InitialFunctions = (baseURL, storeId, defaultURL) => {
     if (!APIReferenceQuoteStatus.current) {
       APIReferenceQuoteStatus.current = true;
       if (isLoggedUser && customerQuoteId) {
-        getQuoteStatus(customerQuoteId);
+        // getQuoteStatus(customerQuoteId);
       }
       if (!isLoggedUser && guestQuoteId) {
-        getQuoteStatus(guestQuoteId);
+        // getQuoteStatus(guestQuoteId);
       }
       setTimeout(() => (APIReferenceQuoteStatus.current = false), 300);
     }
@@ -268,35 +262,31 @@ const InitialFunctions = (baseURL, storeId, defaultURL) => {
 
  
   // adminToken
-  useEffect(() => {
-    if (!adminToken) {
-      adminTokenHandler(axios,baseURL,dispatch);
-    }
-  }, [isLoggedUser])
-  useEffect(() => {
-    if (customerDetails?.id && !APIReferenceCartItems.current && customerQuoteId) {
-      APIReferenceCartItems.current = true;
-      if (isLoggedUser && customerQuoteId) {
-        getCartItems(dispatch, () => { }, customerQuoteId, customerDetails?.id, () => { }, defaultURL, storeId, token);
-      }
-      setTimeout(() => (APIReferenceCartItems.current = false), 300);
-    }
-  }, [customerDetails?.id, customerQuoteId]);
+ 
+  // useEffect(() => {
+  //   if (customerDetails?.id && !APIReferenceCartItems.current && customerQuoteId) {
+  //     APIReferenceCartItems.current = true;
+  //     if (isLoggedUser && customerQuoteId) {
+  //       getCartItems(dispatch, () => { }, customerQuoteId, customerDetails?.id, () => { }, defaultURL, storeId, token);
+  //     }
+  //     setTimeout(() => (APIReferenceCartItems.current = false), 300);
+  //   }
+  // }, [customerDetails?.id, customerQuoteId]);
 
-  useEffect(() => {
-    if (guestQuoteId && !APIReferenceCartItems.current) {
-      APIReferenceCartItems.current = true;
-      if (!isLoggedUser) {
-        getCartItems(dispatch, () => { }, guestQuoteId, "", () => { }, defaultURL, storeId, token);
-      }
-      setTimeout(() => (APIReferenceCartItems.current = false), 300);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (guestQuoteId && !APIReferenceCartItems.current) {
+  //     APIReferenceCartItems.current = true;
+  //     if (!isLoggedUser) {
+  //       getCartItems(dispatch, () => { }, guestQuoteId, "", () => { }, defaultURL, storeId, token);
+  //     }
+  //     setTimeout(() => (APIReferenceCartItems.current = false), 300);
+  //   }
+  // }, []);
   // get SKU Wishlist
   useEffect(() => {
     if (customerDetails?.id && token && !APIReferenceWishlist.current && !wilistProductId?.id && location?.pathname !== "/mijn-account/mijn-favorieten") {
       APIReferenceWishlist.current = true;
-      APIQueryPost(wishListOptions);
+      // APIQueryPost(wishListOptions);
       setTimeout(() => (APIReferenceWishlist.current = false), 300);
     }
   }, [customerDetails?.id, token, wilistProductId?.id, updateWishList]);

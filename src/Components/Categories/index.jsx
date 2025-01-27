@@ -62,7 +62,7 @@ const Categories = ({ className = '', keyValue, loading = false, data = [], titl
             
             className='absolute top-0 left-0 w-1/1 h-1/1'
           >
-            <Img src={item?.imageUrl} alt={item?.name} />
+            <img src={item?.imageUrl} alt={item?.name} />
           </AdvancedLink>
         </div>
         <h2 className='tc pt-3' ref={linkRef} lang="en">
@@ -166,10 +166,10 @@ function Arrow(props) {
       }}
     >
       {props.left && (
-        <Img src={leftArrow} />
+        <img src={leftArrow} />
       )}
       {!props.left && (
-        <Img src={rightArrow} />
+        <img src={rightArrow} />
       )}
     </button>
   )

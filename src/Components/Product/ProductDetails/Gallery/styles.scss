@@ -106,7 +106,6 @@
   transform: translate(-50%, -50%);
   width: 30px;
   height: 64px;
-  background: url('https://www.promofit.nl/static/version1712712226/frontend/Webfant/promofit/nl_NL/media/img/icon/play-btn.svg') no-repeat center center;
   background-size: contain;
   z-index: 10;
   display: block;
@@ -242,7 +241,6 @@
           top: 0;
           .play-button{
            &::before {
-             content: url("https://www.promofit.nl/static/version1712712226/frontend/Webfant/promofit/nl_NL/media/img/icon/play-btn.svg");
               color: #fff;
               position: absolute;
               left: 0;

@@ -20,7 +20,7 @@ import AllCategories from "../AllCategories";
 import { useDispatch, useSelector } from "react-redux";
 import Social from "../Social";
 import {  APIQueryGet } from "APIMethods/API";
-import { handleLogin } from "Utilities";
+import { handleLogin ,logOutHandler} from "Utilities";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import LoginForgot from "../LoginForgot/LoginForgot";
 import { ACTION_OPENCART } from "Store/action";
@@ -109,6 +109,7 @@ const TopHeader = ({
       window.removeEventListener('resize', handleResize);
     };
   }, [minicartPopUp]);
+  console.log(getHeaderData,"getHeaderData")
   return (
     <React.Fragment>
       <header
@@ -139,8 +140,8 @@ const TopHeader = ({
                     setShowSuggestion(false);
                   }}
                 >
-                  <Img
-                    src={logoImg}
+                  <img
+                    src={getHeaderData?.logo}
                     className="w-1/1 h-1/1"
                     style={{ objectFit: "contain" }}
                   />
@@ -225,7 +226,8 @@ const TopHeader = ({
                   aria-label="user"
                   onClick={() => {
                     if (isLoggedUser) {
-                      navigate("/mijn-account/mijn-overzicht");
+    logOutHandler(dispatch, navigate);
+
                     } else {
 
                       handleLogin(dispatch);
@@ -244,15 +246,15 @@ const TopHeader = ({
                   }
                 </IconButton>
                 <IconButton
-                  // onClick={() => {
-                  //   setShowSuggestion(false);
-                  //   if (isLoggedUser) {
-                  //     navigate("/mijn-account/mijn-favorieten");
-                  //   } else {
-                  //     setShowSuggestion(false);
-                  //     handleLogin(dispatch);
-                  //   }
-                  // }}
+                  onClick={() => {
+                    setShowSuggestion(false);
+                    if (isLoggedUser) {
+                      navigate("/");
+                    } else {
+                      setShowSuggestion(false);
+                      handleLogin(dispatch);
+                    }
+                  }}
                   aria-label="wishlist"
                   className="hide wishlist__icon"
                 >

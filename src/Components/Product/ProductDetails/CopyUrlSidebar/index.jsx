@@ -31,7 +31,7 @@ const CopyUrlSidebar = ({ openCopyURLModel, setOpenCopyURLModel, productName }) 
         }
     };
 
-    const emailBody = `Bekijk hier het artikel met de gekozen opties bij ${storeId === 1? 'Promofit':'Expofit'}: 
+    const emailBody = `Bekijk hier het artikel met de gekozen opties bij : 
 ${url}`;
 
 useEffect(() => {

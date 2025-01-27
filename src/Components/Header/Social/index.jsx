@@ -34,7 +34,7 @@ const Social = ({ openModel, setOpenModel }) => {
             >
               <div className="icon__block__social flex-0 flex center">
                 <div className="socialicon__img flex relative">
-                  <Img src={item?.contactInfo?.image} alt={storeId === 1 ? `Promofit ${getHeaderData?.topContent?.headerText}` : `Expofit ${getHeaderData?.topContent?.headerText}`} />
+                  <Img src={item?.contactInfo?.image} alt="image" />
                   {
                     getHeaderData?.contactDetails?.[0]?.contactInfo?.image && <div
                       className="status absolute  r-full overflow-hidden"

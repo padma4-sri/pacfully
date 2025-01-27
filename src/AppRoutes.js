@@ -12,27 +12,29 @@ import Checkout from "Pages/Checkout";
 import OrderConfirmation from "Components/Checkout/OrderConfirmation";
 import NoRoute from "Components/NoRoute/NoRoute";
 import CommingSoon from "Pages/CommingSoon";
-export const StaticUrls = ["/maak-account-aan", "/wachtwoord-opnieuw-instellen/:token", "/winkelwagen", "/offerteaanvraag", "/meest-gestelde-vragen", "/meest-gestelde-vragen/*", "/offerteaanvraag/succes", "/order/succes", "/pagina-niet-gevonden", "/kiyoh", "/checkout", "/privacy", "/algemene-voorwaarden", "/showroom", "/vacatures", "/vacatures/:key", "/blog", "/blog/:key", "/contact", "/disclaimer", "/over-ons", "/druktechnieken", "/klantenservice", "/klantenservice/*", "/mijn-account/:key", "/mijn-account/:key/:key", "/kortingscodes" , "/sitemap"]
+export const StaticUrls = ["/register","/reset-password/:token",
+  // "/wachtwoord-opnieuw-instellen/:token", "/winkelwagen", "/offerteaanvraag", "/meest-gestelde-vragen", "/meest-gestelde-vragen/*", "/offerteaanvraag/succes", "/order/succes", "/pagina-niet-gevonden", "/kiyoh", "/checkout", "/privacy", "/algemene-voorwaarden", "/showroom", "/vacatures", "/vacatures/:key", "/blog", "/blog/:key", "/contact", "/disclaimer", "/over-ons", "/druktechnieken", "/klantenservice", "/klantenservice/*", "/mijn-account/:key", "/mijn-account/:key/:key", "/kortingscodes" , "/sitemap"
+]
 const AppRoutes = () => {
   const routesData = {
-    "/maak-account-aan":<Registration />,
-    "/wachtwoord-opnieuw-instellen/:token":<ResetPassword />,
-    "/winkelwagen":<CartPage />,
-    "/offerteaanvraag":<QuotePage />,
-    "/offerteaanvraag/succes":<QuoteConfirmation />,
-    "/order/succes":<OrderConfirmation />,
-    "/pagina-niet-gevonden":<NoRoute />,
-    "/checkout":<Checkout />,
-    "/mijn-account/:key":<MyAccount />,
-    "/mijn-account/:key/:key":<MyAccount />,
+    "/register":<Registration />,
+    "/reset-password/:token":<ResetPassword />,
+    // "/winkelwagen":<CartPage />,
+    // "/offerteaanvraag":<QuotePage />,
+    // "/offerteaanvraag/succes":<QuoteConfirmation />,
+    // "/order/succes":<OrderConfirmation />,
+    // "/pagina-niet-gevonden":<NoRoute />,
+    // "/checkout":<Checkout />,
+    // "/mijn-account/:key":<MyAccount />,
+    // "/mijn-account/:key/:key":<MyAccount />,
   }
 return (
   <React.Fragment>
     <Routes>
-      <Route path="/" element={<CommingSoon />} exact />
-      {/* {StaticUrls.map((url)=> (
+      <Route path="/react-app" element={<Home />} exact />
+      {StaticUrls.map((url)=> (
         <Route key={`route_${url}`} path={url} element={routesData[url]} exact />
-      ))} */}
+      ))}
       {/* <Route path="/*" element={<ProductPage />} exact /> */}
     </Routes>
   </React.Fragment>

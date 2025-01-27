@@ -110,63 +110,63 @@ const Form = ({
       phoneNumber: {
         required: {
           value: true,
-          message: "dit veld is verplicht.",
+          message: "This field is required.",
         },
         min: {
           value: 10,
-          message: "Het nummer moet bestaan uit minimaal 10 tekens.",
+          message: "The number must consist of at least 10 characters.",
         },
         max: {
           value: 15,
-          message: "Het nummer moet maximaal 15 cijfers bevatten",
+          message: "The number must contain a maximum of 15 digits",
         }
       },
       Stad: {
         required: {
           value: true,
-          message: "dit veld is verplicht.",
+          message: "This field is required.",
         },
       },
       Straatnaam: {
         required: {
           value: true,
-          message: "dit veld is verplicht.",
+          message: "This field is required.",
         },
       },
       houseNumbers: {
         required: {
           value: true,
-          message: "dit veld is verplicht.",
+          message: "This field is required.",
         },
       },
       postcode: {
         required: {
           value: true,
-          message: "dit veld is verplicht.",
+          message: "This field is required.",
         },
       },
       lastname: {
         required: {
           value: true,
-          message: "dit veld is verplicht.",
+          message: "This field is required.",
         },
       },
       firstname: {
         required: {
           value: true,
-          message: "dit veld is verplicht.",
+          message: "This field is required.",
         },
       },
       companyname: {
         required: {
           value: getBusinessType === "1" ? true : false,
-          message: "dit veld is verplicht.",
+          message: "This field is required.",
         },
       },
       vat: {
         required: {
           value:  false,
-          message: "dit veld is verplicht.",
+          message: "This field is required.",
         },
         min: {
           value: 8,

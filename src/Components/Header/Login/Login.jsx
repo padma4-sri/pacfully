@@ -42,7 +42,7 @@ const Login = ({ resMessage, setResMessage, getUrlType, wilistProductId }) => {
             password: ""
         });
         if((!getUrlType)){
-            navigate("/mijn-account/mijn-overzicht");
+            navigate("/");
         }
         
         closeLoginForgot(dispatch);
@@ -66,7 +66,7 @@ const Login = ({ resMessage, setResMessage, getUrlType, wilistProductId }) => {
                     dispatch(ACTION_ISLOGGEDUSER(true));
                     clearValues();
                     if (cartCount) {
-                        mergeCart(dispatch, updateCartItems, token, data?.id, guestKey, baseURL, storeId,guestQuoteId, defaultURL,  () => { },navigate, isSessionExpired);
+                        // mergeCart(dispatch, updateCartItems, token, data?.id, guestKey, baseURL, storeId,guestQuoteId, defaultURL,  () => { },navigate, isSessionExpired);
                     }
                 }
             },
@@ -155,8 +155,8 @@ const Login = ({ resMessage, setResMessage, getUrlType, wilistProductId }) => {
     return (
         <div className="login__wrapper__container">
             <div className="sidebar__heading pb-5">
-                <h1 className="fw-700 mb-2 fs-20">Inloggen</h1>
-                <p className="line-6 fs-14">Heeft u al een account bij {storeId === 1 ? "Promofit" : "Expofit"}? Log dan hier in:</p>
+                <h1 className="fw-700 mb-2 fs-20">Login</h1>
+                <p className="line-6 fs-14">Do you already have an account? Then log in here:</p>
             </div>
             <div className="login__wrapper">
                 <div className="form__wrapper">
@@ -164,7 +164,7 @@ const Login = ({ resMessage, setResMessage, getUrlType, wilistProductId }) => {
                         <Input
                             name="email"
                             value={data?.email}
-                            placeHolder="Vul uw e-mailadres in"
+                            placeHolder="Enter your email address"
                             lable="E-mail *"
                             iconClass="top-11"
                             labelClassName="fs-15 fw-700 line-6"
@@ -183,8 +183,8 @@ const Login = ({ resMessage, setResMessage, getUrlType, wilistProductId }) => {
                         <Input
                             name="password"
                             value={data?.password}
-                            placeHolder="Wachtwoord"
-                            lable="Wachtwoord *"
+                            placeHolder="Password"
+                            lable="Password *"
                             type="password"
                             iconClass="top-11"
                             labelClassName="fs-15 fw-700 line-6"
@@ -202,22 +202,22 @@ const Login = ({ resMessage, setResMessage, getUrlType, wilistProductId }) => {
                             showIcon={true}
                         />
                         <div className="forgotpassword fs-14 pb-5">
-                            <p className='text-underline pointer' onClick={() => handleForgot(dispatch)}>Wachtwoord vergeten?</p>
+                            <p className='text-underline pointer' onClick={() => handleForgot(dispatch)}>Forgot your password?</p>
                         </div>
                         <div className="action__block">
                             <Button
                                 fullWidth={true}
                                 className={`r-6 px-2 py-3 pointer fw-700 ${isProcessign ? 'rotateUpdate' : ''}`}
-                            >{isProcessign ? <AutorenewIcon /> : "Inloggen"}</Button>
+                            >{isProcessign ? <AutorenewIcon /> : "Login"}</Button>
                         </div>
                         {resMessage && <div className="res__message pt-5 error">{resMessage}</div>}
                     </form>
                 </div>
                 <div className="account__block  pt-6 flex col gap-3">
-                    <h1 className="title line-9 fs-20 fw-700">Nieuw bij {storeId === 1 ? "Promofit" : "Expofit"}?</h1>
-                    <p className="line-6 fs-14">Een account aanmaken is niet nodig om te kunnen bestellen, maar is wel handig</p>
+                    <h1 className="title line-9 fs-20 fw-700">New to ?</h1>
+                    <p className="line-6 fs-14">Creating an account is not necessary to order, but it is useful</p>
                     <p className="action">
-                        <Link to="/maak-account-aan" aria-label={"maak-account-aan"}onClick={() => closeLoginForgot(dispatch)} className='line-5 fs-14 fw-700 left flex middle pointer'>Maak account aan <ChevronRightIcon /></Link>
+                        <Link to="/register" aria-label={"register"}onClick={() => closeLoginForgot(dispatch)} className='line-5 fs-14 fw-700 left flex middle pointer'>Create account <ChevronRightIcon /></Link>
                     </p>
                 </div>
             </div>

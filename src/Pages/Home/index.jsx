@@ -49,7 +49,7 @@ const Home = () => {
       }))
     },
     axiosData: {
-      url: `${defaultURL}/getHomePage`,
+      url: `${defaultURL}/home/getHomePage`,
   
     }
   }
@@ -133,9 +133,7 @@ const Home = () => {
             />
           </VisibleWarp>
 
-          <VisibleWarp>
-            <Blog />
-          </VisibleWarp>
+         
         </div>
       </div>
      

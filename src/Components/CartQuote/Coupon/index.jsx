@@ -50,14 +50,14 @@ function ApplyCouponSection() {
       couponInput: {
         required: {
           value: cartDetails?.totals_detail?.couponCode === null,
-          message: "dit veld is verplicht.",
+          message: "This field is required.",
         },
       },
     },
 
     onSubmit: () => couponHandler(),
   });
-  const { baseURL, storeId, expofitUrl, defaultURL } = useContext(DomainContext);
+  const { baseURL, storeId, defaultURL } = useContext(DomainContext);
   const [coupon, setCoupon] = useState(null);
   const [toggleCoupon, setToggleCoupon] = useState(false);
   const [couponMessage, setCouponMessage] = useState("");

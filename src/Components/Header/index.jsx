@@ -120,32 +120,7 @@ const Header = () => {
     } 
   });
 
-  const translatorData = {
-    isLoader: true,
-    axiosData: {
-      url: `${defaultURL}/static/translationPmsColor`,
-    },
-    setGetResponseData: (res) => {
-      dispatch(ACTION__CMS__COLOR(res?.data));
-    },
-  };
-  useEffect(() => {
-    const lastExecutionKey = 'lastTranslateExecutionTime';
-    const now = Date.now();
-    const lastExecutionTime = localStorage.getItem(lastExecutionKey);
-
-    if (!lastExecutionTime || now - parseInt(lastExecutionTime, 10) >= 2 * 60  *60 * 1000) {
-        APIQueryGet(translatorData);
-        localStorage.setItem(lastExecutionKey, now.toString()); 
-    }
-
-    const translateInterval = setInterval(() => {
-        APIQueryGet(translatorData);
-        localStorage.setItem(lastExecutionKey, Date.now().toString()); 
-          }, 2 * 60 * 60 * 1000); 
-
-    return () => clearInterval(translateInterval);
-}, []);
+ 
 
  
   return (

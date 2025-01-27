@@ -50,28 +50,6 @@ const App = () => {
   //   clearCaches();
   // }, []);
 
-  const fetchDataEveryTwoMinutes = useCallback(async () => {
-    if (!defaultURL) return;
-
-    const localCache = localStorage.getItem("localCache");
-    try {
-      const response = await axios.get(`${defaultURL}/home/getCache`);
-      const newCache = response?.data?.[0]?.cache;
-      if (newCache !== localCache) {
-        localStorage.setItem("localCache", newCache);
-        const cacheNames = await caches.keys();
-        await Promise.all(cacheNames.map(name => caches.delete(name)));
-        window.location.reload();
-      }
-    } catch (error) {
-      console.error("Error fetching cache data:", error);
-    }
-  }, [defaultURL]);
-
-  useEffect(() => {
-    const intervalId = setInterval(fetchDataEveryTwoMinutes, 1 * 60 * 60 * 1000);
-    return () => clearInterval(intervalId);
-  }, [fetchDataEveryTwoMinutes]);
 
   return (
     <div className="App">
@@ -79,10 +57,10 @@ const App = () => {
         {baseURL ? (
           <Router>
             <TypeCheckProvider>
-              {/* <Header /> */}
+              <Header />
               <AppRoutes />
               <VisibleWarp>
-                {/* <Footer /> */}
+                <Footer />
               </VisibleWarp>
             </TypeCheckProvider>
           </Router>

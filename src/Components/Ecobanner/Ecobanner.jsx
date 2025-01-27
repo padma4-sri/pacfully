@@ -94,7 +94,7 @@ const Ecobanner = ({
                                             maxWidth: 'fit-content'
                                         }}
                                     >
-                                            <Img
+                                            <img
                                                 src={img}
                                                 alt={title}
                                                 type="img"

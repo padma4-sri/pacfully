@@ -75,50 +75,50 @@ function QuoteForm() {
       mobileNumber: {
         required: {
           value: true,
-          message: "dit veld is verplicht.",
+          message: "This field is required.",
         },
         min: {
           value: 10,
-          message: "Het nummer moet bestaan uit minimaal 10 tekens.",
+          message: "The number must consist of at least 10 characters.",
         },
         max: {
           value: 15,
-          message: "Het nummer moet maximaal 15 cijfers bevatten",
+          message: "The number must contain a maximum of 15 digits",
         }
       },
       lastName: {
         required: {
           value: true,
-          message: "dit veld is verplicht.",
+          message: "This field is required.",
         },
       },
       firstName: {
         required: {
           value: true,
-          message: "dit veld is verplicht.",
+          message: "This field is required.",
         },
       },
       companyName: {
         required: {
           value: getBusinessType === "1" ? true : false,
-          message: "dit veld is verplicht.",
+          message: "This field is required.",
         },
       },
       password: {
         required: {
           value: customData?.code == 200 ? true : false,
-          message: "dit veld is verplicht.",
+          message: "This field is required.",
         }
        
       },
       email: {
         required: {
           value: true,
-          message: "dit veld is verplicht.",
+          message: "This field is required.",
         },
         emailPattern: {
           value: "dummy value",
-          message: "Vul alstublieft een geldig e-mailadres in.",
+          message: "Please enter a valid email address.",
         },
       },
     },

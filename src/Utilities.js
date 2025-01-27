@@ -322,15 +322,7 @@ export const getCartItems = (dispatch, setLoading, quoteId, customerId, openCart
   };
   APIQueryPost(customerId ? cartItemsOptionsLogin : cartItemsOptions);
 };
-export const adminTokenHandler = (axios,baseURL,dispatch) => {
-  const values = {
-    username: 'Venkadesh',
-    password: 'Odoodedadminuser123',
-  };
-  axios.post(baseURL + '/integration/admin/token', values).then((res) => {
-    dispatch(ACTION_ADMINTOKEN(res.data));
-  });
-};
+
 
 
 export const handleImage = (image_url, placeholderImage) => {
@@ -399,45 +391,45 @@ export const formOptions = {
   email: {
     required: {
       value: true,
-      message: 'dit veld is verplicht.'
+      message: 'This field is required.'
     },
     emailPattern: {
       value: 'dummy value',
-      message: "Vul alstublieft een geldig e-mailadres in."
+      message: "Please enter a valid email address."
     },
   },
   password: {
     required: {
       value: true,
-      message: 'dit veld is verplicht.'
+      message: 'This field is required.'
     },
     min: {
       value: 8,
-      message: "Het wachtwoord moet bestaan uit minimaal 8 tekens."
+      message: "The password must consist of at least 8 characters."
     },
     passwordPattern: {
       value: 'Dummy value',
-      message: "Gebruik minstens een hoofdletter, een klein teken, een cijfer en speciaal teken (! @ # etc.)."
+      message: "Use at least one capital letter, one lowercase character, one number and special character (! @ # etc.)."
     }
   },
   requiredField: {
     required: {
       value: true,
-      message: "dit veld is verplicht.",
+      message: "This field is required.",
     }
   },
   number: {
     required: {
       value: true,
-      message: "dit veld is verplicht.",
+      message: "This field is required.",
     },
     min: {
       value: 10,
-      message: "Het nummer moet bestaan uit minimaal 10 tekens.",
+      message: "The number must consist of at least 10 characters.",
     },
     max: {
       value: 15,
-      message: "Het nummer moet maximaal 15 cijfers bevatten",
+      message: "The number must contain a maximum of 15 digits",
     }
     
   },
@@ -445,7 +437,7 @@ export const formOptions = {
     return {
       required: {
         value: type === "1" ? true : false,
-        message: "dit veld is verplicht.",
+        message: "This field is required.",
       }
     }
   },
@@ -454,7 +446,7 @@ export const formOptions = {
       required: {
         required: {
           value:  false,
-          message: "dit veld is verplicht.",
+          message: "This field is required.",
         },
         min: {
           value: 8,
@@ -467,7 +459,7 @@ export const formOptions = {
   telePhone: {
     required: {
       value: true,
-      message: "dit veld is verplicht.",
+      message: "This field is required.",
     },
     custom: {
       isValid: (key) => isValidNumber(key),

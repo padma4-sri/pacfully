@@ -20,7 +20,7 @@ const StoreBanner = ({ loading = false, getStoreBanner }) => {
           ) : (
             <div className="wrapper w-1/1 col gap-y-5 md-flex md-gap-y-10 flex center xl-flex xl-row-i">
               <div className="tc image__block relative">
-                <Img src={getStoreBanner?.promotionImage} alt={storeId === 1? 'Promofit store image': 'Expofit store image'} />
+                <Img src={getStoreBanner?.promotionImage} alt= "image"/>
               </div>
               <div className="info__block flex col middle xl-flex center store_content">
                 <h3 className=" w-1/1 tc pt-2 pb-7 line-14 fw-700" dangerouslySetInnerHTML={{ __html: getStoreBanner?.promotionContent }}></h3>

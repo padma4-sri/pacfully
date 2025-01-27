@@ -58,9 +58,14 @@ const BottomFooter = ({ isCheckout = false }) => {
         <SkeletonLine animation="pulse" className="tc" width='200px' height='30px' style={{ borderRadius: "0px" }} />
       </div>
       :
-      <div className='payments__logos pt-2 relative'>
-        <Img src={getFooterData?.payment_image} alt='payment methods' />
-      </div>
+     <>
+     <div className='payments__logos pt-2 relative'>
+     <img src={getFooterData?.stripe_image} alt='payment methods' />
+   </div>
+   <div className='payments__logos pt-2 relative'>
+   <img src={getFooterData?.razorpay_image} alt='payment methods' />
+ </div>
+     </>
   )
 
   return (
@@ -70,7 +75,6 @@ const BottomFooter = ({ isCheckout = false }) => {
           {linksBlock}
           <div className={`right-content flex col gap-x-4 gap-y-1 xxl-flex xxl-row xxl-gap-4  middle ${isCheckout ? 'checkoutImages' : ''}`}>
             {paymentMethod}
-            {brandsBlock}
           </div>
         </div>
       </div>

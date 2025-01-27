@@ -72,15 +72,15 @@ const ResetPassword = () => {
   }, []);
 
   const dataBlock = <div className="auth__wrapper reset__password">
-    <h1 className='tc fs-24 fw-700'>Stel je wachtwoord opnieuw in</h1>
+    <h1 className='tc fs-24 fw-700'>Reset Your Password</h1>
     <div className="form__block">
       <form onSubmit={submitHandler} noValidate>
         <div className="fields__wrapper flex col gap-y-4 sm-flex sm-gap-y-8 xl-flex gap-y-3 xl-row gap-x-8">
           <div className="column__wrapper p-4 sm-p-8 r-1 mx-auto">
             <Input
               name="password"
-              placeHolder="Nieuw wachtwoord"
-              lable="Nieuw wachtwoord *"
+              placeHolder="New password"
+              lable="New password *"
               type="password"
               iconClass="top-11"
               labelClassName="fs-15 fw-700 line-6"
@@ -101,8 +101,8 @@ const ResetPassword = () => {
             />
             <Input
               name="confirmPassword"
-              placeHolder="Bevestig nieuw wachtwoord"
-              lable="Bevestig nieuw wachtwoord *"
+              placeHolder="Confirm new password"
+              lable="Confirm new password *"
               type="password"
               iconClass="top-11"
               labelClassName="fs-15 fw-700 line-6"
@@ -125,7 +125,7 @@ const ResetPassword = () => {
               <Button
                 fullWidth={true}
                 className={`r-6 px-2 py-3 pointer ${isProcessign ? 'rotateUpdate' : ''}`}
-              >{isProcessign ? <AutorenewIcon /> : "Opslaan"}</Button>
+              >{isProcessign ? <AutorenewIcon /> : "Save"}</Button>
             </div>
             {resMessage && <div className="res__message pt-5 error">{resMessage}</div>}
           </div>
@@ -137,7 +137,7 @@ const ResetPassword = () => {
     <>
      
       <AuthencationLayout
-        title='Stel je wachtwoord opnieuw in'
+        title='Reset Your password'
         data={dataBlock}
       />
     </>

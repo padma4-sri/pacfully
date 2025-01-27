@@ -285,7 +285,6 @@ function OrderConfirmation() {
           </p>
                     <p className="fs-15 tc pb-6 px-8 line-6">
             Controleer ook de spam folder! Niks ontvangen? Neem contact op via&nbsp;
-            {storeId === 1 ? (
               <>
                 <a
                   className="line-6 text-underline pb-1"
@@ -294,25 +293,10 @@ function OrderConfirmation() {
                   sales@pacfully.nl
                 </a>
                 &nbsp;
-                <a className="line-6" href={`tel:+31(0) 76 50 182 25`}>
-                  of bel +31(0)76-50 182 25
+                <a className="line-6" href={`tel:+91(0) 8877665544`}>
+                  of bel +91 8877665544
                 </a>
               </>
-            ) : (
-              <>
-                <a
-                  className="line-6 text-underline pb-1"
-                  href={`mailto:sales@expofit.nl`}
-                  target="__blank"
-                >
-                  sales@expofit.nl
-                </a>
-                &nbsp;
-                <a className="line-6" href={`tel:+31(0) 76 50 211 20`}>
-                  of bel +31(0)76-50 211 20
-                </a>
-              </>
-            )}
           </p>
 
         <Link to={`/mijn-account/besteldetails?${data?.orderId}`} aria-label={`mijn-account-besteldetails ${data?.orderId}`} className="block">
