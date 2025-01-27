@@ -53,7 +53,7 @@ const Home = () => {
   
     }
   }
-  // APIQueryGet(homeOptions)
+  APIQueryGet(homeOptions)
 
  })
  
