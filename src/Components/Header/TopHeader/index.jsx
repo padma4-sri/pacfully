@@ -57,7 +57,7 @@ const TopHeader = ({
       setGetCategoriesListData(res?.data?.[0]);
     },
     axiosData: {
-      url: `${defaultURL}/megamenu/categories`,
+      url: `${defaultURL}/custom/categories`,
       method: "get",
 
     },
@@ -128,7 +128,7 @@ const TopHeader = ({
                 <IconButton
                   className="menu_icon_button"
                   aria-label="toggle"
-                  // onClick={() => categoriesHandler()}
+                  onClick={() => categoriesHandler()}
                 >
                   <MenuIcon />
                 </IconButton>

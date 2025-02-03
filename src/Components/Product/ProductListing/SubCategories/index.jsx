@@ -55,11 +55,9 @@ const SubCategories = () => {
     customerId,
   }) {
     const baseUrl = `${defaultURL}/plp/getDetails`;
-    let queryParams = `storeId=${storeId}&rootCatId=2&categoryUrl=${trimTrailingSlash(location?.pathname?.slice(1))}&searchString=&sortingData[value]=${
-      sortingData?.value || ""
-    }&sortingData[sortBy]=${sortingData?.sortBy || ""}&pageSize=${
+    let queryParams = `&limit=${
       currentPage + 1 > 1 ? 14 : 14
-    }&pageOffset=${currentPage + 1}&customerId=0`;
+    }&page=${currentPage + 1}`;
 
     filredData.forEach((filter, index) => {
       Object.keys(filter).forEach((key) => {

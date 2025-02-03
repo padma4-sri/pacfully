@@ -169,6 +169,8 @@ const MenuList = ({
   return data?.length > 0 ? (
     data.map((listItem, index) => (
       <React.Fragment key={`menuList_${data?.id}${index}`}>
+              {console.log(listItem,"listItem")}
+
         {enableClick ? (
           listItem?.sub && listItem?.sub.length ? (
             <ButtonData
@@ -194,7 +196,6 @@ const MenuList = ({
                 urlType: {
                   entityType: "category",
                   level: getLevel(listItem),
-                  
                   // level: dataWithSub.sub ? "3" : "2", commented for purpose
                   isChildExist: 1,
                 },

@@ -19,7 +19,11 @@ const Img = ({
   const [loaded, setLoaded] = useState(false);
   const [srcUrl, setSrcUrl] = useState("");
 
-  
+  useEffect(() => {
+   
+    setSrcUrl(src);
+
+  }, [src, webp]);
 
   const handleLoad = () => setLoaded(true);
   const handleError = (e) => {

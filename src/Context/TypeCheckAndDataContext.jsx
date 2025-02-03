@@ -76,19 +76,12 @@ export const TypeCheckProvider = ({ children }) => {
   const getDetails = async (value) => {
     try {
       const queryParams = new URLSearchParams({
-        storeId,
-        rootCatId: 2,
-        categoryUrl: trimTrailingSlash(value.path.replace("/", "")),
-        searchString: "",
-        "sortingData[value]": "",
-        "sortingData[sortBy]": "",
-        pageSize: 14,
-        pageOffset: 1,
-        customerId: 0,
+        limit: 14,
+        page: 1,
       });
 
       const { data } = await axios.get(
-        `${defaultURL}/plp/getDetails?${queryParams.toString()}`
+        `${defaultURL} /customapi/categoryproducts/2?${queryParams.toString()}`
       );
 
       if (!data?.length) return;
