@@ -133,7 +133,7 @@ const TopHeader = ({
                   <MenuIcon />
                 </IconButton>
                 <Link
-                  to="/"
+                  to="/react-app"
                   aria-label={"home"}
                   className="logo relative"
                   onClick={() => {

@@ -120,7 +120,7 @@ const BottomHeader = ({ data, isCheckout = false }) => {
               {
                 isCheckout ?
                   <div className="item-1 flex middle gap-2 xl-flex xl-gap-x-3">
-                    <Link to="/" className='logo relative' aria-label={"home"}>
+                    <Link to="/react-app" className='logo relative' aria-label={"home"}>
                       <Img src={getHeaderData?.logo} alt='promofit logo' className='w-1/1 h-1/1' style={{ objectFit: "contain" }} />
                     </Link>
                   </div>

@@ -76,12 +76,14 @@ export const TypeCheckProvider = ({ children }) => {
   const getDetails = async (value) => {
     try {
       const queryParams = new URLSearchParams({
-        limit: 14,
-        page: 1,
+        pageSize: 10,
+        pageNumber: 1,
+        sort_by:"position",
+        sort_order:"ASE"
       });
 
       const { data } = await axios.get(
-        `${defaultURL} /customapi/categoryproducts/2?${queryParams.toString()}`
+        `${defaultURL}/custom/categoryproducts/2?${queryParams.toString()}`
       );
 
       if (!data?.length) return;
@@ -143,11 +145,10 @@ export const TypeCheckProvider = ({ children }) => {
     const fetchPageType = async (url) => {
 
       try {
-        const { data } = await axios.get(`${baseURL}/page/typecheck`, {
-          params: {
+        const { data } = await axios.post(`${baseURL}/url-type-check`, {
             targetPath:trimTrailingSlash(url),
-            storeId: storeId,
-          },
+            storeId: 1,
+          
         });
         // if (data?.[0]?.message === "Given url doesn't exist") {
         //   return {

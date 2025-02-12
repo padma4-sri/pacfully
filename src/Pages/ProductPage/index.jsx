@@ -6,7 +6,7 @@ import "./styles.scss";
 
 import DomainContext from "Context/DomainContext";
 import { useLocation, useNavigate } from "react-router-dom";
-import { APIQueryGet } from "APIMethods/API";
+import { APIQueryGet,APIQueryPost } from "APIMethods/API";
 
 const ProductPage = () => {
   const navigate = useNavigate();
@@ -57,11 +57,15 @@ const ProductPage = () => {
             }
           },
           axiosData: {
-            url: `${defaultURL}/page/typecheck?storeId=${storeId}&targetPath=${trimTrailingSlash(location.pathname?.slice(1))}`,
+            url: `${defaultURL}/url-type-check`,
+            paramsData: {
+              targetPath: trimTrailingSlash(location.pathname?.slice(1)),
+              storeId: 1,
+            },
           },
         };
         APIReference.current = true;
-        await APIQueryGet(options);
+        await APIQueryPost(options);
         setTimeout(() => (APIReference.current = false), 300);
       }
     };
