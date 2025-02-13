@@ -598,7 +598,7 @@ const ProductCard = ({
                 >
                   <Img
                     type="img"
-                    src={handleImage(imageSrc ? imageSrc : data?.image)}
+                    src={handleImage(imageSrc ? imageSrc : data?.url)}
                     alt={data?.name}
                     onError={() => {
                       setImageSrc(data?.image);
@@ -709,14 +709,14 @@ const ProductCard = ({
                   <div className="price__block flex-1 flex gap-x-2 bottom fw-700">
                     {/* <p className={`label ${false ? "special" : ""}`}>₹</p> */}
                     <p className={`price ${false ? "special" : ""}`}>
-                    ₹{data?.displayPrice}
+                    ₹{data?.price}
                     </p>
-                    {false ? (
+                    {/* {false ? (
                       <p className="price__strike text-strike "> ₹293</p>
                     ) : (
                       <p className="price__strike text-strike "> ₹293</p>
 
-                    )}
+                    )} */}
                   </div>
                   <div className="action__block flex-0">
                     <AdvancedLink

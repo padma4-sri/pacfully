@@ -109,7 +109,6 @@ const TopHeader = ({
       window.removeEventListener('resize', handleResize);
     };
   }, [minicartPopUp]);
-  console.log(getHeaderData,"getHeaderData")
   return (
     <React.Fragment>
       <header

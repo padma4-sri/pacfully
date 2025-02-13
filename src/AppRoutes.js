@@ -35,7 +35,7 @@ return (
       {StaticUrls.map((url)=> (
         <Route key={`route_${url}`} path={url} element={routesData[url]} exact />
       ))}
-      {/* <Route path="/*" element={<ProductPage />} exact /> */}
+      <Route path="/*" element={<ProductPage />} exact />
     </Routes>
   </React.Fragment>
   );

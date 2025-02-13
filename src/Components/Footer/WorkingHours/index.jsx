@@ -61,7 +61,6 @@ const WorkingHours = () => {
     height="35px"
     style={{ borderRadius: "30px" }}
   />
-  console.log(getFooterData,"getFooterData")
   const DataBlock = () => {
     return  HeaderFooterDataLoading
       ? ["", "", "", "", "", ""]?.map((item, index) => (

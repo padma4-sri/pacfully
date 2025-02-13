@@ -169,7 +169,6 @@ const MenuList = ({
   return data?.length > 0 ? (
     data.map((listItem, index) => (
       <React.Fragment key={`menuList_${data?.id}${index}`}>
-              {console.log(listItem,"listItem")}
 
         {enableClick ? (
           listItem?.sub && listItem?.sub.length ? (

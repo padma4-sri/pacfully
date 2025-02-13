@@ -71,7 +71,6 @@ export const DomainProvider = ({ children }) => {
             // }
         }
     }, [tokenSingle])
-console.log(baseURL,"baseurl")
     return (
         <DomainContext.Provider value={{  defaultURL, baseURL }}>
             {children}

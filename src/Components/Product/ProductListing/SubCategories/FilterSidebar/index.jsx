@@ -467,12 +467,12 @@ const FilterSidebar = ({ className = "", plpDatas = {}, setIsLoaded, loading = t
     setSelectedCategory }) => {
     const [searchParams] = useSearchParams();
     const filterData = (
-      isLoading && !data?.filters?.length ?
+      isLoading && !data?.filter?.length ?
         ['']?.map((item, ind) => (
           <React.Fragment key={`filterContentSidebar${ind}`}>{item?.attr_code !== "price" ? <Filters setIsLoaded={setIsLoaded} loading={isLoading} data={item} appliedFilterData={data?.appliedFilter} filterAttribute={item?.attr_code} filtersIndex={ind} isMultiSelect={item?.is_multiselect} setCurrentPage={setCurrentPage} /> : <></>}</React.Fragment>
         ))
-        : data?.filters?.code === 400 ? null :
-        data?.filters?.map((item, ind) => (
+        : data?.filter?.code === 400 ? null :
+        data && data?.filter?.map((item, ind) => (
           <React.Fragment key={`filterContentSidebar${ind}`}>{item?.attr_code !== "price" ? <Filters setIsLoaded={setIsLoaded} loading={isLoading} data={item} appliedFilterData={data?.appliedFilter} filterAttribute={item?.attr_code} filtersIndex={ind} isMultiSelect={item?.is_multiselect} setCurrentPage={setCurrentPage} /> : <></>}</React.Fragment>
         ))
     );
@@ -547,15 +547,15 @@ const FilterSidebar = ({ className = "", plpDatas = {}, setIsLoaded, loading = t
       );
     };
     var sortingData =
-    plpDatas?.sortOrderList &&
-      Object.keys(plpDatas?.sortOrderList).map((key) => (
+    plpDatas?.sorting &&
+      Object.keys(plpDatas?.sorting).map((key) => (
         <div className='flex col gap-3'>
-          <Button key={`plp__mobile__sorting${key}`} onClick={() => navigateSorting(key)} className={`${getAppliedFilter?.[0]?.split('=')?.[1] === key ? 'active' : ''}`}>{plpDatas?.sortOrderList[key]}</Button>
+          <Button key={`plp__mobile__sorting${key}`} onClick={() => navigateSorting(key)} className={`${getAppliedFilter?.[0]?.split('=')?.[1] === key ? 'active' : ''}`}>{plpDatas?.sorting[key]}</Button>
         </div>
       ));
 
     let tempFilterData = {};
-    plpDatas?.filters?.length && plpDatas?.filters?.forEach((item) => {
+    plpDatas?.filter?.length && plpDatas?.filter?.forEach((item) => {
       if (item?.attr_code) {
         tempFilterData[`${item.attr_code}`] = item?.attr_label
       }
@@ -565,8 +565,8 @@ const FilterSidebar = ({ className = "", plpDatas = {}, setIsLoaded, loading = t
       <div className="flex-1 overflow-hidden">
         <div className="sidebar__wrapper px-8 xl-px-0 w-1/1 h-1/1 overflow-hidden overflow-y-auto">
           {/* mobile filtered data */}
-          {plpDatas?.sortOrderList &&
-          Object.keys(plpDatas?.sortOrderList)?.length ? (
+          {plpDatas?.sorting &&
+          Object.keys(plpDatas?.sorting)?.length ? (
             <div className="configurable__filter__block sorting__filter pt-5 xl-hide mb-5">
               <div
                 className={`configurable__filter ${
@@ -636,7 +636,7 @@ const FilterSidebar = ({ className = "", plpDatas = {}, setIsLoaded, loading = t
           ) : (
             <></>
           )}
-          {location?.state?.isSearchResult ||
+          {/* {location?.state?.isSearchResult ||
           location?.pathname?.includes("/zoeken/") ? (
             <></>
           ) : data?.categoryFilter?.length ? (
@@ -650,7 +650,7 @@ const FilterSidebar = ({ className = "", plpDatas = {}, setIsLoaded, loading = t
             />
           ) : (
             <></>
-          )}
+          )} */}
           {width > 1024  ? (
             <div className="filter__title__block pb-4">
               <div className="flex space-between middle ">
@@ -670,7 +670,7 @@ const FilterSidebar = ({ className = "", plpDatas = {}, setIsLoaded, loading = t
               ) : (
                 <></>
               )}
-              {loading && !plpDatas?.appliedFilter?.length ? (
+              {/* {loading && !plpDatas?.appliedFilter?.length ? (
                 ["", "", ""]?.map((item, ind) => (
                   <div
                     className="flex pt-4 wrap fs-14 middle gap-2"
@@ -715,7 +715,7 @@ const FilterSidebar = ({ className = "", plpDatas = {}, setIsLoaded, loading = t
                 ))
               ) : (
                 <></>
-              )}
+              )} */}
             </div>
           ) : (
             <></>
@@ -749,25 +749,25 @@ const FilterSidebar = ({ className = "", plpDatas = {}, setIsLoaded, loading = t
     };
   }, []);
 
-  useEffect(() => {
-    if(plpDatas?.categoryFilter?.length){
-      const dataIndex = plpDatas.categoryFilter.findIndex((item) => {
-        return item.url_key === paramValue
-      })
-      if (dataIndex >= 0) {
-          setSelectedCategory(dataIndex);
-      } else {
-        plpDatas.categoryFilter.map((item, ind) => {
-          if (item?.childCategories?.length) {
-            const len = item.childCategories.filter((child) => child?.url_key === paramValue);
-            if (len) {
-                setSelectedCategory(ind);
-            }
-          }
-        });
-      }
-    }
-  }, [plpDatas])
+  // useEffect(() => {
+  //   if(plpDatas?.categoryFilter?.length){
+  //     const dataIndex = plpDatas.categoryFilter.findIndex((item) => {
+  //       return item.url_key === paramValue
+  //     })
+  //     if (dataIndex >= 0) {
+  //         setSelectedCategory(dataIndex);
+  //     } else {
+  //       plpDatas.categoryFilter.map((item, ind) => {
+  //         if (item?.childCategories?.length) {
+  //           const len = item.childCategories.filter((child) => child?.url_key === paramValue);
+  //           if (len) {
+  //               setSelectedCategory(ind);
+  //           }
+  //         }
+  //       });
+  //     }
+  //   }
+  // }, [plpDatas])
 
   return width > 1024 ? (
     <div className={`productlisting__sidebar ${className}`}>

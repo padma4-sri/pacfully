@@ -99,10 +99,8 @@ const ProductPage = () => {
         (level === "2" || isChildExistVal === 1)
       ) {
         return (
-          <MainCategories
-            locationChange={location.pathname}
-            forceRerender={uniqueId.current}
-          />
+          <SubCategories
+            />
         );
       }
       if (entityType === "product") {

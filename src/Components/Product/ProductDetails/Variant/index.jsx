@@ -1224,20 +1224,7 @@ const VariantCardSeeMore = ({setchangeCustomizeOption, qty, getApiCartOptions, g
 const CustomizeCardAction = ({storeId,selectedDetailsFinal,setQty,qtymatch, setchangeCustomizeOption,qty, getApiCartOptions, getDeliveryDate, keyList, selected, setSelected, data, setStopNextNav, expandNext, otherSettings, translate }) => {
   const customizeKey = keyList[0], mutiSelect = Boolean(otherSettings?.mutiSelect);
   const imgUrl = data?.product_gallery_images?.[0]?.["image"] ? data?.product_gallery_images?.[0]?.["image"] : data?.image ? data.image : false;
-  // useEffect(() => {
-  //   const option = getApiCartOptions();
-
-  //   if (selected && selected[customizeKey]?.includes(data?.id)) {
-  //     console.log(data?.id,"id")
-  //     if ((data?.additional_delivery_days > 0 || customizeKey === "Verzendopties" || customizeKey ==="Levertijd" ) && qty > 0) {
-  //       setTimeout(() => {
-  //         getDeliveryDate(option, qty);
-  //       }, 1000);
-  //     }
-  //   }
-
-  // }, [selected[customizeKey][0]]);
-  const placeholderImage = useSelector(state => state?.getHomePageData?.data?.place_holder_image);
+ const placeholderImage = useSelector(state => state?.getHomePageData?.data?.place_holder_image);
 
   return (
     <div className="variantCard flex">
@@ -1508,15 +1495,7 @@ const SubGroupItem = ({ setchangeCustomizeOption,setOpenModelInfo,getApiCartOpti
       setExp(temp);
     }
   }
-  // commented for purpose
-  // const qtymatch = (qty, tier_prices) => {
-  //   console.log({qty,tier_prices})
-  //   let price = 0;
-  //   if (tier_prices?.length) {
-  //     tier_prices.forEach((t, i) => price = t.qty <= qty ? t.price : t.price)
-  //   }
-  //   return price ? `+ ${euroCurrency(price)}` : ""
-  // }
+
   const qtymatch = (qty, tier_prices) => {
 
     let price = 0;

@@ -201,10 +201,7 @@ useEffect(() => {
   }, [stateToken, state?.uploadData]);
  
 
-  useEffect(() => {
-    console.log("PDP_data",pdpsharedState) // For UAT see the PDP page
-  }, [pdpsharedState]);
-
+ 
 
   useEffect(() => {
     setStateToken((v) => v + 1);

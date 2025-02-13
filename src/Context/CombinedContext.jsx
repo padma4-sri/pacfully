@@ -4,7 +4,7 @@ export const CombinedContext = createContext();
 
 export const CombinedProvider = ({ children }) => {
   const [plponesharedState, setPlponeSharedState] = useState([]);
-  const [plptwosharedState, setPlptwoSharedState] = useState([]);
+  const [plptwosharedState, setPlptwoSharedState] = useState({});
   const [pdpsharedState, setPdpSharedState] = useState([]);
   const [isBackdropLoading, setisBackdropLoading] = useState(false);
 

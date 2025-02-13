@@ -54,10 +54,9 @@ const SubCategories = () => {
     currentPage,
     customerId,
   }) {
-    const baseUrl = `${defaultURL}/plp/getDetails`;
-    let queryParams = `&limit=${
-      currentPage + 1 > 1 ? 14 : 14
-    }&page=${currentPage + 1}`;
+
+    const baseUrl = `${defaultURL}/custom/categoryproducts/2`;
+    let queryParams = `&pageSize=14&pageNumber=${currentPage + 1}&sort_by=position&sort_order=${sortingData?.value ? sortingData?.value :"ASC"}`;
 
     filredData.forEach((filter, index) => {
       Object.keys(filter).forEach((key) => {
@@ -91,7 +90,7 @@ const SubCategories = () => {
       url: urlParams,
     },
     setGetResponseData: (res) => {
-      const data = res?.data[0];
+      const data = res?.data;
       if (plptwosharedState?.products?.length && currentPage + 1 > 1) {
         setPlptwoSharedState({...plptwosharedState, products:[...plptwosharedState?.products, ...data?.products],total_products:data?.total_products})
         } else {

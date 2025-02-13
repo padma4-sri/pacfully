@@ -49,7 +49,6 @@ const App = () => {
   //   };
   //   clearCaches();
   // }, []);
-console.log(baseURL,"baseURL")
 
   return (
     <div className="App">
