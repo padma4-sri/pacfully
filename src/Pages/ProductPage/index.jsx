@@ -87,6 +87,7 @@ const ProductPage = () => {
       location?.state?.urlType?.isChildExist || checkUrlType?.isChildExist;
     const isSearchResult = location?.state?.isSearchResult;
     const pathname = location?.pathname;
+    console.log({isChildExistVal,level})
 
     if (isSearchResult || pathname?.includes("/zoeken/")) {
       return <SubCategories />;
@@ -126,10 +127,8 @@ const ProductPage = () => {
         (checkUrlType?.level === "2" || checkUrlType?.isChildExist === 1)
       ) {
         return (
-          <MainCategories
-            locationChange={location.pathname}
-            forceRerender={uniqueId.current}
-          />
+          <SubCategories
+              />
         );
       }
 

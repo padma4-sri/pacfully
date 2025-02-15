@@ -30,19 +30,19 @@ const ProductTitle = ({ loading, minPrice, data, setOpenReview, setOpenAllReview
   ) : (
     <div className='productTitle flex col gap-1'>
       <h1>{data?.product_name}</h1>
-      {piecePrice ? (<p>Totaalprijs bij {pieceQty} {pieceQty?"stuks":""} (incl btw.)  {data?.stock_status && piecePrice}</p>) : <></>}
+      {piecePrice ? (<p>Total price at {pieceQty} {pieceQty?"pieces":""}   {data?.stock_status && piecePrice}</p>) : <></>}
       <div className="flex row left gap-2 md-flex md-row md-middle wrap info">
   <span className='flex row gap-2 middle'>
     <i className={`stockStatus ${data?.temporary_out_of_stock == "0" ? 'in-stock' : 'out-of-stock'}`} />
     <span className='flex nowrap gap-2'>
-      <span>{data?.temporary_out_of_stock == "0" ? "Op voorraad" : "Niet op voorraad"}</span>
+      <span>{data?.temporary_out_of_stock == "0" ? "In stock" : "Out of stock"}</span>
       <span className='block'>|</span>
     </span>
   </span>
   {data?.product_sku ? (
     <span className='flex gap-2 middle'>
-      <span className='md-hide sku__pdp'>Artikel: {data?.product_sku}</span>
-      <span className='hide md-block sku__pdp'>Artikelnummer: {data?.product_sku}</span>
+      <span className='md-hide sku__pdp'>Article: {data?.product_sku}</span>
+      <span className='hide md-block sku__pdp'>Item number: {data?.product_sku}</span>
     </span>
   ) : null}
 </div>

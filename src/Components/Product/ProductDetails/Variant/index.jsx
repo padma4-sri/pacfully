@@ -68,9 +68,9 @@ const UpdateTextQty = (qtyTemp, selectedDetailsFinal, setQty, setQtyTemp, getDel
   }
 
   if (qty !== null) {
-    setTimeout(() => {
-      getDeliveryDate(option, qty); 
-    }, 1000);
+    // setTimeout(() => {
+    //   getDeliveryDate(option, qty); 
+    // }, 1000);
     setQty(qty);      
     setQtyTemp(qty);   
   }
@@ -327,7 +327,7 @@ const VariantHeader = ({ isError, id, additional, name, order = "1", expanded, c
             <i className='hide md-inline absolute w-1/1'>{condition.join(',')}</i>
           ) :
             isError === true ? (
-              <i style={{ color: "red" }} className='hide md-inline absolute w-1/1'>Kies een optie</i>
+              <i style={{ color: "red" }} className='hide md-inline absolute w-1/1'>Choose an optie</i>
             ) : null
           }
         </span>
@@ -1100,7 +1100,7 @@ const VariantColorPicker = ({ cmsError, setCmsError, keyList, setStopNextNav, pr
                     <div className="w-1/1 flex gap-2 middle" key={`cData${ind}_${index}`}>
                       <button aria-label="button" onClick={() => { setSelectedColorItem({ id: cData?.id, key: product.data[key].id, index: ind, isFromPannel: false }) }} className="flex-1 flex middle gap-2 colorInput">
                         {selectedColorData?.[product.data[key].id]?.[ind]?.hex ? <div className='colorBox' style={{ background: selectedColorData?.[product.data[key].id]?.[ind]?.hex }}></div> : <div className='colorBox noColor'></div>}
-                        {selectedColorData?.[product.data[key].id]?.[ind]?.name ? <div className='colorName relative w-1/1 overflow-hidden' style={{ height: 20 }}><span className="absolute w-1/1 text-nowrap ellipsis overflow-hidden">{selectedColorData?.[product.data[key].id]?.[ind]?.name}</span></div> : <div className='colorName relative w-1/1 overflow-hidden'>Kies een kleur</div>}
+                        {selectedColorData?.[product.data[key].id]?.[ind]?.name ? <div className='colorName relative w-1/1 overflow-hidden' style={{ height: 20 }}><span className="absolute w-1/1 text-nowrap ellipsis overflow-hidden">{selectedColorData?.[product.data[key].id]?.[ind]?.name}</span></div> : <div className='colorName relative w-1/1 overflow-hidden'>Choose an kleur</div>}
                       </button>
                       <div className="flex-0">
                         <IconButton aria-label="edit" onClick={() => { setSelectedColorItem({ id: cData?.id, key: product.data[key].id, index: ind, isFromPannel: false }) }}>
@@ -2049,11 +2049,11 @@ function getPriceForQty(qty, tierprice) {
     }
   };
 
-  useEffect(() => {
-    if (data?.settings?.product_id && deliveryData===null) {
-      getDeliveryDate({},qty)
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (data?.settings?.product_id && deliveryData===null) {
+  //     getDeliveryDate({},qty)
+  //   }
+  // }, [])
   // const qtymatch = (qty, tier_prices) => {
   //   let price = 0;
   //   if (tier_prices?.length) {
@@ -2687,8 +2687,8 @@ function getPriceForQty(qty, tierprice) {
           thisType: "variant",
           ...variantTempObj[key]?.["id"] && { id: variantTempObj[key]?.["id"] },
           ...tempOption.length && { options: tempOption },
-          label: firstObjName && !prevKey ? firstObjName : `Kies een ${(variantTempObj[key]?.["label"] ? variantTempObj[key]["label"] : "").toLowerCase()}`,
-          // label: `Kies een ${(variantTempObj[key]?.["label"] ? variantTempObj[key]["label"] : "").toLowerCase()}`,
+          label: firstObjName && !prevKey ? firstObjName : `Choose an ${(variantTempObj[key]?.["label"] ? variantTempObj[key]["label"] : "").toLowerCase()}`,
+          // label: `Choose an ${(variantTempObj[key]?.["label"] ? variantTempObj[key]["label"] : "").toLowerCase()}`,
           mutiSelect: isColorPicker && !data?.settings?.xml,
           hideStock: isColorPicker,
           sizeQty: data?.isTextileProduct === 1 && key === "size",
@@ -2841,7 +2841,7 @@ function getPriceForQty(qty, tierprice) {
     if (!isSizeQty && (!(variantObj?.["cpker"]?.label) || (variantObj?.["cpker"]?.label && isColorPickerTierPrices))) {
       const k = "qty";
       variantObj[k] = {
-        label: "Kies aantal", //Choose quantity
+        label: "Choose quantity", //Choose quantity
       }
       tempSelectedObj[k] = [];
       tempSelectedDetails[k] = { labels: [] };
@@ -3587,10 +3587,10 @@ function getPriceForQty(qty, tierprice) {
       const option = getApiCartOptions();
       CustomOptions = isSample ? [...sampleCustomizeItem] : [...getKeyVal(option?.customize), ...getKeyVal(option?.additional)]
       // if (option && option["products"].length) getDeliveryDate(option, "selectedDetails"); // On purpose For reduse mutiple API call
-      if (data?.settings?.product_id && deliveryData === null && qty > 0 && !hasFetchedDeliveryDate.current) {
-        getDeliveryDate(option, qty);
-        hasFetchedDeliveryDate.current = true; 
-      }
+      // if (data?.settings?.product_id && deliveryData === null && qty > 0 && !hasFetchedDeliveryDate.current) {
+      //   getDeliveryDate(option, qty);
+      //   hasFetchedDeliveryDate.current = true; 
+      // }
     }
     setdisableAction("selectedDetails");
     // if (!stopDouble) {
@@ -3617,7 +3617,7 @@ function getPriceForQty(qty, tierprice) {
         variant:""
       })
       const option = getApiCartOptions();
-      getDeliveryDate(option,qty)
+      // getDeliveryDate(option,qty)
     }
     
   }, [selectedDetails]);
@@ -3901,7 +3901,7 @@ function getPriceForQty(qty, tierprice) {
                                   </div>
 
                                   <div className='variantCardList w-1/1'>
-                                    {cmsError == "false" && <p className='error'>Kies een kleur om verder te gaan</p>}
+                                    {cmsError == "false" && <p className='error'>Choose an kleur om verder te gaan</p>}
                                     <Button
                                       onClick={() => {
                                         const selectedD = { ...selectedData };
@@ -4041,7 +4041,7 @@ function getPriceForQty(qty, tierprice) {
                                     {width <= 768 ?
                                       <div className="item-cell">Totaalprijs</div>
                                       :
-                                      <div className="item-cell">Totaal (excl. BTW)</div>
+                                      <div className="item-cell">Total (excl. VAT)</div>
                                     }
                                   </div>
                                 </div>
@@ -4063,9 +4063,9 @@ function getPriceForQty(qty, tierprice) {
                                   {selectedDetailsFinal?.tier_prices?.length ? selectedDetailsFinal.tier_prices.map((item, i) => (
                                     <div key={`qty_${i}`} className={`relative table-row`} onClick={() => {
                                       const option = getApiCartOptions()
-                                      setTimeout(() => {
-                                        getDeliveryDate(option, item.qty)
-                                      }, 1000)
+                                      // setTimeout(() => {
+                                      //   getDeliveryDate(option, item.qty)
+                                      // }, 1000)
                                       setQtyTemp(item.qty); setIsCustomQty(false); setReqExpanded(true); setQty(item.qty)
                                     }}>
                                       <div className="item-cell " data-label="Quantity">
@@ -4431,159 +4431,16 @@ function getPriceForQty(qty, tierprice) {
                   <div className='flex col w-1/1 md-flex md-row'>
                     <div className='flex-1'></div>
                     <div className='flex-2'>
-                      <div className='priceDetails py-3 px-7'>
-                        <div className="content">
-                          <div className="flex w-1/1 gap-3">
-                            {isSample
-                              // && 
-                              // ((((sampleProductPrice?.highest_tier * (isSample ? sampleQty : qty)) + selectedDetailsFinal.setup_costs) + (((sampleProductPrice * (isSample ? sampleQty : qty)) + selectedDetailsFinal.setup_costs) * selectedDetailsFinal.product_vat / 100)) < 2.50)
-                              ? (
-                                <table>
-                                  <tbody>
-                                  
-                                    {isSample ? null
-                                      : <tr>
-                                        <td>Digitale drukproef</td>
-                                        <td><b className='normal green'>Gratis</b></td>
-                                      </tr>}
-                                    {isSample ? null :
-                                      <tr>
-                                        <td>Instelkosten</td>
-                                        <td>Gratis</td>
-                                      </tr>}
-                                    <tr>
-                                      <td>Verzendkosten</td>
-                                      <td>Gratis</td>
-                                    </tr>
-                                    <tr>
-                                      <td><b>Totaal excl. BTW</b></td>
-                                      <td><b>{sampleProductPrice?.condtion_one ? "Gratis"
-                                        : sampleProductPrice?.condition_two ? `${euroCurrency(sampleProductPrice?.highest_tier)}`
-                                          : sampleProductPrice?.condtion_three ? `${euroCurrency(sampleProductPrice?.highest_tier)}`
-                                            : "Gratis"}</b></td>
-                                    </tr>
-                                    <tr>
-                                      <td>BTW {sampleProductPrice?.condtion_one ? "0" : selectedDetailsFinal.product_vat}%</td>
-                                      <td>{
-                                        sampleProductPrice?.condtion_one ? `${euroCurrency(0)}`
-                                          : sampleProductPrice?.condition_two ? `${euroCurrency((sampleProductPrice?.highest_tier) * selectedDetailsFinal.product_vat / 100)}`.trim()
-                                            : sampleProductPrice?.condtion_three ? `${euroCurrency((sampleProductPrice?.highest_tier) * selectedDetailsFinal.product_vat / 100)}`.trim()
-                                              : `${euroCurrency(0)}`
-                                      }
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td>Totaal incl. BTW</td>
-                                      <td>
-                                        {
-                                          sampleProductPrice?.condtion_one ? "Gratis"
-                                            : sampleProductPrice?.condition_two ? `${euroCurrency((sampleProductPrice?.highest_tier) + ((sampleProductPrice?.highest_tier) * selectedDetailsFinal.product_vat / 100)
-                                            )}`.trim()
-                                              : sampleProductPrice?.condtion_three ? `${euroCurrency((sampleProductPrice?.highest_tier) + ((sampleProductPrice?.highest_tier) * selectedDetailsFinal.product_vat / 100)
-                                              )}`.trim()
-                                                : "Gratis"
-                                        }
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              ) : (
-                                <table>
-                                  <tbody>
-                                  {isSample ? null :
-                                      <tr>
-                                        <td>Prijs per stuk</td>
-                                        <td>{`(${qty}x) `}{euroCurrency(getPriceForQty(qty,selectedDetailsFinal?.tier_prices))}</td>
-                                      </tr>
-                                    }
-                                    
-
-                                    {isSample ? null :
-                                      <tr>
-                                        <td>Instelkosten</td>
-                                        <td>{selectedDetailsFinal?.setup_costs ? `${euroCurrency(selectedDetailsFinal.setup_costs * (isCpkerLength ? isCpkerLength : 1)).trim()}` : <b className='normal green'>Gratis</b>}</td>
-
-                                      </tr>}
-                                      {isSample ? null :
-                                      <tr>
-                                        <td>Digitale drukproef</td>
-                                        <td><b className='normal green'>Gratis</b></td>
-                                      </tr>
-                                    }
-
-                                    {selectedDetailsFinal.change_costs ? (
-                                      <tr>
-                                        <td>Maatwisselkosten</td>
-                                        <td>{`${euroCurrency(selectedDetailsFinal.change_costs)}`.trim()}</td>
-                                      </tr>
-                                    ) : null}
-                                    <tr>
-                                      <td>Verzendkosten</td>
-                                      <td>{shippingCostsFree1 == true ?
-                                        <b className='normal green'>Gratis</b> : <b className='normal green'>Zie winkelwagen</b>}</td>
-
-                                    </tr>
-                                    {selectedDetailsFinal?.product_cost_name ?
-                                      <tr>
-                                        <td>{selectedDetailsFinal?.product_cost_name}</td>
-                                        <td>{`${euroCurrency(selectedDetailsFinal?.amount_per_piece === "1" ? qty * selectedDetailsFinal?.product_cost_value : selectedDetailsFinal?.product_cost_value)}`.trim()}</td>
-                                      </tr> : ""}
-                                    <tr>
-                                      <td><b>Totaal excl. BTW</b></td>
-                                      {isCustomQty ?
-                                        <td><b>{`${euroCurrency(
-                                          ((qtyData.price * (isSample ? sampleQty : qtyTemp)) + selectedDetailsFinal.setup_costs * (isCpkerLength ? isCpkerLength : 1) + selectedDetailsFinal.change_costs + (selectedDetailsFinal?.amount_per_piece === "1" ? qtyTemp * selectedDetailsFinal?.product_cost_value : selectedDetailsFinal?.product_cost_value))
-                                        )}`.trim()}</b></td>
-                                        :
-                                        <td><b>{`${euroCurrency(
-                                          ((qtyData.price * (isSample ? sampleQty : qty)) + selectedDetailsFinal.setup_costs * (isCpkerLength ? isCpkerLength : 1) + selectedDetailsFinal.change_costs + (selectedDetailsFinal?.amount_per_piece === "1" ? qty * selectedDetailsFinal?.product_cost_value : selectedDetailsFinal?.product_cost_value))
-                                        )}`.trim()}</b></td>
-                                      }
-
-
-                                    </tr>
-                                    <tr>
-                                      <td>BTW {selectedDetailsFinal.product_vat} %</td>
-                                      {isCustomQty ?
-                                        <td>{`${euroCurrency((((qtyData.price * (isSample ? sampleQty : qtyTemp)) + selectedDetailsFinal.setup_costs * (isCpkerLength ? isCpkerLength : 1) + selectedDetailsFinal.change_costs + (selectedDetailsFinal?.amount_per_piece === "1" ? qtyTemp * selectedDetailsFinal?.product_cost_value : selectedDetailsFinal?.product_cost_value)) * selectedDetailsFinal.product_vat / 100))}`.trim()}</td>
-                                        :
-                                        <td>{`${euroCurrency((((qtyData.price * (isSample ? sampleQty : qty)) + selectedDetailsFinal.setup_costs * (isCpkerLength ? isCpkerLength : 1) + selectedDetailsFinal.change_costs + (selectedDetailsFinal?.amount_per_piece === "1" ? qty * selectedDetailsFinal?.product_cost_value : selectedDetailsFinal?.product_cost_value)) * selectedDetailsFinal.product_vat / 100))}`.trim()}</td>
-
-                                      }
-                                    </tr>
-                                    <tr>
-                                      <td>Totaal incl. BTW</td>
-                                      {isCustomQty ?
-                                        <td>{`${euroCurrency(
-                                          ((qtyData.price * (isSample ? sampleQty : qtyTemp)) + selectedDetailsFinal.setup_costs * (isCpkerLength ? isCpkerLength : 1) + selectedDetailsFinal.change_costs + (selectedDetailsFinal?.amount_per_piece === "1" ? qtyTemp * selectedDetailsFinal?.product_cost_value : selectedDetailsFinal?.product_cost_value)) + (((qtyData.price * (isSample ? sampleQty : qtyTemp)) + selectedDetailsFinal.setup_costs + selectedDetailsFinal.change_costs + (selectedDetailsFinal?.amount_per_piece === "1" ? qtyTemp * selectedDetailsFinal?.product_cost_value : selectedDetailsFinal?.product_cost_value)) * selectedDetailsFinal.product_vat / 100)
-                                        )}`.trim()}</td>
-                                        :
-                                        <td>{`${euroCurrency(
-                                          ((qtyData.price * (isSample ? sampleQty : qty)) + selectedDetailsFinal.setup_costs * (isCpkerLength ? isCpkerLength : 1) + selectedDetailsFinal.change_costs + (selectedDetailsFinal?.amount_per_piece === "1" ? qty * selectedDetailsFinal?.product_cost_value : selectedDetailsFinal?.product_cost_value)) + (((qtyData.price * (isSample ? sampleQty : qty)) + selectedDetailsFinal.setup_costs * (isCpkerLength ? isCpkerLength : 1) + selectedDetailsFinal.change_costs + (selectedDetailsFinal?.amount_per_piece === "1" ? qty * selectedDetailsFinal?.product_cost_value : selectedDetailsFinal?.product_cost_value)) * selectedDetailsFinal.product_vat / 100)
-                                        )}`.trim()}</td>
-                                      }
-
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              )}
-                          </div>
-                        </div>
-                      </div>
+                     
                     </div>
                   </div>
                 </AccordionDetails>
               </Accordion>
               {isSample ? (
                 <React.Fragment>
-                  <div className='flex w-1/1 top-1 action'>
-                    <div className='flex-1'></div>
-                    <div className='flex-0 tr'>
-                      <button  aria-label="button" className='text-nowrap fw-300' onClick={() => setExpandPrice(!expandPrice)}>{expandPrice ? "Verberg prijsdetails" : "Bekijk prijsdetails"}</button>
-                    </div>
-                  </div>
+                
                   <div className='flex w-1/1 top-1 priceFinal'>
-                    <div className='flex-1'>Totaal (excl. BTW)</div>
+                    <div className='flex-1'>Total (excl. VAT)</div>
                     <div className='flex-0 tr'>{
                       sampleProductPrice?.condtion_one ? "Gratis"
                         : sampleProductPrice?.condition_two ?
@@ -4601,14 +4458,9 @@ function getPriceForQty(qty, tierprice) {
                 </React.Fragment>
               ) : (
                 <React.Fragment>
-                  <div className='flex w-1/1 top-1 action'>
-                    <div className='flex-1'></div>
-                    <div className='flex-0 tr'>
-                      <button aria-label="button" className='text-nowrap fw-300' onClick={() => setExpandPrice(!expandPrice)}>{expandPrice ? "Verberg prijsdetails" : "Bekijk prijsdetails"}</button>
-                    </div>
-                  </div>
+                
                   <div className='flex w-1/1 top-1 priceFinal'>
-                    <div className='flex-1'>Totaal (excl. BTW)</div>
+                    <div className='flex-1'>Total (excl. VAT)</div>
                     {isCustomQty ?
                       <div className='flex-0 tr'>{`${euroCurrency(
                         ((qtyData.price * qtyTemp) + selectedDetailsFinal.setup_costs * (isCpkerLength ? isCpkerLength : 1) + selectedDetailsFinal.change_costs + (selectedDetailsFinal?.amount_per_piece === "1" ? qtyTemp * selectedDetailsFinal?.product_cost_value : selectedDetailsFinal?.product_cost_value))
@@ -4662,7 +4514,7 @@ function getPriceForQty(qty, tierprice) {
                       isLoggedUser ? customerAddToCart(1) : guestAddToCart(1);
                     }}
                   >
-                    {isProcessing ? <AutorenewIcon /> : <>Bestellen <span className='flex middle'><KeyboardArrowRightIcon /></span></>}
+                    {isProcessing ? <AutorenewIcon /> : <>Add to Cart <span className='flex middle'><KeyboardArrowRightIcon /></span></>}
                   </Button>
                   {storeId == 1 ?
                     <Button className={`fs-20 line-8 fw-700 r-9 py-5 px-5 ${isProcessing1 ? 'rotateUpdate' : ''}`}
@@ -4681,129 +4533,9 @@ function getPriceForQty(qty, tierprice) {
 
                 </React.Fragment>
               )}
-              <div className="share flex col lg-flex lg-row gap-3 center pb-2 lg-pb-0">
-                {data?.settings?.stock_status ? <React.Fragment>
-                  {
-                    wishItem?.length ?
-                      <div
-                        className="flex middle gap-2 pointer center"
-                        onClick={() => removeWishlist(baseURL, token, dispatch, wishItem?.[0]?.itemId, productSku, wishlistAddedData, customerId, storeId, () => { }, navigate, isSessionExpired)}
-                      >
-                        <FullWishlist />
-                        <span className='fs-15 line-6'>Bewaard in favorieten</span>
-                      </div> :
-                      <div
-                        className="flex middle gap-2 pointer center"
-                        onClick={() => {
-                          if (!isLoggedUser) {
-                            dispatch(ACTION_OPEN__LOGIN(true));
-                            dispatch(ACTION_OPEN__FORGOTPASSWORD(false));
-                            dispatch(ACTION_WISHLISTPRODUCTID({ id: productId, sku: productSku }));
-                            dispatch(ACTION_GET__URLTYPE('pdp'));
-                          } else {
-
-                            if (!wishItem?.length) {
-                              addWishList(defaultURL, dispatch, token, customerId, { id: productId, sku: productSku }, wishlistAddedData, storeId, navigate, isSessionExpired);
-                            }
-                          }
-                        }}
-                      >
-                        <WishIcon className="pointer" color="#222" />
-                        <span className='fs-15 line-6'>Toevoegen in favorieten</span>
-                      </div>
-                  }
-                  <div className='arrow hide lg-block'></div>
-                </React.Fragment> : null}
-                <div className="flex middle gap-2 pointer center" onClick={() => setOpenCopyURLModel(true)}>
-                  <CopyUrl />
-                  <span className='fs-15 line-6'>Deel uw configuratie met unieke link</span>
-                </div>
-              </div>
-              {
-                wishlistResponse?.res?.data?.[0]?.message ? <p className='error'>{wishlistResponse?.res?.data?.[0]?.message}</p> : null
-              }
-              <div className="ups__content flex col gap-3">
-                <div
-                  className="flex middle space-between pointer"
-                  onClick={() => {
-                    uspHandler(productDetailsStaticData?.feature_content?.[0]?.menu?.tag_url);
-                    // purposely commented
-                    // setOpenModelUPS(true)
-                    // setServicesDetailsData(data?.settings?.feature_content && data?.settings?.feature_content?.[2]?.menu ? data?.settings?.feature_content?.[2]?.menu : null)
-                  }}
-                  Fragment  >
-                  <div className="flex middle gap-3 lg-gap-2">
-                    <ValidSuccesArrow />
-                    {
-                      storeId === 1 ?
-                        <span className='fs-15 line-6'>Ervaar onze <b className='fw-700'>snelle topservice!</b></span>
-                        :
-                        <span className='fs-15 line-6'><b className='fw-700'>High level service </b><span className='hide lg-inline-block'>met een vast contact persoon</span></span>
-                    }
-                  </div>
-                  <KeyboardArrowRightIcon />
-                </div>
-                <div
-                  className="flex middle space-between pointer"
-                  onClick={() => {
-                    uspHandler(productDetailsStaticData?.feature_content?.[1]?.menu?.tag_url);
-                    // purposely commented
-                    // setOpenModelUPS(true)
-                    // setServicesDetailsData(data?.settings?.feature_content && data?.settings?.feature_content?.[1]?.menu ? data?.settings?.feature_content?.[1]?.menu : null)
-                  }}
-                >
-                  <div className="flex middle gap-3 lg-gap-2">
-                    <ValidSuccesArrow />
-                    {
-                      storeId === 1 ?
-                        <span className='fs-15 line-6'><b className='fw-700'>Laagste prijsgarantie<b className='hide lg-inline'>:</b></b> <span className='hide lg-inline-block'>elders goedkoper? Wij matchen!</span></span>
-                        :
-                        <span className='fs-15 line-6'><b className='fw-700'>Beste prijs-kwaliteitverhouding</b></span>
-                    }
-                  </div>
-                  <KeyboardArrowRightIcon />
-                </div>
-                <div
-                  className="flex middle space-between pointer"
-                  onClick={() => {
-                    uspHandler(productDetailsStaticData?.feature_content?.[2]?.menu?.tag_url);
-                    // purposely commented
-                    // setOpenModelUPS(true)
-                    // setServicesDetailsData(data?.settings?.feature_content && data?.settings?.feature_content?.[0]?.menu ? data?.settings?.feature_content?.[0]?.menu : null)
-                  }}>
-                  <div className="flex middle gap-3 lg-gap-2">
-                    <ValidSuccesArrow />
-                    {
-                      storeId === 1 ?
-                        <span className='fs-15 line-6'><b className='fw-700'>Gratis digitaal voorbeeld</b> <span className='hide lg-inline-block'>binnen enkele uren in uw e-mail!</span></span>
-                        :
-                        <span className='fs-15 line-6'><b className='fw-700'>Eigen productie</b> <span className='hide lg-inline-block'>dus snel geleverd</span></span>
-                    }
-                  </div>
-                  <KeyboardArrowRightIcon />
-                </div>
-                <div
-                  className="flex middle space-between pointer"
-                  onClick={() => {
-                    uspHandler(productDetailsStaticData?.feature_content?.[3]?.menu?.tag_url);
-                    // purposely commented
-                    // setOpenModelUPS(true)
-                    // setServicesDetailsData(data?.settings?.feature_content && data?.settings?.feature_content?.[3]?.menu ? data?.settings?.feature_content?.[3]?.menu : null)
-                  }}
-                >
-                  <div className="flex middle gap-3 lg-gap-2">
-                    <ValidSuccesArrow />
-                    {
-                      storeId === 1 ?
-
-                        <span className='fs-15 line-6'><b className='fw-700'>Veilig betalen</b> <span className='hide lg-inline-block'>o.a. iDeal, Bancontact, ook achteraf!</span></span>
-                        :
-                        <span className='fs-15 line-6'><b className='fw-700'>Achteraf betalen</b> <span className='hide lg-inline-block'>mogelijk</span></span>
-                    }
-                  </div>
-                  <KeyboardArrowRightIcon />
-                </div>
-              </div>
+            
+            
+            
             </div>
           </div>}
         <ModelNew
@@ -4837,7 +4569,7 @@ function getPriceForQty(qty, tierprice) {
                   {width <= 768 ?
                     <div className="item-cell">Totaalprijs</div>
                     :
-                    <div className="item-cell">Totaal (excl. BTW)</div>
+                    <div className="item-cell">Total (excl. VAT)</div>
                   }
                 </div>
               </div>

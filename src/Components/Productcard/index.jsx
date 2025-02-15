@@ -569,7 +569,7 @@ const ProductCard = ({
                     color={data?.color}
                     plp={plp}
                     onColorChange={handleColorChange}
-                    urlKey={data?.urlKey}
+                    urlKey={data?.url}
                     setDisableSlider={setDisableSlider}
                   />
                 ) : (
@@ -583,7 +583,7 @@ const ProductCard = ({
                     },
                   }}
                   pageTypeCheck="pdpView"
-                  to={`/${data?.urlKey}`}
+                  to={`${data?.url}`}
                   onClick={() =>
                     handleAddToRecent(
                       recentProducts,
@@ -596,13 +596,11 @@ const ProductCard = ({
                   }
                   className="r-5 relative overflow-hidden block"
                 >
-                  <Img
+                  <img
                     type="img"
-                    src={handleImage(imageSrc ? imageSrc : data?.url)}
+                    src={ data?.image_url}
                     alt={data?.name}
-                    onError={() => {
-                      setImageSrc(data?.image);
-                    }}
+                   
                   />
                   {data?.labelStatus == 1 ? (
                     <div className="tag__name absolute flex gap-y-2 top-2 col left-3">
@@ -655,7 +653,7 @@ const ProductCard = ({
               <div className="flex col gap-1">
                 <h2 className="product__title">
                   <AdvancedLink
-                    to={`/${data?.urlKey}`}
+                    to={`${data?.url}`}
                     state={{
                       urlType: {
                         entityType: "product",
@@ -679,7 +677,7 @@ const ProductCard = ({
                    </AdvancedLink>
                   {data?.minSaleQty ? (
                     <AdvancedLink
-                      to={`/${data?.urlKey}`}
+                      to={`${data?.url}`}
                       state={{
                         urlType: {
                           entityType: "product",
@@ -720,7 +718,7 @@ const ProductCard = ({
                   </div>
                   <div className="action__block flex-0">
                     <AdvancedLink
-                      to={`/${data?.urlKey}`}
+                      to={`${data?.url}`}
                       state={{
                         urlType: {
                           entityType: "product",

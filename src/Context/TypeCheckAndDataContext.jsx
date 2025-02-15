@@ -50,7 +50,9 @@ export const TypeCheckProvider = ({ children }) => {
 
   const fetchPDPData = async (value) => {
     try {
-      const { data } = await axios.get(`${defaultURL}/pdp${value?.path}/0`);
+      // const { data } = await axios.get(`${defaultURL}/pdp${value?.path}/0`);
+      const { data } = await axios.get(`${defaultURL}/pdp/rigid-box-config-1`);
+      
       if (data?.length) {
         setPdpSharedState(data[0]);
         setisBackdropLoading(false);
@@ -164,13 +166,14 @@ export const TypeCheckProvider = ({ children }) => {
     };
 
     const handleNavigation = (path, pageType, state) => {
+      console.log({pageType,path})
       if (path && path !== "/" && path.from !== "internal") {
         if (
           (pageType?.entityType === "category" && pageType?.level >= "3") ||
           pageType?.entityType === "zoeken" ||
           pageType?.isChildExist === 0
         ) {
-          setisBackdropLoading(true);
+          // setisBackdropLoading(true);
           getDetails({ path, pageType });
         } else {
           navigate(
@@ -192,13 +195,12 @@ export const TypeCheckProvider = ({ children }) => {
     const { urlType, categoryData } = state || {};
     const isPDPView = pageTypeCheck === "pdpView";
     const isCategoryLevel2 =
-      urlType?.entityType === "category" && urlType?.level === "2";
+      urlType?.entityType === "category" && urlType?.level == "2";
     const isCategoryLevel3 =
-      urlType?.entityType === "category" && urlType?.level >= "3";
+      urlType?.entityType === "category" && urlType?.level === "3";
     const isSearchResult = url?.includes("/zoeken/");
     const name = pathURLOnly?.url?.split("/")?.[1];
     const isStaticUrl = StaticUrls.some((path) => path.split("/")[1] === name);
-
     // Avoid unnecessary API calls and state updates
     if (!urlType?.level && !categoryData?.catUrl) {
       if (
@@ -208,7 +210,7 @@ export const TypeCheckProvider = ({ children }) => {
         !isStaticUrl
       ) {
         if (isPDPView) {
-          setisBackdropLoading(true);
+          // setisBackdropLoading(true);
           fetchPDPData({ path: pathURLOnly.url, pageType });
         } else {
           fetchPageType(pathURLOnly.url).then((pageType) => {
@@ -243,10 +245,10 @@ export const TypeCheckProvider = ({ children }) => {
     } else {
       setPageType(pathURLOnly);
       if (!plponesharedState?.breadCrums?.length && isCategoryLevel2) {
-        setisBackdropLoading(true);
+        // setisBackdropLoading(true);
         getPLPOneDetails({ path: pathURLOnly.url, pageType });
       } else if (!plptwosharedState?.breadCrums?.length && isCategoryLevel3) {
-        setisBackdropLoading(true);
+        // setisBackdropLoading(true);
         getDetails({ path: pathURLOnly.url, pageType });
       } else {
         navigate(

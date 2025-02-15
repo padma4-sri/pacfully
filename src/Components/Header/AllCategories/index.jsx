@@ -89,11 +89,11 @@ const ButtonData = ({
           setSelectedData(listItem);
         } else if (enableClick) {
           setOpen(false);
-        setisBackdropLoading(true);
+        // setisBackdropLoading(true);
 
         } else {
           setOpen(false);
-        setisBackdropLoading(true);
+        // setisBackdropLoading(true);
 
         }
       }}

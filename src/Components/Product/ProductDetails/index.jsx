@@ -117,7 +117,8 @@ useEffect(() => {
         isLoader: true,
         loaderAction: (bool) => setLoading(bool),
         axiosData: {
-          url: `${defaultURL}/pdp${location?.pathname}/0`,
+          // url: `${defaultURL}/pdp${location?.pathname}`,
+          url: `${defaultURL}/pdp/rigid-box-config-1`,
         },
         setGetResponseData: (res) => {
           dispatch(ACTION_GET__URLTYPE("pdp"));
@@ -133,16 +134,7 @@ useEffect(() => {
           },[100])
         },
       };
-      const staticDatas = {
-        isLoader: true,
-        axiosData: {
-          url: `${defaultURL}/static/pdpStaticDatas`,
-        },
-        setGetResponseData: (res) => {
-          dispatch(ACTION__PDP__STATIC__DATA(res?.data))
-        },
-      };
-      
+    
        const urlKey = pdpsharedState?.settings?.breadcrumbs?.at(-1)?.urlKey;
   
       setTokenGetData("");
@@ -154,32 +146,14 @@ useEffect(() => {
         setPdpSharedState({...pdpsharedState})
       }
      
-      if (!productDetailsStaticData?.length) {
-        APIQueryGet(staticDatas);
-      }
+     
       APIReference.current = true;
       setTimeout(() => (APIReference.current = false), 300);
     }
   }, [location?.pathname]);
   
-  const getalternateProducts = {
-    isLoader: true,
-    axiosData: {
-      url: `${defaultURL}/getalternateproducts`,
-      paramsData: {
-        categoryUrl:  pdpsharedState?.settings?.breadcrumbs[2]?.level 
-        ? pdpsharedState?.settings?.breadcrumbs[2]?.urlKey 
-        : pdpsharedState?.settings?.breadcrumbs[1]?.urlKey || pdpsharedState?.settings?.breadcrumbs[0]?.urlKey
-     }
-    },
-    setGetResponseData: (res) => {
-      setAlternateProductsData(res?.data)
-    },
-  };
   useEffect(() => {
-    if (pdpsharedState?.settings?.stock_status == false) {
-      APIQueryPost(getalternateProducts)
-    }
+   
     handleAddToRecent(recentProducts,{},dispatch,pdpsharedState?.settings?.product_sku,baseURL,storeId)
   }, [pdpsharedState])
 
@@ -304,24 +278,7 @@ useEffect(() => {
               }
               </VisibleWarp>
             </div>
-            {/* Additional data */}
-            <div className="flex col container">
-              <div className="addtional__data__container container px-4">
-                <AdditionalData
-                  loading={loading}
-                  settingsData={pdpsharedState?.settings}
-                  mondu={productDetailsStaticData[0]?.mondu?.[0]}
-                  reviews={productDetailsStaticData[0]?.kiyoh_reviews}
-                  getInfo={pdpsharedState?.settings?.staticContents}
-                  setOpenReview={setOpenReview}
-                  setOpenAllReviews={setOpenAllReviews}
-                  accordionView={accordionView}
-                  setAccrodionView={setAccrodionView}
-                  productDetailsStaticData={productDetailsStaticData[0]}
-                  translateData={translateData[0]}
-                />
-              </div>
-            </div>
+          
 
           </div>
           :
@@ -388,28 +345,9 @@ useEffect(() => {
                 </div>
               </div>
 
-              {/* Additional data */}
-              <div className="addtional__data__container">
-                <AdditionalData
-                  loading={loading}
-                  settingsData={pdpsharedState?.settings}
-                  mondu={productDetailsStaticData[0]?.mondu?.[0]}
-                  reviews={productDetailsStaticData[0]?.kiyoh_reviews}
-                  getInfo={pdpsharedState?.settings?.staticContents}
-                  setOpenReview={setOpenReview}
-                  setOpenAllReviews={setOpenAllReviews}
-                  accordionView={accordionView}
-                  setAccrodionView={setAccrodionView}
-                  productDetailsStaticData={productDetailsStaticData[0]}
-                  translateData={translateData[0]}
-                />
-              </div>
+            
               {/* copy URL sidebar */}
-              <CopyUrlSidebar
-                openCopyURLModel={openCopyURLModel}
-                setOpenCopyURLModel={setOpenCopyURLModel}
-                productName={pdpsharedState?.settings?.product_name}
-              />
+            
               <ColorPicker
                 openColorModel={openColorModel}
                 setOpenColorModel={setOpenColorModel}
@@ -417,39 +355,9 @@ useEffect(() => {
             </div>
           </div>
       }
-      <VisibleWarp>
-      {
-        recentProducts?.length ?
-          <div className="sub__recent__products">
-            <ProductSlider
-              title="Recent bekeken"
-              data={!loadPreRender ? recentProducts : recentProducts?.slice(0, 4)}
-              showToGo={false}
-              loading={false}
-              pageName="pdp"
-            />
-          </div>
-          : <></>
-      }
-      </VisibleWarp>
-      <VisibleWarp>
-      {
-        loading && !recentProducts?.length ?
-          <div className="sub__recent__products">
-            <ProductSlider
-              title="Recent bekeken"
-              data={[]}
-              showToGo={false}
-              loading={loading}
-              pageName="pdp"
-            />
-          </div>
-          : <></>
-      }
-      </VisibleWarp>
+    
+    
 
-      <ReviewForm openModel={openReview} setOpenModel={setOpenReview} product_id={pdpsharedState?.settings?.product_id} productTitle={pdpsharedState?.settings?.product_name} />
-      <AllReviews openModel={openAllReviews} setOpenModel={setOpenAllReviews} data={pdpsharedState?.settings?.review_details?.details} />
       </React.Fragment>
   );
 };

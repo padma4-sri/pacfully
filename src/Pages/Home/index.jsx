@@ -25,7 +25,8 @@ const Home = () => {
   const location = useLocation()
   const dispatch = useDispatch()
   const homePageLoading = useSelector(state => state?.homePageLoading);
-  const featuredProducts = useSelector((state) => state?.getFeatureProduct);
+  const featuredProducts = useSelector(state => state?.getHomePageData?.data?.featuredProducts);
+  // const featuredProducts = useSelector((state) => state?.getFeatureProduct);
   const getStaticBannerData = useSelector(state => state?.getHomePageData?.data?.bannerData?.promotionMainBanner?.[0]);
   const popularCategory = useSelector(state => state?.getHomePageData?.data?.popularCategory);
   const getStoreBanner = useSelector(state => state?.getHomePageData?.data?.promotion);
