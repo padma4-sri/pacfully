@@ -544,7 +544,7 @@ const ProductCard = ({
                               );
                             }}
                           >
-                            <Img
+                            <img
                               type="img"
                               alt="product delete"
                               src={DeleteIcon}

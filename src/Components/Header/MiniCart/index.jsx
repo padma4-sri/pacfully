@@ -427,7 +427,7 @@ const ProductListing = ({ item, ind, cartDetails, dispatch, defaultURL, storeId,
                       className="fs-14 text-underline"
                       aria-label="button"
                     >
-                      {details == ind ? "Verberg details" : "Bekijk details"}
+                      {details == ind ? "Hide details" : "View details"}
                       <span className="flex middle up__arrow">
                         {details == ind ? (
                           <KeyboardArrowUpIcon />
@@ -512,7 +512,7 @@ const ProductListing = ({ item, ind, cartDetails, dispatch, defaultURL, storeId,
                     className="fs-14 text-underline"
                     aria-label="button"
                   >
-                    {details == ind ? "Verberg details" : "Bekijk details"}
+                    {details == ind ? "Hide details" : "View details"}
                     <span className="flex middle up__arrow">
                       {details == ind ? (
                         <KeyboardArrowUpIcon />
@@ -572,7 +572,7 @@ const ProductListing = ({ item, ind, cartDetails, dispatch, defaultURL, storeId,
                   deleteItem(item);
                 }}
               >
-                <Img
+                <img
                   type="img"
                   src={DeleteIcon}
                   style={{
@@ -702,7 +702,7 @@ const MiniCart = () => {
                     ""
                   )}
                   <tr>
-                    <td className="vat_font">Totaal (excl. BTW) </td>
+                    <td className="vat_font">Total (excl. VAT) </td>
                     <td className="vat_font">
                       {cartDetails?.tax_details?.subtotal_original}
                     </td>
@@ -721,27 +721,16 @@ const MiniCart = () => {
           ) : (
             ""
           )}
-          <div className="flex w-1/1 top-1 action sm-px-6 px-4">
-            <div className="flex-1"></div>
-            <div className="flex-1 tr">
-              <button
-                onClick={() => setExpandPrice(!expandPrice)}
-                className="fs-14 text-underline pt-3"
-                aria-label="button"
-              >
-                {expandPrice ? "Verberg prijsdetails" : "Bekijk prijsdetails"}
-              </button>
-            </div>
-          </div>
+         
           <div className="flex w-1/1 top-1 priceFinal py-4  px-4">
-            <div className="flex-1 fw-700 fs-20">Totaal (excl. BTW)</div>
+            <div className="flex-1 fw-700 fs-20">Total (excl. VAT)</div>
             <div className="flex-1 tr fw-700 fs-24">
-              € {cartDetails?.tax_details?.subtotal_original}
+              {cartDetails?.tax_details?.subtotal_original}
             </div>
           </div>
           <div className="action__blocks pt-2 flex col gap-y-4">
             {minicartItems == "cart" ? (
-              <Link to="/winkelwagen" aria-label={"winkelwagen"}>
+              <Link to="/cart" aria-label={"cart"}>
                 <Button
                   className="fs-15 line-8 fw-700 r-8  px-5 cart__button"
                   fullWidth
@@ -750,7 +739,7 @@ const MiniCart = () => {
                     scrollToTop();
                   }}
                 >
-                  Bestellen
+                  Order
                   <span className="flex middle">
                     <KeyboardArrowRightIcon />
                   </span>
@@ -787,7 +776,7 @@ const MiniCart = () => {
                 </Button>
               </Link>
             ) : minicartItems == "quote" ? (
-              <Link to="/winkelwagen" aria-label={"winkelwagen"}>
+              <Link to="/cart" aria-label={"cart"}>
                 <Button
                   className="fs-15 line-8 fw-700 r-8  px-5 cart__button"
                   fullWidth
@@ -806,17 +795,7 @@ const MiniCart = () => {
               ""
             )}
 
-            <div className="payment__img mx-auto relative">
-              <Img
-                type="img"
-                src={payment}
-                style={{
-                  maxWidth: "100%",
-                  maxHeight: "100%",
-                  objectFit: "contained",
-                }}
-              />
-            </div>
+          
           </div>
         </div>
       ) : (

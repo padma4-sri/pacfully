@@ -431,7 +431,7 @@ const Address = () => {
                                             className='fs-15 text-underline relative'
                                             onClick={() => deleteAddressHandler(item?.address_id)}
                                           >
-                                            <Img src={DeleteIcon} />
+                                            <img src={DeleteIcon} />
                                           </Button>
                                           : <></>
                                       }

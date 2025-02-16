@@ -2358,7 +2358,7 @@ function getPriceForQty(qty, tierprice) {
                 dispatch(ACTION__MINICART__ITEMS("cart"))
               }
               else {
-                navigate("/winkelwagen")
+                navigate("/cart")
               }
 
               getCartItems(dispatch, setIsProcessing, id, "", () => dispatch(ACTION_OPENCART(!isSample)), defaultURL, storeId, token, navigate, isSessionExpired, width);
@@ -2542,7 +2542,7 @@ function getPriceForQty(qty, tierprice) {
               dispatch(ACTION__MINICART__ITEMS("cart"))
             }
             else {
-              navigate("/winkelwagen")
+              navigate("/cart")
             }
             getCartItems(dispatch, setIsProcessing, customerQuoteId, customerId, () => dispatch(ACTION_OPENCART(!isSample)), defaultURL, storeId, token, navigate, isSessionExpired, width);
 
@@ -3730,16 +3730,7 @@ function getPriceForQty(qty, tierprice) {
     return shippingCostsFree;
   };
   const shippingCostsFree1 = calculateShippingCostsFree();
-  // const ShippingCostsInitText = () => {
-  //   if (data?.settings?.product_type === "configurable") {
-  //     if (data.settings?.init_shipping_type === "Gratis verzending") {
-  //       return <b className='normal green'>Gratis</b>;
-  //     } else {
-  //       return <b className='normal green'>Zie winkelwagen</b>;
-  //     }
-  //   }
-  //   return <b className='normal green'>Gratis</b>;
-  // };
+
   const isCpkerLength =
     selectedColorData &&
     Object.values(selectedColorData).reduce((sum, array) => {

@@ -2,9 +2,7 @@ import React, { useContext } from "react";
 import "./styles.scss";
 import { useSelector } from "react-redux";
 import CartItems from "../CartItems";
-import ApplyCouponSection from "../Coupon";
 import PriceDetailSection from "../PriceDetails";
-import UpsContent from "../UpsContent";
 import QuoteForm from "../QuoteForm";
 import ProductSlider from "Components/ProductSlider";
 import DomainContext from "Context/DomainContext";
@@ -35,10 +33,7 @@ function Quote() {
             {cartDetails?.totals_detail?.items?.length ? (
               <div className="flex right coupon__quotepage pt-4">
                 <div className="coupon__section__parent">
-                  {cartDetails?.totals_detail?.isSample == 1 ? "" :
-                    <ApplyCouponSection />
-
-                  }
+                 
                   <PriceDetailSection />
                 </div>
               </div>
@@ -54,7 +49,6 @@ function Quote() {
               <QuoteForm />
 
             }
-            <UpsContent />
             </div>
           </div>
         </div>

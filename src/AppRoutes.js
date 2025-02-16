@@ -12,19 +12,19 @@ import Checkout from "Pages/Checkout";
 import OrderConfirmation from "Components/Checkout/OrderConfirmation";
 import NoRoute from "Components/NoRoute/NoRoute";
 import CommingSoon from "Pages/CommingSoon";
-export const StaticUrls = ["/register","/reset-password/:token",
+export const StaticUrls = ["/register","/reset-password/:token","/cart","/checkout",
   // "/wachtwoord-opnieuw-instellen/:token", "/winkelwagen", "/offerteaanvraag", "/meest-gestelde-vragen", "/meest-gestelde-vragen/*", "/offerteaanvraag/succes", "/order/succes", "/pagina-niet-gevonden", "/kiyoh", "/checkout", "/privacy", "/algemene-voorwaarden", "/showroom", "/vacatures", "/vacatures/:key", "/blog", "/blog/:key", "/contact", "/disclaimer", "/over-ons", "/druktechnieken", "/klantenservice", "/klantenservice/*", "/mijn-account/:key", "/mijn-account/:key/:key", "/kortingscodes" , "/sitemap"
 ]
 const AppRoutes = () => {
   const routesData = {
     "/register":<Registration />,
     "/reset-password/:token":<ResetPassword />,
-    // "/winkelwagen":<CartPage />,
+    "/cart":<CartPage />,
     // "/offerteaanvraag":<QuotePage />,
     // "/offerteaanvraag/succes":<QuoteConfirmation />,
     // "/order/succes":<OrderConfirmation />,
     // "/pagina-niet-gevonden":<NoRoute />,
-    // "/checkout":<Checkout />,
+    "/checkout":<Checkout />,
     // "/mijn-account/:key":<MyAccount />,
     // "/mijn-account/:key/:key":<MyAccount />,
   }

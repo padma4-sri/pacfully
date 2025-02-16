@@ -8,9 +8,7 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Monduimage from "Res/images/home/mondu.svg";
 import CartItems from "../CartItems";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
-import ApplyCouponSection from "../Coupon";
 import PriceDetailSection from "../PriceDetails";
-import UpsContent from "../UpsContent";
 import { useNavigate } from "react-router-dom";
 import ProductSlider from "Components/ProductSlider";
 import { SkeletonLine } from "Components/Skeletion";
@@ -101,9 +99,7 @@ function Cart() {
                 <></>
               ) : (
                 <>
-                  {cartDetails?.totals_detail?.isSample == 1 ? "" :
-                    <ApplyCouponSection />
-                  }
+                  
                   <PriceDetailSection />
                   <div className="button__info pt-4 ">
                     {cartDetails?.totals_detail?.items?.length ?
@@ -118,23 +114,13 @@ function Cart() {
                             scrollToTop()
                           }}
                         >
-                          Bestellen
+                          Order
                           <span className="flex middle">
                             <KeyboardArrowRightIcon />
                           </span>
                         </Button>
 
-                        <div className="payment__img mx-auto py-3 relative">
-                          <Img
-                            type="img"
-                            src={payment}
-                            style={{
-                              maxWidth: "100%",
-                              maxHeight: "100%",
-                              objectFit: "contained",
-                            }}
-                          />
-                        </div>
+                       
                         {/* commented for purpose */}
                         {/* {cartDetails?.mondu_info ? (
                           <div class="flex center middle gap-2">
@@ -187,7 +173,6 @@ function Cart() {
                   </div>
                 </>
               )}
-              <UpsContent />
             </div>
             </div>
           </div>

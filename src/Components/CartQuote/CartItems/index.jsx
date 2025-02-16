@@ -34,7 +34,7 @@ const InputUpload = ({uploadProgress, myRefs,deleteImageloader, handleDelete, ha
       myref?.current?.click();
     }
   };
-  const DeleteIcon = "/res/img/delete.svg";
+  const DeleteIcon = "/res/img/deleteIcon.svg";
   return (
     <div className="upload__imgage__section py-4">
       <input type="file"  ref={myRefs}
@@ -73,7 +73,7 @@ const InputUpload = ({uploadProgress, myRefs,deleteImageloader, handleDelete, ha
                       {deleteImageloader[index] ?
                         <CircularProgress size={18} thickness={4} style={{ color: 'black' }} />
                         :
-                        <Img src={DeleteIcon} />
+                        <img src={DeleteIcon} />
 
                       }
                     </span>
@@ -1129,7 +1129,7 @@ function CartItems() {
       {
         cartDetails?.totals_detail?.message ?
           <>
-            <p className="fs-14 py-4">Uw winkelwagen is leeg.</p>
+            <p className="fs-14 py-4">Your shopping cart is empty.</p>
 
             <p className="fs-14 pt-4 flex">
               <Link
@@ -1137,10 +1137,10 @@ function CartItems() {
                 aria-label={"home"}
                 className="text-underline"
               >
-                Klik hier
+                Click here
               </Link>
               &nbsp;<span className="fs-15  line-6 middle">
-                om naar de homepage te gaan
+              to go to the homepage
               </span>
             </p>
           </>

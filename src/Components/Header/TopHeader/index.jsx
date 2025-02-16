@@ -272,7 +272,7 @@ const TopHeader = ({
                   aria-label="cart"
                   onClick={() => {
                     if (minicartPopUp <= 768) {
-                      navigate('/winkelwagen')
+                      navigate('/cart')
                     }
                     else {
                       setShowSuggestion(false);

@@ -74,7 +74,7 @@ const OrdersView = ({ orderTitle = "", data, loading = true, customerData }) => 
                         dispatch(ACTION__MINICART__ITEMS("cart"))
                       }
                       else {
-                        navigate("/winkelwagen")
+                        navigate("/cart")
                       }
                   
                  getCartItems(dispatch, setIsProcessing, customerQuoteId, customerId, () => dispatch(ACTION_OPENCART(true)), defaultURL, storeId, token, navigate, isSessionExpired, width);

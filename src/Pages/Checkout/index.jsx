@@ -772,22 +772,7 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
       console.log(err, "Place order err");
     }
   };
-  const fetchIdealBanksList = () => {
-    const customerAddress = {
-      setGetResponseData: (resData) => {
-        if (resData?.status === 200) {
-          setGetIdealBankList(resData?.data[1]);
-        }
-      },
-      getStatus: (res) => {
-        SessionExpiredLogout(dispatch, res?.status, navigate, isSessionExpired);
-      },
-      axiosData: {
-        url: `${baseURL}/getidealdropdowns`,
-      },
-    };
-    APIQueryGet(customerAddress);
-  };
+  
   const handleTabClick = (tabIndex) => {
     if (openTab === tabIndex) {
       setOpenTab(null);
@@ -825,7 +810,6 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
     if (isLoggedUser) {
       GetCustomerAddress();
     }
-    fetchIdealBanksList();
     if (summaryData?.totals_detail?.message) {
       if (isLoggedUser && customerQuoteId) {
         getCartItems(
@@ -1778,27 +1762,7 @@ if(selectedShippingMethod!==null){
                 ""
               )}
 
-              <div className="static__content pt-8 px-4">
-                <h3 className="fw-700 fs-18">
-                  Daarom{" "}
-                </h3>
-                <div className="ups__content flex col gap-3 pt-4">
-                  {summaryData?.ups_feature_content
-                    ? summaryData?.ups_feature_content[0]?.map(
-                        (item, index) => (
-                          <div className="flex middle space-between ">
-                            <div className="flex middle gap-3 lg-gap-2">
-                              <ValidSuccesArrow />
-                              <span className="fs-15 line-6">
-                                {item?.menu?.title}
-                              </span>
-                            </div>
-                          </div>
-                        )
-                      )
-                    : ""}
-                </div>
-              </div>
+            
             </div>
             <div className="address__section pb-6 px-4 w-1/1">
               <h1 className="fw-700 fs-32 py-6">Afrekenen</h1>
@@ -2589,27 +2553,7 @@ In het geval van bedrukte artikelen ontvangt u de factuur per e-mail na goedkeur
               ) : (
                 ""
               )}
-              <div className="static__content pt-12 px-4">
-                <h3 className="fw-700 fs-18">
-                  Daarom{" "}
-                </h3>
-                <div className="ups__content flex col gap-3 pt-4">
-                  {summaryData?.ups_feature_content
-                    ? summaryData?.ups_feature_content[0]?.map(
-                        (item, index) => (
-                          <div className="flex middle space-between ">
-                            <div className="flex middle gap-3 lg-gap-2">
-                              <ValidSuccesArrow />
-                              <span className="fs-15 line-6">
-                                {item?.menu?.title}
-                              </span>
-                            </div>
-                          </div>
-                        )
-                      )
-                    : ""}
-                </div>
-              </div>
+            
             </div>
           </div>
         </div>
@@ -2622,15 +2566,7 @@ In het geval van bedrukte artikelen ontvangt u de factuur per e-mail na goedkeur
                   <SkeletonLine width="100%" height="30px" />
                 </div>
               ))}
-              <div className="static__content pt-8 px-4">
-                <div className="ups__content flex col gap-3 pt-4">
-                  {["", "", "", "", ""]?.map((item, index) => (
-                    <div>
-                      <SkeletonLine width="100%" height="30px" />
-                    </div>
-                  ))}
-                </div>
-              </div>
+             
             </div>
             <div className="address__section pb-6 px-4 w-1/1">
               <div className="billing__address">
