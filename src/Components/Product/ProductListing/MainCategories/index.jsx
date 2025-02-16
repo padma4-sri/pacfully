@@ -290,7 +290,7 @@ const PlpDescription = ({ locationChange, forceRerender }) => {
               }`}
             >
               <ProductSlider
-                title="Recent bekeken"
+                title="Recently viewed"
                 data={
                   !loadPreRender ? recentProducts : recentProducts?.slice(0, 4)
                 }

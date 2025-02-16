@@ -95,7 +95,7 @@ const Home = () => {
            <VisibleWarp>
             {loadIfUser && recentProducts?.length && !homePageLoading ? (
               <ProductSlider
-                title="Recent bekeken"
+                title="Recently viewed"
                 loading={homePageLoading}
                 data={
                   !loadPreRender ? recentProducts : recentProducts?.slice(0, 4)

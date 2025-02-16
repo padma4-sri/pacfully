@@ -285,11 +285,11 @@ export const getCartItems = (dispatch, setLoading, quoteId, customerId, openCart
       }
     },
     axiosData: {
-      url: `${defaultURL}/cart/getdetails`,
+      url: `${defaultURL}/getdetails`,
       paramsData: {
         customerId: customerId ? customerId : "",
         quoteId: quoteId ? quoteId : "",
-        storeId: storeId,
+        storeId: 1,
       },
     },
   };
@@ -308,7 +308,7 @@ export const getCartItems = (dispatch, setLoading, quoteId, customerId, openCart
       SessionExpiredLogout(dispatch, res?.status, navigate, isSessionExpired);
     },
     axiosData: {
-      url: `${defaultURL}/cart/getdetailsLogin`,
+      url: `${defaultURL}/getdetailsLogin`,
       paramsData: {
         customerId: customerId ? customerId : "",
         quoteId: quoteId ? quoteId : "",
@@ -320,7 +320,7 @@ export const getCartItems = (dispatch, setLoading, quoteId, customerId, openCart
       
     },
   };
-  APIQueryPost(customerId ? cartItemsOptionsLogin : cartItemsOptions);
+  APIQueryPost(customerId ? cartItemsOptions : cartItemsOptions);
 };
 
 

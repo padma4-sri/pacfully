@@ -44,17 +44,13 @@ const AdditionalData = ({ loading = true, plpData = {} }) => {
   return (
     <div className="plp__addtional__data">
       <div className="plp__addtional__wrapper">
-        <VisibleWarp>
-        <div className="plpsub__mundo__rating">
-          <MundoRating loading={loading} getReviews={plpData?.dataContent?.reviews} getMondu={plpData?.dataContent?.mundo?.[0]} plp2={true} />
-        </div>
-        </VisibleWarp>
+      
         <VisibleWarp>
         {
           !loading && recentProducts?.length ?
             <div className="plpsub__recent__products">
               <ProductSlider
-                title='Recent bekeken'
+                title='Recently viewed'
                 data={!loadPreRender ? recentProducts : recentProducts?.slice(0, 4)}
                 showToGo={false}
                 loading={loading}
@@ -64,13 +60,7 @@ const AdditionalData = ({ loading = true, plpData = {} }) => {
             : <></>
         }
         </VisibleWarp>
-        <VisibleWarp>
-        {plpData?.staticContents?.length ?
-          <div className="plpsub__information">
-            <Infoblock getInfo={plpData?.staticContents} plp2={true} loading={loading} />
-          </div> : ""
-        }
-        </VisibleWarp>
+       
 
       </div>
     </div>

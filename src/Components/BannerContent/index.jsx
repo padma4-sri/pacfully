@@ -135,7 +135,7 @@ const BannerContent = () => {
   const { loadPreRender } = useContext(RenderContext);
   const homePageLoading = useSelector((state) => state?.homePageLoading);
   const getBannerData = useSelector(
-    (state) => state?.getHomePageData?.data?.bannerData?.mainBanner
+    (state) => state?.getHomePageData?.data?.bannerData?.promotionMainBanner
   );
 
   const settings = {
@@ -168,10 +168,10 @@ const BannerContent = () => {
             <BannerItem
               key={`BannerItem_${index}`}
               img={bannerData?.image_url}
-              title={bannerData?.header_title}
-              buttonText={bannerData?.button_title}
-              description={bannerData?.header_content}
-              button_url={bannerData?.button_url}
+              title={bannerData?.headerTitle}
+              buttonText={bannerData?.buttonTitle}
+              description={bannerData?.headerContent}
+              button_url={bannerData?.buttonUrl}
               link_url={bannerData?.link_url}
               backgroundColor={bannerData?.backgroundColor || "#cccccc"}
             />

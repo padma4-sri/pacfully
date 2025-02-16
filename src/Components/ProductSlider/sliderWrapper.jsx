@@ -60,7 +60,7 @@ const SliderWrapper = ({
     });
 
     useEffect(() => {
-      if (title === 'Recent bekeken') {
+      if (title === 'Recently viewed') {
         setInitial(1);
         setTimeout(() => {
           setInitial(0);

@@ -63,7 +63,7 @@ function Quote() {
         {cartDetails?.totals_detail?.message && recentProducts?.length ?
           <div className="cart__product__slider ">
             <ProductSlider
-              title='Recent bekeken'
+              title='Recently viewed'
               data={recentProducts}
               pageName="quote"
             />
