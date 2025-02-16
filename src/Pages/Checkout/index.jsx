@@ -451,26 +451,30 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
       const payload = {
         cartId: guestKey,
         billing_address: {
-          countryId: guestBillingAddress?.country,
+          countryId: "IN",
           street: [
             guestBillingAddress?.addressList?.houseNumber,
             guestBillingAddress?.addressList?.address,
           ],
-          company: guestBillingAddress?.addressList?.companyName,
+          regionId: "599",
+          regionCode: "TN",
+          region: "Tamil Nadu",
+        customerAddressId:"0",
+          company:null,
           telephone: guestBillingAddress?.addressList?.mobileNumber,
           postcode: guestBillingAddress?.addressList?.postalCode,
           city: guestBillingAddress?.addressList?.city,
           firstname: guestBillingAddress?.addressList?.firstName,
           lastname: guestBillingAddress?.addressList?.lastName,
-          vat_id: guestBillingAddress?.addressList?.Vat,
           same_as_billing: guestBillingAddress?.shippingAddress ? 1 : 0,
-          save_in_address_book: customerBillingAddress?.defaultBilling ? 1 : customerAddress?.allAddress?.length ? 0 : 1,
-
-          extension_attributes: {
-            is_company: guestBillingAddress?.addressList?.companyName ? "1" : "0",
-            additional_data: guestBillingAddress?.addressList?.addition ? guestBillingAddress?.addressList?.addition : "",
-            reference_number: guestBillingAddress?.addressList?.referenceNumber,
-          },
+          fax: null,
+          middlename: null,
+        prefix: null,
+          suffix: null,
+        vatId: null,
+          customAttributes: [],
+          saveInAddressBook: null,
+         
         },
         paymentMethod: {
           method:
@@ -488,7 +492,8 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
       );
       
       if (orderId?.data) {
-        OrderSuccessGuest(orderId?.data)
+        // OrderSuccessGuest(orderId?.data)
+        navigate("/react-app")
       }
     } catch (err) {
       // setEnableLoader(false)
@@ -763,7 +768,9 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
      
 
       if (orderId?.data) {
-        OrderSuccessCustomer(orderId?.data)
+        // OrderSuccessCustomer(orderId?.data)
+        navigate("/react-app")
+
       }
 
     } catch (err) {
@@ -860,12 +867,7 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
     APIQueryPost(countryList);
   };
   const OrderSummaryApi = (id, quote,event) => {
-    if (isLoggedUser) {
-      OrderSummaryApiCustomer(id, quote,event)
-    }
-    else {
       OrderSummaryApiGuest(id, quote,event)
-    }
   };
   const OrderSummaryApiGuest = (id, quote,event) => {
     const orderSummary = {
@@ -880,7 +882,7 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
 
       },
       axiosData: {
-        url: `${baseURL}/checkout/summary`,
+        url: `${baseURL}/getsummary`,
         paramsData: {
           customerId: customerId ? customerId : id ? id : "",
           quoteId: quote
@@ -888,8 +890,7 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
             : customerQuoteId
               ? customerQuoteId
               : guestQuoteId ? guestQuoteId : "",
-          storeId: storeId,
-          shippingCode:event?.shipping_method_code?event?.shipping_method_code:""
+          storeId: 1,
         },
       },
     };
@@ -1047,10 +1048,10 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
       };
       APIQueryPost(addAddres);
     };
-    if (isLoggedUser && summaryData?.shipping_methods?.length) {
+    if (isLoggedUser && shippingMethodData?.length) {
       CustomerBilling();
     }
-    else if (!isLoggedUser && summaryData?.shipping_methods?.length) {
+    else if (!isLoggedUser && shippingMethodData?.length) {
       guestBilling();
     }
   })
@@ -1294,104 +1295,115 @@ if(selectedShippingMethod!==null){
   const AddGuestBillingShippingAddress = (event) => {
     const billingPayload = {
       addressInformation: {
-       
         shipping_address: {
-          countryId: event?.label === "Afhalen in Etten-Leur"?"NL": guestBillingAddress?.country,
+          customerAddressId: "0",
+          countryId: "IN",
+          regionId: "599",
+        regionCode: "TN",
+          region: "Tamil Nadu",
+          customerId: customerId,
           street: [
-            event?.label === "Afhalen in Etten-Leur" ? "22": guestBillingAddress?.addressList?.houseNumber,
-            event?.label === "Afhalen in Etten-Leur" ? "Pauvreweg": guestBillingAddress?.addressList?.address,
+            guestBillingAddress?.addressList?.houseNumbers,
+            guestBillingAddress?.addressList?.Straatnaam,
           ],
-          postcode: event?.label === "Afhalen in Etten-Leur" ? "4879 NA": guestBillingAddress?.addressList?.postalCode,
-          city: event?.label === "Afhalen in Etten-Leur" ? "Etten-Leur": guestBillingAddress?.addressList?.city,
-          firstname: guestBillingAddress?.addressList?.firstName,
-          lastname: guestBillingAddress?.addressList?.lastName,
-          vat_id: guestBillingAddress?.addressList?.Vat,
-
-          save_in_address_book:event?.label === "Afhalen in Etten-Leur"?"0":  customerBillingAddress?.defaultBilling ? 1 : customerAddress?.allAddress?.length ? 0 : 1,
-
-          extension_attributes: {
-            reference_number: guestBillingAddress?.addressList?.referenceNumber,
-            additional_details: "additional shipping",
-            additional_data: guestBillingAddress?.addressList?.addition ? guestBillingAddress?.addressList?.addition : ""
-
-          },
+          company: null,
+          telephone: guestBillingAddress?.addressList?.mobileNumber,
+          fax: null,
+          postcode:  guestBillingAddress?.addressList?.postcode,
+          city:  guestBillingAddress?.addressList?.Stad,
+          firstname: guestBillingAddress?.addressList?.firstname,
+          lastname: guestBillingAddress?.addressList?.lastname,
+          middlename: null,
+          prefix: null,
+          suffix: null,
+          vatId: null,
+          customAttributes: []
         },
         billing_address: {
-          countryId: guestBillingAddress?.country,
+          customerAddressId: "0",
+          regionId: "599",
+          regionCode: "TN",
+          region: "Tamil Nadu",
+          customerId: customerId,
           street: [
             guestBillingAddress?.addressList?.houseNumber,
             guestBillingAddress?.addressList?.address,
           ],
-          company: guestBillingAddress?.addressList?.companyName,
+          company: null,
           telephone: guestBillingAddress?.addressList?.mobileNumber,
+          fax: null,
           postcode: guestBillingAddress?.addressList?.postalCode,
           city: guestBillingAddress?.addressList?.city,
           firstname: guestBillingAddress?.addressList?.firstName,
           lastname: guestBillingAddress?.addressList?.lastName,
-          vat_id: guestBillingAddress?.addressList?.Vat,
-
-          save_in_address_book:  customerBillingAddress?.defaultBilling ? 1 : customerAddress?.allAddress?.length ? 0 : 1,
-
-          extension_attributes: {
-            reference_number: guestBillingAddress?.addressList?.referenceNumber,
-            additional_details: "additional shipping",
-            additional_data: guestBillingAddress?.addressList?.addition ? guestBillingAddress?.addressList?.addition : ''
-
-          },
+           middlename: null,
+          prefix: null,
+          suffix: null,
+          vatId: null,
+          customAttributes: [],
+          saveInAddressBook: null
         },
-        shipping_method_code: event?.shipping_method_code,
-        shipping_carrier_code: event?.shipping_carrier_code,
-        extension_attributes: {},
-      },
+        shipping_method_code: "flatrate",
+        shipping_carrier_code: "flatrate",
+        extension_attributes: {}
+      }
+      
     };
     const shippingPayload = {
       addressInformation: {
-        shipping_address: {
-         
-          countryId: event?.label === "Afhalen in Etten-Leur" ? "NL": guestShippingAddress?.country,
-          street: [
-            event?.label === "Afhalen in Etten-Leur" ? "22": guestShippingAddress?.addressList?.houseNumbers,
-            event?.label === "Afhalen in Etten-Leur" ? "Pauvreweg": guestShippingAddress?.addressList?.Straatnaam,
-          ],
-          postcode:event?.label === "Afhalen in Etten-Leur" ? "4879 NA": guestShippingAddress?.addressList?.postcode,
-          city:event?.label === "Afhalen in Etten-Leur" ? "Etten-Leur": guestShippingAddress?.addressList?.Stad,
-          firstname: guestShippingAddress?.addressList?.firstname,
-          lastname: guestShippingAddress?.addressList?.lastname,
-          vat_id: guestShippingAddress?.addressList?.vat,
-          save_in_address_book: event?.label === "Afhalen in Etten-Leur"?"0": customerBillingAddress?.defaultBilling ? 1 : customerAddress?.allAddress?.length ? 0 : 1,
-
-          extension_attributes: {
-            reference_number:
-              guestShippingAddress?.addressList?.referenceNumber,
-            additional_details: "additional shipping",
-            additional_data: guestShippingAddress?.addressList?.addition ? guestShippingAddress?.addressList?.addition : ""
+          shipping_address: {
+            customerAddressId: "0",
+            countryId: "IN",
+            regionId: "599",
+          regionCode: "TN",
+            region: "Tamil Nadu",
+            customerId: customerId,
+            street: [
+              guestShippingAddress?.addressList?.houseNumbers,
+             guestShippingAddress?.addressList?.Straatnaam,
+            ],
+            company: null,
+            telephone: guestShippingAddress?.addressList?.mobileNumber,
+            fax: null,
+            postcode:  guestShippingAddress?.addressList?.postcode,
+            city:  guestShippingAddress?.addressList?.Stad,
+            firstname: guestShippingAddress?.addressList?.firstname,
+            lastname: guestShippingAddress?.addressList?.lastname,
+            middlename: null,
+            prefix: null,
+            suffix: null,
+            vatId: null,
+            customAttributes: []
           },
-        },
-        billing_address: {
-          countryId: guestBillingAddress?.country,
-          street: [
-            guestBillingAddress?.addressList?.houseNumber,
-            guestBillingAddress?.addressList?.address,
-          ],
-          company: guestBillingAddress?.addressList?.companyName,
-          telephone: guestBillingAddress?.addressList?.mobileNumber,
-          postcode: guestBillingAddress?.addressList?.postalCode,
-          city: guestBillingAddress?.addressList?.city,
-          firstname: guestBillingAddress?.addressList?.firstName,
-          lastname: guestBillingAddress?.addressList?.lastName,
-          vat_id: guestBillingAddress?.addressList?.Vat,
-          save_in_address_book:customerBillingAddress?.defaultBilling ? 1 : customerAddress?.allAddress?.length ? 0 : 1,
-
-          extension_attributes: {
-            reference_number: guestBillingAddress?.addressList?.referenceNumber,
-            additional_details: "",
-            additional_data: guestBillingAddress?.addressList?.addition ? guestBillingAddress?.addressList?.addition : ""
+          billing_address: {
+            customerAddressId: "0",
+            regionId: "599",
+            regionCode: "TN",
+            region: "Tamil Nadu",
+            customerId: customerId,
+            street: [
+              guestBillingAddress?.addressList?.houseNumber,
+              guestBillingAddress?.addressList?.address,
+            ],
+            company: null,
+            telephone: guestBillingAddress?.addressList?.mobileNumber,
+            fax: null,
+            postcode: guestBillingAddress?.addressList?.postalCode,
+            city: guestBillingAddress?.addressList?.city,
+            firstname: guestBillingAddress?.addressList?.firstName,
+            lastname: guestBillingAddress?.addressList?.lastName,
+             middlename: null,
+            prefix: null,
+            suffix: null,
+            vatId: null,
+            customAttributes: [],
+            saveInAddressBook: null
           },
-        },
-        shipping_method_code: event?.shipping_method_code,
-        shipping_carrier_code: event?.shipping_carrier_code,
-        extension_attributes: {},
-      },
+          shipping_method_code: "flatrate",
+          shipping_carrier_code: "flatrate",
+          extension_attributes: {}
+        }
+    
     };
     const payload = guestBillingAddress?.shippingAddress
       ? billingPayload
@@ -1630,6 +1642,21 @@ if(selectedShippingMethod!==null){
       handleExpandNext("fast");
     }
   }, [submitAddress]);
+  const shippingMethodData = [
+  
+    {
+        "label": "Flatrate ",
+        "cost_base_price": "0,00",
+        "cost_base_price_details": {
+            "Expofit Pakketverzending": "0.00"
+        },
+        "shipping_method": "flatrate",
+        "shipping_method_code": "flatrate",
+        "cost_base": "0.00",
+        "shipping_amount": "",
+        "shipping_carrier_code": "flatrate"
+    }
+]
   const handleExpandNext = (action) => {
 
     setTimeout(() => {
@@ -1765,11 +1792,11 @@ if(selectedShippingMethod!==null){
             
             </div>
             <div className="address__section pb-6 px-4 w-1/1">
-              <h1 className="fw-700 fs-32 py-6">Afrekenen</h1>
+              <h1 className="fw-700 fs-32 py-6">To settle</h1>
               <div className="billing__address">
                 {openTab !== "billing" && (
                   <div className="flex space-between">
-                    <h3 className="fw-700 fs-20 pb-4">Factuuradres</h3>
+                    <h3 className="fw-700 fs-20 pb-4">Billing address</h3>
                     <button
                       className="fw-300 fs-15 text-underline "
                       onClick={() => handleTabClick("billing")}
@@ -1873,7 +1900,7 @@ if(selectedShippingMethod!==null){
                           });
                         }}
                       >
-                        Naar verzending
+                        To shipping
                         <span className="flex middle fw-700">
                           <KeyboardArrowRightIcon />
                         </span>
@@ -1928,7 +1955,7 @@ if(selectedShippingMethod!==null){
                               });
                             }}
                           >
-                            Naar verzending
+                            To shipping
                             <span className="flex middle fw-700">
                               <KeyboardArrowRightIcon />
                             </span>
@@ -1942,7 +1969,7 @@ if(selectedShippingMethod!==null){
               <div className="shipping__method py-6">
                 <div className="choose__business  ">
                   <div className="flex space-between">
-                    <h3 className="fw-700 fs-20 ">Verzending</h3>
+                    <h3 className="fw-700 fs-20 ">Dispatch</h3>
                     {selectedShippingMethod && openTab !== "shipping" && (
                       <button
                         className="fw-300 fs-15 text-underline "
@@ -1956,11 +1983,11 @@ if(selectedShippingMethod!==null){
                   <div className="accordion">
                     {openTab == "shipping" && (
                       <div>
-                        {summaryData?.shipping_methods?.length ? (
+                        {shippingMethodData?.length ? (
                           <>
                             <div className="flex gap-2 sm-flex sm-gap-20 py-6 sm-py-6">
                               <div className="xl-w-1/2 w-1/1">
-                                {summaryData?.shipping_methods?.map(
+                                {shippingMethodData?.map(
                                   (detail, detailIndex) => (
                                     <div className="flex space-between w-1/1">
                                       <Input
@@ -2063,7 +2090,7 @@ if(selectedShippingMethod!==null){
                 <div className="payment__method py-6">
                   <div className="choose__business  ">
                     <div className="flex space-between">
-                      <h3 className="fw-700 fs-20 ">Betaalmethode</h3>
+                      <h3 className="fw-700 fs-20 ">Payment method</h3>
                       {openTab !== "payment" && selectedPaymentMethod && (
                         <button
                           className="fw-300 fs-15 text-underline "
@@ -2437,48 +2464,10 @@ In het geval van bedrukte artikelen ontvangt u de factuur per e-mail na goedkeur
               <div className="complete__order py-6">
                 <div className="choose__business  ">
                   <div className="flex space-between">
-                    <h3 className="fw-700 fs-20 ">Bestelling afronden</h3>
                   </div>
                   {openTab == "completeorder" && (
                     <>
-                      <div>
-                        <div className="flex gap-4 middle">
-                        <Input
-                            type="checkbox"
-                            name="newsLetter"
-                            fieldClassName="checkbox flex gap-3 row py-5 row-i right middle"
-                            value="newsLetter"
-                            onChange={handleCheckboxChange}
-                            checked={
-                              summaryData?.totals_detail?.isSubscribe == 1 ||
-                              newsLetterSubscription ||
-                              customerDetails?.extension_attributes
-                                ?.is_subscribed
-                            }
-
-                          />
-                       
-                          <span className="fs-15 py-5 pointer"  onClick={handleSpanClick}>
-                            Ja, ik wil graag de nieuwsbrief ontvangen met
-                            aanbiedingen en kortingscodes.
-                          </span>
-                        </div>
-
-                        <p className="fs-14 pb-6 line-6">
-                          Door op 'Bestellen' te klikken, geeft u aan dat u
-                          onze&nbsp;
-                          <a
-                            href="/algemene-voorwaarden"
-                            target="_blank"
-                            className="text-underline fs-14 pb-1 line-6"
-                          >
-                            Algemene voorwaarden
-                          </a>
-                          &nbsp;hebt gelezen, begrepen en ermee akkoord gaat.
-                          Tevens bevestigt u dat u de bestelling en details hebt
-                          gecontroleerd.
-                        </p>
-                      </div>
+                     
                       {disabledError && (
                         <p className="xl-flex flex center xl-right  errors fs-14 pb-4">
                           {disabledError}

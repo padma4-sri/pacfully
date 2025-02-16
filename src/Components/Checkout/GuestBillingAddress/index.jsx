@@ -106,7 +106,7 @@ const Form = ({
   const { baseURL, defaultURL, storeId } = useContext(DomainContext);
   const [resMessage, setResMessage] = useState("");
   const [getBusinessType, setGetBusinessType] = useState("1");
-  const [selectedCountry, setSelectedCountry] = useState("NL");
+  const [selectedCountry, setSelectedCountry] = useState("IN");
   const [customData, setCustomData] = useState(0);
   const [disabledError, setDisableError] = useState("")
   const [postalCodeData, setPostalCodeData] = useState({});
@@ -184,12 +184,7 @@ const Form = ({
           message: "This field is required.",
         },
       },
-      companyName: {
-        required: {
-          value: getBusinessType === "1" ? true : false,
-          message: "This field is required.",
-        },
-      },
+    
       password: {
         required: {
           value: customData?.code == 200 ? true : false,
@@ -227,38 +222,14 @@ const Form = ({
     },
   });
   useEffect(() => {
-    setPostalCodeParams({
-      postcode: data?.postalCode,
-      countryId: selectedCountry
-    })
-  }, [data?.postalCode, selectedCountry]);
-  useEffect(() => {
-    if (data?.business === "0") {
-      setData({
-        ...data,
-        companyName: "",
-      });
-      setErrors({
-        ...errors,
-        companyName: "",
-      });
-      setSuccess({
-        ...errors,
-        companyName: "",
-      });
-    }
-
-    setGetBusinessType(data?.business);
-  }, [data?.business, customerDetails]);
-  useEffect(() => {
     if (isLoggedUser) {
       setData({
         ...data,
         firstName: customerDetails?.firstname,
         lastName: customerDetails?.lastname,
         email: customerDetails?.email,
-        business: company?.length ? '1' : '0',
-        companyName: company?.length ? company?.[0]?.value : '',
+        business: null,
+        companyName:null,
         mobileNumber: phoneNumber?.length ? phoneNumber?.[0]?.value : '',
       });
     }
@@ -314,7 +285,7 @@ const Form = ({
     };
     APIQueryPost(addAddres);
   };
-
+console.log(errors,"errors")
   useEffect(() => {
     if (openTab == "billing" && guestBillingAddress?.addressList?.firstName && guestBillingAddress?.country) {
       setData(guestBillingAddress?.addressList)
@@ -440,55 +411,7 @@ const Form = ({
       }, 10000);
     }
   }, [resMessage, disabledError]);
-  const postCodeValidation = () => {
-    const options = {
-      isLoader: true,
-      loaderAction: (bool) => bool,
-      setGetResponseData: (resData) => {
-        setPostalCodeData(resData?.data?.[0]);
-        if(resData?.data?.[0]?.code==400){
-          dispatch(ACTION_POSTAL_DATA_VALUE(true))
-        }
-        else if(resData?.data?.[0]?.code==200){
-           dispatch(ACTION_POSTAL_DATA_VALUE(false))
-
-        }
-      },
-      axiosData: {
-        url: `${defaultURL}/postcode/verify`,
-        paramsData: {
-          countryId: postalCodeParams?.countryId ? postalCodeParams?.countryId : '',
-          postcode: postalCodeParams?.postcode ? postalCodeParams?.postcode.trim() : ''
-        }
-      }
-    }
-    if( postalCodeParams?.postcode ?.length >=1){
-      APIQueryPost(options);
-    }
-  }
-  useEffect(() => {
-    if ((postalCodeParams?.countryId && postalCodeParams?.postcode)) {
-      postCodeValidation();
-    }
-    if(postalCodeParams?.countryId === "NL" && guestBillingAddress?.addressList?.country === "NL"){
-      setData({
-        ...data,
-        Vat: "",
-      });
-      setErrors({
-        ...errors,
-        Vat: "",
-      });
-      setSuccess({
-        ...errors,
-        Vat: "",
-      });
-      AddGuestBillingShippingAddress(summaryData?.shipping_methods?.length && summaryData?.shipping_methods[0])
-    }
-    else if(postalCodeParams?.countryId && data?.Vat && errors?.Vat ===""){
-      AddGuestBillingShippingAddress(summaryData?.shipping_methods?.length && summaryData?.shipping_methods[0])
-    }
-  }, [postalCodeParams?.countryId]);
+ 
 
   return <form onSubmit={submitHandler}>
     <div className="">
@@ -498,7 +421,7 @@ const Form = ({
             <Input
               name="email"
               placeHolder=""
-              lable="E-mailadres *"
+              lable="Email address *"
               value={data?.email}
               onChange={changeHandler}
               errorMessage={
@@ -598,7 +521,7 @@ const Form = ({
                 <Input
                   name="email"
                   placeHolder=""
-                  lable="E-mailadres *"
+                  lable="Email address *"
                   value={data?.email}
                   onChange={changeHandler}
                   errorMessage={
@@ -627,77 +550,10 @@ const Form = ({
                 />
               }
 
-              <h3 className="fw-700 fs-20 pb-6">Factuuradres</h3>
-              <div className="choose__business flex row gap-x-10">
-                <Input
-                  type="radio"
-                  name="business"
-                  lable="Zakelijk"
-                  value="1"
-                  fieldClassName="radio flex gap-3 row pb-5 row-i right middle"
-                  labelClassName="fs-14 line-1"
-                  onChange={changeHandler}
-                  checked={
-                    guestBillingAddress?.addressList?.business === "1"
-                      ? true
-                      : false
-                  }
-                />
-                <Input
-                  type="radio"
-                  name="business"
-                  lable="Particulier"
-                  value="0"
-                  fieldClassName="radio flex gap-3 row pb-5 row-i right middle"
-                  labelClassName="fs-14 line-1"
-                  onChange={(e) => {
-                    if (summaryData?.totals_detail?.isSample === "1") {
-                      setDisableError('Alleen bedrijven kunnen samples bestellen.');
-                    } else {
-                      setDisableError('');
-                      changeHandler(e)
-                    }
-                  }}
-                  checked={
-                    guestBillingAddress?.addressList?.business === "0"
-                      ? true
-                      : false
-                  }
-                  disabled={summaryData?.totals_detail?.isSample == "1"}
-                />
-              </div>
-              {disabledError &&
-                <p className="fs-15 error pb-4">{disabledError}</p>
-              }
+              <h3 className="fw-700 fs-20 pb-6">Billing address</h3>
+             
 
-              {guestBillingAddress?.addressList?.business === "1" ? (
-                <Input
-                  name="companyName"
-                  placeHolder=""
-                  lable="Bedrijfsnaam *"
-                  labelClassName="fs-15"
-                  value={data?.companyName}
-                  onBlur={() => onBlur("companyName")}
-                  onChange={changeHandler}
-                  errorMessage={
-                    errors?.companyName ===
-                      guestBillingAddress?.addressList?.companyName
-                      ? ""
-                      : errors?.companyName
-                  }
-                  icon={
-                    success?.companyName === "true" ? (
-                      <ValidSuccesArrow />
-                    ) : success?.companyName === "false" ? (
-                      <ValidErrorArrow />
-                    ) : null
-                  }
-                  showIcon={true}
-                />
-              ) : (
-                <></>
-              )}
-
+            
             </div>
             <div className="lg-flex-1"></div>
           </div>
@@ -706,7 +562,7 @@ const Form = ({
               <Input
                 name="firstName"
                 placeHolder=""
-                lable="Voornaam *"
+                lable="First name *"
                 labelClassName="fs-15"
                 value={data?.firstName}
                 onChange={changeHandler}
@@ -732,7 +588,7 @@ const Form = ({
                 name="lastName"
                 placeHolder=""
                 labelClassName="fs-15"
-                lable="Achternaam *"
+                lable="Surname*"
                 value={data?.lastName}
                 onChange={changeHandler}
                 onKeyDown={keyDownHandler}
@@ -754,38 +610,7 @@ const Form = ({
             </div>
           </div>
           <div className="lg-flex lg-gap-6">
-            <div className="lg-flex-1">
-              <div className="input__control relative country__select">
-                <div className="field__block relative flex gap-1 col pb-5">
-                  <label htmlFor="country" className="fs-15 fw-700">
-                    Land *
-                  </label>
-                  <select
-                    className="form__types w-1/1 px-4 py-2 fs-14 "
-                    id="country"
-                    name="country"
-                    value={selectedCountry}
-                    onChange={(e) => setSelectedCountry(e.target.value)}
-                  >
-
-                    {countryList?.length
-                      ? countryList?.map((country, index) => (
-                        index === defaultCountryLength?.length ?
-                          <>
-                            <option className="defaultcountyline" key={`line${index}`} disabled>──────────</option>
-                            <option key={index} value={country?.value}>
-                              {country?.label}
-                            </option>
-                          </> :
-                          <option key={index} value={country?.value}>
-                            {country?.label}
-                          </option>
-                      ))
-                      : ""}
-                  </select>
-                </div>
-              </div>
-            </div>
+         
             <div className="lg-flex-1"></div>
           </div>
           <div className="lg-flex lg-gap-6">
@@ -798,7 +623,6 @@ const Form = ({
                 value={data?.postalCode}
                 onChange={(e)=>{
                   changeHandler(e);
-                  postCodeValidation();
 
                 }
                  
@@ -806,7 +630,6 @@ const Form = ({
                 onKeyDown={keyDownHandler}
                 onBlur={() => {
                   onBlur("postalCode");
-                  postCodeValidation();
                 }
               }
                 errorClassName="error fs-12 pt-1 tr w-1/1"
@@ -831,7 +654,7 @@ const Form = ({
                   name="houseNumber"
                   labelClassName="fs-15"
                   placeHolder=""
-                  lable="Huisnummer *"
+                  lable="House number *"
                   value={data?.houseNumber}
                   onChange={changeHandler}
                   onKeyDown={keyDownHandler}
@@ -850,14 +673,7 @@ const Form = ({
                   }
                   showIcon={true}
                 />
-                <Input
-                  name="addition"
-                  placeHolder=""
-                  lable="Toevoeging"
-                  labelClassName="fs-15"
-                  value={data?.addition}
-                  onChange={changeHandler}
-                />
+               
               </div>
             </div>
           </div>
@@ -867,7 +683,7 @@ const Form = ({
                 placeHolder=""
                 name="address"
                 labelClassName="fs-15"
-                lable="Straatnaam *"
+                lable="Street name*"
                 value={data?.address}
                 onChange={changeHandler}
                 onKeyDown={keyDownHandler}
@@ -888,7 +704,7 @@ const Form = ({
             <div className="lg-flex-1">
               <Input
                 name="city"
-                lable="Stad *"
+                lable="City*"
                 placeHolder=""
                 labelClassName="fs-15"
                 value={data?.city}
@@ -916,7 +732,7 @@ const Form = ({
                 name="mobileNumber"
                 placeHolder=""
                 labelClassName="fs-15 "
-                lable="Telefoonnummer *"
+                lable="Phone number*"
                 value={data?.mobileNumber}
                 onChange={changeHandler}
                 onKeyDown={(e) => {
@@ -955,73 +771,14 @@ const Form = ({
           </div>
 
           <div className="lg-flex lg-gap-6">
-            <div className="lg-flex-1">
-              {data?.business !== "0" &&
-                data?.business === "1" &&
-                selectedCountry !== "NL" ? (
-                <Input
-                  placeHolder=""
-                  name="Vat"
-                  inputClassName="Vat"
-                  labelClassName="fs-15"
-                  lable="BTW Nummer"
-                  value={data?.Vat ? data?.Vat :guestBillingAddress?.addressList?.Vat}
-                  onChange={(e)=>{
-                    changeHandler(e)
-                    console.log(errors,"errors")
-                  }}
-                  onKeyDown={(e) => {                   
-                    if (
-                      !(
-                        /^[a-zA-Z]*$/.test(e.key) ||
-                        (e.key >= "0" && e.key <= "9") || 
-                        e.key === "Backspace" || 
-                        e.key === "Delete" || 
-                        e.key === "ArrowLeft" || 
-                        e.key === "ArrowRight" 
-                      )
-                    ) {
-                      e.preventDefault(); 
-                    }
-                  }}
-                  
-                  onBlur={() => {
-                    onBlur("Vat")
-                    if(data?.Vat?.length >= 8){
-                      AddGuestBillingShippingAddress(summaryData?.shipping_methods?.length && summaryData?.shipping_methods[0])
-                      }
-                  }}
-                 
-                  // errorMessage={
-                  //   errors?.Vat === data?.Vat ? "" : errors?.Vat
-                  // }
-                  errorMessage={
-                    errors?.Vat ===
-                      guestBillingAddress?.addressList?.Vat
-                      ? ""
-                      : errors?.Vat
-                  }
-                  icon={
-                    success?.Vat === "true" ? (
-                      <ValidSuccesArrow />
-                    ) : success?.Vat === "false" ? (
-                      <ValidErrorArrow />
-                    ) : null
-                  }
-                  showIcon={true}
-
-                />
-              ) : (
-                <></>
-              )}
-            </div>
+          
             <div className="lg-flex-1"></div>
           </div>
           <div className="shipping__checkbox pt-4">
             <Input
               type="checkbox"
               name="newsLetter"
-              lable="Het verzendadres is hetzelfde als het factuuradres"
+              lable="The shipping address is the same as the billing address"
               fieldClassName="checkbox flex gap-3 row pb-5 row-i right middle"
               value="newsLetter"
               onChange={() => onShippingAddressChange(!shippingAddress)}

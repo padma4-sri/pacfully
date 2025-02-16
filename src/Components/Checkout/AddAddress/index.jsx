@@ -37,8 +37,8 @@ const AddAddress = ({
   const { defaultURL } = useContext(DomainContext);
   const [selectedCountry, setSelectedCountry] = useState(
     {
-      "value": "NL",
-      "label": "Nederland",
+      "value": "IN",
+      "label": "INDIA",
       "is_region_visible": false,
       "is_default": true
     }
@@ -144,51 +144,7 @@ const AddAddress = ({
     },
     onSubmit: () => saveAddress(),
   });
-  useEffect(() => {
-    setPostalCodeParams({
-      postcode: data?.postalCode,
-      countryId: selectedCountry?.value
-    })
-  }, [data?.postalCode, selectedCountry]);
-  useEffect(() => {
-    if ((postalCodeParams?.countryId && postalCodeParams?.postcode)) {
-      postCodeValidation();
-    }
-    if(postalCodeParams?.countryId ==="NL"){
-      setData({
-        ...data,
-        vat: "",
-      });
-      setErrors({
-        ...errors,
-        vat: "",
-      });
-      setSuccess({
-        ...errors,
-        vat: "",
-      });
-    }
-   
-  }, [postalCodeParams?.countryId]);
-  const postCodeValidation = () => {
-    const options = {
-      isLoader: true,
-      loaderAction: (bool) => bool,
-      setGetResponseData: (resData) => {
-        setPostalCodeData(resData?.data?.[0]);
-      },
-      axiosData: {
-        url: `${defaultURL}/postcode/verify`,
-        paramsData: {
-          countryId: postalCodeParams?.countryId ? postalCodeParams?.countryId : '',
-          postcode: postalCodeParams?.postcode ? postalCodeParams?.postcode.trim() : ''
-        }
-      }
-    }
-    if( postalCodeParams?.postcode ?.length >=1){
-      APIQueryPost(options);
-    }
-  }
+
 
 
 
@@ -329,77 +285,18 @@ const AddAddress = ({
           {address === "billing"
             ? "Nieuw factuuradres"
             : address === "shipping"
-              ? "Nieuw Afleveradres"
+              ? "Nieuw Delivery address"
               : ""}
         </h1>
       </div>
       <div className="flex-1 overflow-y-auto add__address__form px-4 sm-px-6 py-4">
         <form onSubmit={submitHandler} noValidate>
-          <div className="choose__business flex row gap-x-10">
-            <Input
-              type="radio"
-              name="business"
-              lable="Zakelijk"
-              value="1"
-              fieldClassName="radio flex gap-3 row pb-5 row-i right middle"
-              labelClassName="fs-14 line-1"
-              onChange={changeHandler}
-              checked={data?.business === "1" ? true : false}
-            />
-            <Input
-              type="radio"
-              name="business"
-              lable="Particulier"
-              value="0"
-              fieldClassName="radio flex gap-3 row pb-5 row-i right middle"
-              labelClassName="fs-14 line-1"
-              // onChange={changeHandler}
-              onChange={(e) => {
-                if (summaryData?.totals_detail?.isSample === "1") {
-                  setDisableError('Alleen bedrijven kunnen samples bestellen.');
-                } else {
-                  setDisableError('');
-                  changeHandler(e)
-                }
-              }}
-              checked={data?.business === "0" ? true : false}
-              disabled={summaryData?.totals_detail?.isSample == "1"}
-
-            />
-          </div>
-          {disabledError &&
-                <p className="fs-15 error pb-4">{disabledError}</p>
-              }
-          {data?.business === "1" ? (
-            <Input
-              name="companyName"
-              placeHolder=""
-              lable="Bedrijfsnaam *"
-              labelClassName="fs-15"
-              value={data?.companyName}
-              onBlur={() => onBlur("companyName")}
-              onChange={changeHandler}
-              errorMessage={
-                errors?.companyName === data?.companyName
-                  ? ""
-                  : errors?.companyName
-              }
-              icon={
-                success?.companyName === "true" ? (
-                  <ValidSuccesArrow />
-                ) : success?.companyName === "false" ? (
-                  <ValidErrorArrow />
-                ) : null
-              }
-              showIcon={true}
-            />
-          ) : (
-            <></>
-          )}
+         
+        
           <Input
             name="firstName"
             placeHolder=""
-            lable="Voornaam *"
+            lable="First name *"
             labelClassName="fs-15"
             value={data?.firstName}
             onChange={changeHandler}
@@ -421,7 +318,7 @@ const AddAddress = ({
             name="lastName"
             placeHolder=""
             labelClassName="fs-15"
-            lable="Achternaam *"
+            lable="Surname*"
             value={data?.lastName}
             onChange={changeHandler}
             onKeyDown={keyDownHandler}
@@ -482,7 +379,6 @@ const AddAddress = ({
             value={data?.postalCode}
             onChange={(e)=>{
               changeHandler(e);
-              postCodeValidation();
 
             }
              
@@ -490,7 +386,6 @@ const AddAddress = ({
             onKeyDown={keyDownHandler}
             onBlur={() => {
               onBlur("postalCode");
-              postCodeValidation();
             }
           }
             errorClassName="error fs-12 pt-1 tr w-1/1"
@@ -512,7 +407,7 @@ const AddAddress = ({
                   name="houseNumber"
                   labelClassName="fs-15"
                   placeHolder=""
-                  lable="Huisnummer *"
+                  lable="House number *"
                   value={data?.houseNumber}
                   onChange={changeHandler}
                   onKeyDown={keyDownHandler}
@@ -531,20 +426,13 @@ const AddAddress = ({
                   }
                   showIcon={true}
                 />
-            <Input
-              name="addition"
-              placeHolder=""
-              lable="Toevoeging"
-              labelClassName="fs-15"
-              value={data?.addition}
-              onChange={changeHandler}
-            />
+            
           </div>
           <Input
             placeHolder=""
             name="address"
             labelClassName="fs-15"
-            lable="Straatnaam *"
+            lable="Street name*"
             value={data?.address}
             onChange={changeHandler}
             onKeyDown={keyDownHandler}
@@ -584,7 +472,7 @@ const AddAddress = ({
             name="mobileNumber"
             placeHolder=""
             labelClassName="fs-15"
-            lable="Telefoonnummer *"
+            lable="Phone number*"
             value={data?.mobileNumber}
             onChange={changeHandler}
             onKeyDown={(e) => {
@@ -617,51 +505,7 @@ const AddAddress = ({
             showIcon={true}
           />
           
-          {
-          data?.business !== "0" && (data?.business === "1" && selectedCountry?.value !== "NL") ? (
-            <Input
-              placeHolder=""
-              name="vat"
-              labelClassName="fs-15"
-              lable="BTW Nummer"
-              value={data?.vat}
-              inputClassName="vat"
-              onChange={changeHandler}
-              onKeyDown={(e) => {                   
-                if (
-                  !(
-                    /^[a-zA-Z]*$/.test(e.key) ||
-                    (e.key >= "0" && e.key <= "9") || 
-                    e.key === "Backspace" || 
-                    e.key === "Delete" || 
-                    e.key === "ArrowLeft" || 
-                    e.key === "ArrowRight" 
-                  )
-                ) {
-                  e.preventDefault(); 
-                }
-              }}
-              onBlur={() => {
-                onBlur("vat")
-               
-              }}
-              errorMessage={
-                errors?.vat === data?.vat ? "" : errors?.vat
-              }
-              icon={
-                success?.vat === "true" ? (
-                  <ValidSuccesArrow />
-                ) : success?.vat === "false" ? (
-                  <ValidErrorArrow />
-                ) : null
-              }
-              showIcon={true}
-              
-             
-            />
-          ) : (
-            <></>
-          )}
+        
           <div className="flex  gap-8 pt-4">
             <Button
               className="fs-15 line-8 fw-700 r-8  px-5 save__button"
