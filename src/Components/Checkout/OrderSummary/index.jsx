@@ -43,7 +43,7 @@ function OrderSummary({ summaryData }) {
             className="fw-700 fs-20 "
             onClick={() => setSummaryDetails(!summaryDetails)}
           >
-            Besteloverzicht
+            Order overview 
           </p>
 
           <div
@@ -255,31 +255,9 @@ function OrderSummary({ summaryData }) {
 
           <div className="priceDetails pt-6 pb-4  ">
             <table className="w-1/1">
-              <tr>
-                <td>Digitale drukproef</td>
-                <td>
-                  <b className="normal green">Gratis</b>
-                </td>
-              </tr>
-              <tr>
-                <td>Instelkosten</td>
-                <td>
-                  {summaryData?.totals_detail?.setupCost ==
-                    "0,00"
-                    ? <b className="normal green">Gratis</b>
-                    : summaryData?.totals_detail?.setupCost}</td>
-              </tr>
              
-              <tr>
-                <td>Verzendkosten</td>
-                <td>
-                  {summaryData?.totals_detail?.postageCosts == null
-                    ? "" : summaryData?.totals_detail?.postageCosts ==
-                      "0,00"
-                      ? <b className="normal green">Gratis</b>
-                      : summaryData?.totals_detail?.postageCosts}
-                </td>
-              </tr>
+            
+             
                {cartDetails?.totals_detail?.productCost && Object.values(cartDetails?.totals_detail?.productCost).map(item => (
                  <tr>
                         <td>{item?.label}</td>
@@ -295,17 +273,17 @@ function OrderSummary({ summaryData }) {
                 ""
               )}
               <tr className="fw-700 ">
-                <td className="fs-20">Totaal (excl. BTW)	</td>
+                <td className="fs-20">Totaal (excl. VAT)	</td>
                 <td className="fs-26">
                   {summaryData?.tax_details?.subtotal_original}
                 </td>
               </tr>
               <tr>
-                <td>BTW </td>
+                <td>VAT </td>
                 <td>{summaryData?.tax_details?.tax_amount}</td>
               </tr>
               <tr>
-                <td>Totaalbedrag</td>
+                <td>Total amount</td>
                 <td>{summaryData?.tax_details?.grandTotal}</td>
               </tr>
             </table>

@@ -166,7 +166,6 @@ export const TypeCheckProvider = ({ children }) => {
     };
 
     const handleNavigation = (path, pageType, state) => {
-      console.log({pageType,path})
       if (path && path !== "/" && path.from !== "internal") {
         if (
           (pageType?.entityType === "category" && pageType?.level >= "3") ||

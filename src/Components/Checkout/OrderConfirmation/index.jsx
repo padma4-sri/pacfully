@@ -182,10 +182,10 @@ function OrderConfirmation() {
         url: `${baseURL}/order/success`,
         method: "post",
         paramsData: {
-          storeId: storeId,
-          orderId: orderIds, 
+          storeId: 1,
+          orderId: location?.state, 
           referenceNumber: "",
-          monduUid: monduIdParam ? monduIdParam : ""
+          email:"padma567@gmail.com"
         },
       },
     };
@@ -220,8 +220,10 @@ function OrderConfirmation() {
         window.location.reload();
       } 
     } else {
-      submitQuote();
+      // submitQuote();
     }
+    submitQuote();
+
   }, [location, navigate, orderIds]);
 
   useEffect(()=>{
@@ -350,13 +352,7 @@ function OrderConfirmation() {
           
         </div>
 
-        <div className="cart__product__slider ">
-          <ProductSlider
-            title='Anderen kochten ook..'
-            loading={false}
-            data={productdata?.others_bought_items}
-          />
-        </div>
+       
       </div>
     </>
   );

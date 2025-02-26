@@ -12,16 +12,16 @@ import Checkout from "Pages/Checkout";
 import OrderConfirmation from "Components/Checkout/OrderConfirmation";
 import NoRoute from "Components/NoRoute/NoRoute";
 import CommingSoon from "Pages/CommingSoon";
-export const StaticUrls = ["/register","/reset-password/:token","/cart","/checkout","/react-app","/order/success"]
+export const StaticUrls = ["/order/success","/register","/reset-password/:token","/cart","/checkout","/react-app"]
 const AppRoutes = () => {
   const routesData = {
     "/register":<Registration />,
     "/react-app":<Home />,
     "/reset-password/:token":<ResetPassword />,
     "/cart":<CartPage />,
+    "/order/success":<OrderConfirmation />,
     // "/offerteaanvraag":<QuotePage />,
     // "/offerteaanvraag/succes":<QuoteConfirmation />,
-    "/order/success":<OrderConfirmation />,
     // "/pagina-niet-gevonden":<NoRoute />,
     "/checkout":<Checkout />,
     // "/mijn-account/:key":<MyAccount />,

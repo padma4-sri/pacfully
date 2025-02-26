@@ -341,7 +341,6 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
         console.error('Error while making the request:', error);
       });
   };
- 
   const OrderSuccessGuest = (orderId) => {
     
     const quoteSubmit = {
@@ -385,7 +384,7 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
         dispatch(ACTION__SUCCESS_TOKEN(resData?.data[0]?.token));
        
           setData(resData?.data[0]);
-          if ((orderId && selectedPaymentMethod?.code == "banktransfer") || (orderId && selectedPaymentMethod?.code == "free")) {
+          if ((orderId && selectedPaymentMethod?.code == "checkmo") || (orderId && selectedPaymentMethod?.code == "free")) {
             navigate("/order/succes", { state: orderId});
             if (isLoggedUser && customerQuoteId) {
               getCartItems(
@@ -490,11 +489,48 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
         defaultURL + `/guest-carts/${guestKey}/payment-information`,
         payload
       );
-      
-      if (orderId?.data) {
-        // OrderSuccessGuest(orderId?.data)
-        navigate("/react-app")
-      }
+        if (orderId?.data && selectedPaymentMethod?.code == "checkmo") {
+      navigate("/order/success", { state:  orderId.data  });
+
+
+            if (isLoggedUser && customerQuoteId) {
+              getCartItems(
+                dispatch,
+                () => { },
+                customerQuoteId,
+                customerId,
+                () => { }, defaultURL,
+                storeId,
+                token, navigate, isSessionExpired
+  
+              );
+            }
+            else if (guestQuoteId) {
+              getCartItems(
+                dispatch,
+                () => { },
+                guestQuoteId,
+                "",
+                () => { }, defaultURL,
+                storeId,
+                token, navigate, isSessionExpired
+  
+              );
+            }
+          }
+          // else if (selectedPaymentMethod == "mondu" || selectedPaymentMethod?.code == "mondu") {
+          //   GuestMonduIntegration(orderId?.data)
+          // }
+          // else
+          // if ((resData?.data[0]?.incrementId && selectedPaymentMethod?.code !== "banktransfer") || (resData?.data[0]?.incrementId && selectedPaymentMethod?.code !== "free")) {
+          //     const resData = await axios.post(
+          //       baseURL + `/getpaymentUrl`,
+          //       paymentPayLoad
+          //     );
+          //     if (resData?.data?.[1]?.order_id) {
+          //       window.location.assign(`${resData?.data?.[1]?.payment_url}`);
+          //     }
+          //   }
     } catch (err) {
       // setEnableLoader(false)
       setDisableError(err?.response?.data?.message)
@@ -579,9 +615,9 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
        
           setData(resData?.data[0]);
          
-          if ((orderId && selectedPaymentMethod?.code == "banktransfer") || (orderId && selectedPaymentMethod?.code == "free")) {
+          if ((orderId && selectedPaymentMethod?.code == "checkmo") || (orderId && selectedPaymentMethod?.code == "free")) {
 
-              navigate("/order/succes", { state: orderId });
+              navigate("/order/success", { state: orderId });
               if (isLoggedUser && customerQuoteId) {
                 getCartItems(
                   dispatch,
@@ -768,8 +804,8 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
      
 
       if (orderId?.data) {
-        // OrderSuccessCustomer(orderId?.data)
-        navigate("/react-app")
+        OrderSuccessCustomer(orderId?.data)
+        // navigate("/order/success")
 
       }
 
@@ -1778,17 +1814,13 @@ if(selectedShippingMethod!==null){
           <div className="checkout__container xl-flex xl-gap-x-12 pb-4">
             <div className="order__sumary ">
               <OrderSummary summaryData={summaryData} />
-              {summaryData?.totals_detail?.postage_string ? (
-                <div className="description mt-4">
-                  <h4 className="fw-600 px-4 pt-4">* Let op:</h4>
-                  <p className="fs-15">
-                    {summaryData?.totals_detail?.postage_string}
-                  </p>
-                </div>
-              ) : (
-                ""
-              )}
-
+             
+               
+<button  onClick={()=>{
+  navigate("/order/success", { state:  "123"  });
+}}>
+  placeOrder
+</button>
             
             </div>
             <div className="address__section pb-6 px-4 w-1/1">
@@ -2066,14 +2098,14 @@ if(selectedShippingMethod!==null){
                               <AutorenewIcon />
                             ) : (
                               <>
-                              {summaryData?.totals_detail?.isSample == 1 && summaryData?.totals_detail?.subtotal_rounded == "0,00" ? "Naar afronden" : "Naar betaalmethode"}  
+                              {summaryData?.totals_detail?.isSample == 1 && summaryData?.totals_detail?.subtotal_rounded == "0,00" ? "Naar afronden" : "By payment method"}  
                                 <span className="flex middle fw-700">
                                   <KeyboardArrowRightIcon />
                                 </span>
                               </>
                             )} */}
                             <>
-                              {summaryData?.totals_detail?.isSample == 1 && summaryData?.totals_detail?.subtotal_rounded == "0,00" ? "Naar afronden" : "Naar betaalmethode"}  
+                              {summaryData?.totals_detail?.isSample == 1 && summaryData?.totals_detail?.subtotal_rounded == "0,00" ? "Naar afronden" : "By payment method"}  
                                 <span className="flex middle fw-700">
                                   <KeyboardArrowRightIcon />
                                 </span>

@@ -797,7 +797,7 @@ const ProductListing = ({ ind, item, navigate, dispatch,dropboxToken,dropboxAcce
             </h3>
           </a>
           <div className="pt-3 fs-14 mobile_view_Artikelnummer">
-            <span>Artikelnummer: </span>
+            <span>SKU: </span>
             <span>{item?.sku}</span>
           </div>
           <div className="details__block flex col left w-1/1">
@@ -836,8 +836,8 @@ const ProductListing = ({ ind, item, navigate, dispatch,dropboxToken,dropboxAcce
                         aria-label="button"
                       >
                         {details.includes(ind)
-                          ? "Verberg details"
-                          : "Bekijk details"}
+                          ? "Hide details"
+                          : "View details"}
                         <span className="flex middle up__arrow">
                           {details.includes(ind) ? (
                             <KeyboardArrowUpIcon />
