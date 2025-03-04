@@ -15,6 +15,7 @@ import mastero from "../../Res/images/mastero.svg";
 import mondu from "../../Res/images/home/mondu.svg";
 import sofort from "../../Res/images/sofort.svg";
 import mastercard from "../../Res/images/mastercard.svg";
+import { useScript } from "./script";
 import visa from "../../Res/images/visa.svg";
 import Img from "Components/Img";
 import { ACTION_CUSTOMER__DETAILS,ACTION__SUCCESS_TOKEN } from 'Store/action';
@@ -122,225 +123,64 @@ const totalDiscounts = parseFloat(summaryData?.tax_details?.discount_amount?.rep
 const discountPercentage = ((subtotal - subtotalWithDiscount) / subtotal) * 100;
 const roundedDiscountPercentage = Math.round(discountPercentage);
 const roundedshippingPriceCents = Math.round(shippingPriceCents);
- 
-  const GuestMonduIntegration = (orderId) => {
-    const mapItemsToLineItems = (items) => {
-      return items.map((item) => {
-        return {
-          quantity: item.qty || 1,
-          external_reference_id: item?.itemId,
-          title: item.productName || "",
-          net_price_per_item_cents: parseInt(item?.unitPrice),
-          net_price_cents: parseInt(item?.totalPrice) * 50000,
-          product_id: item.productId || "",
-          product_sku: item.sku || "",
-          variation_id: "1",
-          item_type: item.item_type || "type",
-        };
-      });
-    };
-    const values = {
-      data:{
-        currency: "EUR",
-        billing_address: {
-          country_code: guestBillingAddress?.country,
-          state: "state",
-          city: guestBillingAddress?.addressList?.city,
-          zip_code: guestBillingAddress?.addressList?.postalCode,
-          address_line1: guestBillingAddress?.addressList?.houseNumber,
-          address_line2: guestBillingAddress?.addressList?.address,
-        },
-        shipping_address: {
-         
-          country_code: selectedShippingMethod?.label === "Afhalen in Etten-Leur"?"NL": guestBillingAddress?.shippingAddress ? guestBillingAddress?.country : guestShippingAddress?.country,
-          state: "state",
-          city:selectedShippingMethod?.label === "Afhalen in Etten-Leur"?"Etten-Leur": guestBillingAddress?.shippingAddress ? guestBillingAddress?.addressList?.city : guestShippingAddress?.addressList?.Stad,
-          zip_code: guestBillingAddress?.shippingAddress ? guestBillingAddress?.addressList?.postalCode : guestShippingAddress?.addressList?.postcode,
-          address_line1: guestBillingAddress?.shippingAddress ? guestBillingAddress?.addressList?.houseNumber : guestShippingAddress?.addressList?.houseNumbers,
-          address_line2: guestBillingAddress?.shippingAddress ? guestBillingAddress?.addressList?.address : guestShippingAddress?.addressList?.Straatnaam,
-        },
-        language: "en",
-        additional_discount: {
-          discount_percentage: roundedDiscountPercentage,
-          discount_term_days: 1
-        },
-        buyer: {
-          is_registered: false,
-          email:guestBillingAddress?.addressList?.email,
-          first_name: guestBillingAddress?.addressList?.firstName,
-          last_name: guestBillingAddress?.addressList?.lastName,
-          legal_form: "string",
-          ...(guestBillingAddress?.addressList?.companyName && { company_name: guestBillingAddress?.addressList?.companyName }),
-          phone: guestBillingAddress?.addressList?.mobileNumber,
-          external_reference_id: orderId,
-          salutation: "salutation",
-          industry: "industry",
-          registration_id: "id",
-          vat_number: guestBillingAddress?.addressList?.vat,
-          account_created_at: "10/24",
-          account_updated_at: "9/24"
-        },
-  
-        payment_method: "invoice",
-        external_reference_id: orderId,
-        notes: "notes",
-        gross_amount_cents: grossAmountCents * 100,
-        // total_discount_cents: totalDiscounts ,
-        lines:
-          [
-            {
-              vendor_external_reference_id: orderId,
-              discount_cents: 0,
-              tax_cents: parseInt(summaryData?.tax_details?.tax_amount),
-              // shipping_price_cents: roundedshippingPriceCents,
-              marketplace_fee_cents: 0,
-              buyer_fee_cents: 0,
-              line_items: mapItemsToLineItems(summaryData?.totals_detail?.items)
-            }
-          ],
-        source: "hosted",
-        success_url: domainUrl + "/order/succes?order_id=" + orderId,
-        cancel_url: domainUrl,
-        declined_url: domainUrl
-      }
-    }
-  
+console.log(numberValue,"numberValue")
+useScript('https://checkout.razorpay.com/v1/checkout.js');
 
-    axios.post( defaultURL + "/getmonduPaymentResponse", values)
-      .then((res) => {
-        if(res?.data[0]?.hosted_checkout_url){
-          window.location.assign(`${res?.data[0]?.hosted_checkout_url}`);
-        }
-      })
-      .catch((error) => {
-        console.error('Error while making the request:', error);
-      });
-  };
-  const CustomerMonduIntegration = (orderId) => {
-    const mapItemsToLineItems = (items) => {
-      return items.map((item) => {
-        return {
-          quantity: item.qty || 1,
-          external_reference_id: item?.itemId,
-          title: item.productName || "",
-          net_price_per_item_cents: parseInt(item?.unitPrice),
-          net_price_cents: parseInt(item?.totalPrice) * 50000,
-          product_id: item.productId || "",
-          product_sku: item.sku || "",
-          variation_id: "1",
-          item_type: item.item_type || "type",
-        };
-      });
-    };
-
-    const values = {
-      data:
-      {
-        currency: "EUR",
-        billing_address: {
-          country_code: customerBillingAddress?.defaultBilling?.country_id
-            ? customerBillingAddress?.defaultBilling?.country_id
-            : customerBillingAddress?.defaultBillingAddress?.country_id,
-          state: "state",
-          city: customerBillingAddress?.defaultBilling?.city
-            ? customerBillingAddress?.defaultBilling?.city
-            : customerBillingAddress?.defaultBillingAddress?.city,
-          zip_code: customerBillingAddress?.defaultBilling?.postcode
-            ? customerBillingAddress?.defaultBilling?.postcode
-            : customerBillingAddress?.defaultBillingAddress?.postcode,
-          address_line1: customerBillingAddress?.defaultBilling?.street1
-            ? customerBillingAddress?.defaultBilling?.street1
-            : customerBillingAddress?.defaultBillingAddress?.street1,
-          address_line2: customerBillingAddress?.defaultBilling?.street2
-            ? customerBillingAddress?.defaultBilling?.street2
-            : customerBillingAddress?.defaultBillingAddress?.street2,
-        },
-        shipping_address: {
-          
-          country_code:selectedShippingMethod?.label === "Afhalen in Etten-Leur"?"NL": customerBillingAddress?.defaultBilling?.country_id
-            ? customerBillingAddress?.defaultBilling?.country_id
-            : customerBillingAddress?.defaultBillingAddress?.country_id,
-          state: "state",
-          city:selectedShippingMethod?.label === "Afhalen in Etten-Leur"?"Etten-Leur": customerBillingAddress?.defaultBilling?.city
-            ? customerBillingAddress?.defaultBilling?.city
-            : customerBillingAddress?.defaultBillingAddress?.city,
-          zip_code:selectedShippingMethod?.label === "Afhalen in Etten-Leur"?"4879 NA": customerBillingAddress?.defaultBilling?.postcode
-            ? customerBillingAddress?.defaultBilling?.postcode
-            : customerBillingAddress?.defaultBillingAddress?.postcode,
-          address_line1:selectedShippingMethod?.label === "Afhalen in Etten-Leur"?"22": customerBillingAddress?.defaultBilling?.street1
-            ? customerBillingAddress?.defaultBilling?.street1
-            : customerBillingAddress?.defaultBillingAddress?.street1,
-          address_line2:selectedShippingMethod?.label === "Afhalen in Etten-Leur"?"Pauvreweg": customerBillingAddress?.defaultBilling?.street2
-            ? customerBillingAddress?.defaultBilling?.street2
-            : customerBillingAddress?.defaultBillingAddress?.street2
-        },
-        language: "en",
-        additional_discount: {
-          discount_percentage: roundedDiscountPercentage,
-          discount_term_days: 1
-        },
-        buyer: {
-          is_registered: false,
-          email: customerBillingAddress?.defaultBilling?.email
-          ? customerBillingAddress?.defaultBilling?.email
-          : customerBillingAddress?.defaultBillingAddress?.email,
-          first_name: customerBillingAddress?.defaultBilling?.firstname
+const handlePayment = async () => {
+  const orderId = await createOrder(numberValue); 
+  const options = {
+      key: 'rzp_test_U8YTJn6CYMykkS',
+      amount:numberValue * 100, 
+      currency: 'INR',
+      order_id: orderId,
+      name: 'Your Store Name',
+      description: 'Purchase Description',
+      image: 'https://your-domain.com/logo.png',
+      handler: function (response) {
+          alert('Payment Successful!');
+          console.log(response);
+      },
+      prefill: {
+          name: isLoggedUser ? customerBillingAddress?.defaultBilling?.firstname
             ? customerBillingAddress?.defaultBilling?.firstname
-            : customerBillingAddress?.defaultBillingAddress?.firstname,
-          last_name: customerBillingAddress?.defaultBilling?.lastname
-            ? customerBillingAddress?.defaultBilling?.lastname
-            : customerBillingAddress?.defaultBillingAddress?.lastname,
-          legal_form: "string",
-          ...(customerBillingAddress?.defaultBilling?.company || customerBillingAddress?.defaultBillingAddress?.company
-            ? { company_name: customerBillingAddress?.defaultBilling?.company ?? customerBillingAddress?.defaultBillingAddress?.company }
-            : {}),
-          phone: customerBillingAddress?.defaultBilling?.mobile_number
-            ? customerBillingAddress?.defaultBilling?.mobile_number
-            : customerBillingAddress?.defaultBillingAddress?.mobile_number,
-          external_reference_id: orderId,
-          salutation: "salutation",
-          industry: "industry",
-          registration_id: "id",
-          vat_number: guestBillingAddress?.addressList?.vat,
-          account_created_at: "10/24",
-          account_updated_at: "9/24"
-        },
-  
-        payment_method: "invoice",
-        external_reference_id: orderId,
-        notes: "notes",
-        gross_amount_cents: grossAmountCents * 100,
-        // total_discount_cents: totalDiscounts ,
-        lines:
-          [
-            {
-              vendor_external_reference_id: orderId,
-              discount_cents: 0,
-              tax_cents: parseInt(summaryData?.tax_details?.tax_amount),
-              // shipping_price_cents: roundedshippingPriceCents,
-              marketplace_fee_cents: 0,
-              buyer_fee_cents: 0,
-              line_items: mapItemsToLineItems(summaryData?.totals_detail?.items)
-  
-            }
-          ],
-        source: "hosted",
-        success_url: domainUrl + "/order/succes?order_id=" + orderId,
-        cancel_url: domainUrl,
-        declined_url: domainUrl
+            : customerBillingAddress?.defaultBillingAddress?.firstname :guestBillingAddress?.addressList?.firstName,
+          email: isLoggedUser ? customerDetails?.email : guestBillingAddress?.addressList?.email,
+          contact: isLoggedUser?customerBillingAddress?.defaultBilling?.mobile_number
+          ? customerBillingAddress?.defaultBilling?.mobile_number
+          : customerBillingAddress?.defaultBillingAddress?.mobile_number :guestBillingAddress?.addressList?.mobileNumber,
+      },
+      theme: {
+          color: '#3399cc'
       }
-    }
-   
-    axios.post( defaultURL + "/getmonduPaymentResponse", values)
-      .then((res) => {
-        if(res?.data[0]?.hosted_checkout_url){
-          window.location.assign(`${res?.data[0]?.hosted_checkout_url}`);
-        }
-      })
-      .catch((error) => {
-        console.error('Error while making the request:', error);
-      });
   };
+
+  const rzp = new window.Razorpay(options);
+  rzp.open();
+};
+
+
+const createOrder = async () => {
+  try {
+      const response = await fetch(`${baseURL}/razorpay/create-order`, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              amount: numberValue,
+              currency: 'INR'
+          }),
+      });
+      const data = await response.json();
+      if(data){
+
+      }
+      return data.order_id;
+  } catch (error) {
+      console.error('Error creating Razorpay order:', error);
+  }
+};
+
   const OrderSuccessGuest = (orderId) => {
     
     const quoteSubmit = {
@@ -412,7 +252,6 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
             }
           }
           else if (selectedPaymentMethod == "mondu" || selectedPaymentMethod?.code == "mondu") {
-            GuestMonduIntegration(orderId?.data)
           }
           else
           if ((resData?.data[0]?.incrementId && selectedPaymentMethod?.code !== "banktransfer") || (resData?.data[0]?.incrementId && selectedPaymentMethod?.code !== "free")) {
@@ -491,8 +330,6 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
       );
         if (orderId?.data && selectedPaymentMethod?.code == "checkmo") {
       navigate("/order/success", { state:  orderId.data  });
-
-
             if (isLoggedUser && customerQuoteId) {
               getCartItems(
                 dispatch,
@@ -518,9 +355,9 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
               );
             }
           }
-          // else if (selectedPaymentMethod == "mondu" || selectedPaymentMethod?.code == "mondu") {
-          //   GuestMonduIntegration(orderId?.data)
-          // }
+          else if (orderId?.data &&  selectedPaymentMethod?.code == "razorpay") {
+            handlePayment()
+          }
           // else
           // if ((resData?.data[0]?.incrementId && selectedPaymentMethod?.code !== "banktransfer") || (resData?.data[0]?.incrementId && selectedPaymentMethod?.code !== "free")) {
           //     const resData = await axios.post(
@@ -646,10 +483,8 @@ const roundedshippingPriceCents = Math.round(shippingPriceCents);
             }
             else if (selectedPaymentMethod == "mondu" || selectedPaymentMethod?.code == "mondu") {
               if(customerAddress?.allAddress?.length && isLoggedUser){
-                CustomerMonduIntegration(orderId?.data)
               }
               else{
-                GuestMonduIntegration(orderId?.data)
               }
             }
             else
