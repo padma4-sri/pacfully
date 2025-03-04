@@ -426,7 +426,7 @@ const Filters = ({ loading = true, data = {},setIsLoaded, appliedFilterData = []
       {
         data?.values?.length > 5 && openFilter ?
           <div className="show__more__less flex gap-1 middle">
-            <h1 className='more__less__title fw-700 line-5 pointer' onClick={() => seeMoreHandler(true, data?.attr_code)}>{moreFilter ? 'toon minder' : 'toon meer'}</h1>
+            <h1 className='more__less__title fw-700 line-5 pointer' onClick={() => seeMoreHandler(true, data?.attr_code)}>{moreFilter ? 'show less' : 'show more'}</h1>
             <p className='flex center middle pointer' onClick={() => seeMoreHandler()}>{moreFilter ? <Toggleup onClick={() => setMoreFilter(5)} /> : <Toggledown onClick={() => setMoreFilter(data?.values?.length)} />}</p>
           </div>
           : <></>

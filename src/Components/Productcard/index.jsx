@@ -709,12 +709,12 @@ const ProductCard = ({
                     <p className={`price ${false ? "special" : ""}`}>
                     ₹{data?.price}
                     </p>
-                    {/* {false ? (
+                    {false ? (
                       <p className="price__strike text-strike "> ₹293</p>
                     ) : (
                       <p className="price__strike text-strike "> ₹293</p>
 
-                    )} */}
+                    )}
                   </div>
                   <div className="action__block flex-0">
                     <AdvancedLink

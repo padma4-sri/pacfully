@@ -16,6 +16,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
+import DeleteIcon from "Res/images/deleteIcon.svg";
 
 
 const ProductListing = ({ item, ind, cartDetails, dispatch, defaultURL, storeId, closeCartHandler, scrollToTop }) => {
@@ -29,7 +30,7 @@ const ProductListing = ({ item, ind, cartDetails, dispatch, defaultURL, storeId,
   const customerId = useSelector((state) => state?.customerDetails?.id)
   const isSessionExpired = useSelector((state) => state?.isSessionExpired)
   const [details, setDetails] = useState(null);
-  const DeleteIcon = "/res/img/deleteIcon.svg";
+
   const [loadingCart, setLoadingCart] = useState(false);
   const [loadingDelete, setLoadingDelete] = useState(false);
   const [loadingupdate, setLoadingUpdate] = useState(false);
@@ -702,7 +703,7 @@ const MiniCart = () => {
                     ""
                   )}
                   <tr>
-                    <td className="vat_font">Total (excl. VAT) </td>
+                    <td className="vat_font">Total (excl. GST) </td>
                     <td className="vat_font">
                       {cartDetails?.tax_details?.subtotal_original}
                     </td>
@@ -723,7 +724,7 @@ const MiniCart = () => {
           )}
          
           <div className="flex w-1/1 top-1 priceFinal py-4  px-4">
-            <div className="flex-1 fw-700 fs-20">Total (excl. VAT)</div>
+            <div className="flex-1 fw-700 fs-20">Total (excl. GST)</div>
             <div className="flex-1 tr fw-700 fs-24">
               {cartDetails?.tax_details?.subtotal_original}
             </div>
@@ -740,9 +741,7 @@ const MiniCart = () => {
                   }}
                 >
                   Order
-                  <span className="flex middle">
-                    <KeyboardArrowRightIcon />
-                  </span>
+                
                 </Button>
               </Link>
             ) : minicartItems == "quote" && storeId == 1 && cartDetails?.totals_detail?.isSample == "0" ? (

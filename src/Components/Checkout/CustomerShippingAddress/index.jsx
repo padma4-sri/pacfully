@@ -362,7 +362,7 @@ useEffect(()=>{
                 className="absolute top-2 right-0 text-underline fs-15"
                 onClick={() => setEditAddress(true)}
               >
-                wijzigen
+                change
               </button>
             </div>
           {sampleError &&

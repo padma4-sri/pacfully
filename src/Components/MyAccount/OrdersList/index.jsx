@@ -371,7 +371,7 @@ const OrdersList = ({ title, placeholder, orderTitle, url }) => {
                                                         }
                                                         onClick={() => paginationHandler()}
                                                     >
-                                                        {loading ? <AutorenewIcon /> : "toon meer"}
+                                                        {loading ? <AutorenewIcon /> : "show more"}
                                                     </button>
                                         }
                                     </div>

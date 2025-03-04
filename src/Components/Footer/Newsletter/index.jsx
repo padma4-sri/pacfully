@@ -73,15 +73,15 @@ const Newsletter = () => {
     e.preventDefault();
     var isError = false;
     if (!fieldValue) {
-      setFieldError("Verplicht veld.");
+      setFieldError("Mandatory field.");
       document.getElementById("news__letter")?.focus();
       isError = true;
     } else if (!isEmptyValue(fieldValue)) {
-      setFieldError("Verplicht veld.");
+      setFieldError("Mandatory field.");
       document.getElementById("news__letter")?.focus();
       isError = true;
     } else if (!isValidEmail(fieldValue)) {
-      setFieldError("Vul een geldig emailadres in");
+      setFieldError("Please enter a valid email address");
       document.getElementById("news__letter")?.focus();
       isError = true;
     }

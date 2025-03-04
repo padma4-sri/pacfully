@@ -1,7 +1,7 @@
 .checkout__container {
   .description {
 
-    background: #FFCC00 0% 0% no-repeat padding-box;
+    background: #F48500 0% 0% no-repeat padding-box;
     border-radius: 20px;
 
     p {
@@ -10,7 +10,7 @@
   }
 
   .description-mobile {
-    background: #FFCC00 0% 0% no-repeat padding-box;
+    background: #F48500 0% 0% no-repeat padding-box;
     border-radius: 20px;
 
     p {
@@ -120,13 +120,13 @@
     border-bottom: 1px solid #ccc;
 
     .order__button {
-      background-color: #ffcc00;
+      background-color: #F48500;
       border-radius: 35px;
       color: #222;
       height: 60px;
 
       &:hover {
-        background-color: #f2c200;
+        background-color: #F48500;
         color: #222;
       }
     }

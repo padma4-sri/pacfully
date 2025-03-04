@@ -237,7 +237,7 @@ const Address = () => {
                                       }}
                                     >
                                       <span className="fw-300 text-nowrap">
-                                        Wijzigen <span className="arrow">{`>`}</span>
+                                      change <span className="arrow">{`>`}</span>
                                       </span>
                                     </Button>
                                     : <></>
@@ -324,7 +324,7 @@ const Address = () => {
                                       }}
                                     >
                                       <span className="fw-300 text-nowrap">
-                                        Wijzigen <span className="arrow">{`>`}</span>
+                                      change <span className="arrow">{`>`}</span>
                                       </span>
                                     </Button>
                                     : <></>

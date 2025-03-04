@@ -244,29 +244,7 @@ const TopHeader = ({
                       : <></>
                   }
                 </IconButton>
-                <IconButton
-                  onClick={() => {
-                    setShowSuggestion(false);
-                    if (isLoggedUser) {
-                      navigate("/");
-                    } else {
-                      setShowSuggestion(false);
-                      handleLogin(dispatch);
-                    }
-                  }}
-                  aria-label="wishlist"
-                  className="hide wishlist__icon"
-                >
-                  <WishIcon />
-                  {wishlistCount ? (
-                    <div className="badge nowrap fw-400 line-4 absolute top-0 right-0 r-full flex center middle">
-                      {wishlistCount}
-                    </div>
-                  ) : (
-                    <></>
-                  )}
-                </IconButton>
-
+               
                 <IconButton
                   className="relative"
                   aria-label="cart"
@@ -318,7 +296,6 @@ const TopHeader = ({
           menuData={getCategoriesListData}
         />
       </ModelNew>
-      <Social openModel={openModelSocial} setOpenModel={setOpenModelSocial} />
       <LoginForgot />
       <MiniCart />
     </React.Fragment>

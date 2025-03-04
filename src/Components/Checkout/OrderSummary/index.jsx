@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { useWindowSize } from "Utilities";
+import cartImg from "Res/images/carticon.svg";
 
 function OrderSummary({ summaryData }) {
   const {
@@ -23,7 +24,6 @@ function OrderSummary({ summaryData }) {
     };
   });
   const [width] = useWindowSize();
-  const cartImg = "res/img/carticon.svg";
   const [details, setDetails] = useState(null);
   const [summaryDetails, setSummaryDetails] = useState(null);
 
@@ -273,13 +273,13 @@ function OrderSummary({ summaryData }) {
                 ""
               )}
               <tr className="fw-700 ">
-                <td className="fs-20">Totaal (excl. VAT)	</td>
+                <td className="fs-20">Totaal (excl. GST)	</td>
                 <td className="fs-26">
                   {summaryData?.tax_details?.subtotal_original}
                 </td>
               </tr>
               <tr>
-                <td>VAT </td>
+                <td>GST </td>
                 <td>{summaryData?.tax_details?.tax_amount}</td>
               </tr>
               <tr>

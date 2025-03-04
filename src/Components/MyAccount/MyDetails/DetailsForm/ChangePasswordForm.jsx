@@ -32,7 +32,7 @@ const ChangePasswordForm = ({ openModel, setOpenModel, customerDetails }) => {
                     <CloseButton onClickFunction={() => setOpenModel(false)} />
                 </div>
                 <div className="wrapper__container">
-                    <PageTitle className='fs-30 line-13 fw-700 pb-3'>Wachtwoord <br /> wijzigen</PageTitle>
+                    <PageTitle className='fs-30 line-13 fw-700 pb-3'>Wachtwoord <br /> change</PageTitle>
                     <div className="edit__wrapper pt-1">
                         <Form customerDetails={customerDetails} openModel={openModel} setOpenModel={setOpenModel} />
                     </div>

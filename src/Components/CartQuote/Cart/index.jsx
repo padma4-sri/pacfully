@@ -88,7 +88,7 @@ function Cart() {
      
       <div className="cartpage ">
         <div className="container responsive-cart px-4 py-8 xl-py-14">
-          <h1 className="fw-700 fs-32">{cartDetails?.totals_detail?.isSample == 1 ? "Sample bestellen" :"Winkelwagen"}</h1>
+          <h1 className="fw-700 fs-32">Shopping cart</h1>
           <div className="cartpage__container xl-flex xl-gap-x-24">
             <div className="cart__details xl-flex-1 xl-pt-4 pb-12">
               <CartItems />
@@ -115,9 +115,7 @@ function Cart() {
                           }}
                         >
                           Order
-                          <span className="flex middle">
-                            <KeyboardArrowRightIcon />
-                          </span>
+                         
                         </Button>
 
                        

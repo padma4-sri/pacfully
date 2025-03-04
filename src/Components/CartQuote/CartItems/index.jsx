@@ -27,6 +27,8 @@ import AutorenewIcon from '@mui/icons-material/Autorenew';
 import CircularProgress from '@mui/material/CircularProgress';
 import { WishOutlineIcon, WishFullIcon } from "Res/icons/index";
 import ProgressBar from "../../../Components/Product/ProductDetails/UploadImages/progressbar";
+import DeleteIcons from "Res/images/deleteIcon.svg";
+import closeIcon from "Res/images/closeIcon.svg";
 
 const InputUpload = ({uploadProgress, myRefs,deleteImageloader, handleDelete, handleSelectFile, item, loading, setLoading, onUpload }) => {
   const openFileInput = (myref) => {
@@ -34,7 +36,6 @@ const InputUpload = ({uploadProgress, myRefs,deleteImageloader, handleDelete, ha
       myref?.current?.click();
     }
   };
-  const DeleteIcon = "/res/img/deleteIcon.svg";
   return (
     <div className="upload__imgage__section py-4">
       <input type="file"  ref={myRefs}
@@ -73,7 +74,7 @@ const InputUpload = ({uploadProgress, myRefs,deleteImageloader, handleDelete, ha
                       {deleteImageloader[index] ?
                         <CircularProgress size={18} thickness={4} style={{ color: 'black' }} />
                         :
-                        <img src={DeleteIcon} />
+                        <img src={DeleteIcons} />
 
                       }
                     </span>
@@ -117,7 +118,6 @@ const ProductListing = ({ ind, item, navigate, dispatch,dropboxToken,dropboxAcce
   });
 
   const { baseURL, storeId, defaultURL } = useContext(DomainContext);
-  const closeIcon = "/res/img/closeIcon.svg";
   const [details, setDetails] = useState([]);
 
   const [files, setFiles] = useState([]);
@@ -912,8 +912,8 @@ const ProductListing = ({ ind, item, navigate, dispatch,dropboxToken,dropboxAcce
                         aria-label="button"
                       >
                         {details.includes(ind)
-                          ? "Verberg details"
-                          : "Bekijk details"}
+                          ? "Hide details"
+                          : "View details"}
                         <span className="flex middle up__arrow">
                           {details.includes(ind) ? (
                             <KeyboardArrowUpIcon />
@@ -977,53 +977,7 @@ const ProductListing = ({ ind, item, navigate, dispatch,dropboxToken,dropboxAcce
                 <Img src={closeIcon} className="pointer" />
               </div>
             }
-            <div
-              className="pointer relative"
-            >
            
- {wishlistAddedData?.some(obj => obj?.sku === item?.parentSku) ? (
-  wishisLoading ? (
-    <AutorenewIcon className="loading-icon" />
-  ) : (
-    <WishFullIcon onClick={() => removeHandler(item)} />
-  )
-) : (
-  wishisLoading ? (
-    <AutorenewIcon className="loading-icon" />
-  ) : (
-    <WishOutlineIcon
-      onClick={() => {
-        if (!isLoggedUser) {
-          dispatch(ACTION_OPEN__FORGOTPASSWORD(false));
-          dispatch(ACTION_OPEN__LOGIN(true));
-          dispatch(ACTION_WISHLISTPRODUCTID({ id: item?.productId, sku: item?.sku }));
-          dispatch(ACTION_GET__URLTYPE("cart"));
-        } else if (!wishlistAddedData?.some(obj => obj?.sku === item?.parentSku)) {
-          setwishIsLoading(true);
-          addWishList(
-            defaultURL,
-            dispatch,
-            token,
-            customerId,
-            { id: item?.productId, sku: item?.parentSku },
-            wishlistAddedData,
-            storeId,
-            navigate,
-            isSessionExpired,
-            () => {
-              setwishIsLoading(false); 
-            }
-          );
-        }
-      }}
-      className="pointer"
-      style={{ color: "#656565" }}
-    />
-  )
-)}
-
-
-            </div>
           </div>
         }
       </div>

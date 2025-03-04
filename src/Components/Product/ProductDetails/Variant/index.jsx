@@ -32,7 +32,6 @@ import { APIQueryGet, APIQueryPost } from 'APIMethods/API';
 import { ACTION_OPENCART, ACTION__MINICART__ITEMS, ACTION_GUESTKEY, ACTION_GUESTQUOTE__DETAILS, ACTION_OPEN__LOGIN, ACTION_WISHLISTPRODUCTID, ACTION_OPEN__FORGOTPASSWORD, ACTION_GET__URLTYPE } from 'Store/action';
 import ColorPicker from '../ColorPicker';
 import { ReactComponent as RefundIcon } from "../../../../Res/images/icon-refund-money.svg"
-
 // Styles
 import "./styles.scss";
 import { useEffectOnce } from 'Components/Hooks/useEffectOnce';
@@ -214,7 +213,7 @@ const InputTextBox = ({ setInputFieldExpand, selectedData, setSelectedData, keyN
       <div>
         <Button onClick={() => {
           act()
-        }} className='contained sm mt-4  py-2 px-4 r-9 primary'>volgende</Button>
+        }} className='contained sm mt-4  py-2 px-4 r-9 primary'>Next</Button>
       </div>
     </>
 
@@ -878,7 +877,7 @@ const VariantQtyPicker = ({ productData, totalValueQty, setTotalValueQty, errorQ
             </div>
             <div className="flex flex-1 col gap-4 py-1 px-2">
               <div className='qtyChoose flex col gap-4'>
-                <h4>Aantal</h4>
+                <h4>Number</h4>
               </div>
             </div>
           </div>
@@ -922,7 +921,7 @@ const VariantQtyPicker = ({ productData, totalValueQty, setTotalValueQty, errorQ
               setReqExpanded(false);
               setStopNextNav(true)
             }
-          }} className='contained sm mt-4 mb-2 py-2 px-4 r-9 primary'>volgende</Button>
+          }} className='contained sm mt-4 mb-2 py-2 px-4 r-9 primary'>Next</Button>
         </div>
       </div>
     </React.Fragment>
@@ -1091,7 +1090,7 @@ const VariantColorPicker = ({ cmsError, setCmsError, keyList, setStopNextNav, pr
                 </div>
                 {!isColorPickerTierPrices ?
                   <div className='qtyChoose flex col gap-4'>
-                    <h4>Aantal</h4>
+                    <h4>Number</h4>
                   </div> : null}
               </div>
               {colorList[product.data[key].id]?.length ? colorList[product.data[key].id].map((cData, ind) => (
@@ -1211,7 +1210,7 @@ const VariantCardSeeMore = ({setchangeCustomizeOption, qty, getApiCartOptions, g
               {/* purposely commented */}
               {/* <div className='flex center pt-4' style={{ maxWidth: 588 }}> */}
               <Button style={{ padding: "7px 13px 7px 23px", minWidth: 186, borderRadius: 999, fontSize: 16, fontWeight: "bold", borderColor: "#CCCCCC" }} className={`flex gap-2 meerButton ${expanded !== 'panelVarient' ? "toon" : "lees"}`} variant='outlineNoHover' onClick={() => { if (expanded === 'panelVarient') { setExpanded(false); handleExpandNext(1) } else setExpanded('panelVarient') }}>
-                <span>{expanded !== 'panelVarient' ? "toon meer" : "toon minder"}</span>
+                <span>{expanded !== 'panelVarient' ? "show more" : "show Less"}</span>
                 <KeyboardArrowDown />
               </Button>
             </div>
@@ -1421,7 +1420,7 @@ const CustomizeCardSingle = ({storeId,selectedDetailsFinal,setQty,  qtymatch,set
             {/* purposely commented */}
             {/* <div className='flex center pt-4' style={{ maxWidth: 588, width:"100%" }}> */}
             <Button style={{ padding: "7px 13px 7px 23px", minWidth: 186, borderRadius: 999, fontSize: 16, fontWeight: "bold", borderColor: "#CCCCCC" }} className={`flex gap-2 meerButton ${expanded !== 'panelVarient' ? "toon" : "lees"}`} variant='outlineNoHover' onClick={() => { if (expanded === 'panelVarient') { setExpanded(false); handleExpandNext(1) } else setExpanded('panelVarient') }}>
-              <span>{expanded !== 'panelVarient' ? "toon meer" : "toon minder"}</span>
+              <span>{expanded !== 'panelVarient' ? "show more" : "show less"}</span>
               <KeyboardArrowDown />
             </Button>
           </div>
@@ -3440,7 +3439,7 @@ function getPriceForQty(qty, tierprice) {
           tempSelectedDetails[k] = {};
           let tempQty = { ...qtyDataDefault };
           tempSelectedData[k] = thisObjSample ? [] : qty1 ? [`${qty1}`] : [];
-          tempSelectedDetails[k]["labels"] = qty1 ? `${qty1}  stuk(s)` : "";
+          tempSelectedDetails[k]["labels"] = qty1 ? `${qty1}  piece` : "";
           tempSelectedDetails[k]["reduseCount"] = reduseCount;
           const tier_prices = temp?.tier_prices?.length ? isCpker ? temp.tier_prices : temp.tier_prices.filter((a) => a?.hide !== true) : [];
 
@@ -3840,7 +3839,7 @@ function getPriceForQty(qty, tierprice) {
                                           const selectedD = { ...selectedData };
                                           setSelectedData(selectedD);
                                           setReqExpanded(true);
-                                        }} className='contained sm mt-4 mb-2 py-2 px-4 r-9 primary'>volgende</Button>
+                                        }} className='contained sm mt-4 mb-2 py-2 px-4 r-9 primary'>Next</Button>
                                       </div>
                                       : null}
                                   </div>
@@ -3854,7 +3853,7 @@ function getPriceForQty(qty, tierprice) {
                                   const selectedD = { ...selectedData };
                                   setSelectedData(selectedD);
                                   setReqExpanded("cart");
-                                }} className='contained sm mt-4 mb-2 py-2 px-4 r-9 primary'>volgende</Button>
+                                }} className='contained sm mt-4 mb-2 py-2 px-4 r-9 primary'>Next</Button>
                               </div>
                               : null}
                           </AccordionDetails>
@@ -3913,7 +3912,7 @@ function getPriceForQty(qty, tierprice) {
                                       }}
                                       className='contained sm mt-4 mb-2 py-2 px-4 r-9 primary'
                                     >
-                                      volgende
+                                      next
                                     </Button>
                                   </div>
                                 </React.Fragment> : null}
@@ -4004,7 +4003,7 @@ function getPriceForQty(qty, tierprice) {
                                       else {
                                         setReqExpanded("cart");
                                       }
-                                    }} className='contained sm mt-4 mb-2 py-2 px-4 r-9 primary'>volgende</Button>
+                                    }} className='contained sm mt-4 mb-2 py-2 px-4 r-9 primary'>Next</Button>
                                   </div>
                                 </> : null
                               }
@@ -4026,13 +4025,13 @@ function getPriceForQty(qty, tierprice) {
                               <div className="flex w-1/1 qtyTable1">
                                 <div className="table-head">
                                   <div className="table-row table-row-title">
-                                    <div className="item-cell">Aantal</div>
-                                    <div className="item-cell"><i>Bespaar</i></div>
-                                    <div className="item-cell">Stuksprijs</div>
+                                    <div className="item-cell">Number</div>
+                                    <div className="item-cell"><i>Save</i></div>
+                                    <div className="item-cell">Unit price</div>
                                     {width <= 768 ?
-                                      <div className="item-cell">Totaalprijs</div>
+                                      <div className="item-cell">Total price</div>
                                       :
-                                      <div className="item-cell">Total (excl. VAT)</div>
+                                      <div className="item-cell">Total (excl. GST)</div>
                                     }
                                   </div>
                                 </div>
@@ -4244,7 +4243,7 @@ function getPriceForQty(qty, tierprice) {
                                       </React.Fragment>
                                     ) : (
                                       <React.Fragment>
-                                        <div className="item-cell flex middle" data-label="Save">Ander aantal</div>
+                                        <div className="item-cell flex middle" data-label="Save">Different number</div>
                                         {/* <div className="item-cell" data-label="Save"><i>-</i></div> */}
                                         <div className="item-cell flex middle" data-label="Price">-</div>
                                         <div className="item-cell flex middle" data-label="Total">-&nbsp;</div>
@@ -4253,7 +4252,7 @@ function getPriceForQty(qty, tierprice) {
                                   </div>
                                 </div>
                                 {isCustomQty  &&
-                                    <div className='py-2'>
+                                    <div className='py-2 qty_button'>
                                       <button aria-label="button" onClick={() => {
                                         const selectedD = { ...selectedData };
                                         setSelectedData(selectedD);
@@ -4267,7 +4266,7 @@ function getPriceForQty(qty, tierprice) {
                                       }}
                                         className='contained sm mt-4  py-2 px-4 r-9 primary'
                                       >
-                                        volgende
+                                        Next
                                       </button>
                                     </div>
                                     }
@@ -4431,7 +4430,7 @@ function getPriceForQty(qty, tierprice) {
                 <React.Fragment>
                 
                   <div className='flex w-1/1 top-1 priceFinal'>
-                    <div className='flex-1'>Total (excl. VAT)</div>
+                    <div className='flex-1'>Total (excl. GST)</div>
                     <div className='flex-0 tr'>{
                       sampleProductPrice?.condtion_one ? "Gratis"
                         : sampleProductPrice?.condition_two ?
@@ -4451,7 +4450,7 @@ function getPriceForQty(qty, tierprice) {
                 <React.Fragment>
                 
                   <div className='flex w-1/1 top-1 priceFinal'>
-                    <div className='flex-1'>Total (excl. VAT)</div>
+                    <div className='flex-1'>Total (excl. GST)</div>
                     {isCustomQty ?
                       <div className='flex-0 tr'>{`${euroCurrency(
                         ((qtyData.price * qtyTemp) + selectedDetailsFinal.setup_costs * (isCpkerLength ? isCpkerLength : 1) + selectedDetailsFinal.change_costs + (selectedDetailsFinal?.amount_per_piece === "1" ? qtyTemp * selectedDetailsFinal?.product_cost_value : selectedDetailsFinal?.product_cost_value))
@@ -4505,7 +4504,8 @@ function getPriceForQty(qty, tierprice) {
                       isLoggedUser ? customerAddToCart(1) : guestAddToCart(1);
                     }}
                   >
-                    {isProcessing ? <AutorenewIcon /> : <>Add to Cart <span className='flex middle'><KeyboardArrowRightIcon /></span></>}
+                    {isProcessing ? <AutorenewIcon /> : <>Add to Cart 
+                    </>}
                   </Button>
                   {storeId == 1 ?
                     <Button className={`fs-20 line-8 fw-700 r-9 py-5 px-5 ${isProcessing1 ? 'rotateUpdate' : ''}`}
@@ -4553,14 +4553,14 @@ function getPriceForQty(qty, tierprice) {
             <div className="flex w-1/1 qtyTable1 ">
               <div className="table-head">
                 <div className="table-row table-row-title">
-                  <div className="item-cell">Aantal</div>
-                  <div className="item-cell"><i>Bespaar</i></div>
-                  <div className="item-cell">Stuksprijs</div>
+                  <div className="item-cell">Number</div>
+                  <div className="item-cell"><i>Save</i></div>
+                  <div className="item-cell">Unit price</div>
 
                   {width <= 768 ?
-                    <div className="item-cell">Totaalprijs</div>
+                    <div className="item-cell">Total price</div>
                     :
-                    <div className="item-cell">Total (excl. VAT)</div>
+                    <div className="item-cell">Total (excl. GST)</div>
                   }
                 </div>
               </div>
@@ -4588,7 +4588,7 @@ function getPriceForQty(qty, tierprice) {
                           :
                           <div className="item-cell fs-12 flex middle" data-label="Save">
                             <i>
-                              Ander aantal
+                            Different number
                             </i>
                           </div>
                       }

@@ -1649,13 +1649,6 @@ if(selectedShippingMethod!==null){
           <div className="checkout__container xl-flex xl-gap-x-12 pb-4">
             <div className="order__sumary ">
               <OrderSummary summaryData={summaryData} />
-             
-               
-<button  onClick={()=>{
-  navigate("/order/success", { state:  "123"  });
-}}>
-  placeOrder
-</button>
             
             </div>
             <div className="address__section pb-6 px-4 w-1/1">
@@ -1669,7 +1662,7 @@ if(selectedShippingMethod!==null){
                       onClick={() => handleTabClick("billing")}
                       aria-label="button"
                     >
-                      wijzigen
+                      change
                     </button>
                   </div>
                 )}
@@ -1768,9 +1761,7 @@ if(selectedShippingMethod!==null){
                         }}
                       >
                         To shipping
-                        <span className="flex middle fw-700">
-                          <KeyboardArrowRightIcon />
-                        </span>
+                       
                       </Button>
                     </div>
                   </>
@@ -1823,9 +1814,7 @@ if(selectedShippingMethod!==null){
                             }}
                           >
                             To shipping
-                            <span className="flex middle fw-700">
-                              <KeyboardArrowRightIcon />
-                            </span>
+                           
                           </Button>
                         </div>
                       )}
@@ -1843,7 +1832,7 @@ if(selectedShippingMethod!==null){
                         onClick={() => handleTabClick("shipping")}
                         aria-label="button"
                       >
-                        wijzigen
+                        change
                       </button>
                     )}
                   </div>
@@ -1940,10 +1929,8 @@ if(selectedShippingMethod!==null){
                               </>
                             )} */}
                             <>
-                              {summaryData?.totals_detail?.isSample == 1 && summaryData?.totals_detail?.subtotal_rounded == "0,00" ? "Naar afronden" : "By payment method"}  
-                                <span className="flex middle fw-700">
-                                  <KeyboardArrowRightIcon />
-                                </span>
+                              {summaryData?.totals_detail?.isSample == 1 && summaryData?.totals_detail?.subtotal_rounded == "0,00" ? "To rounding off" : "By payment method"}  
+                               
                               </>
                             
                           </Button>
@@ -1964,7 +1951,7 @@ if(selectedShippingMethod!==null){
                           onClick={() => handleTabClick("payment")}
                           aria-label="button"
                         >
-                          wijzigen
+                          change
                         </button>
                       )}
                     </div>
@@ -2314,10 +2301,8 @@ In het geval van bedrukte artikelen ontvangt u de factuur per e-mail na goedkeur
                               <AutorenewIcon />
                             ) : (
                               <>
-                                Naar afronden
-                                <span className="flex middle fw-700">
-                                  <KeyboardArrowRightIcon />
-                                </span>
+                                To rounding off
+                              
                               </>
                             )}
                           </Button>
@@ -2387,10 +2372,8 @@ In het geval van bedrukte artikelen ontvangt u de factuur per e-mail na goedkeur
                             <AutorenewIcon />
                           ) : (
                             <>
-                              Bestellen
-                              <span className="flex middle fw-700">
-                                <KeyboardArrowRightIcon />
-                              </span>
+                              Order
+                             
                             </>
                           )}
                         </Button>

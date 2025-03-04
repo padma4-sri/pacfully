@@ -8,7 +8,12 @@
         top: 0;
         background: rgba(0, 0, 0, 0.00);
     }
+.qty_button{
+    button{
+        width: 100px;
 
+    }
+}
     .MuiAccordion-root {
         box-shadow: none;
 
@@ -81,8 +86,8 @@
                 padding: 8px;
 
                 &.true {
-                    background: #9BC87D;
-                    border-color: #9BC87D;
+                    background: #F48500;
+                    border-color: #F48500;
                     color: #FFF;
                 }
 
@@ -1317,7 +1322,7 @@
                 }
 
                 &:hover {
-                    background-color: #F2C200;
+                    background-color: #F48500;
 
                     span {
                         transform: translate(4px);

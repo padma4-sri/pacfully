@@ -32,7 +32,7 @@ const DetailsForm = ({ openModel, setOpenModel, customerDetails, updateCustomer,
                     <CloseButton onClickFunction={() => setOpenModel(false)} />
                 </div>
                 <div className="wrapper__container">
-                    <PageTitle className='fs-30 line-13 fw-700 pb-3'>Mijn gegevens <br /> wijzigen</PageTitle>
+                    <PageTitle className='fs-30 line-13 fw-700 pb-3'>Mijn gegevens <br /> change</PageTitle>
                     <div className="edit__wrapper">
                         <Form customerDetails={customerDetails} updateCustomer={updateCustomer} setUpdateCustomer={setUpdateCustomer} openModel={openModel} setOpenModel={setOpenModel} />
                     </div>

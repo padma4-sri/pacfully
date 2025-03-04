@@ -25,14 +25,14 @@ function PriceDetailSection() {
             
           <tr className="fw-700 ">
             <td className="fs-20">
-              Total (excl. Vat)
+              Total (excl. GST)
             </td>
             <td className="fs-26">
               {cartDetails?.tax_details?.subtotal_original}
             </td>
           </tr>
           <tr>
-            <td>VAT </td>
+            <td>GST </td>
             <td>{cartDetails?.tax_details?.tax_amount}</td>
           </tr>
           <tr>

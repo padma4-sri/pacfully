@@ -383,7 +383,7 @@ useEffect(()=>{
                   onClick={() => setEditAddress(true)}
                   aria-label="button"
                 >
-                  wijzigen
+                  change
                 </button>
               </div>
             </div>

@@ -123,7 +123,7 @@ const MyDetails = () => {
                       onClick={() => setOpenModelDetails(true)}
                     >
                       <span className="fw-300 text-nowrap">
-                        Wijzigen <span className="arrow">{`>`}</span>
+                      change <span className="arrow">{`>`}</span>
                       </span>
                     </Button>
                 }
@@ -139,7 +139,7 @@ const MyDetails = () => {
                 onClick={() => setOpenModelPassword(true)}
               >
                 <span className="fw-300 text-nowrap">
-                  Wijzigen <span className="arrow">{`>`}</span>
+                change <span className="arrow">{`>`}</span>
                 </span>
               </Button>
             </div>

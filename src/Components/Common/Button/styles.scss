@@ -17,6 +17,7 @@ button, a{
            background-color: #222222;
            color: #FFF;
            border-color: #222;
+           height: 48px;
            &:hover{
               background-color: var(--themeColor);
               color: var(--themeColorHover);

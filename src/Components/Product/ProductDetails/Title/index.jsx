@@ -47,22 +47,7 @@ const ProductTitle = ({ loading, minPrice, data, setOpenReview, setOpenAllReview
   ) : null}
 </div>
 
-      {data?.review_count ? (
-        <div className="flex gap-2 middle info">
-          <Rating
-            name="product-rating"
-            value={Number(data?.review_details?.averageRating ?? 0)}
-            precision={0.1}
-            readOnly
-            emptyIcon={<Star fontSize="inherit" />}
-          />
-          <button className='fw-300' onClick={() => reviewHandle()} aria-label="button">{data?.review_count} review(s)</button>
-        </div>
-      ) : (
-        <div className="flex gap-2 middle info">
-          <button className='fw-300' onClick={() => setOpenReview(true)} aria-label="button">Schrijf als eerste een review</button>
-        </div>
-      )}
+     
     </div>
   )
 }

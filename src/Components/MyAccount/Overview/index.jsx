@@ -141,7 +141,7 @@ const Overview = () => {
                     </span>
                   ) : (
                     <span className="fw-300 text-nowrap">
-                      Wijzigen <span className="arrow">{`>`}</span>
+                      change <span className="arrow">{`>`}</span>
                     </span>
                   )}
                 </Link>
@@ -177,7 +177,7 @@ const Overview = () => {
                     </span>
                   ) : (
                     <span className="fw-300 text-nowrap">
-                      Wijzigen <span className="arrow">{`>`}</span>
+                      change <span className="arrow">{`>`}</span>
                     </span>
                   )}
                 </Link>

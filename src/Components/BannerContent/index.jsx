@@ -84,7 +84,7 @@ const BannerItem = ({ loading, ...props }) => {
               loading ? "block" : "flex"
             } center middle relative`}
             style={{
-              background: `${backgroundColor}3d`,
+              // background: `${backgroundColor}3d`,
               display: "grid",
               width: "100%",
               gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",

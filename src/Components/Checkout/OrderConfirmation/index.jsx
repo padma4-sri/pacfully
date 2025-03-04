@@ -25,7 +25,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Img from "Components/Img";
 import { SkeletonLine } from "Components/Skeletion";
 import useScrollToTop from 'Components/Hooks/useScrollToTop';
-
+import tickIcon from "Res/images/tick.gif"
 
 function OrderConfirmation() {
   const { succesToken,cartCount, updateCartItems, guestKey, isSessionExpired,token, guestQuoteId } = useSelector(
@@ -45,7 +45,6 @@ function OrderConfirmation() {
   const customerQuoteId = useSelector((state) => state?.customerQuoteId);
   const { baseURL, defaultURL, storeId } = useContext(DomainContext);
   const symbol = ">";
-  const tickIcon = "/res/img/tick.gif";
   const navigate = useNavigate();
   const location = useLocation();
   const [data, setData] = useState();

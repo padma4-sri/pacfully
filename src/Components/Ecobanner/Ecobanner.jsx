@@ -55,7 +55,7 @@ const Ecobanner = ({
                                 /> :
                                 buttonText &&
                                 <AdvancedLink
-                                    className="fw-700 px-3"
+                                    className="fw-700"
                                     to={button_url}
                                     style={{
                                         maxWidth: 'fit-content'
