@@ -13,7 +13,7 @@ const Newsletter = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { storeId, defaultURL } = useContext(DomainContext);
+  const { storeId, baseURL } = useContext(DomainContext);
   const homePageLoading = useSelector((state) => state?.homePageLoading);
   const HeaderFooterDataLoading = useSelector(state => state?.HeaderFooterDataLoading);
   const getFooterData = useSelector(state =>state?.getHeaderFooterData?.data?.footer?.[0]?.Newsletter);
@@ -37,7 +37,7 @@ const Newsletter = () => {
         SessionExpiredLogout(dispatch, res?.status, navigate, isSessionExpired);
       },
       axiosData: {
-        url: `${defaultURL}/customers/me`,
+        url: `${baseURL}/customers/me`,
         method: "get",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -61,11 +61,11 @@ const Newsletter = () => {
       setGetResponseData(res?.data?.[0]);
     },
     axiosData: {
-      url: `${defaultURL}/newsletter/subscribe`,
+      url: `${baseURL}/newsletter/subscribe`,
       method: "post",
       paramsData: {
         email: fieldValue,
-        storeId: storeId
+        storeId: 1
       },
     },
   };

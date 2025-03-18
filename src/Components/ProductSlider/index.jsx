@@ -64,19 +64,7 @@ const ProductSlider = ({
         <div className="title__section flex space-between pb-6">
           {title &&
           <h1 className="fw-700 line-9">{title}</h1>}
-          {showToGo ? (
-            <Link to={`/${toGo}`}aria-label={viewText}  state={{
-              urlType:{
-                "entityType": "category",
-                "level": "3",
-                "isChildExist": 1
-            }}}
-             className="fw-700 line-9">
-              {viewText}
-            </Link>
-          ) : (
-            ""
-          )}
+         
         </div>
       </div>
       <div className="container pb-6 xl-pb-9">

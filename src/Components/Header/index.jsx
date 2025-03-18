@@ -43,7 +43,7 @@ const Header = () => {
     try {
       const payload = {
         keyword: searchKeyword,
-        storeId: storeId,
+        storeId: 1,
       };
       if (searchKeyword.length > 2 && isChanged) {
         setShowSuggestion(true);
@@ -100,7 +100,7 @@ const Header = () => {
       let index = 0;
       const fetchNextProduct = () => {
         if (index < recentProductSku.length) {
-          getRecentProducts(dispatch, recentProductSku[index], baseURL, storeId, recentProducts);
+          // getRecentProducts(dispatch, recentProductSku[index], baseURL, storeId, recentProducts);
           index++;
           setTimeout(fetchNextProduct, 2 * 60 * 1000); 
         }

@@ -358,7 +358,7 @@ export const handleAddToRecent = (recentProducts, product, dispatch, sku, baseUR
   dispatch(ACTION_RECENT_VIEW(recentProduct));
 
   if (!onPdp && sku) {
-    getRecentProducts(dispatch, sku, baseURL, storeId, recentProduct);
+    // getRecentProducts(dispatch, sku, baseURL, storeId, recentProduct);
   }
 };
 

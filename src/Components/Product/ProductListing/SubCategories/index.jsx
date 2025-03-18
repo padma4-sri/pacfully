@@ -33,6 +33,8 @@ const SubCategories = () => {
     );
   let filredData = [];
   const trimTrailingSlash = (url) => url.trim().replace(/\/$/, '');
+  const getLastPath = (path) => path.trim().replace(/\/$/, '').split('/').pop();
+
 
   const getFooterData = useSelector(
     (state) => state?.getHeaderFooterData?.data?.footer?.[0]
@@ -55,7 +57,7 @@ const SubCategories = () => {
     customerId,
   }) {
 
-    const baseUrl = `${defaultURL}/custom/categoryproducts/2`;
+    const baseUrl = `${defaultURL}/custom/categoryproducts/${getLastPath(location?.pathname?.slice(1))}`;
     let queryParams = `&pageSize=14&pageNumber=${currentPage + 1}&sort_by=position&sort_order=${sortingData?.value ? sortingData?.value :"ASC"}`;
 
     filredData.forEach((filter, index) => {
@@ -136,7 +138,7 @@ const SubCategories = () => {
     axiosData: {
       url: `${defaultURL}/searchresult/getproducts`,
       paramsData: {
-        storeId: storeId,
+        storeId: 1,
         keyword: location?.pathname?.slice(17)?.split("/")?.[0]
           ? location?.pathname?.slice(17)?.split("/")?.[0]?.replace(/%20/g, " ")
           : "",

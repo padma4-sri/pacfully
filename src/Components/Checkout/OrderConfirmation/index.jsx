@@ -184,7 +184,6 @@ function OrderConfirmation() {
           storeId: 1,
           orderId: location?.state, 
           referenceNumber: "",
-          email:"padma567@gmail.com"
         },
       },
     };

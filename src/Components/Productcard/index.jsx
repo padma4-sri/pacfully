@@ -363,7 +363,7 @@ const ProductCard = ({
       style={{ padding: "0 17px" }}
     >
       <AdvancedLink
-        to={goto.url}
+        to={goto.urlKey}
         state={{
           urlType: {
             entityType: "category",
@@ -404,164 +404,7 @@ const ProductCard = ({
                 onMouseEnter={() => setcardHover(true)}
                 onMouseLeave={() => setcardHover(false)}
               >
-                {data?.wish_status !== 0 &&
-                (data?.stock_status === "1" ||
-                  window.location.pathname ===
-                    "/mijn-account/mijn-favorieten") ? (
-                  <div
-                    className="wishedItem absolute zindex-1"
-                    style={{
-                      top: 8,
-                      right: 8,
-                    }}
-                  >
-                    {!isWishList ? (
-                      wishItem?.length ? (
-                        <>
-                          {loadingState[productSku] ? (
-                            <CircularProgress
-                              size={20}
-                              thickness={4}
-                              style={{
-                                color: "black",
-                                top: 8,
-                                right: 8,
-                                position: "relative",
-                              }}
-                            />
-                          ) : (
-                            <IconButton
-                              sx={{ background: "#fff" }}
-                              aria-label="wishlist"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                setLoadingStateForProduct(productSku, true);
-                                setcardHoverDelay(true);
-                                removeWishlist(
-                                  baseURL,
-                                  token,
-                                  dispatch,
-                                  wishItem?.[0]?.itemId,
-                                  wishItem?.[0]?.sku,
-                                  wishlistAddedData,
-                                  customerId,
-                                  storeId,
-                                  () => {},
-                                  navigate,
-                                  isSessionExpired
-                                );
-                              }}
-                            >
-                              <WishFullIcon />
-                            </IconButton>
-                          )}
-                        </>
-                      ) : (
-                        <>
-                          {loadingState[productSku] ? (
-                            <CircularProgress
-                              size={20}
-                              thickness={4}
-                              style={{
-                                color: "black",
-                                top: 8,
-                                right: 8,
-                                position: "relative",
-                              }}
-                            />
-                          ) : (
-                            <IconButton
-                              aria-label="wishlist"
-                              sx={{ background: "#fff" }}
-                              onClick={() => {
-                                if (!isLoggedUser) {
-                                  dispatch(ACTION_OPEN__LOGIN(true));
-                                  dispatch(ACTION_OPEN__FORGOTPASSWORD(false));
-                                  dispatch(
-                                    ACTION_WISHLISTPRODUCTID({
-                                      id: productId,
-                                      sku: productSku,
-                                    })
-                                  );
-                                  if (pageName) {
-                                    dispatch(ACTION_GET__URLTYPE(pageName));
-                                  }
-                                } else if (!wishItem?.length) {
-                                  setLoadingStateForProduct(productSku, true);
-                                  setcardHoverDelay(true);
-                                  addWishList(
-                                    defaultURL,
-                                    dispatch,
-                                    token,
-                                    customerId,
-                                    { id: productId, sku: productSku },
-                                    wishlistAddedData,
-                                    storeId,
-                                    navigate,
-                                    isSessionExpired
-                                  );
-                                }
-                              }}
-                            >
-                              <WishOutlineIcon style={{ color: "#656565" }} />
-                            </IconButton>
-                          )}
-                        </>
-                      )
-                    ) : (
-                      <>
-                        {loadingState[productSku] ? (
-                          <CircularProgress
-                            size={20}
-                            thickness={4}
-                            style={{
-                              color: "black",
-                              top: 8,
-                              right: 8,
-                              position: "relative",
-                            }}
-                          />
-                        ) : (
-                          <IconButton
-                            aria-label="wishlist"
-                            sx={{ background: "#fff" }}
-                            onClick={(e) => {
-                              e.preventDefault();
-                              setLoadingStateForProduct(productSku, true);
-                              setcardHoverDelay(true);
-                              removeWishlist(
-                                baseURL,
-                                token,
-                                dispatch,
-                                data?.wishlistItemId,
-                                data?.sku,
-                                wishlistAddedData,
-                                customerId,
-                                storeId,
-                                updateWishListAction,
-                                navigate,
-                                isSessionExpired
-                              );
-                            }}
-                          >
-                            <img
-                              type="img"
-                              alt="product delete"
-                              src={DeleteIcon}
-                              style={{
-                                maxWidth: "100%",
-                                maxHeight: "100%",
-                                objectFit: "contained",
-                              }}
-                            />
-                          </IconButton>
-                        )}
-                      </>
-                    )}
-                  </div>
-                ) : (
-                  <></>
-                )}
+               
                 {onSilde === false &&
                 data?.color &&
                 Object.keys(data.color)?.length > 1 ? (
@@ -583,7 +426,7 @@ const ProductCard = ({
                     },
                   }}
                   pageTypeCheck="pdpView"
-                  to={`${data?.url}`}
+                  to={`${data?.urlKey}`}
                   onClick={() =>
                     handleAddToRecent(
                       recentProducts,
@@ -653,7 +496,7 @@ const ProductCard = ({
               <div className="flex col gap-1">
                 <h2 className="product__title">
                   <AdvancedLink
-                    to={`${data?.url}`}
+                    to={`${data?.urlKey}`}
                     state={{
                       urlType: {
                         entityType: "product",
@@ -677,7 +520,7 @@ const ProductCard = ({
                    </AdvancedLink>
                   {data?.minSaleQty ? (
                     <AdvancedLink
-                      to={`${data?.url}`}
+                      to={`${data?.urlKey}`}
                       state={{
                         urlType: {
                           entityType: "product",
@@ -718,7 +561,7 @@ const ProductCard = ({
                   </div>
                   <div className="action__block flex-0">
                     <AdvancedLink
-                      to={`${data?.url}`}
+                      to={`${data?.urlKey}`}
                       state={{
                         urlType: {
                           entityType: "product",

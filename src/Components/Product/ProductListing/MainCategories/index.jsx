@@ -34,32 +34,29 @@ const PlpDescription = ({ locationChange, forceRerender }) => {
 
   const dataBlock = React.useMemo(() => {
     if (
-      !plponesharedState?.categoryProducts ||
-      !plponesharedState.categoryProducts[0]
+      !plponesharedState?.products?.length
     ) {
       return null; // or handle accordingly if data is not available
     }
-    return Object.values(plponesharedState.categoryProducts[0]).map(
-      (item, index) => (
-        <React.Fragment key={`plpData_${item?.title}_${index}`}>
-          {item?.data?.length ? (
+    return (
+        <React.Fragment key={`plpData_0`}>
+          { plponesharedState.products?.length ? (
             <ProductSlider
-              title={item?.title}
-              subTitle={item?.subTitle}
+              title={plponesharedState?.categoryDescription?.categoryName}
+              // subTitle={item?.subTitle}
               showToGo={true}
-              data={!loadPreRender ? item?.data : item?.data?.slice(0, 4)}
-              toGo={item?.urlKey}
+              data={!loadPreRender ? plponesharedState.products : plponesharedState.products?.slice(0, 4)}
+              // toGo={item?.urlKey}
               showAllLastCard
               pageName="plp1"
-              index={index}
+              // index={index}
             />
           ) : (
             ""
           )}
         </React.Fragment>
-      )
     );
-  }, [plponesharedState?.categoryProducts, page]);
+  }, [plponesharedState?.products, page]);
 
  
   const optionsFirst = {
@@ -78,21 +75,21 @@ const PlpDescription = ({ locationChange, forceRerender }) => {
       ) {
         setPlponeSharedState({
           ...plponesharedState,
-          categoryProducts: [
+          products: [
             {
-              ...res?.data[0]?.categoryProducts?.[0],
+              ...res?.data[0]?.products?.[0],
             },
           ],
         });
       } else if (
-        res?.data?.[0]?.categoryProducts?.length &&
+        res?.data?.[0]?.products?.length &&
         plponesharedState?.location === location.pathname
       ) {
         setPlponeSharedState({
           ...plponesharedState,
-          categoryProducts: plponesharedState?.categoryProducts?.map(
+          products: plponesharedState?.products?.map(
             (category) => {
-              const newCategory = res?.data?.[0]?.categoryProducts?.find(
+              const newCategory = res?.data?.[0]?.products?.find(
                 (newCat) => {
                   const key = Object.keys(newCat)[0];
                   return newCat[key]?.subTitle === category[key]?.subTitle;
@@ -112,8 +109,8 @@ const PlpDescription = ({ locationChange, forceRerender }) => {
                 };
               } else {
                 return {
-                  ...plponesharedState?.categoryProducts?.[0],
-                  ...res?.data?.[0]?.categoryProducts?.[0],
+                  ...plponesharedState?.products,
+                  ...res?.data?.[0]?.products,
                 };
               }
             }
@@ -126,11 +123,7 @@ const PlpDescription = ({ locationChange, forceRerender }) => {
       }
     },
     axiosData: {
-      url: `${defaultURL}/plp/categoryview?data[catUrl]=${location?.pathname?.slice(
-        1
-      )}&data[customerId]=0&data[categoryId]=&data[storeId]=${storeId}&data[page]=${parseInt(
-        page
-      )}`,
+      url: `${defaultURL}/plp/categoryview?data[catUrl]=boxpac&data[page]=1`,
     },
     getStatus: (res) => {
       if (parseInt(page) <= 1) {
@@ -202,7 +195,7 @@ const PlpDescription = ({ locationChange, forceRerender }) => {
           />
           <div className="container">
             <CategoriesDescription
-              data={plponesharedState?.categoryDescription}
+              dsata={plponesharedState?.categoryDescription}
               loading={
                 !plponesharedState?.categoryDescription?.title ? loading : false
               }
@@ -220,20 +213,12 @@ const PlpDescription = ({ locationChange, forceRerender }) => {
             />
           </div>
 
-          <div className="product__reultsddd pt-6 pb-6 lg-pt-5 lg-pb-12">
-            <FeaturesSection
-              data={plponesharedState?.features}
-              loading={!plponesharedState?.features?.length ? loading : false}
-              className=" plp2 features__sliders plp1"
-              isFeatures={true}
-              isPlp1={true}
-            />
-          </div>
+         
 
           <div>
-            {plponesharedState?.categoryProducts &&
-            plponesharedState?.categoryProducts?.[0] &&
-            Object.values(plponesharedState?.categoryProducts?.[0])?.length ? (
+            {plponesharedState?.products &&
+            plponesharedState?.products &&
+         plponesharedState?.products?.length ? (
               dataBlock
             ) : (
               <></>
@@ -252,37 +237,9 @@ const PlpDescription = ({ locationChange, forceRerender }) => {
             ) : (
               <></>
             )}
-            {loading && !plponesharedState?.promotionMainBanner?.length ? (
-              <Ecobanner loading={loading} />
-            ) : plponesharedState?.promotionMainBanner?.length ? (
-              <Ecobanner
-                loading={false}
-                img={plponesharedState?.promotionMainBanner?.[0]?.image}
-                title={plponesharedState?.promotionMainBanner?.[0]?.headerTitle}
-                buttonText={
-                  plponesharedState?.promotionMainBanner?.[0]?.buttonTitle
-                }
-                description={
-                  plponesharedState?.promotionMainBanner?.[0]?.headerContent
-                }
-                button_url={
-                  plponesharedState?.promotionMainBanner?.[0]?.buttonUrl
-                }
-                backgroundColor={
-                  plponesharedState?.promotionMainBanner?.[0]?.backgroundColor
-                }
-              />
-            ) : (
-              <></>
-            )}
+           
           </div>
-          <div>
-            <MundoRating
-              loading={!plponesharedState?.breadCrums?.length ? loading : false}
-              getReviews={plponesharedState?.reviews}
-              getMondu={plponesharedState?.mondu && plponesharedState?.mondu[0]}
-            />
-          </div>
+        
           {!loading && recentProducts?.length ? (
             <div
               className={`${
@@ -302,25 +259,7 @@ const PlpDescription = ({ locationChange, forceRerender }) => {
           ) : (
             <></>
           )}
-          <VisibleWarp>
-            {loading && !plponesharedState?.staticContents ? (
-              <div className="container-fluid plp__infoblock">
-                <Infoblock
-                  getInfo={plponesharedState?.staticContents}
-                  loading={true}
-                />
-              </div>
-            ) : plponesharedState?.staticContents?.[0]?.block ? (
-              <div className="container-fluid plp__infoblock">
-                <Infoblock
-                  getInfo={plponesharedState?.staticContents}
-                  loading={false}
-                />
-              </div>
-            ) : (
-              <></>
-            )}
-          </VisibleWarp>
+         
         </div>
       </div>
     </React.Fragment>

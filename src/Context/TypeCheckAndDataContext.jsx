@@ -16,6 +16,7 @@ export const TypeCheckProvider = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const trimTrailingSlash = (url) => url.trim().replace(/\/$/, '');
+  const getLastPath = (path) => path.trim().replace(/\/$/, '').split('/').pop();
 
   const { baseURL, storeId, defaultURL } = useContext(DomainContext);
   const {
@@ -50,8 +51,8 @@ export const TypeCheckProvider = ({ children }) => {
 
   const fetchPDPData = async (value) => {
     try {
-      // const { data } = await axios.get(`${defaultURL}/pdp${value?.path}/0`);
-      const { data } = await axios.get(`${defaultURL}/pdp/rigid-box-config-1`);
+      const { data } = await axios.get(`${defaultURL}/pdp/${value?.path}`);
+      // const { data } = await axios.get(`${defaultURL}/pdp/rigid-box-config-1`);
       
       if (data?.length) {
         setPdpSharedState(data[0]);
@@ -85,12 +86,11 @@ export const TypeCheckProvider = ({ children }) => {
       });
 
       const { data } = await axios.get(
-        `${defaultURL}/custom/categoryproducts/2?${queryParams.toString()}`
+        `${defaultURL}/custom/categoryproducts/${getLastPath(value.path.replace("/", ""))}?${queryParams.toString()}`
       );
+      if (!data?.product?.length) return;
 
-      if (!data?.length) return;
-
-      setPlptwoSharedState(data[0]);
+      setPlptwoSharedState(data);
       setisBackdropLoading(false);
 
       const navigationState = {
@@ -111,8 +111,10 @@ export const TypeCheckProvider = ({ children }) => {
   };
   const getPLPOneDetails = async (value) => {
     try {
-      const queryParams = `${defaultURL}/plp/categoryview?data[catUrl]=${pathURL?.url}&data[customerId]=0&data[categoryId]=&data[storeId]=${storeId}&data[page]=0`;
-
+      // const queryParams = `${defaultURL}/plp/categoryview?data[catUrl]=${pathURL?.url}&data[customerId]=0&data[categoryId]=&data[storeId]=${storeId}&data[page]=0`;
+      const queryParams = `${defaultURL}/plp/categoryview?data[catUrl]=${pathURL?.url}&data[page]=1`;
+      // plp/categoryview?data[catUrl]=${pathURL?.url}&data[customerId]=0&data[categoryId]=&data[storeId]=${storeId}&data[page]=0`;
+      
       const { data } = await axios.get(queryParams);
 
       if (data?.length) {
@@ -172,7 +174,7 @@ export const TypeCheckProvider = ({ children }) => {
           pageType?.entityType === "zoeken" ||
           pageType?.isChildExist === 0
         ) {
-          // setisBackdropLoading(true);
+          setisBackdropLoading(true);
           getDetails({ path, pageType });
         } else {
           navigate(
@@ -194,9 +196,9 @@ export const TypeCheckProvider = ({ children }) => {
     const { urlType, categoryData } = state || {};
     const isPDPView = pageTypeCheck === "pdpView";
     const isCategoryLevel2 =
-      urlType?.entityType === "category" && urlType?.level == "2";
+      urlType?.entityType === "category" && urlType?.level === "2";
     const isCategoryLevel3 =
-      urlType?.entityType === "category" && urlType?.level === "3";
+      urlType?.entityType === "category" && urlType?.level >= "3";
     const isSearchResult = url?.includes("/zoeken/");
     const name = pathURLOnly?.url?.split("/")?.[1];
     const isStaticUrl = StaticUrls.some((path) => path.split("/")[1] === name);
@@ -244,10 +246,10 @@ export const TypeCheckProvider = ({ children }) => {
     } else {
       setPageType(pathURLOnly);
       if (!plponesharedState?.breadCrums?.length && isCategoryLevel2) {
-        // setisBackdropLoading(true);
+        setisBackdropLoading(true);
         getPLPOneDetails({ path: pathURLOnly.url, pageType });
       } else if (!plptwosharedState?.breadCrums?.length && isCategoryLevel3) {
-        // setisBackdropLoading(true);
+        setisBackdropLoading(true);
         getDetails({ path: pathURLOnly.url, pageType });
       } else {
         navigate(

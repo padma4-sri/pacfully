@@ -123,7 +123,6 @@ const totalDiscounts = parseFloat(summaryData?.tax_details?.discount_amount?.rep
 const discountPercentage = ((subtotal - subtotalWithDiscount) / subtotal) * 100;
 const roundedDiscountPercentage = Math.round(discountPercentage);
 const roundedshippingPriceCents = Math.round(shippingPriceCents);
-console.log(numberValue,"numberValue")
 useScript('https://checkout.razorpay.com/v1/checkout.js');
 
 const handlePayment = async () => {
@@ -138,7 +137,6 @@ const handlePayment = async () => {
       image: 'https://your-domain.com/logo.png',
       handler: function (response) {
           alert('Payment Successful!');
-          console.log(response);
       },
       prefill: {
           name: isLoggedUser ? customerBillingAddress?.defaultBilling?.firstname
@@ -639,7 +637,7 @@ const createOrder = async () => {
      
 
       if (orderId?.data) {
-        OrderSuccessCustomer(orderId?.data)
+        // OrderSuccessCustomer(orderId?.data)
         // navigate("/order/success")
 
       }

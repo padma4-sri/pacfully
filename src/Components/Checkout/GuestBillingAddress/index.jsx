@@ -278,14 +278,13 @@ const Form = ({
       axiosData: {
         url: `${baseURL}/customer/verification`,
         paramsData: {
-          storeId: storeId,
+          storeId: 1,
           email: data?.email,
         },
       },
     };
     APIQueryPost(addAddres);
   };
-console.log(errors,"errors")
   useEffect(() => {
     if (openTab == "billing" && guestBillingAddress?.addressList?.firstName && guestBillingAddress?.country) {
       setData(guestBillingAddress?.addressList)

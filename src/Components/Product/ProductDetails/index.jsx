@@ -117,8 +117,8 @@ useEffect(() => {
         isLoader: true,
         loaderAction: (bool) => setLoading(bool),
         axiosData: {
-          // url: `${defaultURL}/pdp${location?.pathname}`,
-          url: `${defaultURL}/pdp/rigid-box-config-1`,
+          url: `${defaultURL}/pdp${location?.pathname}`,
+          // url: `${defaultURL}/pdp/rigid-box-config-1`,
         },
         setGetResponseData: (res) => {
           dispatch(ACTION_GET__URLTYPE("pdp"));

@@ -87,7 +87,6 @@ const ProductPage = () => {
       location?.state?.urlType?.isChildExist || checkUrlType?.isChildExist;
     const isSearchResult = location?.state?.isSearchResult;
     const pathname = location?.pathname;
-    console.log({isChildExistVal,level})
 
     if (isSearchResult || pathname?.includes("/zoeken/")) {
       return <SubCategories />;
@@ -100,8 +99,10 @@ const ProductPage = () => {
         (level === "2" || isChildExistVal === 1)
       ) {
         return (
-          <SubCategories
-            />
+          <MainCategories
+          locationChange={location.pathname}
+          forceRerender={uniqueId.current}
+        />
         );
       }
       if (entityType === "product") {
@@ -127,8 +128,10 @@ const ProductPage = () => {
         (checkUrlType?.level === "2" || checkUrlType?.isChildExist === 1)
       ) {
         return (
-          <SubCategories
-              />
+          <MainCategories
+          locationChange={location.pathname}
+          forceRerender={uniqueId.current}
+        />
         );
       }
 
