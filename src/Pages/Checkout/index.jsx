@@ -125,8 +125,9 @@ const roundedDiscountPercentage = Math.round(discountPercentage);
 const roundedshippingPriceCents = Math.round(shippingPriceCents);
 useScript('https://checkout.razorpay.com/v1/checkout.js');
 
-const handlePayment = async () => {
-  const orderId = await createOrder(numberValue); 
+const handlePayment = async (OrderIdMain) => {
+  const orderId = await createOrder(numberValue,OrderIdMain); 
+  console.log({orderId})
   const options = {
       key: 'rzp_test_U8YTJn6CYMykkS',
       amount:numberValue * 100, 
@@ -135,8 +136,12 @@ const handlePayment = async () => {
       name: 'Your Store Name',
       description: 'Purchase Description',
       image: 'https://your-domain.com/logo.png',
-      handler: function (response) {
-          alert('Payment Successful!');
+      handler: async function (response) {
+        console.log('Payment Response:', response);
+        alert('Payment Successful!');
+
+        // Verify payment after successful transaction
+        await verifyPayment(response, OrderIdMain);
       },
       prefill: {
           name: isLoggedUser ? customerBillingAddress?.defaultBilling?.firstname
@@ -156,8 +161,35 @@ const handlePayment = async () => {
   rzp.open();
 };
 
+const verifyPayment = async (response, orderIdMain) => {
+  try {
+    const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = response;
 
-const createOrder = async () => {
+    const verifyResponse = await fetch(`${baseURL}/razorpay/verify-payment`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        orderId: razorpay_order_id,
+        paymentId: razorpay_payment_id,
+        signature: razorpay_signature,
+      }),
+    });
+
+    const data = await verifyResponse.json();
+    console.log('Payment Verification Response:', data);
+
+    if (data.success) {
+      console.log('Payment verified successfully');
+    } else {
+      console.error('Invalid Payment Signature:', data.message);
+    }
+  } catch (error) {
+    console.error('Error verifying payment:', error);
+  }
+};
+
+
+const createOrder = async (numberValue,orderIdMain) => {
   try {
       const response = await fetch(`${baseURL}/razorpay/create-order`, {
           method: 'POST',
@@ -170,10 +202,11 @@ const createOrder = async () => {
           }),
       });
       const data = await response.json();
-      if(data){
+      if(data.length){
+console.log(data,"data123s")
 
       }
-      return data.order_id;
+      return data[0];
   } catch (error) {
       console.error('Error creating Razorpay order:', error);
   }
@@ -354,7 +387,7 @@ const createOrder = async () => {
             }
           }
           else if (orderId?.data &&  selectedPaymentMethod?.code == "razorpay") {
-            handlePayment()
+            handlePayment(orderId?.data)
           }
           // else
           // if ((resData?.data[0]?.incrementId && selectedPaymentMethod?.code !== "banktransfer") || (resData?.data[0]?.incrementId && selectedPaymentMethod?.code !== "free")) {
