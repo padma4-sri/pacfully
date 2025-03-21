@@ -136,13 +136,19 @@ const handlePayment = async (OrderIdMain) => {
       name: 'Your Store Name',
       description: 'Purchase Description',
       image: 'https://your-domain.com/logo.png',
-      handler: async function (response) {
-        console.log('Payment Response:', response);
+    
+      handler: async (response) => {
+        console.log('Payment Successful:', response);
         alert('Payment Successful!');
 
-        // Verify payment after successful transaction
-        await verifyPayment(response, OrderIdMain);
-      },
+        const verifyResponse = await verifyRazorpayPayment(
+          OrderIdMain,
+            response.razorpay_payment_id,
+            response.razorpay_signature
+        );
+
+        console.log('Payment Verification:', verifyResponse);
+    },
       prefill: {
           name: isLoggedUser ? customerBillingAddress?.defaultBilling?.firstname
             ? customerBillingAddress?.defaultBilling?.firstname
@@ -161,31 +167,13 @@ const handlePayment = async (OrderIdMain) => {
   rzp.open();
 };
 
-const verifyPayment = async (response, orderIdMain) => {
-  try {
-    const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = response;
-
-    const verifyResponse = await fetch(`${baseURL}/razorpay/verify-payment`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        orderId: razorpay_order_id,
-        paymentId: razorpay_payment_id,
-        signature: razorpay_signature,
-      }),
-    });
-
-    const data = await verifyResponse.json();
-    console.log('Payment Verification Response:', data);
-
-    if (data.success) {
-      console.log('Payment verified successfully');
-    } else {
-      console.error('Invalid Payment Signature:', data.message);
-    }
-  } catch (error) {
-    console.error('Error verifying payment:', error);
-  }
+const verifyRazorpayPayment = async (orderId, paymentId, signature) => {
+  const response = await axios.post(`${baseURL}/razorpay/verify-payment`, {
+      orderId,
+      paymentId,
+      signature
+  });
+  return response.data;
 };
 
 
