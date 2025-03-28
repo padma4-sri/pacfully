@@ -48,7 +48,6 @@ function OrderConfirmation() {
   const navigate = useNavigate();
   const location = useLocation();
   const [data, setData] = useState();
-  const [productdata, setProductData] = useState();
   const dispatch = useDispatch();
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -118,7 +117,7 @@ function OrderConfirmation() {
         paramsData: {
           data: {
             cartId: id,
-            storeId: storeId,
+            storeId: 1,
           }
         }
       }
@@ -155,7 +154,6 @@ function OrderConfirmation() {
       isLoader: true,
       setGetResponseData: (resData) => {
         if (resData?.status === 200) {
-          OthersBought();
           setData(resData?.data[0]);
           if (!isLoggedUser && (resData?.data[0]?.token || succesToken)) {
             dispatch(ACTION_ISLOGGEDUSER(true));
@@ -190,25 +188,7 @@ function OrderConfirmation() {
     APIQueryPost(quoteSubmit);
   };
 
-  const OthersBought = () => {
-    const othersBought = {
-      isLoader: true,
-      setGetResponseData: (resData) => {
-        if (resData?.status === 200) {
-          setProductData(resData?.data[0]);
-        }
-      },
-      axiosData: {
-        url: `${baseURL}/order/othersAlsoBought`,
-        method: "post",
-        paramsData: {
-          storeId: storeId,
-         
-        },
-      },
-    };
-    APIQueryPost(othersBought);
-  };
+ 
  
   useEffect(() => {
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
@@ -274,18 +254,17 @@ function OrderConfirmation() {
             />
           </div>
           <h1 className=" line_height fw-700 fs-32 tc pb-2">
-            Bedankt voor je bestelling,
+          Thank you for your order,
           </h1>
           <h1 className="line_height fw-700 fs-32 tc pb-4">{data?.name}!</h1>
           <p className="fw-700 fs-16 tc pb-4">
             Ordernummer #{data?.incrementId}
           </p>
           <p className="fs-15 tc  px-8 line-6">
-            De orderbevestiging wordt verstuurd naar uw e-mailadres.
+          The order confirmation will be sent to your email address.
           </p>
                     <p className="fs-15 tc pb-6 px-8 line-6">
-            Controleer ook de spam folder! Niks ontvangen? Neem contact op via&nbsp;
-              <>
+                    Also check your spam folder! Didn't receive anything? Contact us via&nbsp;              <>
                 <a
                   className="line-6 text-underline pb-1"
                   target="__blank"
@@ -306,12 +285,11 @@ function OrderConfirmation() {
             type="submit"
             disabled={!isVisible}
           >
-            Bekijk bestelling in mijn account
-          </Button>
+View order in my account          </Button>
         </Link>
 
           <Link to="/" aria-label={`home`} className="tc block text-underline fs-14">
-            verder winkelen {symbol}
+          continue shopping {symbol}
           </Link>
         </div>
         :

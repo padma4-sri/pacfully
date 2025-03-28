@@ -154,7 +154,7 @@ function QuoteConfirmation() {
         paramsData: {
           data: {
             cartId: id,
-            storeId: storeId,
+            storeId: 1,
           }
         }
       }

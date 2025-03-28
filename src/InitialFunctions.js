@@ -53,7 +53,7 @@ const InitialFunctions = (baseURL, storeId, defaultURL) => {
       const payload = {
         data: {
           cartId: id,
-          storeId: storeId,
+          storeId: 1,
         },
       };
       const responseData = await axios.post(defaultURL + "/cart/verify", payload);

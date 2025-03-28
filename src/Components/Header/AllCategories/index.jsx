@@ -160,6 +160,8 @@ const MenuList = ({
     : [];
     
   const getLevel = (item) => {
+    console.log(item,"item123")
+    console.log(dataWithSub,"item123")
     if (!item?.sub || item.sub.length === 0) {
       return "3";
     }

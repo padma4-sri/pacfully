@@ -18,7 +18,6 @@ import {
 } from "Store/action";
 function CustomerShippingAddress({
   customerAddress,
-  countryList,
   GetCustomerAddress,
   getCustomerShippingAddress,
   onTabClick,
@@ -417,7 +416,6 @@ useEffect(()=>{
         <AddAddress
           openModel={openModelAddress}
           setOpenModel={setOpenModelAddress}
-          countryList={countryList}
           GetCustomerAddress={GetCustomerAddress}
           address="shipping"
           editShippingAddress={editShippingAddress}

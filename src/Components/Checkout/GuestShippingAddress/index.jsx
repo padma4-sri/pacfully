@@ -10,7 +10,6 @@ import { useDispatch } from "react-redux";
 
 function GuestShippingAddress({
   guestShippingAddress,
-  countryList,
   submitAddress,
   setSubmitAddress,
   openTab,
@@ -22,7 +21,6 @@ function GuestShippingAddress({
     <>
       <Form setGuestShippingAddress={setGuestShippingAddress}
         guestShippingAddress={guestShippingAddress}
-        countryList={countryList}
         submitAddress={submitAddress}
         setSubmitAddress={setSubmitAddress}
         openTab={openTab}
@@ -38,7 +36,6 @@ export default GuestShippingAddress;
 
 const Form = ({
   guestShippingAddress,
-  countryList,
   submitAddress,
   setSubmitAddress,
   openTab,
@@ -65,7 +62,6 @@ const Form = ({
   const dispatch = useDispatch();
   const company = customerDetails?.custom_attributes?.filter((item) => item?.attribute_code === "customer_company");
   const phoneNumbers = customerDetails?.custom_attributes?.filter((item) => item?.attribute_code === "phone_number");
-  const defaultCountryLength = countryList?.filter((i) => i?.is_default === true);
 
   useEffect(() => {
   const hasNonEmptyErrors = Object.values(errors).filter((error) => error !== "");

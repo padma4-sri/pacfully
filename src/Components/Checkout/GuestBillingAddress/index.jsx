@@ -25,7 +25,6 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 function GuestBillingAddress({
   getCustomerDetails,
-  countryList,
   validateAddress,
   OrderSummaryApi,
   GetCustomerAddress,
@@ -43,7 +42,6 @@ function GuestBillingAddress({
   return (
     <>
       <Form getCustomerDetails={getCustomerDetails}
-        countryList={countryList}
         validateAddress={validateAddress}
         OrderSummaryApi={OrderSummaryApi}
         GetCustomerAddress={GetCustomerAddress}
@@ -68,7 +66,6 @@ export default GuestBillingAddress;
 
 const Form = ({
   getCustomerDetails,
-  countryList,
   validateAddress,
   OrderSummaryApi,
   GetCustomerAddress,
@@ -117,7 +114,6 @@ const Form = ({
   });
   const company = customerDetails?.custom_attributes?.filter((item) => item?.attribute_code === "customer_company");
   const phoneNumber = customerDetails?.custom_attributes?.filter((item) => item?.attribute_code === "phone_number");
-  const defaultCountryLength = countryList?.filter((i) => i?.is_default === true);
   const dispatch = useDispatch();
   const {
     data,
@@ -450,8 +446,8 @@ const Form = ({
             <Input
               name="password"
               type={data?.showPassword === "true" ? "text" : "password"}
-              placeHolder="Wachtwoord"
-              lable="Wachtwoord"
+              placeHolder="Password"
+              lable="Password"
               errorClassName="error fs-12 pt-1 tr w-1/1"
               value={guestBillingAddress?.addressList?.password}
               onChange={changeHandler}
@@ -473,7 +469,7 @@ const Form = ({
               showIcon={true}
             />
             <p className="fs-15 pb-6">
-              U heeft al een account bij ons, log in met uw gegevens.
+            You already have an account with us, log in with your details.
             </p>
             {resMessage && (
               <div className="res__message py-4 error">{resMessage}</div>
@@ -505,7 +501,7 @@ const Form = ({
                   onClick={() => handleForgotQuote(dispatch)}
 
                 >
-                  Wachtwoord vergeten?
+                 Forgot your password?
                 </Link>
               </div>
             </div>

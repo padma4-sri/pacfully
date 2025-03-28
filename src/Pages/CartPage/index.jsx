@@ -62,7 +62,7 @@ function CartPage() {
         paramsData: {
           data: {
             cartId: guestQuoteId,
-            storeId: storeId,
+            storeId: 1,
           }
         }
       }

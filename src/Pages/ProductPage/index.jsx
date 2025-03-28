@@ -87,7 +87,7 @@ const ProductPage = () => {
       location?.state?.urlType?.isChildExist || checkUrlType?.isChildExist;
     const isSearchResult = location?.state?.isSearchResult;
     const pathname = location?.pathname;
-
+console.log({entityType,level,isChildExistVal})
     if (isSearchResult || pathname?.includes("/zoeken/")) {
       return <SubCategories />;
     } else {

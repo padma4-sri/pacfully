@@ -75,7 +75,6 @@ function Checkout() {
   const [guestShippingAddress, setGuestShippingAddress] = useState(null);
   const [customerBillingAddress, setCustomerBillingAddress] = useState({});
   const [customerShippingAddress, setCustomerShippingAddress] = useState({});
-  const [countryList, setCountryList] = useState(null);
   const [errorsShipping, setErrorsShipping] = useState("");
   const [errorsPayment, setErrorsPayment] = useState("");
   const [btnLogin, setBtnLogin] = useState(false);
@@ -112,7 +111,7 @@ function Checkout() {
   };
   const grossAmountCents = parseFloat(summaryData?.tax_details?.grandTotal?.replace(/\./g, '').replace(',', '.'));
   const totalDiscountCents = parseFloat(summaryData?.totals_detail?.discount_amount?.replace(/\./g, '').replace(',', '.'));
-  const shippingPriceCents = parseFloat(summaryData?.totals_detail?.postageCosts?.replace(/\./g, '').replace(',', '.'));
+  // const shippingPriceCents = parseFloat(summaryData?.totals_detail?.postageCosts?.replace(/\./g, '').replace(',', '.'));
   const [loadingApi, setLoadingApi] = useState({
     shipping: false,
     payment: false,
@@ -122,7 +121,7 @@ const subtotalWithDiscount = parseFloat(summaryData?.totals_detail?.subtotal_wit
 const totalDiscounts = parseFloat(summaryData?.tax_details?.discount_amount?.replace(/\./g, '').replace(',', '.'));
 const discountPercentage = ((subtotal - subtotalWithDiscount) / subtotal) * 100;
 const roundedDiscountPercentage = Math.round(discountPercentage);
-const roundedshippingPriceCents = Math.round(shippingPriceCents);
+// const roundedshippingPriceCents = Math.round(shippingPriceCents);
 useScript('https://checkout.razorpay.com/v1/checkout.js');
 
 const handlePayment = async (OrderIdMain) => {
@@ -140,9 +139,9 @@ const handlePayment = async (OrderIdMain) => {
       handler: async (response) => {
         console.log('Payment Successful:', response);
         alert('Payment Successful!');
-
+navigate("/order/success")
         const verifyResponse = await verifyRazorpayPayment(
-          OrderIdMain,
+          orderId,
             response.razorpay_payment_id,
             response.razorpay_signature
         );
@@ -608,7 +607,7 @@ console.log(data,"data123s")
           },
         },
       };
-      const guestPayload = {
+      const guestPayload1 = {
         cartId: customerId,
         billing_address: {
           countryId: guestBillingAddress?.country,
@@ -646,6 +645,44 @@ console.log(data,"data123s")
           },
         },
       };
+      const guestPayload = {
+        cartId: guestKey,
+        billing_address: {
+          countryId: "IN",
+          street: [
+            guestBillingAddress?.addressList?.houseNumber,
+            guestBillingAddress?.addressList?.address,
+          ],
+          regionId: "599",
+          regionCode: "TN",
+          region: "Tamil Nadu",
+        customerAddressId:"0",
+          company:null,
+          telephone: guestBillingAddress?.addressList?.mobileNumber,
+          postcode: guestBillingAddress?.addressList?.postalCode,
+          city: guestBillingAddress?.addressList?.city,
+          firstname: guestBillingAddress?.addressList?.firstName,
+          lastname: guestBillingAddress?.addressList?.lastName,
+          same_as_billing: guestBillingAddress?.shippingAddress ? 1 : 0,
+          fax: null,
+          middlename: null,
+        prefix: null,
+          suffix: null,
+        vatId: null,
+          customAttributes: [],
+          saveInAddressBook: null,
+         
+        },
+        paymentMethod: {
+          method:
+            selectedPaymentMethod?.code,
+          po_number: null,
+          extension_attributes: {
+            agreement_ids: ["1"],
+          },
+        },
+        email: guestBillingAddress?.addressList?.email,
+      };
       const orderId = await axios.post(
         defaultURL + "/carts/mine/payment-information",
         customerAddress?.allAddress?.length ? payload : guestPayload,
@@ -660,7 +697,36 @@ console.log(data,"data123s")
       if (orderId?.data) {
         // OrderSuccessCustomer(orderId?.data)
         // navigate("/order/success")
-
+        if (orderId?.data && selectedPaymentMethod?.code == "checkmo") {
+          navigate("/order/success", { state:  orderId.data  });
+                if (isLoggedUser && customerQuoteId) {
+                  getCartItems(
+                    dispatch,
+                    () => { },
+                    customerQuoteId,
+                    customerId,
+                    () => { }, defaultURL,
+                    storeId,
+                    token, navigate, isSessionExpired
+      
+                  );
+                }
+                else if (guestQuoteId) {
+                  getCartItems(
+                    dispatch,
+                    () => { },
+                    guestQuoteId,
+                    "",
+                    () => { }, defaultURL,
+                    storeId,
+                    token, navigate, isSessionExpired
+      
+                  );
+                }
+              }
+              else if (orderId?.data &&  selectedPaymentMethod?.code == "razorpay") {
+                handlePayment(orderId?.data)
+              }
       }
 
     } catch (err) {
@@ -733,29 +799,12 @@ console.log(data,"data123s")
         );
       }
     }
-    GetCountryList(dispatch, baseURL, storeId)
  
    
   });
  
  
-  const GetCountryList = () => {
-    const countryList = {
-      setGetResponseData: (resData) => {
-        if (resData?.status === 200) {
-          setCountryList(resData?.data);
-        }
-      },
-
-      axiosData: {
-        url: `${baseURL}/getcountrylist`,
-        paramsData: {
-          storeId: storeId,
-        },
-      },
-    };
-    APIQueryPost(countryList);
-  };
+  
   const OrderSummaryApi = (id, quote,event) => {
       OrderSummaryApiGuest(id, quote,event)
   };
@@ -855,8 +904,11 @@ console.log(data,"data123s")
               additional_data: ""
             }
           },
-          shipping_method_code: summaryData?.shipping_methods?.length && summaryData?.shipping_methods[0]?.shipping_method_code,
-          shipping_carrier_code: summaryData?.shipping_methods?.length && summaryData?.shipping_methods[0]?.shipping_carrier_code,
+          
+          shipping_method_code:"flatrate" ,
+          shipping_carrier_code: "flatrate",
+          // shipping_method_code: summaryData?.shipping_methods?.length && summaryData?.shipping_methods[0]?.shipping_method_code,
+          // shipping_carrier_code: summaryData?.shipping_methods?.length && summaryData?.shipping_methods[0]?.shipping_carrier_code,
           extension_attributes: {}
         }
       }
@@ -909,8 +961,10 @@ console.log(data,"data123s")
               additional_details: ""
             }
           },
-          shipping_method_code: summaryData?.shipping_methods?.length && summaryData?.shipping_methods[0]?.shipping_method_code,
-          shipping_carrier_code: summaryData?.shipping_methods?.length && summaryData?.shipping_methods[0]?.shipping_carrier_code,
+          shipping_method_code:"flatrate" ,
+          shipping_carrier_code: "flatrate",
+          // shipping_method_code: summaryData?.shipping_methods?.length && summaryData?.shipping_methods[0]?.shipping_method_code,
+          // shipping_carrier_code: summaryData?.shipping_methods?.length && summaryData?.shipping_methods[0]?.shipping_carrier_code,
           extension_attributes: {}
         }
       }
@@ -998,8 +1052,10 @@ if(selectedShippingMethod!==null){
             additional_data: guestBillingAddress?.addressList?.addition ? guestBillingAddress?.addressList?.addition : ""
           },
         },
-        shipping_method_code: event?.shipping_method_code,
-        shipping_carrier_code: event?.shipping_carrier_code,
+        shipping_method_code:"flatrate" ,
+        shipping_carrier_code: "flatrate",
+        // shipping_method_code: event?.shipping_method_code,
+        // shipping_carrier_code: event?.shipping_carrier_code,
         extension_attributes: {},
       },
     };
@@ -1052,8 +1108,10 @@ if(selectedShippingMethod!==null){
 
           },
         },
-        shipping_method_code: event?.shipping_method_code,
-        shipping_carrier_code: event?.shipping_carrier_code,
+        shipping_method_code:"flatrate" ,
+        shipping_carrier_code: "flatrate",
+        // shipping_method_code: event?.shipping_method_code,
+        // shipping_carrier_code: event?.shipping_carrier_code,
         extension_attributes: {},
       },
     };
@@ -1151,8 +1209,10 @@ if(selectedShippingMethod!==null){
 
           },
         },
-        shipping_method_code: event?.shipping_method_code,
-        shipping_carrier_code: event?.shipping_carrier_code,
+        shipping_method_code:"flatrate" ,
+        shipping_carrier_code: "flatrate",
+        // shipping_method_code: event?.shipping_method_code,
+        // shipping_carrier_code: event?.shipping_carrier_code,
         extension_attributes: {},
       },
     };
@@ -1710,7 +1770,6 @@ if(selectedShippingMethod!==null){
                       <>
                         <CustomerBillingAddress
                           customerAddress={customerAddress}
-                          countryList={countryList}
                           GetCustomerAddress={GetCustomerAddress}
                           getCustomerBillingAddress={getCustomerBillingAddress}
                           summaryData={summaryData}
@@ -1718,7 +1777,6 @@ if(selectedShippingMethod!==null){
                         />
                         <CustomerShippingAddress
                           customerAddress={customerAddress}
-                          countryList={countryList}
                           GetCustomerAddress={GetCustomerAddress}
                           getCustomerShippingAddress={
                             getCustomerShippingAddress
@@ -1741,7 +1799,6 @@ if(selectedShippingMethod!==null){
                       openTab={openTab}
                       setGuestBillingAddress={setGuestBillingAddress}
                       guestBillingAddress={guestBillingAddress}
-                      countryList={countryList}
                       OrderSummaryApi={OrderSummaryApi}
                       GetCustomerAddress={GetCustomerAddress}
                       onTabClick={handleTabClick}
@@ -1757,7 +1814,6 @@ if(selectedShippingMethod!==null){
                         summaryData={summaryData}
                         setGuestShippingAddress={setGuestShippingAddress}
                         guestShippingAddress={guestShippingAddress}
-                        countryList={countryList}
                         setSubmitAddress={setSubmitAddress}
                         submitAddress={submitAddress}
                         openTab={openTab}
@@ -1793,7 +1849,6 @@ if(selectedShippingMethod!==null){
                         openTab={openTab}
                         setGuestBillingAddress={setGuestBillingAddress}
                         guestBillingAddress={guestBillingAddress}
-                        countryList={countryList}
                         OrderSummaryApi={OrderSummaryApi}
                         GetCustomerAddress={GetCustomerAddress}
                         onTabClick={handleTabClick}
@@ -1809,7 +1864,6 @@ if(selectedShippingMethod!==null){
                           summaryData={summaryData}
                           setGuestShippingAddress={setGuestShippingAddress}
                           guestShippingAddress={guestShippingAddress}
-                          countryList={countryList}
                           setSubmitAddress={setSubmitAddress}
                           submitAddress={submitAddress}
                           openTab={openTab}

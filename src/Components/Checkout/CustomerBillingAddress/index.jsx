@@ -19,7 +19,6 @@ import ModelNew from "Components/Model/ModelNew";
 
 function CustomerBillingAddress({
   customerAddress,
-  countryList,
   GetCustomerAddress,
   getCustomerBillingAddress,
   summaryData,
@@ -406,7 +405,6 @@ useEffect(()=>{
           setOpenModel={setOpenModelAddress}
           editBillingAddress={editBillingAddress}
           setEditBillingAddress={setEditBillingAddress}
-          countryList={countryList}
           GetCustomerAddress={GetCustomerAddress}
           address="billing"
           summaryData={summaryData}

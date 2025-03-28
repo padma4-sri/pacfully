@@ -32,12 +32,12 @@ const Header = () => {
   const recentProductSku = useSelector((state) => state?.recentProductSku);
   
   const handlesetsearchkeyword = async (e) => {
-    setIsChanged(true);
+    // setIsChanged(true);
     setSearchKeyword(e.target.value);
-    if (e.target.value.length > 2) {
-      setLoadingSearch(true);
-      searchHandle(e.target.value);
-    }
+    // if (e.target.value.length > 2) {
+    //   setLoadingSearch(true);
+    //   searchHandle(e.target.value);
+    // }
   };
   const searchHandle = async (value) => {
     try {

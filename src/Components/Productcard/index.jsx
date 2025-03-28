@@ -550,12 +550,12 @@ const ProductCard = ({
                   <div className="price__block flex-1 flex gap-x-2 bottom fw-700">
                     {/* <p className={`label ${false ? "special" : ""}`}>₹</p> */}
                     <p className={`price ${false ? "special" : ""}`}>
-                    ₹{data?.price}
+                    {data?.price}
                     </p>
                     {false ? (
-                      <p className="price__strike text-strike "> ₹293</p>
+                      <p className="price__strike text-strike "> {data?.specialPrice}</p>
                     ) : (
-                      <p className="price__strike text-strike "> ₹293</p>
+                      <p className="price__strike text-strike "> {data?.specialPrice}</p>
 
                     )}
                   </div>

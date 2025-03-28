@@ -18,7 +18,6 @@ import DomainContext from "Context/DomainContext";
 const AddAddress = ({
   openModel,
   setOpenModel,
-  countryList,
   address,
   editBillingAddress,
   setEditBillingAddress,
@@ -55,7 +54,6 @@ const AddAddress = ({
   const addressDefault = useSelector((state) => state?.addressDefault);
   const company = customerDetails?.custom_attributes?.filter((item) => item?.attribute_code === "customer_company");
   const phoneNumber = customerDetails?.custom_attributes?.filter((item) => item?.attribute_code === "phone_number");
-  const defaultCountryLength = countryList?.filter((i) => i?.is_default === true);
   const dispatch = useDispatch();
   const {
     data,
@@ -335,41 +333,7 @@ const AddAddress = ({
             }
             showIcon={true}
           />
-          <div className="input__control relative country__select">
-            <div className="field__block relative flex gap-1 col pb-5">
-              <label htmlFor="country" className="fs-15 fw-700">
-                Land *
-              </label>
-              <select
-                className="form__types w-1/1 px-4 py-2 fs-14 "
-                id="country"
-                name="country"
-                value={selectedCountry ? selectedCountry?.value : "NL"}
-                onChange={(e) => {
-                  const selectedCountryObject = countryList.find(
-                    (country) => country.value === e.target.value
-                  );
-
-                  setSelectedCountry(selectedCountryObject);
-                }}
-              >
-                {countryList?.length
-                  ? countryList?.map((country, index) => (
-                    index === defaultCountryLength?.length ?
-                      <>
-                        <option className="defaultcountyline" key={`line${index}`} disabled>──────────</option>
-                        <option key={index} value={country?.value}>
-                          {country?.label}
-                        </option>
-                      </> :
-                      <option key={index} value={country?.value}>
-                        {country?.label}
-                      </option>
-                  ))
-                  : ""}
-              </select>
-            </div>
-          </div>
+         
 
           <Input
             name="postalCode"

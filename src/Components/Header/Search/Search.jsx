@@ -39,11 +39,11 @@ const Search = ({
                             setIsFocused(true);
                         }}
                         onChange={(e) => handlesetsearchkeyword(e)}
-                        onKeyDown={(e) => {
-                            if (e.key === "Enter") {
-                                searchResultHandler();
-                            }
-                        }}
+                        // onKeyDown={(e) => {
+                        //     if (e.key === "Enter") {
+                        //         searchResultHandler();
+                        //     }
+                        // }}
                         id={id}
                         value={searchKeyword}
                     />

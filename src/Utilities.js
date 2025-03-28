@@ -237,7 +237,7 @@ export const mergeCart = (
           customerId: customerId,
           guestCartIdKey: key,
           guestCartId: guestQuoteId,
-          storeId: storeId,
+          storeId: 1,
         },
       },
     },
