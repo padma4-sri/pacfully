@@ -310,35 +310,7 @@ const Form = ({ openModel, setOpenModel, title, updateAddressList, setUpdateAddr
     />
 
     {/* country */}
-    <div className="input__control relative country__select">
-      <div className="field__block relative flex gap-1 col pb-5">
-        <label htmlFor="country" className="fs-15 fw-700">
-          Land *
-        </label>
-        <select
-          className="form__types w-1/1 px-4 py-2 fs-14 "
-          id="country"
-          name="country"
-          value={selectedCountry}
-          onChange={(e) => setSelectedCountry(e.target.value)}
-        >
-          {countriesList?.length
-            ? countriesList.map((country, index) => (
-              index === defaultCountryLength?.length ?
-                <>
-                  <option className="defaultcountyline" key={`line${index}`} disabled>──────────</option>
-                  <option key={index} value={country?.value}>
-                    {country?.label}
-                  </option>
-                </> :
-                <option key={index} value={country?.value}>
-                  {country?.label}
-                </option>
-            ))
-            : ""}
-        </select>
-      </div>
-    </div>
+   
 
     <Input
       iconClass="top-11"

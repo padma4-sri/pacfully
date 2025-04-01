@@ -68,7 +68,7 @@ useEffect(()=>{
   };
   return (
     <>
-      <h3 className="fw-700 fs-20 pb-4">Afleveradres</h3>
+      <h3 className="fw-700 fs-20 pb-4">Delivery address</h3>
       {customerAddress?.allAddress?.length ? (
         editAddress ? (
           <div className="edit__address__section ">
@@ -234,7 +234,7 @@ useEffect(()=>{
                     setOpenModelAddress(true);
                   }}
                 >
-                  + Adres toevoegen
+                + Add address
                 </button>
               </div>
             )}
@@ -250,7 +250,7 @@ useEffect(()=>{
 
                 }}
               >
-                Annuleren
+                Close
               </button>
 
               <Button
@@ -263,7 +263,7 @@ useEffect(()=>{
                   setDefaultBilling(selectedshipping);
                 }}
               >
-                Opslaan
+                Save
                 <span className="flex middle">
                   <KeyboardArrowRightIcon />
                 </span>
@@ -391,7 +391,7 @@ useEffect(()=>{
                  
                 }}
               >
-                Naar verzending
+             To shipping
                 <span className="flex middle fw-600">
                   &nbsp;&nbsp;&nbsp;&nbsp;<KeyboardArrowRightIcon />
                 </span>

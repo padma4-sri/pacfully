@@ -278,7 +278,7 @@ function OrderConfirmation() {
               </>
           </p>
 
-        <Link to={`/mijn-account/besteldetails?${data?.orderId}`} aria-label={`mijn-account-besteldetails ${data?.orderId}`} className="block">
+        {/* <Link to={`/mijn-account/besteldetails?${data?.orderId}`} aria-label={`mijn-account-besteldetails ${data?.orderId}`} className="block">
           <Button
             className="fs-15 line-8 fw-700 r-8 px-5 block mx-auto mb-4 order_confirmationBtn"
             fullWidth
@@ -286,9 +286,9 @@ function OrderConfirmation() {
             disabled={!isVisible}
           >
 View order in my account          </Button>
-        </Link>
+        </Link> */}
 
-          <Link to="/" aria-label={`home`} className="tc block text-underline fs-14">
+          <Link to="/react-app" aria-label={`home`} className="tc block text-underline fs-14">
           continue shopping {symbol}
           </Link>
         </div>

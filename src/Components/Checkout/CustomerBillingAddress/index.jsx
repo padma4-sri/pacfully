@@ -60,7 +60,7 @@ useEffect(()=>{
   }, [customerAddress, defaultBilling, selectedbilling]);
   return (
     <>
-      <h3 className="fw-700 fs-20 pb-4">Factuuradres</h3>
+      <h3 className="fw-700 fs-20 pb-4">Billing address</h3>
       {customerAddress?.allAddress?.length ? (
         editAddress ? (
           <div className="edit__address__section ">
@@ -235,7 +235,7 @@ useEffect(()=>{
                   }}
                   aria-label="button"
                 >
-                  + Adres toevoegen
+                 + Add address
                 </button>
               </div>
             )}
@@ -249,7 +249,7 @@ useEffect(()=>{
                   dispatch(ACTION__SELECTEDADDRESS_BILLING(defaultBillingAddress));
                 }}
               >
-                Annuleren
+                Close
               </button>
 
               <Button
@@ -262,7 +262,7 @@ useEffect(()=>{
                   setDefaultBilling(selectedbilling);
                 }}
               >
-                Opslaan
+                Save
                 <span className="flex middle">
                   &nbsp;
                   <KeyboardArrowRightIcon />

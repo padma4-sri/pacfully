@@ -543,6 +543,63 @@ console.log(data,"data123s")
       const payload = {
         cartId: customerId,
         billing_address: {
+          countryId: "IN",
+          street: [
+            customerBillingAddress?.defaultBilling?.street1
+              ? customerBillingAddress?.defaultBilling?.street1
+              : customerBillingAddress?.defaultBillingAddress?.street1,
+            customerBillingAddress?.defaultBilling?.street2
+              ? customerBillingAddress?.defaultBilling?.street2
+              : customerBillingAddress?.defaultBillingAddress?.street2,
+          ],
+          regionId: "599",
+          regionCode: "TN",
+          region: "Tamil Nadu",
+        customerAddressId: customerBillingAddress?.defaultBilling?.address_id
+        ? customerBillingAddress?.defaultBilling?.address_id
+        : customerBillingAddress?.defaultBillingAddress?.address_id,
+        save_in_address_book:  customerBillingAddress?.defaultBilling ? 1 : customerAddress?.allAddress?.length ? 0 : 1,
+        company: customerBillingAddress?.defaultBilling?.firstname
+        &&  customerBillingAddress?.defaultBilling?.company?  customerBillingAddress?.defaultBilling?.company:customerBillingAddress?.defaultBillingAddress?.company,
+        telephone: customerBillingAddress?.defaultBilling?.mobile_number
+        ? customerBillingAddress?.defaultBilling?.mobile_number
+        : customerBillingAddress?.defaultBillingAddress?.mobile_number,
+        postcode: customerBillingAddress?.defaultBilling?.postcode
+        ? customerBillingAddress?.defaultBilling?.postcode
+        : customerBillingAddress?.defaultBillingAddress?.postcode,
+        city: customerBillingAddress?.defaultBilling?.city
+        ? customerBillingAddress?.defaultBilling?.city
+        : customerBillingAddress?.defaultBillingAddress?.city,
+        firstname: customerBillingAddress?.defaultBilling?.firstname
+        ? customerBillingAddress?.defaultBilling?.firstname
+        : customerBillingAddress?.defaultBillingAddress?.firstname,
+      lastname: customerBillingAddress?.defaultBilling?.lastname
+        ? customerBillingAddress?.defaultBilling?.lastname
+        : customerBillingAddress?.defaultBillingAddress?.lastname,
+      save_in_address_book:  customerBillingAddress?.defaultBilling ? 1 : customerAddress?.allAddress?.length ? 0 : 1,
+      vatId: customerBillingAddress?.defaultBilling?.vat_id
+      ? customerBillingAddress?.defaultBilling?.vat_id
+      : customerBillingAddress?.defaultBillingAddress?.vat_id,
+          fax: null,
+          middlename: null,
+        prefix: null,
+          suffix: null,
+          customAttributes: [],
+          saveInAddressBook: null,
+        },
+        paymentMethod: {
+          method:
+            selectedPaymentMethod?.code,
+          po_number: null,
+          extension_attributes: {
+            agreement_ids: ["1"],
+          },
+        },
+      email: customerDetails?.email,
+      };
+      const payload22 = {
+        cartId: customerId,
+        billing_address: {
           countryId: customerBillingAddress?.defaultBilling?.country_id
             ? customerBillingAddress?.defaultBilling?.country_id
             : customerBillingAddress?.defaultBillingAddress?.country_id,
@@ -692,8 +749,7 @@ console.log(data,"data123s")
           },
         }
       );
-     
-
+    
       if (orderId?.data) {
         // OrderSuccessCustomer(orderId?.data)
         // navigate("/order/success")

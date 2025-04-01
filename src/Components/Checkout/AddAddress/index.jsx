@@ -281,9 +281,9 @@ const AddAddress = ({
       <div className="heading pt-12 px-4 sm-px-6 pb-4">
         <h1 className="fw-700 fs-30">
           {address === "billing"
-            ? "Nieuw factuuradres"
+            ? "New billing address"
             : address === "shipping"
-              ? "Nieuw Delivery address"
+              ? "New Delivery address"
               : ""}
         </h1>
       </div>
@@ -476,7 +476,7 @@ const AddAddress = ({
               fullWidth
               type="submit"
             >
-              Opslaan
+              save
               <span className="flex middle">
                 <KeyboardArrowRightIcon />
               </span>
@@ -489,7 +489,7 @@ const AddAddress = ({
               }}
               type="button"
             >
-              Annuleren
+              Close
             </Button>
           </div>
         </form>
