@@ -15,7 +15,7 @@ export const DomainProvider = ({ children }) => {
     const decode = (t) => atob(t);
 
     const [tokenSingle, setTokenSingle] = useState("");
-    const [EnvObj, setEnvObj] = useState({baseUrl: "http://13.126.238.23/rest", defaultURL: "http://13.126.238.23/rest"});
+    const [EnvObj, setEnvObj] = useState({baseUrl: "http://103.91.187.126/rest", defaultURL: "http://103.91.187.126/rest"});
     const [baseURL, setBaseURL] = useState("");
     const [defaultURL, setDefaultURL] = useState("");
     useEffect(() => {
