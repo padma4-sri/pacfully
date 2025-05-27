@@ -44,7 +44,7 @@ export const TypeCheckProvider = ({ children }) => {
   const pathURLOnly = useMemo(() => ({ ...pathURL }), [pathURL?.uniqueId]);
 
   useEffect(() => {
-    if (location.pathname === "/react-app") {
+    if (location.pathname === "/") {
       setisBackdropLoading(false);
     }
   }, [location.pathname]);

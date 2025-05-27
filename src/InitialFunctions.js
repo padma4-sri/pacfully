@@ -196,7 +196,7 @@ const InitialFunctions = (baseURL, storeId, defaultURL) => {
   };
   useEffect(() => {
    
-    if ((loadIfUser || loadPreRender) && (location?.pathname === "/react-app" || location?.pathname ==="/")) {
+    if ((loadIfUser || loadPreRender) && (location?.pathname === "/" || location?.pathname ==="/")) {
       // Feature product
       fetchHomePageData();
 

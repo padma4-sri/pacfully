@@ -12,11 +12,11 @@ import Checkout from "Pages/Checkout";
 import OrderConfirmation from "Components/Checkout/OrderConfirmation";
 import NoRoute from "Components/NoRoute/NoRoute";
 import CommingSoon from "Pages/CommingSoon";
-export const StaticUrls = ["/order/success","/register","/reset-password/:token","/cart","/checkout","/react-app"]
+export const StaticUrls = ["/order/success","/register","/reset-password/:token","/cart","/checkout","/"]
 const AppRoutes = () => {
   const routesData = {
     "/register":<Registration />,
-    "/react-app":<Home />,
+    "/":<Home />,
     "/reset-password/:token":<ResetPassword />,
     "/cart":<CartPage />,
     "/order/success":<OrderConfirmation />,
@@ -32,7 +32,7 @@ const AppRoutes = () => {
 return (
   <React.Fragment>
     <Routes>
-      <Route path="/react-app" element={<Home />} exact />
+      <Route path="/" element={<Home />} exact />
       {StaticUrls.map((url)=> (
         <Route key={`route_${url}`} path={url} element={routesData[url]} exact />
       ))}

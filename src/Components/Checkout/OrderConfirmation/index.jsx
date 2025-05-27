@@ -288,7 +288,7 @@ function OrderConfirmation() {
 View order in my account          </Button>
         </Link> */}
 
-          <Link to="/react-app" aria-label={`home`} className="tc block text-underline fs-14">
+          <Link to="/" aria-label={`home`} className="tc block text-underline fs-14">
           continue shopping {symbol}
           </Link>
         </div>
