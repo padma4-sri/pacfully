@@ -88,8 +88,9 @@ export const TypeCheckProvider = ({ children }) => {
       const { data } = await axios.get(
         `${defaultURL}/custom/categoryproducts/${getLastPath(value.path.replace("/", ""))}?${queryParams.toString()}`
       );
-      if (!data?.product?.length) return;
+console.log({data})
 
+      if (!data?.products?.length) return;
       setPlptwoSharedState(data);
       setisBackdropLoading(false);
 

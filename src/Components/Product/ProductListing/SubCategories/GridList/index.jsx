@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState, useLayoutEffect, useRef, useContex
 import CategoriesDescription from "Components/Product/ProductListing/PlpCommon/CategoriesDescription";
 import "./styles.scss";
 import ProductCard from "Components/Productcard";
-import StaticBanner from "Components/StaticBanner";
 import FeaturesSection from "Components/Product/ProductListing/PlpCommon/FeaturesSection";
 import { Link, useLocation, useNavigate, useSearchParams, NavigationType, useNavigationType } from "react-router-dom";
 import AutorenewIcon from '@mui/icons-material/Autorenew';
@@ -36,7 +35,6 @@ const GridList = ({
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const location = useLocation();
-  // const [productsData, setProductsData] = useState([]);
   const [productFilterClass, setProductFilterClass] = useState({ class: "", top: "auto" });
   const [productFilterDir, setProductFilterDir] = useState({ class: "", top: "auto" });
   const [numCount, setNumCount] = useState(14);
@@ -119,27 +117,11 @@ const GridList = ({
     }
   }, [plpData]);
 
-  //commented for the purpose
-  // useMemo(() => {
-  //   if (plpData?.products?.length && !loading) {
-  //     if (!productsData?.length) {
-  //       setProductsData([...productsData, ...plpData?.products]);
-  //     } else if (plpData?.products?.[0]?.entityId && (productsData?.[0]?.entityId !== plpData?.products?.[0]?.entityId)) {
-  //       setProductsData([...productsData, ...plpData?.products]);
-  //     }
-  //   }
-  // }, [plpData?.products]);
-
-  // useMemo(() => {
-  //   if (plpData?.products?.length && !loading) {
-  //     setProductsData([]);
-  //   }
-  // }, [location]);
+  
 
   useEffect(() => {
     if (isPop) {
       setCurrentPage(0);
-      // setProductsData([]);
     }
   }, [isPop, location])
   const scrollVisible = () => {
@@ -263,7 +245,6 @@ const GridList = ({
                         </Button>
                       </React.Fragment>
                     ))}
-                  {/* <div className="keen-slider__slide" style={{ minWidth: `${containerWidth}px`, flex: '0 0 auto' }}></div> */}
                   </div>
                 </div>
               </div>
@@ -273,13 +254,13 @@ const GridList = ({
         <div className="productlisting__block">
           {/* sorting && result count */}
           {
-            !loading && plpData?.product?.[0]?.code === 400 || plpData?.code === 400 ?
+            !loading && plpData?.products?.[0]?.code === 400 || plpData?.code === 400 ?
               <></>
               :
               <div className={`resultcount__sorting flex space-between middle ${productFilterDir === 'up' ? productFilterClass.class : ""} ${productFilterDir}`} style={{ top: productFilterClass.top }}>
                 <div className={`xl-hide flex-1`}>
                   {
-                    loading && !plpData?.product?.length ?
+                    loading && !plpData?.products?.length ?
                       <LineLoader width="184px" height="37px" />
                       :
                       <Button size='md' className='btnFilterGrid flex gap-2 r-full' onClick={() => setOpenModel(true)}>
@@ -289,7 +270,7 @@ const GridList = ({
                 </div>
                 <div className="count__block">
                   {
-                    loading && !plpData?.product?.length ?
+                    loading && !plpData?.products?.length ?
                       <LineLoader width="250px" height="34px" className="fs-14 relative" />
                       :
                       <p className="fs-14">{plpData?.pagination?.total_count} article</p>
@@ -298,7 +279,7 @@ const GridList = ({
                 <div className="sorting__block hide xl-block">
                   <form>
                     {
-                      loading && !plpData?.product?.length?
+                      loading && !plpData?.products?.length?
                         <LineLoader width="250px" height="34px" />
                         :
                         <div className="flex row gap-4 middle">
@@ -334,7 +315,7 @@ const GridList = ({
           }
           {/* grid block */}
           <div className="listing__block pb-5">
-            {(loading && !plpData?.product?.length) || (!loading && plpData?.product?.[0]?.code === 400 || plpData?.code === 400) ? (
+            {(loading && !plpData?.products?.length) || (!loading && plpData?.products?.[0]?.code === 400 || plpData?.code === 400) ? (
               <div className={`product__reults w-1/1 ${plpData?.product?.[0]?.code === 400 || plpData?.code === 400 ? "pt-2 xl-pt-2" : "pt-12"}`}>
                 {
                   !loading && plpData?.product?.[0]?.code === 400 || plpData?.code === 400?
@@ -344,7 +325,7 @@ const GridList = ({
                     : <></>
                 }
                 {
-                  !loading && plpData?.product?.[0]?.code === 400 || plpData?.code === 400 ?
+                  !loading && plpData?.products?.[0]?.code === 400 || plpData?.code === 400 ?
                     <></> :
                     <div className="flex wrap gap-x-8 gap-y-14 xl-gap-x-8 xl-gap-y-16 pb-3">
                       {["", "", "", "", "", "", "", ""].map((item, ind) => (
@@ -358,14 +339,14 @@ const GridList = ({
                          
                           {ind === 4 ? (
                             <div className="plp2_feature">
-                              <FeaturesSection loading={plpData?.product?.length ? false : loading} />
+                              <FeaturesSection loading={plpData?.products?.length ? false : loading} />
                             </div>
                           ) : (
                             <></>
                           )}
                           {ind === 10 ? (
                             <div className="plp2_feature">
-                              <FeaturesSection loading={plpData?.product?.length ? false : loading} />
+                              <FeaturesSection loading={plpData?.products?.length ? false : loading} />
                             </div>
                           ) : (
                             <></>
@@ -376,10 +357,10 @@ const GridList = ({
                 }
               </div>
             ) :
-             plpData?.product?.length ? (
+             plpData?.products?.length ? (
               <div className="product__reults pt-xl-12 pt-8 w-1/1 overflow-hidden">
                 <div className="flex wrap gap-x-8 gap-y-14 xl-gap-x-8 xl-gap-y-16 pb-3">
-                  {plpData?.product?.map((item, index) => (
+                  {plpData?.products?.map((item, index) => (
                     <React.Fragment key={`productlistingGrid${index}`}>
                       <ProductCard
                         data={item}
@@ -392,7 +373,7 @@ const GridList = ({
                         <div className="plp2_feature">
                           <FeaturesSection
                             data={plpData?.dataContent?.featureContent}
-                            loading={plpData?.product?.length ? false : loading}
+                            loading={plpData?.products?.length ? false : loading}
                             noPadding
                             className="plp2 features__sliders"
                             isFeatures={true}
@@ -405,7 +386,7 @@ const GridList = ({
                         <div className="plp2_feature">
                           <FeaturesSection
                             data={plpData?.dataContent?.infoContent[0]}
-                            loading={plpData?.product?.length ? false : loading}
+                            loading={plpData?.products?.length ? false : loading}
                             noPadding
                             className="plp2 features__details"
                             isFeatures={false}
@@ -424,7 +405,7 @@ const GridList = ({
           </div>
           {/* pagination handler */}
           {
-            !loading && plpData?.product?.[0]?.code === 400 || plpData?.code === 400 ?
+            !loading && plpData?.products?.[0]?.code === 400 || plpData?.code === 400 ?
               <></>
               :
               <div className="plp__pagination__block">
@@ -448,7 +429,7 @@ const GridList = ({
                       plpData?.pagination?.total_count?.length > 14 ?
                       <></>
                       :
-                      !plpData?.product?.length && loading ?
+                      !plpData?.products?.length && loading ?
                         <SkeletonLine
                           animation="pulse"
                           className="tc"
